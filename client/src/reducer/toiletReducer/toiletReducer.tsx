@@ -1,19 +1,19 @@
 import { IToilet } from '../../context/toiletContext/types';
-import { ToiletActionType, ToiletActionTypes } from './types';
+import { ToiletActionEnum, ToiletActionType } from './types';
 
 export default function toiletReducer(
   state: { toilets: IToilet[]; error: any },
-  action: ToiletActionTypes
+  action: ToiletActionType
 ) {
   const { type, payload } = action;
 
   switch (type) {
-    case ToiletActionType.SET_TOILETS:
+    case ToiletActionEnum.SET_TOILETS:
       return {
         ...state,
         toilets: payload
       };
-    case ToiletActionType.SET_AS_FAVOURITE: {
+    case ToiletActionEnum.SET_AS_FAVOURITE: {
       const updatedToilets = state.toilets.map((toilet) => {
         if (toilet.id === payload.id) {
           return { ...toilet, isFavourite: payload.isFavourite };
@@ -27,7 +27,7 @@ export default function toiletReducer(
       };
     }
 
-    case ToiletActionType.SET_ERROR:
+    case ToiletActionEnum.SET_ERROR:
       return {
         ...state,
         error: payload

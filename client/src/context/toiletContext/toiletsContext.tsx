@@ -10,8 +10,8 @@ import {
 import { IToiletsContext } from './types';
 import toiletReducer from '../../reducer/toiletReducer/toiletReducer';
 import {
-  ToiletActionType,
-  ToiletActionTypes
+  ToiletActionEnum,
+  ToiletActionType
 } from '../../reducer/toiletReducer/types';
 
 // create the context defining the types of the context members
@@ -27,7 +27,7 @@ export default function ToiletsProvider({ children }: PropsWithChildren) {
   });
 
   // rename 'action' to make it clear which Reducer it is from.
-  const dispatchToilets = (action: ToiletActionTypes) => {
+  const dispatchToilets = (action: ToiletActionType) => {
     dispatch(action);
   };
 
@@ -39,12 +39,12 @@ export default function ToiletsProvider({ children }: PropsWithChildren) {
       .then((res) => res.json())
       .then((json) => {
         dispatchToilets({
-          type: ToiletActionType.SET_TOILETS,
+          type: ToiletActionEnum.SET_TOILETS,
           payload: json.toilets
         });
       })
       .catch((err) => {
-        dispatchToilets({ type: ToiletActionType.SET_ERROR, payload: err });
+        dispatchToilets({ type: ToiletActionEnum.SET_ERROR, payload: err });
       });
   }, []);
 

@@ -1,5 +1,5 @@
 import GeoJSON from 'geojson';
-import { ToiletActionTypes } from '../../reducer/toiletReducer/types';
+import { ToiletActionType } from '../../reducer/toiletReducer/types';
 
 interface IGeometry {
   location: {
@@ -34,20 +34,20 @@ export interface IToilet {
   location: string;
   addressComponents: IAddressComponent;
   formattedAddress: string;
-  geometry: IGeometry;
+  geometry?: IGeometry;
   placeid: string;
   openingHours: string[];
   nearestAlternative: string;
   facilities: IFacility[];
   facilityList: IFacility[];
-  dateCreated: Date;
-  dateModified: Date;
+  dateCreated: Date | undefined;
+  dateModified: Date | undefined;
   isFavourite: boolean;
 }
 
 export interface IToiletsContext {
   state: IInitialToiletsState;
-  dispatchToilets: React.Dispatch<ToiletActionTypes>;
+  dispatchToilets: React.Dispatch<ToiletActionType>;
 }
 
 export interface IInitialToiletsState {
