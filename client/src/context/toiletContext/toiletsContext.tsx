@@ -36,7 +36,9 @@ export default function ToiletsProvider({ children }: PropsWithChildren) {
     const url = 'api/v1/toilets';
 
     fetch(url)
-      .then((res) => res.json())
+      .then((res) => {
+        return res.json();
+      })
       .then((json) => {
         dispatchToilets({
           type: ToiletActionEnum.SET_TOILETS,

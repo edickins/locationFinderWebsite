@@ -15,33 +15,33 @@ interface IViewport {
 }
 
 export interface IFacility {
-  fullName: string;
-  shortName: string;
+  full_name: string;
+  short_name: string;
   id: string;
 }
 
 interface IAddressComponent {
-  longName: string;
-  alphabeticalName: string;
+  long_name: string;
+  alphabetical_name: string;
   types: string[];
 }
 
 export interface IToilet {
   id: string;
-  longName: string;
-  alphabeticalName: string;
-  openStatus: string;
+  long_name: string;
+  alphabetical_name: string;
+  open_status: string;
   location: string;
-  addressComponents: IAddressComponent;
-  formattedAddress: string;
+  address_components: IAddressComponent;
+  formatted_address: string;
   geometry?: IGeometry;
   placeid: string;
-  openingHours: string[];
-  nearestAlternative: string;
+  opening_hours: string[];
+  nearest_alternative: string;
   facilities: IFacility[];
   facilityList: IFacility[];
-  dateCreated: Date | undefined;
-  dateModified: Date | undefined;
+  date_created: Date | undefined;
+  date_modified: Date | undefined;
   isFavourite: boolean;
 }
 

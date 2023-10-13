@@ -7,23 +7,23 @@ import {
 
 const mockToilet: IToilet = {
   id: 'toilet001',
-  longName: 'toilet name',
-  alphabeticalName: 'toilet name',
-  openStatus: 'open',
+  long_name: 'toilet name',
+  alphabetical_name: 'toilet name',
+  open_status: 'open',
   location: 'city centre',
-  addressComponents: {
-    longName: 'address longname',
-    alphabeticalName: 'address name',
+  address_components: {
+    long_name: 'address long_name',
+    alphabetical_name: 'address name',
     types: []
   },
-  formattedAddress: 'address',
+  formatted_address: 'address',
   placeid: 'xxx',
-  openingHours: ['openin hours'],
-  nearestAlternative: 'x',
+  opening_hours: ['openin hours'],
+  nearest_alternative: 'x',
   facilities: [],
   facilityList: [],
-  dateCreated: undefined,
-  dateModified: undefined,
+  date_created: undefined,
+  date_modified: undefined,
   isFavourite: false
 };
 

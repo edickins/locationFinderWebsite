@@ -1,0 +1,3966 @@
+[
+  {
+    "id": "toilet001",
+    "long_name": "Bartholomew House",
+    "alphabetical_name": "Bartholomew House",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 2,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+
+    "facilities": ["facility001", "facility002"],
+    "address_components": [
+      {
+        "long_name": "Bartholomew Square",
+        "short_name": "Bartholomew Square",
+        "types": ["premise"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN1 1JS",
+        "short_name": "BN1 1JS",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "Bartholomew Square, Brighton, BN1 1JP.",
+    "geometry": {
+      "location": {
+        "lat": 50.8202411,
+        "lng": -0.1409286
+      },
+      "location_type": "ROOFTOP",
+      "viewport": {
+        "northeast": {
+          "lat": 50.8214611302915,
+          "lng": -0.139192569708498
+        },
+        "southwest": {
+          "lat": 50.8187631697085,
+          "lng": -0.141890530291502
+        }
+      }
+    },
+    "place_id": "ChIJAUFwtQuFdUgR-3dMcDF1Ijc",
+    "date_created": "2023-10-10T14:48:00.000Z",
+    "date_modified": "2023-10-10T14:48:00.000Z"
+  },
+  {
+    "id": "toilet002",
+    "long_name": "Black Rock",
+    "alphabetical_name": "Black Rock",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Madeira Drive",
+        "short_name": "Madeira Dr",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN2 1EN",
+        "short_name": "BN2 1EN",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "Madeira Drive, Brighton, BN2 1EN.",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.81940990000002,
+          "lng": -0.1125193
+        },
+        "southwest": {
+          "lat": 50.81495409999997,
+          "lng": -0.1359435
+        }
+      },
+      "location": {
+        "lat": 50.8173319,
+        "lng": -0.1234411
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.81940990000002,
+          "lng": -0.1125193
+        },
+        "southwest": {
+          "lat": 50.81495409999997,
+          "lng": -0.1359435000000001
+        }
+      }
+    },
+    "place_id": "EiBNYWRlaXJhIERyLCBCcmlnaHRvbiBCTjIgMUVOLCBVSyIuKiwKFAoSCefm5VK6hXVIEUjgFoHGIUX-EhQKEglfjVgWpIV1SBGM9JBWx4aH9w",
+    "date_created": "2023-10-10T14:48:00.000Z",
+    "date_modified": "2023-10-10T14:48:00.000Z"
+  },
+  {
+    "id": "toilet003",
+    "long_name": "Blakers Park",
+    "alphabetical_name": "Blakers Park",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Cleveland Road",
+        "short_name": "Cleveland Rd",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN1 6FF",
+        "short_name": "BN1 6FF",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "Cleveland Rd, Brighton and Hove, Brighton BN1 6FF, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.84241830000003,
+          "lng": -0.1374677
+        },
+        "southwest": {
+          "lat": 50.84089439999997,
+          "lng": -0.1384098
+        }
+      },
+      "location": {
+        "lat": 50.8424183,
+        "lng": -0.1384098
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.8430053302915,
+          "lng": -0.136589769708498
+        },
+        "southwest": {
+          "lat": 50.8403073697085,
+          "lng": -0.139287730291502
+        }
+      }
+    },
+    "place_id": "EjVDbGV2ZWxhbmQgUmQsIEJyaWdodG9uIGFuZCBIb3ZlLCBCcmlnaHRvbiBCTjEgNkZGLCBVSyIuKiwKFAoSCfsbeHB_hXVIEbxyFciGf0YeEhQKEgnHJ_5cf4V1SBG5C-Yk8WgI4w",
+    "date_created": "2023-10-10T14:48:00.000Z",
+    "date_modified": "2023-10-10T14:48:00.000Z"
+  },
+  {
+    "id": "toilet004",
+    "long_name": "Booth Museum",
+    "alphabetical_name": "Booth Museum",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Dyke Road",
+        "short_name": "Dyke Rd",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN1 5AA",
+        "short_name": "BN1 5AA",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "Dyke Rd, Brighton and Hove, Brighton BN1 5AA, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.83872620000002,
+          "lng": -0.1519106
+        },
+        "southwest": {
+          "lat": 50.83561649999998,
+          "lng": -0.1554143
+        }
+      },
+      "location": {
+        "lat": 50.837154,
+        "lng": -0.153373
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.83872620000002,
+          "lng": -0.1519106
+        },
+        "southwest": {
+          "lat": 50.83561649999998,
+          "lng": -0.1554143
+        }
+      }
+    },
+    "place_id": "EjBEeWtlIFJkLCBCcmlnaHRvbiBhbmQgSG92ZSwgQnJpZ2h0b24gQk4xIDVBQSwgVUsiLiosChQKEglVdsQ8ZIV1SBERtJztgbNPtRIUChIJh_UPt2WFdUgRkGNMPJMQynY",
+    "date_created": "2023-10-10T14:48:00.000Z",
+    "date_modified": "2023-10-10T14:48:00.000Z"
+  },
+  {
+    "id": "toilet005",
+    "long_name": "Brighton Museum",
+    "alphabetical_name": "Brighton Museum",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Royal Pavilion Gardens",
+        "short_name": "Royal Pavilion Gardens",
+        "types": ["establishment", "park", "point_of_interest"]
+      },
+      {
+        "long_name": "North Street",
+        "short_name": "North St",
+        "types": ["route"]
+      },
+      {
+        "long_name": "New Road",
+        "short_name": "New Rd",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN1",
+        "short_name": "BN1",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "Royal Pavilion Gardens, North St, New Rd, Brighton and Hove, Brighton BN1, UK",
+    "geometry": {
+      "location": {
+        "lat": 50.8229903,
+        "lng": -0.1389126
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.8243392802915,
+          "lng": -0.137563619708498
+        },
+        "southwest": {
+          "lat": 50.8216413197085,
+          "lng": -0.140261580291502
+        }
+      }
+    },
+    "place_id": "ChIJtUhJsiWFdUgREk3EMYMtwF0"
+  },
+  {
+    "id": "toilet006",
+    "long_name": "Dyke Road Park",
+    "alphabetical_name": "Dyke Road Park",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Dyke Road",
+        "short_name": "Dyke Rd",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Hove",
+        "short_name": "Hove",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN3 6EH",
+        "short_name": "BN3 6EH",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "Dyke Rd, Brighton and Hove, Hove BN3 6EH, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.83747980000003,
+          "lng": -0.1519106
+        },
+        "southwest": {
+          "lat": 50.83561649999998,
+          "lng": -0.1537526
+        }
+      },
+      "location": {
+        "lat": 50.8364128,
+        "lng": -0.1526517
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.8378971302915,
+          "lng": -0.151482619708498
+        },
+        "southwest": {
+          "lat": 50.8351991697085,
+          "lng": -0.154180580291502
+        }
+      }
+    },
+    "place_id": "EixEeWtlIFJkLCBCcmlnaHRvbiBhbmQgSG92ZSwgSG92ZSBCTjMgNkVILCBVSyIuKiwKFAoSCVV2xDxkhXVIERG0nO2Bs0-1EhQKEglFxN-VZYV1SBHOd-XGyZg5Sg"
+  },
+  {
+    "id": "toilet007",
+    "long_name": "Hollingbury Library",
+    "alphabetical_name": "Hollingbury Library",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Carden Hill",
+        "short_name": "Carden Hill",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN1 8DA",
+        "short_name": "BN1 8DA",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "Carden Hill, Brighton and Hove, Brighton BN1 8DA, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.86125180000002,
+          "lng": -0.1273612
+        },
+        "southwest": {
+          "lat": 50.85961509999998,
+          "lng": -0.1315413
+        }
+      },
+      "location": {
+        "lat": 50.8602983,
+        "lng": -0.1301337
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.8617824302915,
+          "lng": -0.1273612
+        },
+        "southwest": {
+          "lat": 50.85908446970851,
+          "lng": -0.1315413
+        }
+      }
+    },
+    "place_id": "EjRDYXJkZW4gSGlsbCwgQnJpZ2h0b24gYW5kIEhvdmUsIEJyaWdodG9uIEJOMSA4REEsIFVLIi4qLAoUChIJmRb0a3GPdUgRaWr0ZYGZRV8SFAoSCfc27m9xj3VIEXUbDowtGf5T"
+  },
+  {
+    "id": "toilet008",
+    "long_name": "Hollingbury Park",
+    "alphabetical_name": "Hollingbury Park",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "BN1 7HS",
+        "short_name": "BN1 7HS",
+        "types": ["postal_code"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      }
+    ],
+    "formatted_address": "Brighton and Hove, Brighton BN1 7HS, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.86912179999999,
+          "lng": -0.1120668
+        },
+        "southwest": {
+          "lat": 50.85162150000001,
+          "lng": -0.1323186
+        }
+      },
+      "location": {
+        "lat": 50.8539608,
+        "lng": -0.1278423
+      },
+      "location_type": "APPROXIMATE",
+      "viewport": {
+        "northeast": {
+          "lat": 50.86912179999999,
+          "lng": -0.1120668
+        },
+        "southwest": {
+          "lat": 50.85162150000001,
+          "lng": -0.1323186
+        }
+      }
+    },
+    "place_id": "ChIJf_xR5nqPdUgRCE3wY3xwme0"
+  },
+  {
+    "id": "toilet009",
+    "long_name": "Kings Road Playground",
+    "alphabetical_name": "Kings Road Playground",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "BN1 2LN",
+        "short_name": "BN1 2LN",
+        "types": ["postal_code"]
+      },
+      {
+        "long_name": "Kings Road",
+        "short_name": "Kings Rd",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      }
+    ],
+    "formatted_address": "Kings Rd, Brighton BN1 2LN, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.8226851,
+          "lng": -0.1483107
+        },
+        "southwest": {
+          "lat": 50.8205649,
+          "lng": -0.1564994
+        }
+      },
+      "location": {
+        "lat": 50.8216371,
+        "lng": -0.1525903
+      },
+      "location_type": "APPROXIMATE",
+      "viewport": {
+        "northeast": {
+          "lat": 50.82297398029151,
+          "lng": -0.1483107
+        },
+        "southwest": {
+          "lat": 50.82027601970851,
+          "lng": -0.1564994
+        }
+      }
+    },
+    "place_id": "ChIJccY5oROFdUgRl9xfsv4clAI"
+  },
+  {
+    "id": "toilet010",
+    "long_name": "Jubilee Library",
+    "alphabetical_name": "Jubilee Library",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Jubilee Street",
+        "short_name": "Jubilee St",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN1 1GE",
+        "short_name": "BN1 1GE",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "Jubilee St, Brighton and Hove, Brighton BN1 1GE, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.82555810000002,
+          "lng": -0.1383967
+        },
+        "southwest": {
+          "lat": 50.82409339999997,
+          "lng": -0.1390646
+        }
+      },
+      "location": {
+        "lat": 50.825213,
+        "lng": -0.1385575
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.8261747302915,
+          "lng": -0.137381669708498
+        },
+        "southwest": {
+          "lat": 50.8234767697085,
+          "lng": -0.140079630291502
+        }
+      }
+    },
+    "place_id": "EjNKdWJpbGVlIFN0LCBCcmlnaHRvbiBhbmQgSG92ZSwgQnJpZ2h0b24gQk4xIDFHRSwgVUsiLiosChQKEgnxwxdLdYV1SBHncF7d_uOucxIUChIJw32OTXWFdUgRd_MoZiPu770"
+  },
+  {
+    "id": "toilet011",
+    "long_name": "Lawn Memorial Cemetery",
+    "alphabetical_name": "Lawn Memorial Cemetery",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Warren Road",
+        "short_name": "Warren Rd",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN2 6DA",
+        "short_name": "BN2 6DA",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "Warren Rd, Brighton and Hove, Brighton BN2 6DA, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.83565250000002,
+          "lng": -0.0800397
+        },
+        "southwest": {
+          "lat": 50.83544899999998,
+          "lng": -0.081383
+        }
+      },
+      "location": {
+        "lat": 50.835449,
+        "lng": -0.081383
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.8368997302915,
+          "lng": -0.07936236970849798
+        },
+        "southwest": {
+          "lat": 50.8342017697085,
+          "lng": -0.08206033029150205
+        }
+      }
+    },
+    "place_id": "EjJXYXJyZW4gUmQsIEJyaWdodG9uIGFuZCBIb3ZlLCBCcmlnaHRvbiBCTjIgNkRBLCBVSyIuKiwKFAoSCWNQ3NrihXVIEV9AUl6ox6jKEhQKEglZPIdVBYZ1SBEM_DZcVTeCMg"
+  },
+  {
+    "id": "toilet012",
+    "long_name": "Daltons, Lower Prom, East of Brighton Pier",
+    "alphabetical_name": "Daltons, Lower Prom, East of Brighton Pier",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Madeira Drive",
+        "short_name": "Madeira Dr",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN2 1TW",
+        "short_name": "BN2 1TW",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "Madeira Dr, Brighton BN2 1TW, UK",
+    "geometry": {
+      "location": {
+        "lat": 50.8168555,
+        "lng": -0.136738
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.81951018029149,
+          "lng": -0.135148219708498
+        },
+        "southwest": {
+          "lat": 50.8168122197085,
+          "lng": -0.137846180291502
+        }
+      }
+    },
+    "place_id": "ChIJfzEj9wqFdUgR1eJ2FdizVlI"
+  },
+  {
+    "id": "toilet013",
+    "long_name": "Moulsecoomb Leisure Centre",
+    "alphabetical_name": "Moulsecoomb Leisure Centre",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Moulsecoomb Way",
+        "short_name": "Moulsecoomb Way",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN2 4PB",
+        "short_name": "BN2 4PB",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "Moulsecoomb Way, Brighton and Hove, Brighton BN2 4PB, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.85229990000003,
+          "lng": -0.1026775
+        },
+        "southwest": {
+          "lat": 50.85127979999997,
+          "lng": -0.1103884
+        }
+      },
+      "location": {
+        "lat": 50.8517592,
+        "lng": -0.1065075
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.8531388302915,
+          "lng": -0.1026775
+        },
+        "southwest": {
+          "lat": 50.8504408697085,
+          "lng": -0.1103884
+        }
+      }
+    },
+    "place_id": "EjhNb3Vsc2Vjb29tYiBXYXksIEJyaWdodG9uIGFuZCBIb3ZlLCBCcmlnaHRvbiBCTjIgNFBCLCBVSyIuKiwKFAoSCSsdY4paj3VIEcGSrrzfGKK5EhQKEglHsS9PWo91SBEbX4U8I_EzHQ"
+  },
+  {
+    "id": "toilet014",
+    "long_name": "Moulsecoomb Library",
+    "alphabetical_name": "Moulsecoomb Library",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "The Highway",
+        "short_name": "The Hwy",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN2 4PA",
+        "short_name": "BN2 4PA",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "The Hwy, Brighton and Hove, Brighton BN2 4PA, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.84897930000002,
+          "lng": -0.1112335
+        },
+        "southwest": {
+          "lat": 50.84732049999997,
+          "lng": -0.1137733
+        }
+      },
+      "location": {
+        "lat": 50.8481124,
+        "lng": -0.1126317
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.84949888029149,
+          "lng": -0.111154419708498
+        },
+        "southwest": {
+          "lat": 50.84680091970849,
+          "lng": -0.113852380291502
+        }
+      }
+    },
+    "place_id": "EjBUaGUgSHd5LCBCcmlnaHRvbiBhbmQgSG92ZSwgQnJpZ2h0b24gQk4yIDRQQSwgVUsiLiosChQKEgmZEKVTXo91SBGDJTu_Gx06hRIUChIJXQNo616PdUgR9Esc7XhIcyY"
+  },
+  {
+    "id": "toilet015",
+    "long_name": "Ovingdean Undercliff",
+    "alphabetical_name": "Ovingdean Undercliff",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Marine Drive",
+        "short_name": "Marine Dr",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN2",
+        "short_name": "BN2",
+        "types": ["postal_code", "postal_code_prefix"]
+      }
+    ],
+    "formatted_address": "Marine Dr, Brighton BN2, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.81490310000002,
+          "lng": -0.04215190000000001
+        },
+        "southwest": {
+          "lat": 50.80082659999999,
+          "lng": -0.109937
+        }
+      },
+      "location": {
+        "lat": 50.8079682,
+        "lng": -0.0758906
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.81490310000002,
+          "lng": -0.04215190000000001
+        },
+        "southwest": {
+          "lat": 50.80082659999999,
+          "lng": -0.109937
+        }
+      }
+    },
+    "place_id": "EhtNYXJpbmUgRHIsIEJyaWdodG9uIEJOMiwgVUsiLiosChQKEgkbK4FrYYZ1SBGotjso9hUdExIUChIJZ0Ep9gmFdUgR-Q59cnqvxpw"
+  },
+  {
+    "id": "toilet016",
+    "long_name": "Park Road",
+    "alphabetical_name": "Park Road",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "BN2 7HL",
+        "short_name": "BN2 7HL",
+        "types": ["postal_code"]
+      },
+      {
+        "long_name": "Park Road",
+        "short_name": "Park Rd",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Rottingdean",
+        "short_name": "Rottingdean",
+        "types": ["political", "sublocality", "sublocality_level_1"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      }
+    ],
+    "formatted_address": "Park Rd, Rottingdean, Brighton and Hove, Brighton BN2 7HL, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.8043736,
+          "lng": -0.05800959999999999
+        },
+        "southwest": {
+          "lat": 50.8034951,
+          "lng": -0.0596398
+        }
+      },
+      "location": {
+        "lat": 50.8038088,
+        "lng": -0.05879949999999999
+      },
+      "location_type": "APPROXIMATE",
+      "viewport": {
+        "northeast": {
+          "lat": 50.80528333029149,
+          "lng": -0.05747571970849796
+        },
+        "southwest": {
+          "lat": 50.8025853697085,
+          "lng": -0.06017368029150203
+        }
+      }
+    },
+    "place_id": "ChIJSQlm3veGdUgRTCuv256IhSs"
+  },
+  {
+    "id": "toilet017",
+    "long_name": "Patcham Library",
+    "alphabetical_name": "Patcham Library",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Ladies' Mile Road",
+        "short_name": "Ladies' Mile Rd",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN1",
+        "short_name": "BN1",
+        "types": ["postal_code", "postal_code_prefix"]
+      }
+    ],
+    "formatted_address": "Ladies' Mile Rd, Brighton and Hove, Brighton BN1, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.8663701,
+          "lng": -0.1325276
+        },
+        "southwest": {
+          "lat": 50.8624453,
+          "lng": -0.1506561
+        }
+      },
+      "location": {
+        "lat": 50.8640854,
+        "lng": -0.1415041
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.8663701,
+          "lng": -0.1325276
+        },
+        "southwest": {
+          "lat": 50.8624453,
+          "lng": -0.1506561
+        }
+      }
+    },
+    "place_id": "ChIJtfL3E5-PdUgRs7vBNqM92sQ"
+  },
+  {
+    "id": "toilet018",
+    "long_name": "Preston Park, Park Chalet",
+    "alphabetical_name": "Preston Park, Park Chalet",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "BN1 6HN",
+        "short_name": "BN1 6HN",
+        "types": ["postal_code"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      }
+    ],
+    "formatted_address": "Brighton and Hove, Brighton BN1 6HN, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.8397473,
+          "lng": -0.142816
+        },
+        "southwest": {
+          "lat": 50.8362764,
+          "lng": -0.1461222
+        }
+      },
+      "location": {
+        "lat": 50.8377011,
+        "lng": -0.1436332
+      },
+      "location_type": "APPROXIMATE",
+      "viewport": {
+        "northeast": {
+          "lat": 50.8397473,
+          "lng": -0.142816
+        },
+        "southwest": {
+          "lat": 50.8362764,
+          "lng": -0.1461222
+        }
+      }
+    },
+    "place_id": "ChIJc19sK3qFdUgRErK_doYTxfA"
+  },
+  {
+    "id": "toilet019",
+    "long_name": "Preston Park Rotunda",
+    "alphabetical_name": "Preston Park Rotunda",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Preston Park",
+        "short_name": "Preston Park",
+        "types": [
+          "establishment",
+          "park",
+          "point_of_interest",
+          "tourist_attraction"
+        ]
+      },
+      {
+        "long_name": "Preston Road",
+        "short_name": "Preston Rd",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN1 6SD",
+        "short_name": "BN1 6SD",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "Preston Park, Preston Rd, Brighton and Hove, Brighton BN1 6SD, UK",
+    "geometry": {
+      "location": {
+        "lat": 50.8398169,
+        "lng": -0.1460002
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.8405945302915,
+          "lng": -0.145423769708498
+        },
+        "southwest": {
+          "lat": 50.8378965697085,
+          "lng": -0.148121730291502
+        }
+      }
+    },
+    "partial_match": true,
+    "place_id": "ChIJ_XDNzomPdUgRhNAaWOkW7fo"
+  },
+  {
+    "id": "toilet020",
+    "long_name": "Peter Pan's Play Area",
+    "alphabetical_name": "Peter Pan's Play Area",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Madeira Drive",
+        "short_name": "Madeira Dr",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN2 1PS",
+        "short_name": "BN2 1PS",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "Madeira Dr, Brighton BN2 1PS, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.81919180000002,
+          "lng": -0.1316105
+        },
+        "southwest": {
+          "lat": 50.81896879999996,
+          "lng": -0.1331613
+        }
+      },
+      "location": {
+        "lat": 50.8191199,
+        "lng": -0.1324582
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.82042928029149,
+          "lng": -0.131036919708498
+        },
+        "southwest": {
+          "lat": 50.81773131970849,
+          "lng": -0.133734880291502
+        }
+      }
+    },
+    "place_id": "EiBNYWRlaXJhIERyLCBCcmlnaHRvbiBCTjIgMVBTLCBVSyIuKiwKFAoSCefm5VK6hXVIEUjgFoHGIUX-EhQKEgm_1zqypoV1SBEwfCQczGkgQg"
+  },
+  {
+    "id": "toilet021",
+    "long_name": "Prince Regent Swimming Complex",
+    "alphabetical_name": "Prince Regent Swimming Complex",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Church Street",
+        "short_name": "Church St",
+        "types": ["route"]
+      },
+      {
+        "long_name": "North Road",
+        "short_name": "North Rd",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN1 1YA",
+        "short_name": "BN1 1YA",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "Church St, North Rd, Brighton and Hove, Brighton BN1 1YA, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.82421010000002,
+          "lng": -0.1390646
+        },
+        "southwest": {
+          "lat": 50.82409339999997,
+          "lng": -0.1393819
+        }
+      },
+      "location": {
+        "lat": 50.8240934,
+        "lng": -0.1390646
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.82550073029149,
+          "lng": -0.137874269708498
+        },
+        "southwest": {
+          "lat": 50.8228027697085,
+          "lng": -0.140572230291502
+        }
+      }
+    },
+    "place_id": "EjxDaHVyY2ggU3QsIE5vcnRoIFJkLCBCcmlnaHRvbiBhbmQgSG92ZSwgQnJpZ2h0b24gQk4xIDFZQSwgVUsiLiosChQKEgkpeXszC4V1SBG87mgwfEN_TxIUChIJ_VsA_Z-FdUgRIEqx8B5zc9Y"
+  },
+  {
+    "id": "toilet022",
+    "long_name": "Queens Park Play Area",
+    "alphabetical_name": "Queens Park Play Area",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "West Drive",
+        "short_name": "West Dr",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN2",
+        "short_name": "BN2",
+        "types": ["postal_code", "postal_code_prefix"]
+      }
+    ],
+    "formatted_address": "West Dr, Brighton and Hove, Brighton BN2, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.8263851,
+          "lng": -0.1246275
+        },
+        "southwest": {
+          "lat": 50.82345549999999,
+          "lng": -0.1285618
+        }
+      },
+      "location": {
+        "lat": 50.8249486,
+        "lng": -0.1270007
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.8263851,
+          "lng": -0.1246275
+        },
+        "southwest": {
+          "lat": 50.82345549999999,
+          "lng": -0.1285618
+        }
+      }
+    },
+    "place_id": "ChIJqRL0BpiFdUgRuW_GSs2B2Es"
+  },
+  {
+    "id": "toilet023",
+    "long_name": "Rottingdean Library/The Grange",
+    "alphabetical_name": "Rottingdean Library/The Grange",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "The Green",
+        "short_name": "The Grn",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Olde Place Mews",
+        "short_name": "Olde Place Mews",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Rottingdean",
+        "short_name": "Rottingdean",
+        "types": ["political", "sublocality", "sublocality_level_1"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN2 7HA",
+        "short_name": "BN2 7HA",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "The Grn, Olde Place Mews, Rottingdean, Brighton and Hove, Brighton BN2 7HA, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.80775390000002,
+          "lng": -0.05769429999999998
+        },
+        "southwest": {
+          "lat": 50.80570609999997,
+          "lng": -0.05959859999999999
+        }
+      },
+      "location": {
+        "lat": 50.8067748,
+        "lng": -0.0582011
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.8080789802915,
+          "lng": -0.05729746970849796
+        },
+        "southwest": {
+          "lat": 50.8053810197085,
+          "lng": -0.05999543029150202
+        }
+      }
+    },
+    "place_id": "Ek5UaGUgR3JuLCBPbGRlIFBsYWNlIE1ld3MsIFJvdHRpbmdkZWFuLCBCcmlnaHRvbiBhbmQgSG92ZSwgQnJpZ2h0b24gQk4yIDdIQSwgVUsiLiosChQKEgnndNXJWYZ1SBFptUCKCNVNnhIUChIJp93hSViGdUgRhdxg08TqVz8"
+  },
+  {
+    "id": "toilet024",
+    "long_name": "Rottingdean Recreation Ground",
+    "alphabetical_name": "Rottingdean Recreation Ground",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Falmer Road",
+        "short_name": "Falmer Rd",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      }
+    ],
+    "formatted_address": "Falmer Rd, Brighton, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.85332390000003,
+          "lng": -0.05871259999999999
+        },
+        "southwest": {
+          "lat": 50.80775389999997,
+          "lng": -0.07535130000000001
+        }
+      },
+      "location": {
+        "lat": 50.8294447,
+        "lng": -0.0728005
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.85332390000003,
+          "lng": -0.05871259999999999
+        },
+        "southwest": {
+          "lat": 50.80775389999998,
+          "lng": -0.07535130000000001
+        }
+      }
+    },
+    "place_id": "EhdGYWxtZXIgUmQsIEJyaWdodG9uLCBVSyIuKiwKFAoSCSdF7dw9hnVIEQjoODYzNSkcEhQKEglnQSn2CYV1SBH5Dn1yeq_GnA"
+  },
+  {
+    "id": "toilet025",
+    "long_name": "Rottingdean Undercliff",
+    "alphabetical_name": "Rottingdean Undercliff",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Marine Drive",
+        "short_name": "Marine Dr",
+        "types": ["route"]
+      },
+      {
+        "long_name": "High Street",
+        "short_name": "High St",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Rottingdean",
+        "short_name": "Rottingdean",
+        "types": ["political", "sublocality", "sublocality_level_1"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN2 7HR",
+        "short_name": "BN2 7HR",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "Marine Dr, High St, Rottingdean, Brighton BN2 7HR, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.80344810000003,
+          "lng": -0.0559337
+        },
+        "southwest": {
+          "lat": 50.80317569999997,
+          "lng": -0.05971970000000001
+        }
+      },
+      "location": {
+        "lat": 50.8032015,
+        "lng": -0.0578753
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.8046608802915,
+          "lng": -0.0559337
+        },
+        "southwest": {
+          "lat": 50.8019629197085,
+          "lng": -0.05971970000000001
+        }
+      }
+    },
+    "place_id": "EjVNYXJpbmUgRHIsIEhpZ2ggU3QsIFJvdHRpbmdkZWFuLCBCcmlnaHRvbiBCTjIgN0hSLCBVSyIuKiwKFAoSCRsrgWthhnVIEai2Oyj2FR0TEhQKEgmp2cMe-IZ1SBHHN-pVz1Zjyw"
+  },
+  {
+    "id": "toilet026",
+    "long_name": "­Royal Pavilion Gardens",
+    "alphabetical_name": "­Royal Pavilion Gardens",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Prince's Place",
+        "short_name": "Prince's Pl",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN1",
+        "short_name": "BN1",
+        "types": ["postal_code", "postal_code_prefix"]
+      }
+    ],
+    "formatted_address": "Prince's Pl, Brighton and Hove, Brighton BN1, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.822631,
+          "lng": -0.1390351
+        },
+        "southwest": {
+          "lat": 50.8222649,
+          "lng": -0.1394034
+        }
+      },
+      "location": {
+        "lat": 50.8226267,
+        "lng": -0.1390446
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.82378543029149,
+          "lng": -0.137879369708498
+        },
+        "southwest": {
+          "lat": 50.8210874697085,
+          "lng": -0.140577330291502
+        }
+      }
+    },
+    "place_id": "ChIJDThh9gqFdUgR5xAMgJ6GO94"
+  },
+  {
+    "id": "toilet027",
+    "long_name": "Stanley Deason Leisure Centre",
+    "alphabetical_name": "Stanley Deason Leisure Centre",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Wilson Avenue",
+        "short_name": "Wilson Ave",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN2 5PB",
+        "short_name": "BN2 5PB",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "Wilson Ave, Brighton and Hove, Brighton BN2 5PB, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.82718030000002,
+          "lng": -0.1008651
+        },
+        "southwest": {
+          "lat": 50.82149509999997,
+          "lng": -0.101477
+        }
+      },
+      "location": {
+        "lat": 50.8249818,
+        "lng": -0.1011815
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.82718030000002,
+          "lng": -0.09982206970849797
+        },
+        "southwest": {
+          "lat": 50.82149509999997,
+          "lng": -0.102520030291502
+        }
+      }
+    },
+    "place_id": "EjNXaWxzb24gQXZlLCBCcmlnaHRvbiBhbmQgSG92ZSwgQnJpZ2h0b24gQk4yIDVQQiwgVUsiLiosChQKEglxPdHq54V1SBGQyKdCfSStqBIUChIJDfQjZt2FdUgRB3u1WSOt3SQ"
+  },
+  {
+    "id": "toilet028",
+    "long_name": "Saltdean Oval",
+    "alphabetical_name": "Saltdean Oval",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Arundel Drive West",
+        "short_name": "Arundel Dr W",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Saltdean",
+        "short_name": "Saltdean",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN2 8SJ",
+        "short_name": "BN2 8SJ",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "Arundel Dr W, Saltdean, Brighton BN2 8SJ, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.80482180000003,
+          "lng": -0.0398252
+        },
+        "southwest": {
+          "lat": 50.80112749999998,
+          "lng": -0.0432707
+        }
+      },
+      "location": {
+        "lat": 50.803357,
+        "lng": -0.0429153
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.80482180000003,
+          "lng": -0.0398252
+        },
+        "southwest": {
+          "lat": 50.80112749999998,
+          "lng": -0.0432707
+        }
+      }
+    },
+    "place_id": "EixBcnVuZGVsIERyIFcsIFNhbHRkZWFuLCBCcmlnaHRvbiBCTjIgOFNKLCBVSyIuKiwKFAoSCZNIuJUAh3VIERupf1sBFD-OEhQKEgk1UsaAAId1SBE_5EW-qZVomg"
+  },
+  {
+    "id": "toilet029",
+    "long_name": "Saltdean Undercliff",
+    "alphabetical_name": "Saltdean Undercliff",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Marine Drive",
+        "short_name": "Marine Dr",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN2",
+        "short_name": "BN2",
+        "types": ["postal_code", "postal_code_prefix"]
+      }
+    ],
+    "formatted_address": "Marine Dr, Brighton BN2, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.81490310000002,
+          "lng": -0.04215190000000001
+        },
+        "southwest": {
+          "lat": 50.80082659999999,
+          "lng": -0.109937
+        }
+      },
+      "location": {
+        "lat": 50.8079682,
+        "lng": -0.0758906
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.81490310000002,
+          "lng": -0.04215190000000001
+        },
+        "southwest": {
+          "lat": 50.80082659999999,
+          "lng": -0.109937
+        }
+      }
+    },
+    "place_id": "EhtNYXJpbmUgRHIsIEJyaWdodG9uIEJOMiwgVUsiLiosChQKEgkbK4FrYYZ1SBGotjso9hUdExIUChIJZ0Ep9gmFdUgR-Q59cnqvxpw"
+  },
+  {
+    "id": "toilet030",
+    "long_name": "Shelter Hall",
+    "alphabetical_name": "Shelter Hall",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "BN1 1NB",
+        "short_name": "BN1 1NB",
+        "types": ["postal_code"]
+      },
+      {
+        "long_name": "Kings Road",
+        "short_name": "Kings Rd",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      }
+    ],
+    "formatted_address": "Kings Rd, Brighton BN1 1NB, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.821077,
+          "lng": -0.1392033
+        },
+        "southwest": {
+          "lat": 50.8185374,
+          "lng": -0.1484562
+        }
+      },
+      "location": {
+        "lat": 50.8199982,
+        "lng": -0.1422625
+      },
+      "location_type": "APPROXIMATE",
+      "viewport": {
+        "northeast": {
+          "lat": 50.8211561802915,
+          "lng": -0.1392033
+        },
+        "southwest": {
+          "lat": 50.8184582197085,
+          "lng": -0.1484562
+        }
+      }
+    },
+    "place_id": "ChIJqZ9a5wuFdUgR5uN6MAVq6VY"
+  },
+  {
+    "id": "toilet031",
+    "long_name": "Stanmer Village",
+    "alphabetical_name": "Stanmer Village",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "BN1 9PZ",
+        "short_name": "BN1 9PZ",
+        "types": ["postal_code"]
+      },
+      {
+        "long_name": "Stanmer",
+        "short_name": "Stanmer",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      }
+    ],
+    "formatted_address": "Stanmer, Brighton BN1 9PZ, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.88089429999999,
+          "lng": -0.0911149
+        },
+        "southwest": {
+          "lat": 50.8599877,
+          "lng": -0.1181239
+        }
+      },
+      "location": {
+        "lat": 50.87070860000001,
+        "lng": -0.1023557
+      },
+      "location_type": "APPROXIMATE",
+      "viewport": {
+        "northeast": {
+          "lat": 50.88089429999999,
+          "lng": -0.0911149
+        },
+        "southwest": {
+          "lat": 50.8599877,
+          "lng": -0.1181239
+        }
+      }
+    },
+    "place_id": "ChIJFdp5RDePdUgR84Fn2A1x6s0"
+  },
+  {
+    "id": "toilet032",
+    "long_name": "The Colonnade",
+    "alphabetical_name": "The Colonnade",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "BN2 1EN",
+        "short_name": "BN2 1EN",
+        "types": ["postal_code"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      }
+    ],
+    "formatted_address": "Brighton BN2 1EN, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.81932440000001,
+          "lng": -0.1115524
+        },
+        "southwest": {
+          "lat": 50.8138763,
+          "lng": -0.1353262
+        }
+      },
+      "location": {
+        "lat": 50.8188965,
+        "lng": -0.1307214
+      },
+      "location_type": "APPROXIMATE",
+      "viewport": {
+        "northeast": {
+          "lat": 50.81932440000001,
+          "lng": -0.1115524
+        },
+        "southwest": {
+          "lat": 50.8138763,
+          "lng": -0.1353262
+        }
+      }
+    },
+    "place_id": "ChIJX41YFqSFdUgRjPSQVseGh_c"
+  },
+  {
+    "id": "toilet033",
+    "long_name": "The Level",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Ditchling Road",
+        "short_name": "Ditchling Rd",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN1 4SB",
+        "short_name": "BN1 4SB",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "Ditchling Rd, Brighton BN1 4SB, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.83099450000002,
+          "lng": -0.1343379
+        },
+        "southwest": {
+          "lat": 50.82935679999997,
+          "lng": -0.1346808
+        }
+      },
+      "location": {
+        "lat": 50.8302857,
+        "lng": -0.134527
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.8315246302915,
+          "lng": -0.133160369708498
+        },
+        "southwest": {
+          "lat": 50.8288266697085,
+          "lng": -0.135858330291502
+        }
+      }
+    },
+    "place_id": "EiJEaXRjaGxpbmcgUmQsIEJyaWdodG9uIEJOMSA0U0IsIFVLIi4qLAoUChIJXR6_YGuPdUgRra_o4gSG9R4SFAoSCXneldSdhXVIEW2osYPN2jJZ"
+  },
+  {
+    "id": "toilet034",
+    "long_name": "Wild Park",
+    "alphabetical_name": "Wild Park",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Lewes Road",
+        "short_name": "Lewes Rd",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN1",
+        "short_name": "BN1",
+        "types": ["postal_code", "postal_code_prefix"]
+      }
+    ],
+    "formatted_address": "Lewes Rd, Brighton BN1, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.86266230000002,
+          "lng": -0.08814999999999999
+        },
+        "southwest": {
+          "lat": 50.83152699999997,
+          "lng": -0.1306073
+        }
+      },
+      "location": {
+        "lat": 50.8485742,
+        "lng": -0.1119343
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.86266230000002,
+          "lng": -0.08814999999999999
+        },
+        "southwest": {
+          "lat": 50.83152699999997,
+          "lng": -0.1306073
+        }
+      }
+    },
+    "place_id": "EhpMZXdlcyBSZCwgQnJpZ2h0b24gQk4xLCBVSyIuKiwKFAoSCc8WBfJej3VIERqdVhJ3UxeiEhQKEglnQSn2CYV1SBH5YZNVWzQgYA"
+  },
+  {
+    "id": "toilet035",
+    "long_name": "West Pier Arches",
+    "alphabetical_name": "West Pier Arches",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Lewes Road",
+        "short_name": "Lewes Rd",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN2",
+        "short_name": "BN2",
+        "types": ["postal_code", "postal_code_prefix"]
+      }
+    ],
+    "formatted_address": "Lewes Rd, Brighton BN2, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.85880390000002,
+          "lng": -0.09710339999999998
+        },
+        "southwest": {
+          "lat": 50.83152699999997,
+          "lng": -0.1306073
+        }
+      },
+      "location": {
+        "lat": 50.8468118,
+        "lng": -0.1139131
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.85880390000002,
+          "lng": -0.09710339999999998
+        },
+        "southwest": {
+          "lat": 50.83152699999997,
+          "lng": -0.1306073
+        }
+      }
+    },
+    "partial_match": true,
+    "place_id": "EhpMZXdlcyBSZCwgQnJpZ2h0b24gQk4yLCBVSyIuKiwKFAoSCc8WBfJej3VIERqdVhJ3UxeiEhQKEgl_1MjmdIV1SBGQt-Kdd6CFdw"
+  },
+  {
+    "id": "toilet036",
+    "long_name": "Whitehawk Library",
+    "alphabetical_name": "Whitehawk Library",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Whitehawk Road",
+        "short_name": "Whitehawk Rd",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN2",
+        "short_name": "BN2",
+        "types": ["postal_code", "postal_code_prefix"]
+      }
+    ],
+    "formatted_address": "Whitehawk Rd, Brighton and Hove, Brighton BN2, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.8280268,
+          "lng": -0.1030974
+        },
+        "southwest": {
+          "lat": 50.8169765,
+          "lng": -0.1102908
+        }
+      },
+      "location": {
+        "lat": 50.8230946,
+        "lng": -0.1049859
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.8280268,
+          "lng": -0.1030974
+        },
+        "southwest": {
+          "lat": 50.8169765,
+          "lng": -0.1102908
+        }
+      }
+    },
+    "place_id": "ChIJmRJIUMKFdUgRrj95dQ_DjZY"
+  },
+  {
+    "id": "toilet037",
+    "long_name": "Withdean Sports Centre",
+    "alphabetical_name": "Withdean Sports Centre",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Tongdean Lane",
+        "short_name": "Tongdean Ln",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Withdean",
+        "short_name": "Withdean",
+        "types": ["political", "sublocality", "sublocality_level_1"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN1 5JD",
+        "short_name": "BN1 5JD",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "Tongdean Ln, Withdean, Brighton and Hove, Brighton BN1 5JD, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 50.85410320000002,
+          "lng": -0.1566394
+        },
+        "southwest": {
+          "lat": 50.85261699999997,
+          "lng": -0.1624315
+        }
+      },
+      "location": {
+        "lat": 50.8536153,
+        "lng": -0.1591187
+      },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": {
+          "lat": 50.8547090802915,
+          "lng": -0.1566394
+        },
+        "southwest": {
+          "lat": 50.8520111197085,
+          "lng": -0.1624315
+        }
+      }
+    },
+    "place_id": "Ej5Ub25nZGVhbiBMbiwgV2l0aGRlYW4sIEJyaWdodG9uIGFuZCBIb3ZlLCBCcmlnaHRvbiBCTjEgNUpELCBVSyIuKiwKFAoSCY8zEebyj3VIEQcN3qtyVjl_EhQKEgnd-YMjjY91SBFbVj0q98rpMg"
+  },
+  {
+    "id": "toilet038",
+    "long_name": "Easthill Park",
+    "alphabetical_name": "Easthill Park",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Easthill Way",
+        "short_name": "Easthill Way",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN41",
+        "short_name": "BN41",
+        "types": ["postal_code", "postal_code_prefix"]
+      }
+    ],
+    "formatted_address": "Easthill Way, Brighton and Hove, Brighton BN41, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": { "lat": 50.843812, "lng": -0.213238 },
+        "southwest": { "lat": 50.842749, "lng": -0.2170103 }
+      },
+      "location": { "lat": 50.8431763, "lng": -0.2151006 },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": { "lat": 50.8446294802915, "lng": -0.213238 },
+        "southwest": { "lat": 50.8419315197085, "lng": -0.2170103 }
+      }
+    },
+    "place_id": "ChIJ8RHHqZ2adUgR21o7ICyiI68",
+    "types": ["route"]
+  },
+  {
+    "id": "toilet039",
+    "long_name": "Goldstone Villas Junction",
+    "alphabetical_name": "Goldstone Villas Junction",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Eaton Villas",
+        "short_name": "Eaton Villas",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      { "long_name": "Hove", "short_name": "Hove", "types": ["postal_town"] },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN3",
+        "short_name": "BN3",
+        "types": ["postal_code", "postal_code_prefix"]
+      }
+    ],
+    "formatted_address": "Eaton Villas, Brighton and Hove, Hove BN3, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": { "lat": 50.83185169999999, "lng": -0.1694819 },
+        "southwest": { "lat": 50.8308786, "lng": -0.1722899 }
+      },
+      "location": { "lat": 50.8313374, "lng": -0.170877 },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": { "lat": 50.83271413029149, "lng": -0.1694819 },
+        "southwest": { "lat": 50.83001616970849, "lng": -0.1722899 }
+      }
+    },
+    "place_id": "ChIJExx9lEWFdUgRi22xVf60jdU",
+    "types": ["route"]
+  },
+
+  {
+    "id": "toilet040",
+    "long_name": "Greenleas Hangleton",
+    "alphabetical_name": "Greenleas Hangleton",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Valley Drive",
+        "short_name": "Valley Dr",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN1",
+        "short_name": "BN1",
+        "types": ["postal_code", "postal_code_prefix"]
+      }
+    ],
+    "formatted_address": "Valley Dr, Brighton and Hove, Brighton BN1, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": { "lat": 50.85781180000003, "lng": -0.1606109 },
+        "southwest": { "lat": 50.85382019999998, "lng": -0.171015 }
+      },
+      "location": { "lat": 50.856141, "lng": -0.1658304 },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": { "lat": 50.85781180000003, "lng": -0.1606109 },
+        "southwest": { "lat": 50.85382019999998, "lng": -0.171015 }
+      }
+    },
+    "place_id": "Ei5WYWxsZXkgRHIsIEJyaWdodG9uIGFuZCBIb3ZlLCBCcmlnaHRvbiBCTjEsIFVLIi4qLAoUChIJlSW5B_KPdUgRdPLSDJgRgYISFAoSCduBQfNThXVIESsX4zTP6vto",
+    "types": ["route"]
+  },
+  {
+    "id": "toilet041",
+    "long_name": "Hangleton Library",
+    "alphabetical_name": "Hangleton Library",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      { "long_name": "West Way", "short_name": "West Way", "types": ["route"] },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      { "long_name": "Hove", "short_name": "Hove", "types": ["postal_town"] },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN3 8LD",
+        "short_name": "BN3 8LD",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "West Way, Brighton and Hove, Hove BN3 8LD, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": { "lat": 50.84565100000003, "lng": -0.1937953 },
+        "southwest": { "lat": 50.84468329999997, "lng": -0.197056 }
+      },
+      "location": { "lat": 50.8451359, "lng": -0.1948675 },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": { "lat": 50.8465161302915, "lng": -0.1937953 },
+        "southwest": { "lat": 50.8438181697085, "lng": -0.197056 }
+      }
+    },
+    "place_id": "Ei1XZXN0IFdheSwgQnJpZ2h0b24gYW5kIEhvdmUsIEhvdmUgQk4zIDhMRCwgVUsiLiosChQKEgnZZJMrCJB1SBEu-488VdlTHhIUChIJ242M_KeadUgRX8fIflK48Zs",
+    "types": ["route"]
+  },
+  {
+    "id": "toilet042",
+    "long_name": "Hove Cemetery South",
+    "alphabetical_name": "Hove Cemetery South",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Old Shoreham Road",
+        "short_name": "Old Shoreham Rd",
+        "types": ["route"]
+      },
+      { "long_name": "Hove", "short_name": "Hove", "types": ["postal_town"] },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN3 7EF",
+        "short_name": "BN3 7EF",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "Old Shoreham Rd, Hove BN3 7EF, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": { "lat": 50.83852600000003, "lng": -0.1887115 },
+        "southwest": { "lat": 50.83804299999998, "lng": -0.1957458 }
+      },
+      "location": { "lat": 50.8381044, "lng": -0.1922179 },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": { "lat": 50.8396334802915, "lng": -0.1887115 },
+        "southwest": { "lat": 50.8369355197085, "lng": -0.1957458 }
+      }
+    },
+    "place_id": "EiFPbGQgU2hvcmVoYW0gUmQsIEhvdmUgQk4zIDdFRiwgVUsiLiosChQKEglRjmKCfZp1SBEV5HTuoaUBshIUChIJ37tbia6adUgRobWYVUBc38Q",
+    "types": ["route"]
+  },
+  {
+    "id": "toilet043",
+    "long_name": "Hove Cemetery South",
+    "alphabetical_name": "Hove Cemetery South",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Old Shoreham Road",
+        "short_name": "Old Shoreham Rd",
+        "types": ["route"]
+      },
+      { "long_name": "Hove", "short_name": "Hove", "types": ["postal_town"] },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN3 7EF",
+        "short_name": "BN3 7EF",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "Old Shoreham Rd, Hove BN3 7EF, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": { "lat": 50.83852600000003, "lng": -0.1887115 },
+        "southwest": { "lat": 50.83804299999998, "lng": -0.1957458 }
+      },
+      "location": { "lat": 50.8381044, "lng": -0.1922179 },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": { "lat": 50.8396334802915, "lng": -0.1887115 },
+        "southwest": { "lat": 50.8369355197085, "lng": -0.1957458 }
+      }
+    },
+    "place_id": "EiFPbGQgU2hvcmVoYW0gUmQsIEhvdmUgQk4zIDdFRiwgVUsiLiosChQKEglRjmKCfZp1SBEV5HTuoaUBshIUChIJ37tbia6adUgRobWYVUBc38Q",
+    "types": ["route"]
+  },
+  {
+    "id": "toilet044",
+    "long_name": "Hove Library",
+    "alphabetical_name": "Hove Library",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Church Road",
+        "short_name": "Church Rd",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      { "long_name": "Hove", "short_name": "Hove", "types": ["postal_town"] },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN3",
+        "short_name": "BN3",
+        "types": ["postal_code", "postal_code_prefix"]
+      }
+    ],
+    "formatted_address": "Church Rd, Brighton and Hove, Hove BN3, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": { "lat": 50.82880720000002, "lng": -0.1618245 },
+        "southwest": { "lat": 50.82660599999998, "lng": -0.1786757 }
+      },
+      "location": { "lat": 50.8285884, "lng": -0.177109 },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": { "lat": 50.8290555802915, "lng": -0.1618245 },
+        "southwest": { "lat": 50.8263576197085, "lng": -0.1786757 }
+      }
+    },
+    "place_id": "EipDaHVyY2ggUmQsIEJyaWdodG9uIGFuZCBIb3ZlLCBIb3ZlIEJOMywgVUsiLiosChQKEgkr8EdJRoV1SBEF7brPlStWlxIUChIJw5sNZkmFdUgRLPK8whKhOpU",
+    "types": ["route"]
+  },
+  {
+    "id": "toilet045",
+    "long_name": "Hove Museum",
+    "alphabetical_name": "Hove Museum",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "New Church Road",
+        "short_name": "New Church Rd",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      { "long_name": "Hove", "short_name": "Hove", "types": ["postal_town"] },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN3 4AB",
+        "short_name": "BN3 4AB",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "New Church Rd, Brighton and Hove, Hove BN3 4AB, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": { "lat": 50.82929820000003, "lng": -0.1799598 },
+        "southwest": { "lat": 50.82902709999998, "lng": -0.1816251 }
+      },
+      "location": { "lat": 50.8292515, "lng": -0.1813783 },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": { "lat": 50.8305116302915, "lng": -0.179443469708498 },
+        "southwest": { "lat": 50.8278136697085, "lng": -0.182141430291502 }
+      }
+    },
+    "place_id": "EjJOZXcgQ2h1cmNoIFJkLCBCcmlnaHRvbiBhbmQgSG92ZSwgSG92ZSBCTjMgNEFCLCBVSyIuKiwKFAoSCXniVMKwmnVIEfIRlJL1FOE4EhQKEgnZ_liDS4V1SBH_BfFozOwigA",
+    "types": ["route"]
+  },
+  {
+    "id": "toilet047",
+    "long_name": "Hove Park",
+    "alphabetical_name": "Hove Park",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Old Shoreham Road",
+        "short_name": "Old Shoreham Rd",
+        "types": ["route"]
+      },
+      { "long_name": "Hove", "short_name": "Hove", "types": ["postal_town"] },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN3",
+        "short_name": "BN3",
+        "types": ["postal_code", "postal_code_prefix"]
+      }
+    ],
+    "formatted_address": "Old Shoreham Rd, Hove BN3, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": { "lat": 50.83903300000002, "lng": -0.1473251 },
+        "southwest": { "lat": 50.83332669999998, "lng": -0.218225 }
+      },
+      "location": { "lat": 50.8389622, "lng": -0.183629 },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": { "lat": 50.83903300000002, "lng": -0.1473251 },
+        "southwest": { "lat": 50.83332669999998, "lng": -0.218225 }
+      }
+    },
+    "place_id": "Eh1PbGQgU2hvcmVoYW0gUmQsIEhvdmUgQk4zLCBVSyIuKiwKFAoSCVGOYoJ9mnVIERXkdO6hpQGyEhQKEglHpWS1FIV1SBEIsGeCUb7lPA",
+    "types": ["route"]
+  },
+  {
+    "id": "toilet047",
+    "long_name": "Hove Town Hall",
+    "alphabetical_name": "Hove Town Hall",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Norton Road",
+        "short_name": "Norton Rd",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      { "long_name": "Hove", "short_name": "Hove", "types": ["postal_town"] },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN3",
+        "short_name": "BN3",
+        "types": ["postal_code", "postal_code_prefix"]
+      }
+    ],
+    "formatted_address": "Norton Rd, Brighton and Hove, Hove BN3, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": { "lat": 50.82841130000003, "lng": -0.1709007 },
+        "southwest": { "lat": 50.82796059999997, "lng": -0.1710216 }
+      },
+      "location": { "lat": 50.8284113, "lng": -0.1709007 },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": { "lat": 50.82953493029149, "lng": -0.169612169708498 },
+        "southwest": { "lat": 50.82683696970849, "lng": -0.172310130291502 }
+      }
+    },
+    "place_id": "EipOb3J0b24gUmQsIEJyaWdodG9uIGFuZCBIb3ZlLCBIb3ZlIEJOMywgVUsiLiosChQKEgkvaZYSRoV1SBGD_yjcLd1QABIUChIJGytdakaFdUgRE7-NutswN38",
+    "types": ["route"]
+  },
+  {
+    "id": "toilet048",
+    "long_name": "King Alfred",
+    "alphabetical_name": "King Alfred",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Kings Road",
+        "short_name": "Kings Rd",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN1",
+        "short_name": "BN1",
+        "types": ["postal_code", "postal_code_prefix"]
+      }
+    ],
+    "formatted_address": "Kings Rd, Brighton and Hove, Brighton BN1, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": { "lat": 50.82266840000003, "lng": -0.147891 },
+        "southwest": { "lat": 50.82125119999998, "lng": -0.1562929 }
+      },
+      "location": { "lat": 50.8217001, "lng": -0.1512417 },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": { "lat": 50.82330878029151, "lng": -0.147891 },
+        "southwest": { "lat": 50.82061081970851, "lng": -0.1562929 }
+      }
+    },
+    "place_id": "Ei1LaW5ncyBSZCwgQnJpZ2h0b24gYW5kIEhvdmUsIEJyaWdodG9uIEJOMSwgVUsiLiosChQKEgk5C9iQDYV1SBEvhOoLsFcZFhIUChIJ24FB81OFdUgRKxfjNM_q-2g",
+    "types": ["route"]
+  },
+  {
+    "id": "toilet049",
+    "long_name": "Kings Esplanade",
+    "alphabetical_name": "Kings Esplanade",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      { "long_name": "Kingsway", "short_name": "Kingsway", "types": ["route"] },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      { "long_name": "Hove", "short_name": "Hove", "types": ["postal_town"] },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN3 4GP",
+        "short_name": "BN3 4GP",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "Kingsway, Brighton and Hove, Hove BN3 4GP, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": { "lat": 50.82618850000002, "lng": -0.1788059 },
+        "southwest": { "lat": 50.82547389999998, "lng": -0.186526 }
+      },
+      "location": { "lat": 50.825888, "lng": -0.1827813 },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": { "lat": 50.82718018029151, "lng": -0.1788059 },
+        "southwest": { "lat": 50.82448221970851, "lng": -0.186526 }
+      }
+    },
+    "place_id": "Ei1LaW5nc3dheSwgQnJpZ2h0b24gYW5kIEhvdmUsIEhvdmUgQk4zIDRHUCwgVUsiLiosChQKEglVvNjGSoV1SBEOFVzp0WestBIUChIJDT9KQ7WadUgR0oERDGDLrn0",
+    "types": ["route"]
+  },
+  {
+    "id": "toilet050",
+    "long_name": "Lagoon Kingsway",
+    "alphabetical_name": "Lagoon Kingsway",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "BN3 4LX",
+        "short_name": "BN3 4LX",
+        "types": ["postal_code"]
+      },
+      { "long_name": "Hove", "short_name": "Hove", "types": ["postal_town"] },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      }
+    ],
+    "formatted_address": "Hove BN3 4LX, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": { "lat": 50.8283308, "lng": -0.1918309 },
+        "southwest": { "lat": 50.8252794, "lng": -0.2010075 }
+      },
+      "location": { "lat": 50.8267598, "lng": -0.1960371 },
+      "location_type": "APPROXIMATE",
+      "viewport": {
+        "northeast": { "lat": 50.8283308, "lng": -0.1918309 },
+        "southwest": { "lat": 50.8252794, "lng": -0.2010075 }
+      }
+    },
+    "place_id": "ChIJbwS2MLiadUgR2WemNWHkGq8",
+    "types": ["postal_code"]
+  },
+  {
+    "id": "toilet053",
+    "long_name": "Mile Oak Library",
+    "alphabetical_name": "Mile Oak Library",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Chalky Road",
+        "short_name": "Chalky Rd",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN41",
+        "short_name": "BN41",
+        "types": ["postal_code", "postal_code_prefix"]
+      }
+    ],
+    "formatted_address": "Chalky Rd, Brighton and Hove, Brighton BN41, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": { "lat": 50.8522513, "lng": -0.221394 },
+        "southwest": { "lat": 50.84995780000001, "lng": -0.2303831 }
+      },
+      "location": { "lat": 50.8511988, "lng": -0.2258728 },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": { "lat": 50.85245353029151, "lng": -0.221394 },
+        "southwest": { "lat": 50.84975556970851, "lng": -0.2303831 }
+      }
+    },
+    "place_id": "ChIJP6axJXyQdUgRcbgHFCR0q2Q",
+    "types": ["route"]
+  },
+  {
+    "id": "toilet051",
+    "long_name": "Portslade Library",
+    "alphabetical_name": "Portslade Library",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      { "long_name": "233", "short_name": "233", "types": ["street_number"] },
+      {
+        "long_name": "Old Shoreham Road",
+        "short_name": "Old Shoreham Rd",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN41 1XR",
+        "short_name": "BN41 1XR",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "233 Old Shoreham Rd, Brighton and Hove, Brighton BN41 1XR, UK",
+    "geometry": {
+      "location": { "lat": 50.8379718, "lng": -0.2098999 },
+      "location_type": "RANGE_INTERPOLATED",
+      "viewport": {
+        "northeast": { "lat": 50.8394519802915, "lng": -0.208526569708498 },
+        "southwest": { "lat": 50.8367540197085, "lng": -0.211224530291502 }
+      }
+    },
+    "place_id": "Ej0yMzMgT2xkIFNob3JlaGFtIFJkLCBCcmlnaHRvbiBhbmQgSG92ZSwgQnJpZ2h0b24gQk40MSAxWFIsIFVLIjESLwoUChIJoyJWBZmadUgRNosMYFRT0soQ6QEqFAoSCVGOYoJ9mnVIERXkdO6hpQGy",
+    "types": ["street_address"]
+  },
+  {
+    "id": "toilet051",
+    "long_name": "St Ann's Well Gardens",
+    "alphabetical_name": "St Ann's Well Gardens",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Somerhill Road",
+        "short_name": "Somerhill Rd",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      { "long_name": "Hove", "short_name": "Hove", "types": ["postal_town"] },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN3",
+        "short_name": "BN3",
+        "types": ["postal_code", "postal_code_prefix"]
+      }
+    ],
+    "formatted_address": "Somerhill Rd, Brighton and Hove, Hove BN3, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": { "lat": 50.8317088, "lng": -0.1576557 },
+        "southwest": { "lat": 50.82780589999999, "lng": -0.1592569 }
+      },
+      "location": { "lat": 50.8301226, "lng": -0.158283 },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": { "lat": 50.8317088, "lng": -0.157107319708498 },
+        "southwest": { "lat": 50.82780589999999, "lng": -0.159805280291502 }
+      }
+    },
+    "place_id": "ChIJgUjmJmqFdUgRmhCxVSzJyvQ",
+    "types": ["route"]
+  },
+  {
+    "id": "toilet054",
+    "long_name": "Station Road",
+    "alphabetical_name": "Station Road",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Station Road",
+        "short_name": "Station Rd",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Boundary Road",
+        "short_name": "Boundary Rd",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN41 1GA",
+        "short_name": "BN41 1GA",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "Station Rd, Boundary Rd, Brighton and Hove, Brighton BN41 1GA, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": { "lat": 50.83579630000003, "lng": -0.2058154 },
+        "southwest": { "lat": 50.83429109999997, "lng": -0.2066278 }
+      },
+      "location": { "lat": 50.8348429, "lng": -0.206334 },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": { "lat": 50.8363926802915, "lng": -0.204872619708498 },
+        "southwest": { "lat": 50.8336947197085, "lng": -0.207570580291502 }
+      }
+    },
+    "place_id": "EkFTdGF0aW9uIFJkLCBCb3VuZGFyeSBSZCwgQnJpZ2h0b24gYW5kIEhvdmUsIEJyaWdodG9uIEJONDEgMUdBLCBVSyIuKiwKFAoSCc9OTq6imnVIEZJfrxTG3ip8EhQKEgltVHD-l5p1SBGzGhACDozPyQ",
+    "types": ["route"]
+  },
+  {
+    "id": "toilet055",
+    "long_name": "Vale Park",
+    "alphabetical_name": "Vale Park",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "Denmark Road",
+        "short_name": "Denmark Rd",
+        "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Brighton",
+        "short_name": "Brighton",
+        "types": ["postal_town"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "BN41",
+        "short_name": "BN41",
+        "types": ["postal_code", "postal_code_prefix"]
+      }
+    ],
+    "formatted_address": "Denmark Rd, Brighton and Hove, Brighton BN41, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": { "lat": 50.8347956, "lng": -0.2101142 },
+        "southwest": { "lat": 50.8335707, "lng": -0.2107388 }
+      },
+      "location": { "lat": 50.8344598, "lng": -0.2103181 },
+      "location_type": "GEOMETRIC_CENTER",
+      "viewport": {
+        "northeast": { "lat": 50.8355321302915, "lng": -0.209077519708498 },
+        "southwest": { "lat": 50.83283416970851, "lng": -0.211775480291502 }
+      }
+    },
+    "place_id": "ChIJ8acXaZeadUgRrqWCRhNZaDQ",
+    "types": ["route"]
+  },
+  {
+    "id": "toilet056",
+    "long_name": "Western Esplanade Kingsway",
+    "alphabetical_name": "Western Esplanade Kingsway",
+    "location": "city_centre",
+    "open_status": "open",
+    "isFavourite": false,
+    "nearest_alternative": 1,
+    "opening_hours": [
+      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    ],
+    "facilities": ["facility001", "facility002", "facility003"],
+    "address_components": [
+      {
+        "long_name": "BN3 4GP",
+        "short_name": "BN3 4GP",
+        "types": ["postal_code"]
+      },
+      { "long_name": "Hove", "short_name": "Hove", "types": ["postal_town"] },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "England",
+        "short_name": "England",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "United Kingdom",
+        "short_name": "GB",
+        "types": ["country", "political"]
+      }
+    ],
+    "formatted_address": "Hove BN3 4GP, UK",
+    "geometry": {
+      "bounds": {
+        "northeast": { "lat": 50.8260915, "lng": -0.179554 },
+        "southwest": { "lat": 50.82400380000001, "lng": -0.186409 }
+      },
+      "location": { "lat": 50.8251922, "lng": -0.1836877 },
+      "location_type": "APPROXIMATE",
+      "viewport": {
+        "northeast": { "lat": 50.8263966302915, "lng": -0.179554 },
+        "southwest": { "lat": 50.8236986697085, "lng": -0.186409 }
+      }
+    },
+    "place_id": "ChIJDT9KQ7WadUgR0oERDGDLrn0",
+    "types": ["postal_code"]
+  }
+]
