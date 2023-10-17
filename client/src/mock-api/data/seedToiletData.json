@@ -6,7 +6,7 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 2,
+    "nearest_alternative": "toilet012",
     "opening_hours": [
       "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
     ],
@@ -78,10 +78,8 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
+    "nearest_alternative": "toilet015",
+    "opening_hours": ["Not available."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
@@ -154,10 +152,8 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
+    "nearest_alternative": "toilet018",
+    "opening_hours": ["Not available."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
@@ -235,9 +231,11 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
+    "nearest_alternative": "toilet006",
     "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+      "Tuesdays & Wednesdays, 12pm-5pm",
+      "Saturdays & Sundays, 10am-5pm",
+      "Closed Mondays, Thursdays and Fridays"
     ],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -318,7 +316,8 @@
     "isFavourite": false,
     "nearest_alternative": 1,
     "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+      "Tuesday-Sunday 10am-5pm",
+      "Closed Mondays (except Bank Holidays 10am-5pm)"
     ],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -474,9 +473,12 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
+    "nearest_alternative": "toilet034",
     "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+      "Monday, Tuesday, Thursday - 9am to 7pm",
+      "Wedesday, Friday - 9am to 5pm",
+      "Saturday - 9.30am to 5pm",
+      "Sunday - 11am to 5pm"
     ],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -555,7 +557,7 @@
     "isFavourite": false,
     "nearest_alternative": 1,
     "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+      "Monday, Tuesday, Wednesday, Thusday, Friday, Satuday, Sunday - 9am to 5pm"
     ],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -627,10 +629,8 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
+    "nearest_alternative": "toilet035",
+    "opening_hours": ["Not available."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
