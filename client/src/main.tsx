@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import ToiletsProvider from './context/toiletContext/toiletsContext';
 import App from './App';
 import './index.css';
-import makeServer from './miragejs/server';
+import makeServer from './mock-api/server';
 
 if (
   process.env.NODE_ENV === 'development' &&
