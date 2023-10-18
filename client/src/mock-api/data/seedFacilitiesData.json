@@ -29,5 +29,10 @@
     "full_name": "changing places",
     "short_name": "changing",
     "id": "facility007"
+  },
+  {
+    "full_name": "nursing room",
+    "short_name": "nursing",
+    "id": "facility008"
   }
 ]

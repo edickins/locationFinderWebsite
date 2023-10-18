@@ -7,9 +7,7 @@
     "open_status": "open",
     "isFavourite": false,
     "nearest_alternative": "toilet012",
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
+    "opening_hours": ["Not available."],
 
     "facilities": ["facility001", "facility002"],
     "address_components": [
@@ -80,7 +78,7 @@
     "isFavourite": false,
     "nearest_alternative": "toilet015",
     "opening_hours": ["Not available."],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facilities": ["facility001", "facility002"],
     "address_components": [
       {
         "long_name": "Madeira Drive",
@@ -237,7 +235,7 @@
       "Saturdays & Sundays, 10am-5pm",
       "Closed Mondays, Thursdays and Fridays"
     ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facilities": ["facility001"],
     "address_components": [
       {
         "long_name": "Dyke Road",
@@ -319,7 +317,7 @@
       "Tuesday-Sunday 10am-5pm",
       "Closed Mondays (except Bank Holidays 10am-5pm)"
     ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facilities": ["facility001", "facility002"],
     "address_components": [
       {
         "long_name": "Royal Pavilion Gardens",
@@ -395,10 +393,8 @@
     "open_status": "open",
     "isFavourite": false,
     "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "opening_hours": ["Not available."],
+    "facilities": ["facility001", "facility003"],
     "address_components": [
       {
         "long_name": "Dyke Road",
@@ -480,7 +476,7 @@
       "Saturday - 9.30am to 5pm",
       "Sunday - 11am to 5pm"
     ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facilities": ["facility001", "facility002"],
     "address_components": [
       {
         "long_name": "Carden Hill",
@@ -559,7 +555,7 @@
     "opening_hours": [
       "Monday, Tuesday, Wednesday, Thusday, Friday, Satuday, Sunday - 9am to 5pm"
     ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facilities": ["facility001", "facility003"],
     "address_components": [
       {
         "long_name": "BN1 7HS",
@@ -631,7 +627,7 @@
     "isFavourite": false,
     "nearest_alternative": "toilet035",
     "opening_hours": ["Not available."],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facilities": ["facility001", "facility003"],
     "address_components": [
       {
         "long_name": "BN1 2LN",
@@ -701,11 +697,12 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
+    "nearest_alternative": "toilet027",
     "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+      "Monday, Tuesday, Thursday - 10am to 7pm",
+      "Wedesday, Friday, Saturday, Sunday - 10am to 5pm"
     ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facilities": ["facility001", "facility002", "facility003", "facility003"],
     "address_components": [
       {
         "long_name": "Jubilee Street",
@@ -780,11 +777,17 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
+    "nearest_alternative": "toilet027",
     "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+      "October to March",
+      "Monday to Saturday: 9am to 4pm",
+      "​Sunday and public holidays: 11am to 4pm",
+      " ",
+      "April to September",
+      "Monday to Saturday: 9am to 5.30pm",
+      "​Sunday and public holidays: 11am to 5.30pm"
     ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facilities": ["facility002"],
     "address_components": [
       {
         "long_name": "Warren Road",
@@ -859,11 +862,16 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    "nearest_alternative": "toilet032",
+    "opening_hours": ["Not available."],
+    "facilities": [
+      "facility001",
+      "facility002",
+      "facility003",
+      "facility004",
+      "facility005",
+      "facility006"
     ],
-    "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
         "long_name": "Madeira Drive",
@@ -913,9 +921,11 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
+    "nearest_alternative": "toilet014",
     "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+      "Monday to Friday - 7am to 10pm",
+      "Saturday - 9am to 5pm",
+      "Sunday - 9am to 4pm"
     ],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -992,11 +1002,14 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
+    "nearest_alternative": "toilet013",
     "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+      "Monday, Wednesday, Friday - 9am to 5pm",
+      "Tuesday, Thursday - 9am to 7pm",
+      "Saturday - 9.30am to 5pm",
+      "Sunday - 11am to 5pm"
     ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facilities": ["facility001", "facility002"],
     "address_components": [
       {
         "long_name": "The Highway",
@@ -1071,10 +1084,8 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
+    "nearest_alternative": "toilet016",
+    "opening_hours": ["Not available."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
@@ -1145,11 +1156,9 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "nearest_alternative": "toilet015",
+    "opening_hours": ["Not available."],
+    "facilities": ["facility001", "facility002"],
     "address_components": [
       {
         "long_name": "BN2 7HL",
@@ -1229,9 +1238,12 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
+    "nearest_alternative": "toilet007",
     "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+      "Monday, Wednesday, Thurday - 9am to 7pm",
+      "Tuesday, Friday - 9am to 5pm",
+      "Saturday - 9.30am to 5pm",
+      "Sunday - 11am to 5pm"
     ],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -1308,10 +1320,8 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
+    "nearest_alternative": "toilet019",
+    "opening_hours": ["Not available."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
@@ -1382,10 +1392,8 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
+    "nearest_alternative": "toilet018",
+    "opening_hours": ["Not available."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
@@ -1462,10 +1470,8 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
+    "nearest_alternative": "toilet032",
+    "opening_hours": ["Not available."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
@@ -1536,9 +1542,12 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
+    "nearest_alternative": "toilet010",
     "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+      "Monday, Thursday - 6am to 10pm",
+      "Tuesday, Wednesday, Friday 6.30am to 10pm",
+      "Saturday - 8am to 6pm",
+      "Sunday - 8am to 7.30pm"
     ],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -1621,9 +1630,7 @@
     "open_status": "open",
     "isFavourite": false,
     "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
+    "opening_hours": ["Not available."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
@@ -1699,9 +1706,12 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
+    "nearest_alternative": "toilet025",
     "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+      "Monday, Wednesday, Friday - 9am to 5pm",
+      "Tuesday, Thursday - 9am to 7pm",
+      "Saturday - 9.30am to 5pm",
+      "Sunday - 11am to 5pm"
     ],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -1788,11 +1798,9 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "nearest_alternative": "toilet016",
+    "opening_hours": ["Not available."],
+    "facilities": ["facility001", "facility002"],
     "address_components": [
       {
         "long_name": "Falmer Road",
@@ -1857,10 +1865,8 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
+    "nearest_alternative": "toilet016",
+    "opening_hours": ["Not available."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
@@ -1936,10 +1942,8 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
+    "nearest_alternative": "toilet005",
+    "opening_hours": ["Not available."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
@@ -2015,9 +2019,10 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
+    "nearest_alternative": "toilet036",
     "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+      "Monday to Friday - 8.30am to 10pm",
+      "Saturday, Sunday - 9am to 5pm"
     ],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -2094,11 +2099,9 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "nearest_alternative": "toilet029",
+    "opening_hours": ["Not available."],
+    "facilities": ["facility001"],
     "address_components": [
       {
         "long_name": "Arundel Drive West",
@@ -2173,11 +2176,9 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "nearest_alternative": "toilet035",
+    "opening_hours": ["Not available."],
+    "facilities": ["facility001", "facility002", "facility003", "facility007"],
     "address_components": [
       {
         "long_name": "Marine Drive",
@@ -2248,9 +2249,7 @@
     "open_status": "open",
     "isFavourite": false,
     "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
+    "opening_hours": ["Not available."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
@@ -2321,11 +2320,9 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "nearest_alternative": "toilet035",
+    "opening_hours": ["Not available."],
+    "facilities": ["facility001", "facility002", "facility003", "facility007"],
     "address_components": [
       {
         "long_name": "BN1 9PZ",
@@ -2390,11 +2387,9 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "nearest_alternative": "facility003",
+    "opening_hours": ["Not available."],
+    "facilities": ["facility001", "facility002", "facility003", "facility007"],
     "address_components": [
       {
         "long_name": "BN2 1EN",
@@ -2457,11 +2452,9 @@
     "long_name": "The Level",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "nearest_alternative": "",
+    "opening_hours": ["Not available."],
+    "facilities": ["facility001", "facility002", "facility003", "facility007"],
     "address_components": [
       {
         "long_name": "Ditchling Road",
@@ -2526,10 +2519,8 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
+    "nearest_alternative": "toilet013",
+    "opening_hours": ["Not available."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
@@ -2600,10 +2591,8 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
+    "nearest_alternative": "toilet009",
+    "opening_hours": ["Not available."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
@@ -2677,7 +2666,10 @@
     "isFavourite": false,
     "nearest_alternative": 1,
     "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+      "Monday, Tuesday, Thursday, Friday - 9am to 5pm",
+      "Wednesday - 9am to 6pm",
+      "Saturday - 9.30am to 4pm",
+      "Sunday - closed"
     ],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -2756,9 +2748,10 @@
     "isFavourite": false,
     "nearest_alternative": 1,
     "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+      "Monday, Thursday - 6am to 10pm",
+      "Saturday, Sunday - 7am to 6pm"
     ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facilities": ["facility001", "facility002"],
     "address_components": [
       {
         "long_name": "Tongdean Lane",
@@ -2835,13 +2828,11 @@
     "id": "toilet038",
     "long_name": "Easthill Park",
     "alphabetical_name": "Easthill Park",
-    "location": "city_centre",
+    "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
+    "nearest_alternative": "toilet051",
+    "opening_hours": ["Not available."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
@@ -2900,13 +2891,11 @@
     "id": "toilet039",
     "long_name": "Goldstone Villas Junction",
     "alphabetical_name": "Goldstone Villas Junction",
-    "location": "city_centre",
+    "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
+    "nearest_alternative": "toilet044",
+    "opening_hours": ["Not available."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
@@ -2962,14 +2951,12 @@
     "id": "toilet040",
     "long_name": "Greenleas Hangleton",
     "alphabetical_name": "Greenleas Hangleton",
-    "location": "city_centre",
+    "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "nearest_alternative": "",
+    "opening_hours": ["Not available."],
+    "facilities": ["facility001"],
     "address_components": [
       {
         "long_name": "Valley Drive",
@@ -3027,14 +3014,17 @@
     "id": "toilet041",
     "long_name": "Hangleton Library",
     "alphabetical_name": "Hangleton Library",
-    "location": "city_centre",
+    "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
+    "nearest_alternative": "toilet040",
     "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+      "Monday, Thursday, Friday - 9am to 5pm",
+      "Wednesday, Thursday - 9am to 7pm",
+      "Saturday - 9.30am to 5pm",
+      "Sunday - 11am to 5pm"
     ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facilities": ["facility002", "facility003"],
     "address_components": [
       { "long_name": "West Way", "short_name": "West Way", "types": ["route"] },
       {
@@ -3082,16 +3072,22 @@
   },
   {
     "id": "toilet042",
-    "long_name": "Hove Cemetery South",
+    "long_name": "Hove Cemetery North",
     "alphabetical_name": "Hove Cemetery South",
-    "location": "city_centre",
+    "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
+    "nearest_alternative": "",
     "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+      "October to March",
+      "Monday to Saturday: 9am to 4pm",
+      "​Sunday and public holidays: 11am to 4pm",
+      " ",
+      "April to September",
+      "Monday to Saturday: 9am to 5.30pm",
+      "​Sunday and public holidays: 11am to 5.30pm"
     ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facilities": ["facility002"],
     "address_components": [
       {
         "long_name": "Old Shoreham Road",
@@ -3135,14 +3131,20 @@
     "id": "toilet043",
     "long_name": "Hove Cemetery South",
     "alphabetical_name": "Hove Cemetery South",
-    "location": "city_centre",
+    "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
+    "nearest_alternative": "",
     "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+      "October to March",
+      "Monday to Saturday: 9am to 4pm",
+      "​Sunday and public holidays: 11am to 4pm",
+      " ",
+      "April to September",
+      "Monday to Saturday: 9am to 5.30pm",
+      "​Sunday and public holidays: 11am to 5.30pm"
     ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facilities": ["facility002"],
     "address_components": [
       {
         "long_name": "Old Shoreham Road",
@@ -3186,12 +3188,15 @@
     "id": "toilet044",
     "long_name": "Hove Library",
     "alphabetical_name": "Hove Library",
-    "location": "city_centre",
+    "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
+    "nearest_alternative": "toilet045",
     "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+      "Monday, Tuesday, Thursday, Friday - 10am to 5pm",
+      "Wednesday - 10am to 7pm",
+      "Saturday - 10am to 7pm",
+      "Sunday - closed"
     ],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -3247,14 +3252,12 @@
     "id": "toilet045",
     "long_name": "Hove Museum",
     "alphabetical_name": "Hove Museum",
-    "location": "city_centre",
+    "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "nearest_alternative": "toilet044",
+    "opening_hours": ["Not available."],
+    "facilities": ["facility001", "facility002"],
     "address_components": [
       {
         "long_name": "New Church Road",
@@ -3308,13 +3311,11 @@
     "id": "toilet047",
     "long_name": "Hove Park",
     "alphabetical_name": "Hove Park",
-    "location": "city_centre",
+    "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
+    "nearest_alternative": "Hove Household Waste Recycling Site, Leighton Road",
+    "opening_hours": ["Not available."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
@@ -3359,14 +3360,12 @@
     "id": "toilet047",
     "long_name": "Hove Town Hall",
     "alphabetical_name": "Hove Town Hall",
-    "location": "city_centre",
+    "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "nearest_alternative": "toilet039",
+    "opening_hours": ["Not available."],
+    "facilities": ["facility001", "facility002"],
     "address_components": [
       {
         "long_name": "Norton Road",
@@ -3420,13 +3419,11 @@
     "id": "toilet048",
     "long_name": "King Alfred",
     "alphabetical_name": "King Alfred",
-    "location": "city_centre",
+    "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
+    "nearest_alternative": "toilet049",
+    "opening_hours": ["Not available."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
@@ -3485,14 +3482,18 @@
     "id": "toilet049",
     "long_name": "Kings Esplanade",
     "alphabetical_name": "Kings Esplanade",
-    "location": "city_centre",
+    "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    "nearest_alternative": "toilet048",
+    "opening_hours": ["Not available."],
+    "facilities": [
+      "facility001",
+      "facility003",
+      "facility005",
+      "facility006",
+      "facility007"
     ],
-    "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
       { "long_name": "Kingsway", "short_name": "Kingsway", "types": ["route"] },
       {
@@ -3542,13 +3543,11 @@
     "id": "toilet050",
     "long_name": "Lagoon Kingsway",
     "alphabetical_name": "Lagoon Kingsway",
-    "location": "city_centre",
+    "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
+    "nearest_alternative": "toilet055",
+    "opening_hours": ["Not available."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
@@ -3590,82 +3589,20 @@
     "types": ["postal_code"]
   },
   {
-    "id": "toilet053",
-    "long_name": "Mile Oak Library",
-    "alphabetical_name": "Mile Oak Library",
-    "location": "city_centre",
-    "open_status": "open",
-    "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
-    "facilities": ["facility001", "facility002", "facility003"],
-    "address_components": [
-      {
-        "long_name": "Chalky Road",
-        "short_name": "Chalky Rd",
-        "types": ["route"]
-      },
-      {
-        "long_name": "Brighton and Hove",
-        "short_name": "Brighton and Hove",
-        "types": ["locality", "political"]
-      },
-      {
-        "long_name": "Brighton",
-        "short_name": "Brighton",
-        "types": ["postal_town"]
-      },
-      {
-        "long_name": "Brighton and Hove",
-        "short_name": "Brighton and Hove",
-        "types": ["administrative_area_level_2", "political"]
-      },
-      {
-        "long_name": "England",
-        "short_name": "England",
-        "types": ["administrative_area_level_1", "political"]
-      },
-      {
-        "long_name": "United Kingdom",
-        "short_name": "GB",
-        "types": ["country", "political"]
-      },
-      {
-        "long_name": "BN41",
-        "short_name": "BN41",
-        "types": ["postal_code", "postal_code_prefix"]
-      }
-    ],
-    "formatted_address": "Chalky Rd, Brighton and Hove, Brighton BN41, UK",
-    "geometry": {
-      "bounds": {
-        "northeast": { "lat": 50.8522513, "lng": -0.221394 },
-        "southwest": { "lat": 50.84995780000001, "lng": -0.2303831 }
-      },
-      "location": { "lat": 50.8511988, "lng": -0.2258728 },
-      "location_type": "GEOMETRIC_CENTER",
-      "viewport": {
-        "northeast": { "lat": 50.85245353029151, "lng": -0.221394 },
-        "southwest": { "lat": 50.84975556970851, "lng": -0.2303831 }
-      }
-    },
-    "place_id": "ChIJP6axJXyQdUgRcbgHFCR0q2Q",
-    "types": ["route"]
-  },
-  {
     "id": "toilet051",
     "long_name": "Portslade Library",
     "alphabetical_name": "Portslade Library",
-    "location": "city_centre",
+    "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
+    "nearest_alternative": "toilet052",
     "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+      "Monday, Thursday - 9am to 7pm",
+      "Tuesday, Wednesday, Friday 9am to 5pm",
+      "Saturday - 9.30am to 5pm",
+      "Sunday - 11am to 5pm"
     ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facilities": ["facility002", "facility003"],
     "address_components": [
       { "long_name": "233", "short_name": "233", "types": ["street_number"] },
       {
@@ -3717,16 +3654,14 @@
     "types": ["street_address"]
   },
   {
-    "id": "toilet051",
+    "id": "toilet052",
     "long_name": "St Ann's Well Gardens",
     "alphabetical_name": "St Ann's Well Gardens",
-    "location": "city_centre",
+    "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
+    "nearest_alternative": "toilet006",
+    "opening_hours": ["Not available."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
@@ -3778,17 +3713,21 @@
     "types": ["route"]
   },
   {
-    "id": "toilet054",
+    "id": "toilet053",
     "long_name": "Station Road",
     "alphabetical_name": "Station Road",
-    "location": "city_centre",
+    "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+    "nearest_alternative": "toilet052",
+    "opening_hours": ["Not available."],
+    "facilities": [
+      "facility001",
+      "facility002",
+      "facility003",
+      "facility005",
+      "facility006"
     ],
-    "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
         "long_name": "Station Road",
@@ -3848,17 +3787,15 @@
     "types": ["route"]
   },
   {
-    "id": "toilet055",
+    "id": "toilet054",
     "long_name": "Vale Park",
     "alphabetical_name": "Vale Park",
-    "location": "city_centre",
+    "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "nearest_alternative": "toilet053",
+    "opening_hours": ["Not available."],
+    "facilities": ["facility001"],
     "address_components": [
       {
         "long_name": "Denmark Road",
@@ -3913,17 +3850,15 @@
     "types": ["route"]
   },
   {
-    "id": "toilet056",
+    "id": "toilet055",
     "long_name": "Western Esplanade Kingsway",
     "alphabetical_name": "Western Esplanade Kingsway",
-    "location": "city_centre",
+    "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
-    "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
-    ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "nearest_alternative": "toilet048",
+    "opening_hours": ["Not available."],
+    "facilities": ["facility001", "facility002", "facility003", "facility008"],
     "address_components": [
       {
         "long_name": "BN3 4GP",
