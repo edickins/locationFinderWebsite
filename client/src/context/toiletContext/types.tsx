@@ -34,7 +34,7 @@ export interface IToilet {
   location: string;
   address_components: IAddressComponent;
   formatted_address: string;
-  geometry?: IGeometry;
+  geometry: IGeometry;
   placeid: string;
   opening_hours: string[];
   nearest_alternative: string;
