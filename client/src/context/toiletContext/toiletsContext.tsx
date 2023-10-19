@@ -6,6 +6,7 @@ import {
   useReducer,
   useMemo
 } from 'react';
+import axios from 'axios';
 
 import { IToiletsContext } from './types';
 import toiletReducer from '../../reducer/toiletReducer/toiletReducer';
@@ -35,19 +36,19 @@ export default function ToiletsProvider({ children }: PropsWithChildren) {
   useEffect(() => {
     const url = 'api/v1/toilets';
 
-    fetch(url)
-      .then((res) => {
-        return res.json();
-      })
-      .then((json) => {
+    async function getData() {
+      try {
+        const response = await axios.get(url);
         dispatchToilets({
           type: ToiletActionEnum.SET_TOILETS,
-          payload: json.toilets
+          payload: response.data.toilets
         });
-      })
-      .catch((err) => {
-        dispatchToilets({ type: ToiletActionEnum.SET_ERROR, payload: err });
-      });
+      } catch (error) {
+        dispatchToilets({ type: ToiletActionEnum.SET_ERROR, payload: error });
+      }
+    }
+
+    getData();
   }, []);
 
   // create context initialValue

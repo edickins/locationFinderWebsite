@@ -1,6 +1,7 @@
 # Toilet Finder Website
 
 This project is a web application that helps users find public toilets near their location. Users can view the toilets on a Google map and get directions to them. Users can also favourite a toilet and these will persist between visits.
+The website only serves the Brighton and Hove area and lists public toilets only.
 
 # Table of Contents
 
