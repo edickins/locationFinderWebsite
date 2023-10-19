@@ -1,7 +1,7 @@
 import GeoJSON from 'geojson';
 import { ToiletActionType } from '../../reducer/toiletReducer/types';
 
-export interface IGeometry {
+interface IGeometry {
   location: {
     type: GeoJSON.Point['type'];
     coordinates: GeoJSON.Point['coordinates'];
@@ -20,7 +20,7 @@ export interface IFacility {
   id: string;
 }
 
-export interface IAddressComponent {
+interface IAddressComponent {
   long_name: string;
   alphabetical_name: string;
   types: string[];
