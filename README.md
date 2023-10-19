@@ -69,12 +69,12 @@ This project was inspired by the list of public toilets maintained by Brighton a
 
 This project uses the following libraries and tools:
 
-React - A JavaScript library for building user interfaces
-TypeScript - A superset of JavaScript that adds types
-Vite - A fast and lightweight web development tool
-Express - A web framework for Node.js
-MongoDB - A document-based database system
-Google Maps API - A web service that provides map and location data
-MirageJS - a method for mocking RESTful API servers.
+- React - A JavaScript library for building user interfaces
+- TypeScript - A superset of JavaScript that adds types
+- Vite - A fast and lightweight web development tool
+- Express - A web framework for Node.js
+- MongoDB - A document-based database system
+- Google Maps API - A web service that provides map and location data
+- MirageJS - a tool for mocking RESTful API servers.
 
 I would like to thank Joey Beltram for his guidance throughout this project.
