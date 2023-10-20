@@ -299,6 +299,7 @@ describe('createMapper function', () => {
       'id',
       'long_name',
       'location',
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       'ufo_status' as any
     ];
     const threePropMapper = createMapper(properties);
