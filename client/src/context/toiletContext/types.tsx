@@ -1,12 +1,13 @@
-import GeoJSON from 'geojson';
 import { ToiletActionType } from '../../reducer/toiletReducer/types';
 
 interface IGeometry {
+  bounds?: IViewport;
   location: {
-    type: GeoJSON.Point['type'];
-    coordinates: GeoJSON.Point['coordinates'];
-    viewport: IViewport;
+    lat: number;
+    lng: number;
   };
+  location_type: string;
+  viewport: IViewport;
 }
 
 interface IViewport {
@@ -22,7 +23,7 @@ export interface IFacility {
 
 interface IAddressComponent {
   long_name: string;
-  alphabetical_name: string;
+  short_name: string;
   types: string[];
 }
 
@@ -32,16 +33,15 @@ export interface IToilet {
   alphabetical_name: string;
   open_status: string;
   location: string;
-  address_components: IAddressComponent;
+  address_components: IAddressComponent[];
   formatted_address: string;
   geometry: IGeometry;
-  placeid: string;
+  place_id: string;
   opening_hours: string[];
   nearest_alternative: string;
   facilities: IFacility[];
-  facilityList: IFacility[];
-  date_created: Date | undefined;
-  date_modified: Date | undefined;
+  date_created: string | undefined;
+  date_modified: string | undefined;
   isFavourite: boolean;
 }
 
