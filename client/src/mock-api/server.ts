@@ -56,6 +56,7 @@ export default function makeServer() {
       this.get('/api/v1/toilets', (schema: AppSchema) => {
         return schema.all('toilet');
       });
+      this.passthrough('https://maps.googleapis.com/**');
     }
   });
 }
