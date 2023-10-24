@@ -4,8 +4,8 @@ import { useMapContext, useMapEffect } from 'googlemaps-react-primitives';
 interface Props extends google.maps.MarkerOptions {
   id: string;
   isFavourite: boolean;
-  isOpen: boolean;
-  onClick?: (id: string) => void;
+  open_status: string;
+  onMarkerClicked?: (id: string) => void;
 }
 
 interface IIcon {
@@ -26,30 +26,35 @@ const closedSVG = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 <path fill="#5c5c5c" d="M12 3a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z" />
 </svg>`;
 
+const markerHeight = 25;
+const markerWidth = 25;
+
 export default function MultiMarker({
   id,
   isFavourite,
-  isOpen,
-  onClick,
+  open_status,
+  onMarkerClicked,
   ...options
 }: Props) {
   const marker = useRef<google.maps.Marker>();
   const { map, addMarker, removeMarker } = useMapContext();
   const [markerIcon, setMarkerIcon] = useState<IIcon>({
     url: `data:image/svg+xml;base64,${window.btoa(regularSVG)}`,
-    scaledSize: new google.maps.Size(45, 45)
+    scaledSize: new google.maps.Size(markerWidth, markerHeight)
   });
+  const onClickRef = useRef(onMarkerClicked);
+  onClickRef.current = onMarkerClicked;
 
   useEffect(() => {
     let svg = isFavourite ? favouriteSVG : regularSVG;
-    svg = !isOpen ? closedSVG : svg;
+    svg = open_status === `closed` ? closedSVG : svg;
     const icon = {
       url: `data:image/svg+xml;base64,${window.btoa(svg)}`,
-      scaledSize: new google.maps.Size(45, 45)
+      scaledSize: new google.maps.Size(markerWidth, markerHeight)
     };
 
     setMarkerIcon(icon);
-  }, [isFavourite, isOpen]);
+  }, [isFavourite, open_status]);
 
   useEffect(() => {
     if (!marker.current) {
@@ -58,9 +63,13 @@ export default function MultiMarker({
         map,
         icon: markerIcon
       });
+      if (onMarkerClicked) {
+        marker.current.addListener('click', () => onMarkerClicked(id));
+      }
       addMarker(marker.current);
       return () => {
         if (marker.current) {
+          google.maps.event.clearListeners(marker, 'click');
           removeMarker(marker.current);
           marker.current = undefined;
         }
@@ -68,18 +77,7 @@ export default function MultiMarker({
     }
 
     return undefined;
-  }, [addMarker, map, markerIcon, options, removeMarker]);
-
-  useEffect(() => {
-    if (marker.current) {
-      google.maps.event.clearListeners(marker, 'click');
-      if (onClick) {
-        marker.current.addListener('click', (ev: google.maps.MapMouseEvent) =>
-          onClick(id)
-        );
-      }
-    }
-  }, [id, onClick]);
+  }, [addMarker, id, map, markerIcon, onMarkerClicked, options, removeMarker]);
 
   useMapEffect(() => {
     if (marker.current) {
@@ -98,5 +96,5 @@ export default function MultiMarker({
 }
 
 MultiMarker.defaultProps = {
-  onClick: () => {}
+  onMarkerClicked: () => {}
 };
