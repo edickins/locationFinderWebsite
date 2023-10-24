@@ -1,15 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Wrapper, Status } from '@googlemaps/react-wrapper';
-import {
-  GoogleMap,
-  Marker,
-  SvgMarker,
-  Overlay
-} from 'googlemaps-react-primitives';
+import { GoogleMap, SvgMarker } from 'googlemaps-react-primitives';
 import InfoWindow from './components/InfoWindow';
+import MultiMarker from './components/MultiMarker';
 
 import styles from './appStyles';
-import MultiMarker from './components/MultiMarker';
 
 function renderLoadingStatus(status: Status) {
   return <h1>{status}</h1>;
@@ -47,7 +42,7 @@ const myMarkers: MarkerData[] = [
     id: 'marker003',
     toiletName: 'Toilet 003',
     isFavourite: false,
-    isOpen: true
+    isOpen: false
   }
 ];
 
@@ -93,12 +88,12 @@ function MyMap() {
           keyboardShortcuts={false}
           backgroundColor='#c8c8c8'
           styles={styles}
-          onClick={(ev: google.maps.MapMouseEvent) => {
+          onClick={() => {
             setActiveMarker('');
           }}
           autoFit
         >
-          {markers.map((marker, index) => {
+          {markers.map((marker) => {
             return (
               <MultiMarker
                 key={marker.id}
@@ -116,10 +111,6 @@ function MyMap() {
               position={infoWindowLocation}
             />
           )}
-          {/* <InfoWindow
-            content='things to display'
-            position={{ lat: 48.210033, lng: 16.363449 }}
-          /> */}
           <SvgMarker
             position={{ lat: 48.864716, lng: 2.349014 }}
             svg={`<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -127,19 +118,6 @@ function MyMap() {
               <path fill="#c0392b" d="M12 3a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z" />
             </svg>`}
           />
-          <Overlay position={{ lat: 53.551086, lng: 9.993682 }}>
-            <div
-              style={{
-                transform: 'translateX(-50%)',
-                backgroundColor: '#fff',
-                borderRadius: '5px',
-                padding: '10px',
-                boxShadow: '5px 5px 10px #0005'
-              }}
-            >
-              Moin!
-            </div>
-          </Overlay>
         </GoogleMap>
       </Wrapper>
     </div>
