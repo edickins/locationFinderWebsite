@@ -14,15 +14,15 @@ function InfoWindow({ content, position }: Props) {
     if (!infoWindow.current) {
       infoWindow.current = new google.maps.InfoWindow({ content, position });
       infoWindow.current.open(map);
-      return () => {
-        if (infoWindow.current) {
-          infoWindow.current.close();
-          infoWindow.current = undefined;
-        }
-      };
     }
 
-    return undefined;
+    // cleanup function
+    return () => {
+      if (infoWindow.current) {
+        infoWindow.current.close();
+        infoWindow.current = undefined;
+      }
+    };
   }, [content, map, position]);
 
   useEffect(() => {

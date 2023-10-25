@@ -11,17 +11,29 @@ const mockToilet: IToilet = {
   alphabetical_name: 'toilet name',
   open_status: 'open',
   location: 'city centre',
-  address_components: {
-    long_name: 'address long_name',
-    alphabetical_name: 'address name',
-    types: []
-  },
+  address_components: [
+    {
+      long_name: 'address long_name',
+      short_name: 'address name',
+      types: []
+    }
+  ],
   formatted_address: 'address',
-  placeid: 'xxx',
+  geometry: {
+    location: {
+      lat: 52.0,
+      lng: -0.1
+    },
+    location_type: 'building',
+    viewport: {
+      northeast: { lat: 52.0, lng: -0.1 },
+      southwest: { lat: 52, lng: -0.2 }
+    }
+  },
+  place_id: 'xxx',
   opening_hours: ['openin hours'],
   nearest_alternative: 'x',
   facilities: [],
-  facilityList: [],
   date_created: undefined,
   date_modified: undefined,
   isFavourite: false

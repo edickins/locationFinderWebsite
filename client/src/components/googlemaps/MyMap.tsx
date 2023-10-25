@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Wrapper, Status } from '@googlemaps/react-wrapper';
 import { GoogleMap } from 'googlemaps-react-primitives';
 import InfoWindow from './components/InfoWindow';
@@ -10,6 +10,7 @@ import styles from './appStyles';
 function renderLoadingStatus(status: Status) {
   return <h1>{status}</h1>;
 }
+
 function MyMap({ items }: { items: IToilet[] }) {
   const [activeMarker, setActiveMarker] = useState<string>('');
   const [infoWindowData, setInfoWindowData] = useState<string>('');
@@ -61,6 +62,7 @@ function MyMap({ items }: { items: IToilet[] }) {
                   isFavourite={item.isFavourite}
                   open_status={item.open_status}
                   onMarkerClicked={onMarkerClicked}
+                  data-testid={`marker-${item.id}`}
                 />
               );
             })}

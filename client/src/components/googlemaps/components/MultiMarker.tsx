@@ -46,6 +46,7 @@ export default function MultiMarker({
   onClickRef.current = onMarkerClicked;
 
   useEffect(() => {
+    // get the correct SVG for the Marker
     let svg = isFavourite ? favouriteSVG : regularSVG;
     svg = open_status === `closed` ? closedSVG : svg;
     const icon = {
