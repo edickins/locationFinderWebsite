@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import './index.css';
 
 import ToiletsProvider from './context/toiletContext/toiletsContext';
-import './index.css';
 import makeServer from './mock-api/server';
 import routesConfig from './config/routerConfig';
 

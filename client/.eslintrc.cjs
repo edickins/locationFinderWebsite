@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
+const tsConfig = require('./tsconfig.json');
 
 module.exports = {
   env: {
@@ -28,5 +29,6 @@ module.exports = {
     'jsx-quotes': ['error', 'prefer-single'],
     '@typescript-eslint/comma-dangle': ['error', 'never'],
     'prettier/prettier': ['error', { endOfLine: 'auto' }]
-  }
+  },
+  ignorePatterns: tsConfig.exclude
 };
