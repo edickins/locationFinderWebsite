@@ -29,14 +29,14 @@ function MyMap({ items }: { items: IToilet[] }) {
   };
 
   return (
-    <div style={{ width: '80vw', margin: '10vh auto' }}>
+    <div className='width-full'>
       <Wrapper
         libraries={['geometry']}
         apiKey={import.meta.env.VITE_API_KEY}
         render={renderLoadingStatus}
       >
         <GoogleMap
-          style={{ height: '80vh', marginBottom: '1em' }}
+          className='mb-4 h-screen'
           fullscreenControl={false}
           mapTypeControl={false}
           streetViewControl={false}

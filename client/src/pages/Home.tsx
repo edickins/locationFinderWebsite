@@ -7,7 +7,6 @@ function Home() {
   } = useToiletsContext();
   return (
     <div>
-      <h3>home</h3>
       <MyMap items={toilets} />
     </div>
   );
