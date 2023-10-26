@@ -26,7 +26,6 @@ module.exports = {
     'react/jsx-no-useless-fragment': 0,
     'react/react-in-jsx-scope': 0,
     'jsx-quotes': ['error', 'prefer-single'],
-    // 'comma-dangle': 'off',
     '@typescript-eslint/comma-dangle': ['error', 'never'],
     'prettier/prettier': ['error', { endOfLine: 'auto' }]
   }
