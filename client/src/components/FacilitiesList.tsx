@@ -12,7 +12,9 @@ function FacilitiesList({ facilities, handleFilterClick }: FacilitiesProp) {
       <ul className='list-none'>
         {facilities &&
           facilities.map((facility) => {
-            return <FacilityFormItem facility={facility} />;
+            return (
+              <FacilityFormItem facility={facility} key={facility.short_name} />
+            );
           })}
       </ul>
       <div className='flex justify-center'>

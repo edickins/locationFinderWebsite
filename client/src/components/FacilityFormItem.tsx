@@ -7,7 +7,7 @@ type FacilityFormProp = {
 
 function FacilityFormItem({ facility }: FacilityFormProp) {
   return (
-    <li key={facility.short_name} className='flex gap-4'>
+    <li className='flex gap-4'>
       {facility.full_name}
       <input
         type='checkbox'
