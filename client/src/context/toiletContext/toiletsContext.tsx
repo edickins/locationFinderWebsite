@@ -4,11 +4,12 @@ import {
   useEffect,
   useContext,
   useReducer,
-  useMemo
+  useMemo,
+  useState
 } from 'react';
 import axios from 'axios';
 
-import { IToiletsContext } from './types';
+import { IToiletsContext, IFacility } from './types';
 import toiletReducer from '../../reducer/toiletReducer/toiletReducer';
 import {
   ToiletActionEnum,
@@ -18,10 +19,12 @@ import {
 // create the context defining the types of the context members
 export const ToiletsContext = createContext<IToiletsContext>({
   state: { toilets: [], error: undefined },
+  facilities: [],
   dispatchToilets: () => {}
 });
 
 export default function ToiletsProvider({ children }: PropsWithChildren) {
+  const [facilities, setFacilities] = useState([]);
   const [state, dispatch] = useReducer(toiletReducer, {
     toilets: [],
     error: undefined
@@ -32,30 +35,30 @@ export default function ToiletsProvider({ children }: PropsWithChildren) {
     dispatch(action);
   };
 
-  // fetch toilets from server
+  // get toilet and facilities Arrays for the context provider
   useEffect(() => {
-    const url = 'api/v1/toilets';
+    const fetchToilets = axios.get('api/v1/toilets');
+    const fetchFacilities = axios.get('api/v1/facilities');
 
-    async function getData() {
-      try {
-        const response = await axios.get(url);
+    Promise.all([fetchToilets, fetchFacilities])
+      .then((responses) => {
         dispatchToilets({
           type: ToiletActionEnum.SET_TOILETS,
-          payload: response.data.toilets
+          payload: responses[0].data.toilets
         });
-      } catch (error) {
+        setFacilities(responses[1].data.facilities);
+      })
+      .catch((error) => {
         dispatchToilets({ type: ToiletActionEnum.SET_ERROR, payload: error });
-      }
-    }
-
-    getData();
+      });
   }, []);
 
   // create context initialValue
   const initialValue: IToiletsContext = useMemo(
     () => ({
       state,
-      dispatchToilets
+      dispatchToilets,
+      facilities
     }),
     [state]
   );

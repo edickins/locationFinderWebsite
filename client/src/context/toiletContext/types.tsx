@@ -48,6 +48,7 @@ export interface IToilet {
 export interface IToiletsContext {
   state: IInitialToiletsState;
   dispatchToilets: React.Dispatch<ToiletActionType>;
+  facilities: IFacility[];
 }
 
 export interface IInitialToiletsState {

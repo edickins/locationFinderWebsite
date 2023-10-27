@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 function Header() {
   return (
-    <header className='sticky top-0 z-10'>
+    <header className='sticky top-0 z-10 bg-black'>
       <section className='mx-auto  max-w-4xl  p-4'>
         <div className='flex items-center justify-between'>
           <h1 className='text-2xl font-medium'>BRIGHTON & HOVE WC WAYFINDER</h1>
@@ -20,15 +20,6 @@ function Header() {
           <NavLink to='/'>home</NavLink>
           <NavLink to='toilets'>toilets</NavLink>
           <NavLink to='contact'>contact</NavLink>
-          <input
-            type='text'
-            name='search'
-            id='search'
-            placeholder='search location...'
-            className='rounded-md px-2'
-          />
-          <button type='button'>filter</button>
-          <button type='button'>Find a toilet near me</button>
         </nav>
       </section>
     </header>
