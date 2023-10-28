@@ -2,14 +2,14 @@ import { NavLink } from 'react-router-dom';
 
 function Header() {
   return (
-    <header className='bg-dark-panel sticky top-0 z-10'>
+    <header className='sticky top-0 z-10 border-b-2 border-solid border-white  bg-dark-panel'>
       <section className='mx-auto  max-w-4xl  p-4'>
         <div className='flex items-center justify-between'>
-          <h1 className='dark:text-dark-primary-color text-2xl font-semibold'>
+          <h1 className='text-1xl font-semibold dark:text-dark-primary-color'>
             BRIGHTON & HOVE WC WAYFINDER
           </h1>
           <div
-            className='button dark:text-dark-secondary-color relative h-8 w-8 cursor-pointer text-2xl md:hidden'
+            className='button relative h-8 w-8 cursor-pointer text-2xl dark:text-dark-secondary-color md:hidden'
             id='hamburger-button'
           >
             &#9776;

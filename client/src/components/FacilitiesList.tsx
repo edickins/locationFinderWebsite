@@ -17,11 +17,6 @@ function FacilitiesList({ facilities, handleFilterClick }: FacilitiesProp) {
             );
           })}
       </ul>
-      <div className='flex justify-center'>
-        <button type='button' onClick={handleFilterClick}>
-          Done
-        </button>
-      </div>
     </>
   );
 }

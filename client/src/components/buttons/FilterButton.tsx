@@ -16,7 +16,7 @@ function FilterButton({
       }`}
     >
       <i className='fa-solid fa-filter'></i>
-      <span className='ml-4'>Filter toilets</span>
+      <span className='ml-1 text-xs'>Filter toilets</span>
     </button>
   );
 }
