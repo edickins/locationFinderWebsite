@@ -18,7 +18,7 @@ function FilterButton({
     <button
       type='button'
       onClick={handleFilterClick}
-      className={`underline-offset-4 hover:underline hover:dark:text-dark-secondary-color ${
+      className={`mx-auto underline-offset-4 hover:underline ${
         isActive
           ? `dark:text-dark-secondary-color`
           : `dark:text-dark-primary-color`
