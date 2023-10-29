@@ -3,6 +3,8 @@ import { IFacility } from '../../context/toiletContext/types';
 
 interface FilterSectionFacilitiesProps {
   facilities: IFacility[];
+  filteredFacilities: string[];
+  onFilterClicked: (filter: string, isSelected: boolean) => void;
   onClick: () => void;
   isFacilitiesActive: boolean;
   setIsFacilitiesActive: (state: boolean) => void;
@@ -10,6 +12,8 @@ interface FilterSectionFacilitiesProps {
 
 function FilterSectionFacilities({
   facilities,
+  filteredFacilities,
+  onFilterClicked,
   onClick,
   isFacilitiesActive,
   setIsFacilitiesActive
@@ -25,7 +29,13 @@ function FilterSectionFacilities({
       >
         <i className='fa-solid fa-filter'></i>Filter by facilities &gt;
       </h2>
-      {isFacilitiesActive && <FacilitiesList facilities={facilities} />}
+      {isFacilitiesActive && (
+        <FacilitiesList
+          facilities={facilities}
+          filteredFacilities={filteredFacilities}
+          onFilterClicked={onFilterClicked}
+        />
+      )}
     </section>
   );
 }

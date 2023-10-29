@@ -1,15 +1,20 @@
 import { useRef, useState } from 'react';
 import { useToiletsContext } from '../../context/toiletContext/toiletsContext';
 import SearchLocation from './SearchLocation';
-import FilterButton from '../buttons/FilterButton';
 import FindToiletNearMeButton from '../buttons/FindToiletNearMeButton';
 import FilterSectionFacilities from './FilterSectionFacilities';
 import FilterSectionSearch from './FilterSectionSearch';
 import FilterSectionFavourites from './FilterSectionFavourites';
 import FavouritesButton from '../buttons/FavouritesButton';
+import FilterButton from '../buttons/FilterButton';
 import DoneButton from '../buttons/DoneButton';
 
-function FilterPanel() {
+type Props = {
+  filteredFacilities: string[];
+  onFilterClicked: (facility: string, isSelected: boolean) => void;
+};
+
+function FilterPanel({ filteredFacilities, onFilterClicked }: Props) {
   const { facilities } = useToiletsContext();
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const [isFacilitiesActive, setIsFacilitiesActive] = useState(false);
@@ -90,6 +95,8 @@ function FilterPanel() {
       >
         <FilterSectionFacilities
           facilities={facilities}
+          filteredFacilities={filteredFacilities}
+          onFilterClicked={onFilterClicked}
           onClick={handleFilterButtonClick}
           isFacilitiesActive={isFacilitiesActive}
           setIsFacilitiesActive={setIsFacilitiesActive}
