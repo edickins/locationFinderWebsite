@@ -101,7 +101,10 @@ function FilterPanel({ filteredFacilities, onFilterClicked }: Props) {
           isFacilitiesActive={isFacilitiesActive}
           setIsFacilitiesActive={setIsFacilitiesActive}
         />
-        <FilterSectionFavourites isFavouritesActive={isFavouritesActive} />
+        <FilterSectionFavourites
+          isFavouritesActive={isFavouritesActive}
+          onClick={handleFavouritesButtonClick}
+        />
         <FilterSectionSearch />
       </section>
       <DoneButton isPanelOpen={isPanelOpen} hideFilterPanel={hideFilterPanel} />

@@ -1,19 +1,18 @@
+import FavouritesButton from '../buttons/FavouritesButton';
+
 interface Props {
   isFavouritesActive: boolean;
+  onClick: () => void;
 }
 
-function FilterSectionFavourites({ isFavouritesActive }: Props) {
+function FilterSectionFavourites({ isFavouritesActive, onClick }: Props) {
   return (
     <section id='favourites-container' className='p-4'>
-      <h2
-        className={`text-xl font-semibold ${
-          isFavouritesActive
-            ? `dark:text-dark-secondary-color`
-            : `dark:text-dark-primary-color`
-        }`}
-      >
-        <i className='fa-solid fa-star'></i>Favourites &gt;
-      </h2>
+      <FavouritesButton
+        onClick={onClick}
+        isFavouritesActive={isFavouritesActive}
+        largeText={true}
+      />
     </section>
   );
 }

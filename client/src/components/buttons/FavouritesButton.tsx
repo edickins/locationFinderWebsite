@@ -1,9 +1,11 @@
 function FavouritesButton({
   onClick,
-  isFavouritesActive
+  isFavouritesActive,
+  largeText
 }: {
   onClick: () => void;
   isFavouritesActive: boolean;
+  largeText?: boolean;
 }) {
   return (
     <button
@@ -16,7 +18,9 @@ function FavouritesButton({
       }`}
     >
       <i className='fa-solid fa-star'></i>
-      <span className='ml-1 text-xs'>Favourites</span>
+      <span className={`ml-1 ${largeText ? 'text-xl' : 'text-xs'}`}>
+        Favourites
+      </span>
     </button>
   );
 }

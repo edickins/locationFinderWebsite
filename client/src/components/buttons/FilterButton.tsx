@@ -1,9 +1,11 @@
 function FilterButton({
   onClick: handleFilterClick,
-  isFilterActive
+  isFilterActive,
+  largeText
 }: {
   onClick: () => void;
   isFilterActive: boolean;
+  largeText?: boolean;
 }) {
   return (
     <button
@@ -16,7 +18,9 @@ function FilterButton({
       }`}
     >
       <i className='fa-solid fa-filter'></i>
-      <span className='ml-1 text-xs'>Filter toilets</span>
+      <span className={`ml-1 ${largeText ? 'text-xl' : 'text-xs'}`}>
+        Filter toilets
+      </span>
     </button>
   );
 }
