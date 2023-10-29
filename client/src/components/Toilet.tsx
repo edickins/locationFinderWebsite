@@ -1,11 +1,11 @@
 import { IToilet } from '../context/toiletContext/types';
 import { prefixHash } from '../utils/simpleHash';
 
-interface ToiletProps {
+interface Props {
   toilet: IToilet;
 }
 
-function Toilet({ toilet }: ToiletProps) {
+function Toilet({ toilet }: Props) {
   return (
     <>
       <h3>{toilet.long_name}</h3>

@@ -2,7 +2,7 @@ import FacilitiesList from './FacilitiesList';
 import { IFacility } from '../../context/toiletContext/types';
 import FilterButton from '../buttons/FilterButton';
 
-interface FilterSectionFacilitiesProps {
+interface Props {
   facilities: IFacility[];
   filteredFacilities: string[];
   onFilterClicked: (filter: string, isSelected: boolean) => void;
@@ -18,7 +18,7 @@ function FilterSectionFacilities({
   onClick,
   isFacilitiesActive,
   setIsFacilitiesActive
-}: FilterSectionFacilitiesProps) {
+}: Props) {
   return (
     <section id='facilities-container' className='p-4'>
       <FilterButton
