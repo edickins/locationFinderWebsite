@@ -1,4 +1,4 @@
-import Filter from '../components/Filter';
+import FilterPanel from '../components/filterpanel/FilterPanel';
 import MyMap from '../components/googlemaps/MyMap';
 import { useToiletsContext } from '../context/toiletContext/toiletsContext';
 
@@ -9,7 +9,7 @@ function Home() {
   return (
     <div className='relative'>
       <MyMap items={toilets} />
-      <Filter />
+      <FilterPanel />
     </div>
   );
 }

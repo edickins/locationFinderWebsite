@@ -1,14 +1,14 @@
 function FavouritesButton({
-  handleFavouritesClick,
+  onClick,
   isFavouritesActive
 }: {
-  handleFavouritesClick: () => void;
+  onClick: () => void;
   isFavouritesActive: boolean;
 }) {
   return (
     <button
       type='button'
-      onClick={handleFavouritesClick}
+      onClick={onClick}
       className={` ${
         isFavouritesActive
           ? `dark:text-dark-secondary-color`

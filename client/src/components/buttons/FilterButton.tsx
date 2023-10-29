@@ -1,8 +1,8 @@
 function FilterButton({
-  handleFilterClick,
+  onClick: handleFilterClick,
   isFilterActive
 }: {
-  handleFilterClick: () => void;
+  onClick: () => void;
   isFilterActive: boolean;
 }) {
   return (

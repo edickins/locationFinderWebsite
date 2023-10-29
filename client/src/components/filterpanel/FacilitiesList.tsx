@@ -1,12 +1,11 @@
-import { IFacility } from '../context/toiletContext/types';
+import { IFacility } from '../../context/toiletContext/types';
 import FacilityFormItem from './FacilityFormItem';
 
 type FacilitiesProp = {
   facilities: IFacility[];
-  handleFilterClick: () => void;
 };
 
-function FacilitiesList({ facilities, handleFilterClick }: FacilitiesProp) {
+function FacilitiesList({ facilities }: FacilitiesProp) {
   return (
     <>
       <ul className='list-none'>

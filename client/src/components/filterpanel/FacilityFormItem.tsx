@@ -1,5 +1,5 @@
 import React from 'react';
-import { IFacility } from '../context/toiletContext/types';
+import { IFacility } from '../../context/toiletContext/types';
 
 type FacilityFormProp = {
   facility: IFacility;

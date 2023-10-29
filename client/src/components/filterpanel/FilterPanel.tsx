@@ -1,24 +1,24 @@
 import { useRef, useState } from 'react';
-import { useToiletsContext } from '../context/toiletContext/toiletsContext';
+import { useToiletsContext } from '../../context/toiletContext/toiletsContext';
 import SearchLocation from './SearchLocation';
-import FilterButton from './buttons/FilterButton';
-import FindToiletNearMeButton from './buttons/FindToiletNearMeButton';
+import FilterButton from '../buttons/FilterButton';
+import FindToiletNearMeButton from '../buttons/FindToiletNearMeButton';
 import FilterSectionFacilities from './FilterSectionFacilities';
 import FilterSectionSearch from './FilterSectionSearch';
-import FavouritesButton from './buttons/FavouritesButton';
-import DoneButton from './buttons/DoneButton';
+import FilterSectionFavourites from './FilterSectionFavourites';
+import FavouritesButton from '../buttons/FavouritesButton';
+import DoneButton from '../buttons/DoneButton';
 
-function Filter() {
+function FilterPanel() {
   const { facilities } = useToiletsContext();
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const [isFacilitiesActive, setIsFacilitiesActive] = useState(false);
   const [isFavouritesActive, setIsFavouritesActive] = useState(false);
 
-  console.log(facilities);
-
   const filtersContainerRef = useRef<HTMLElement | null>(null);
 
   const showFilterPanel = () => {
+    if (isPanelOpen) return;
     if (filtersContainerRef.current) {
       if (filtersContainerRef.current.classList.contains('block')) {
         return;
@@ -40,7 +40,7 @@ function Filter() {
     }
   };
 
-  const handleFilterClick = () => {
+  const handleFilterButtonClick = () => {
     console.log(filtersContainerRef.current);
     if (filtersContainerRef.current) {
       showFilterPanel();
@@ -49,7 +49,7 @@ function Filter() {
     }
   };
 
-  const handleFavouritesClick = () => {
+  const handleFavouritesButtonClick = () => {
     if (filtersContainerRef.current) {
       showFilterPanel();
       setIsFacilitiesActive(false);
@@ -69,11 +69,11 @@ function Filter() {
       >
         <div className='flex justify-between'>
           <FilterButton
-            handleFilterClick={handleFilterClick}
+            onClick={handleFilterButtonClick}
             isFilterActive={isFacilitiesActive}
           />
           <FavouritesButton
-            handleFavouritesClick={handleFavouritesClick}
+            onClick={handleFavouritesButtonClick}
             isFavouritesActive={isFavouritesActive}
           />
           <FindToiletNearMeButton />
@@ -88,17 +88,18 @@ function Filter() {
         ref={filtersContainerRef}
         className='hidden'
       >
-        <FilterSectionSearch />
         <FilterSectionFacilities
           facilities={facilities}
-          handleFilterClick={handleFilterClick}
+          onClick={handleFilterButtonClick}
           isFacilitiesActive={isFacilitiesActive}
           setIsFacilitiesActive={setIsFacilitiesActive}
         />
+        <FilterSectionFavourites isFavouritesActive={isFavouritesActive} />
+        <FilterSectionSearch />
       </section>
       <DoneButton isPanelOpen={isPanelOpen} hideFilterPanel={hideFilterPanel} />
     </div>
   );
 }
 
-export default Filter;
+export default FilterPanel;

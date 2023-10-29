@@ -1,16 +1,16 @@
 import FacilitiesList from './FacilitiesList';
-import { IFacility } from '../context/toiletContext/types';
+import { IFacility } from '../../context/toiletContext/types';
 
 interface FilterSectionFacilitiesProps {
   facilities: IFacility[];
-  handleFilterClick: () => void;
+  onClick: () => void;
   isFacilitiesActive: boolean;
   setIsFacilitiesActive: (state: boolean) => void;
 }
 
 function FilterSectionFacilities({
   facilities,
-  handleFilterClick,
+  onClick,
   isFacilitiesActive,
   setIsFacilitiesActive
 }: FilterSectionFacilitiesProps) {
@@ -25,12 +25,7 @@ function FilterSectionFacilities({
       >
         <i className='fa-solid fa-filter'></i>Filter by facilities &gt;
       </h2>
-      {isFacilitiesActive && (
-        <FacilitiesList
-          facilities={facilities}
-          handleFilterClick={handleFilterClick}
-        />
-      )}
+      {isFacilitiesActive && <FacilitiesList facilities={facilities} />}
     </section>
   );
 }
