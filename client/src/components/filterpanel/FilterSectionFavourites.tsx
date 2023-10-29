@@ -1,4 +1,4 @@
-import FavouritesButton from '../buttons/FavouritesButton';
+import FilterButton from '../buttons/FilterButton';
 
 interface Props {
   isFavouritesActive: boolean;
@@ -8,11 +8,13 @@ interface Props {
 function FilterSectionFavourites({ isFavouritesActive, onClick }: Props) {
   return (
     <section id='favourites-container' className='p-4'>
-      <FavouritesButton
+      <FilterButton
+        icon='fa-star'
         onClick={onClick}
-        isFavouritesActive={isFavouritesActive}
-        largeText={true}
-      />
+        isActive={isFavouritesActive}
+      >
+        <span className='text-xl'>Favourites</span>
+      </FilterButton>
     </section>
   );
 }

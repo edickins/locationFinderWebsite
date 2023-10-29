@@ -22,10 +22,12 @@ function FilterSectionFacilities({
   return (
     <section id='facilities-container' className='p-4'>
       <FilterButton
+        icon='fa-filter'
         onClick={onClick}
-        isFilterActive={isFacilitiesActive}
-        largeText={true}
-      />
+        isActive={isFacilitiesActive}
+      >
+        <span className='text-xl'>Filter</span>
+      </FilterButton>
       {isFacilitiesActive && (
         <FacilitiesList
           facilities={facilities}

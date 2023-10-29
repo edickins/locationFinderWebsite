@@ -5,7 +5,6 @@ import FindToiletNearMeButton from '../buttons/FindToiletNearMeButton';
 import FilterSectionFacilities from './FilterSectionFacilities';
 import FilterSectionSearch from './FilterSectionSearch';
 import FilterSectionFavourites from './FilterSectionFavourites';
-import FavouritesButton from '../buttons/FavouritesButton';
 import FilterButton from '../buttons/FilterButton';
 import DoneButton from '../buttons/DoneButton';
 
@@ -74,13 +73,19 @@ function FilterPanel({ filteredFacilities, onFilterClicked }: Props) {
       >
         <div className='flex justify-between'>
           <FilterButton
+            icon='fa-filter'
             onClick={handleFilterButtonClick}
-            isFilterActive={isFacilitiesActive}
-          />
-          <FavouritesButton
+            isActive={isFacilitiesActive}
+          >
+            <span className='text-xs'>Filter</span>
+          </FilterButton>
+          <FilterButton
+            icon='fa-star'
             onClick={handleFavouritesButtonClick}
-            isFavouritesActive={isFavouritesActive}
-          />
+            isActive={isFavouritesActive}
+          >
+            <span className='text-xs'>Favourites</span>
+          </FilterButton>
           <FindToiletNearMeButton />
         </div>
         <div className='flex justify-center'>
