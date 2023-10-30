@@ -18,16 +18,20 @@ function FilterButton({
     <button
       type='button'
       onClick={handleFilterClick}
-      className={`mx-auto underline-offset-4 hover:underline ${
+      className={`mx-auto underline-offset-4  ${
         isActive
           ? `dark:text-dark-secondary-color`
           : `dark:text-dark-primary-color`
       }`}
     >
-      <i className={`fa-solid ${icon}`}></i>
-      <span className={` ml-1  ${isActive ? 'underline' : ''}`}>
-        {children}
-      </span>
+      <div className='flex'>
+        <i className={`fa-solid ${icon} text-lg`}></i>
+        <span
+          className={` ml-1 hover:underline ${isActive ? 'underline' : ''}`}
+        >
+          {children}
+        </span>
+      </div>
     </button>
   );
 }
