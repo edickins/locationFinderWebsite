@@ -8,16 +8,11 @@ type Props = {
   icon: string;
 };
 
-function FilterButton({
-  onClick: handleFilterClick,
-  isActive: isActive,
-  children,
-  icon
-}: Props) {
+function FilterButton({ onClick, isActive: isActive, children, icon }: Props) {
   return (
     <button
       type='button'
-      onClick={handleFilterClick}
+      onClick={onClick}
       className={`mx-auto underline-offset-4  ${
         isActive
           ? `dark:text-dark-secondary-color`

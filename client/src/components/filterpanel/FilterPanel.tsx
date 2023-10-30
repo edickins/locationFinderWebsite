@@ -1,5 +1,4 @@
 import { useRef, useState } from 'react';
-import { useToiletsContext } from '../../context/toiletContext/toiletsContext';
 import SearchLocation from './SearchLocation';
 import FindToiletNearMeButton from '../buttons/FindToiletNearMeButton';
 import FilterSectionFacilities from './FilterSectionFacilities';
@@ -8,13 +7,7 @@ import FilterSectionFavourites from './FilterSectionFavourites';
 import FilterButton from '../buttons/FilterButton';
 import DoneButton from '../buttons/DoneButton';
 
-type Props = {
-  filteredFacilities: string[];
-  onFilterClicked: (facility: string, isSelected: boolean) => void;
-};
-
-function FilterPanel({ filteredFacilities, onFilterClicked }: Props) {
-  const { facilities } = useToiletsContext();
+function FilterPanel() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const [isFacilitiesActive, setIsFacilitiesActive] = useState(false);
   const [isFavouritesActive, setIsFavouritesActive] = useState(false);
@@ -45,7 +38,6 @@ function FilterPanel({ filteredFacilities, onFilterClicked }: Props) {
   };
 
   const handleFilterButtonClick = () => {
-    console.log(filtersContainerRef.current);
     if (filtersContainerRef.current) {
       showFilterPanel();
       setIsFacilitiesActive(true);
@@ -99,12 +91,8 @@ function FilterPanel({ filteredFacilities, onFilterClicked }: Props) {
         className='hidden'
       >
         <FilterSectionFacilities
-          facilities={facilities}
-          filteredFacilities={filteredFacilities}
-          onFilterClicked={onFilterClicked}
           onClick={handleFilterButtonClick}
           isFacilitiesActive={isFacilitiesActive}
-          setIsFacilitiesActive={setIsFacilitiesActive}
         />
         <FilterSectionFavourites
           isFavouritesActive={isFavouritesActive}

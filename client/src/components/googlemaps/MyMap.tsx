@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Wrapper, Status } from '@googlemaps/react-wrapper';
 import { GoogleMap } from 'googlemaps-react-primitives';
 import InfoWindow from './components/InfoWindow';
-import MultiMarker from './components/MultiMarker';
+import MarkerRenderer from './components/MarkerRenderer';
 import { IToilet } from '../../context/toiletContext/types';
 
 import styles from './appStyles';
@@ -52,7 +52,7 @@ function MyMap({ items }: { items: IToilet[] }) {
           minZoom={12}
           autoFit
         >
-          {items &&
+          {/* {items &&
             items.map((item) => {
               return (
                 <MultiMarker
@@ -65,7 +65,8 @@ function MyMap({ items }: { items: IToilet[] }) {
                   data-testid={`marker-${item.id}`}
                 />
               );
-            })}
+            })} */}
+          <MarkerRenderer onMarkerClicked={onMarkerClicked} items={items} />
           {activeMarker && (
             <InfoWindow
               content={infoWindowData}
