@@ -57,7 +57,7 @@ export default function MultiMarker({
     };
 
     setMarkerIcon(icon);
-  }, [isFavourite, open_status]);
+  }, [isFavourite, isFilterActive, open_status]);
 
   useEffect(() => {
     if (!marker.current) {

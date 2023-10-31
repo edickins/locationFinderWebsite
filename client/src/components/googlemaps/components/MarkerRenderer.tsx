@@ -30,8 +30,6 @@ function MarkerRenderer({ items, onMarkerClicked }: Props) {
     }
     if (windowSearchFilters) {
       if (windowSearchFilters !== decodeURIComponent(filters)) {
-        console.log(windowSearchFilters);
-        console.log(filters);
         setFilters(windowSearchFilters);
       }
     }
@@ -39,7 +37,6 @@ function MarkerRenderer({ items, onMarkerClicked }: Props) {
 
   useEffect(() => {
     if (!items) return;
-    console.log(filters);
     let arr = filters?.split('+') || [];
     const markers = items.map((item) => {
       const filterIsActive = checkForActiveFilter(item, arr);
