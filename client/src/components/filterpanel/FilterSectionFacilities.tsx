@@ -1,6 +1,5 @@
 import FacilitiesList from './FacilitiesList';
 import FilterButton from '../buttons/FilterButton';
-import { useState } from 'react';
 import { useToiletsContext } from '../../context/toiletContext/toiletsContext';
 import { useSearchParams } from 'react-router-dom';
 
@@ -16,7 +15,7 @@ function FilterSectionFacilities({ onClick, isFacilitiesActive }: Props) {
 
   const onFilterClicked = (facility: string, isSelected: boolean) => {
     let arr = filtersParams.split('+');
-
+    arr = arr[0] === '' ? [] : arr;
     if (isSelected) {
       let index = arr.indexOf(facility);
       if (index > -1) return;

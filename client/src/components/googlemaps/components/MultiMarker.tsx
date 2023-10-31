@@ -4,6 +4,7 @@ import { useMapContext, useMapEffect } from 'googlemaps-react-primitives';
 interface Props extends google.maps.MarkerOptions {
   id: string;
   isFavourite: boolean;
+  isFilterActive: boolean;
   open_status: string;
   onMarkerClicked?: (id: string) => void;
 }
@@ -32,6 +33,7 @@ const markerWidth = 25;
 export default function MultiMarker({
   id,
   isFavourite,
+  isFilterActive,
   open_status,
   onMarkerClicked,
   ...options
@@ -47,7 +49,7 @@ export default function MultiMarker({
 
   useEffect(() => {
     // get the correct SVG for the Marker
-    let svg = isFavourite ? favouriteSVG : regularSVG;
+    let svg = isFavourite || isFilterActive ? favouriteSVG : regularSVG;
     svg = open_status === `closed` ? closedSVG : svg;
     const icon = {
       url: `data:image/svg+xml;base64,${window.btoa(svg)}`,

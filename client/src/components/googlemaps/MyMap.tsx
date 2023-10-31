@@ -52,20 +52,6 @@ function MyMap({ items }: { items: IToilet[] }) {
           minZoom={12}
           autoFit
         >
-          {/* {items &&
-            items.map((item) => {
-              return (
-                <MultiMarker
-                  key={item.id}
-                  position={item.geometry.location}
-                  id={item.id}
-                  isFavourite={item.isFavourite}
-                  open_status={item.open_status}
-                  onMarkerClicked={onMarkerClicked}
-                  data-testid={`marker-${item.id}`}
-                />
-              );
-            })} */}
           <MarkerRenderer onMarkerClicked={onMarkerClicked} items={items} />
           {activeMarker && (
             <InfoWindow
