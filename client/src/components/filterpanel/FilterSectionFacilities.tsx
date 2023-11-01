@@ -14,22 +14,29 @@ function FilterSectionFacilities({ onClick, isFacilitiesActive }: Props) {
   let filtersParams = searchParams.get('filters') || '';
 
   const onFilterClicked = (facility: string, isSelected: boolean) => {
-    let arr = filtersParams.split('+');
-    arr = arr[0] === '' ? [] : arr;
-    if (isSelected) {
-      let index = arr.indexOf(facility);
-      if (index > -1) return;
+    let arr = filtersParams.split('+').filter(Boolean);
+    const index = arr.indexOf(facility);
+
+    // add or remove facilities
+    if (isSelected && index === -1) {
       arr.push(facility);
-      filtersParams = arr.join('+');
+    } else if (!isSelected && index > -1) {
+      arr.splice(index, 1);
+    } else {
+      return;
     }
 
-    if (!isSelected) {
-      let index = arr.indexOf(facility);
-      if (index === -1) return;
-      arr.splice(index, 1);
-      filtersParams = arr.join('+');
+    filtersParams = arr.join('+');
+
+    // update the URL with new filters or delete that key if there are no values
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+    if (filtersParams === '') {
+      newSearchParams.delete('filters');
+    } else {
+      newSearchParams.set('filters', filtersParams);
     }
-    setSearchParams({ filters: filtersParams });
+
+    setSearchParams(newSearchParams);
   };
 
   return (

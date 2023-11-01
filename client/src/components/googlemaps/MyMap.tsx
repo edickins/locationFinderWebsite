@@ -5,7 +5,8 @@ import InfoWindow from './components/InfoWindow';
 import MarkerRenderer from './components/MarkerRenderer';
 import { IToilet } from '../../context/toiletContext/types';
 
-import styles from './appStyles';
+// import styles from './appStyles';
+import styles from './multiMapStyles';
 
 function renderLoadingStatus(status: Status) {
   return <h1>{status}</h1>;
@@ -43,7 +44,7 @@ function MyMap({ items }: { items: IToilet[] }) {
           zoomControl={false}
           keyboardShortcuts={false}
           backgroundColor='#c8c8c8'
-          styles={styles}
+          styles={styles.silver}
           onClick={() => {
             setActiveMarker('');
           }}

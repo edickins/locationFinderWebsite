@@ -28,11 +28,12 @@ function MarkerRenderer({ items, onMarkerClicked }: Props) {
     if (windowSearch.indexOf('?filters=') > -1) {
       windowSearchFilters = windowSearch.substring(9);
     }
-    if (windowSearchFilters) {
-      if (windowSearchFilters !== decodeURIComponent(filters)) {
-        setFilters(windowSearchFilters);
-      }
+    // if (windowSearchFilters) {
+    console.log(`markerrenderer windowSearchFilters ${windowSearchFilters}`);
+    if (windowSearchFilters !== decodeURIComponent(filters)) {
+      setFilters(windowSearchFilters);
     }
+    // }
   }, [window.location.search]);
 
   useEffect(() => {
