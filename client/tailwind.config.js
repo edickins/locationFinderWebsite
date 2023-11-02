@@ -13,5 +13,11 @@ export default {
       }
     }
   },
+  variants: {
+    extend: {
+      translate: ['active'],
+      transform: ['active']
+    }
+  },
   plugins: []
 };

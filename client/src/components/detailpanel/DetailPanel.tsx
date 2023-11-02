@@ -1,12 +1,16 @@
+import { useEffect, useRef } from 'react';
 import { IToilet } from '../../context/toiletContext/types';
 import { prefixHash } from '../../utils/simpleHash';
 
 type Props = {
-  item: IToilet;
+  item: IToilet | undefined;
   nearestAlternativeItem: IToilet | undefined;
+  showPanel: boolean;
 };
 
-function DetailPanel({ item, nearestAlternativeItem }: Props) {
+function DetailPanel({ item, nearestAlternativeItem, showPanel }: Props) {
+  if (!item) return null;
+
   const facilitiesEls = item.facilities.map((facility) => (
     <li key={facility.id} className='ml-4'>
       {facility.full_name}
@@ -18,7 +22,7 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
     return <li key={key}>{hours}</li>;
   });
 
-  console.log(item.date_modified);
+  const detailPanelRef = useRef<HTMLDivElement>(null);
 
   const modifiedDate = new Date(item.date_modified!);
   const options: Intl.DateTimeFormatOptions = {
@@ -32,8 +36,21 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
     modifiedDate
   );
 
+  useEffect(() => {
+    if (showPanel) {
+      detailPanelRef.current?.classList.add(`translate-y-1/8`);
+      detailPanelRef.current?.classList.remove('translate-y-full');
+    } else {
+      detailPanelRef.current?.classList.add('translate-y-full');
+      detailPanelRef.current?.classList.remove('translate-y-1/8');
+    }
+  }, [showPanel]);
+
   return (
-    <div className='sm::grid-cols-1 absolute top-1/2 grid  h-1/2 w-full auto-rows-min gap-4 bg-dark-panel p-8 md:grid-cols-3 md:p-12 '>
+    <div
+      ref={detailPanelRef}
+      className={`translate-all fixed bottom-0 grid h-1/2 w-full translate-y-full transform auto-rows-min gap-4 bg-dark-panel p-8 transition-transform duration-1000 ease-in-out sm:grid-cols-1 md:grid-cols-3 md:p-12`}
+    >
       <h1 className='text-xl font-bold dark:text-dark-primary-color'>
         {item.long_name}
       </h1>

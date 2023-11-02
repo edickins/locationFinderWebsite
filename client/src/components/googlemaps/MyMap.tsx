@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Wrapper, Status } from '@googlemaps/react-wrapper';
-import { GoogleMap, useMap, useMapContext } from 'googlemaps-react-primitives';
+import { GoogleMap } from 'googlemaps-react-primitives';
 import InfoWindow from './components/InfoWindow';
 import MarkerRenderer from './components/MarkerRenderer';
 import { IToilet } from '../../context/toiletContext/types';
@@ -31,11 +31,6 @@ function MyMap({ items, setSelectedItemDetailID }: Props) {
       setInfoWindowData(marker.long_name);
       setInfoWindowLocation(marker.geometry.location);
       setSelectedItemDetailID(marker.id);
-      const map = useMap();
-      map.panTo({
-        lat: marker.geometry.location.lat,
-        lng: marker.geometry.location.lng - 20
-      });
     }
   };
 

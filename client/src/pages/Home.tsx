@@ -10,6 +10,7 @@ function Home() {
   const [nearestAlternativeItem, setNearestAlternativeItem] = useState<
     IToilet | undefined
   >();
+  const [showPanel, setShowPanel] = useState(false);
 
   const {
     state: { toilets }
@@ -21,6 +22,7 @@ function Home() {
     setNearestAlternativeItem(
       toilets.find((toilet) => toilet.id === selectedItem?.nearest_alternative)
     );
+    setShowPanel(id ? true : false);
   };
   return (
     <div className='relative'>
@@ -29,12 +31,12 @@ function Home() {
         setSelectedItemDetailID={setSelectedItemDetailID}
       />
       <FilterPanel />
-      {detailPanelItem && (
-        <DetailPanel
-          item={detailPanelItem}
-          nearestAlternativeItem={nearestAlternativeItem}
-        />
-      )}
+
+      <DetailPanel
+        item={detailPanelItem}
+        nearestAlternativeItem={nearestAlternativeItem}
+        showPanel={showPanel}
+      />
     </div>
   );
 }
