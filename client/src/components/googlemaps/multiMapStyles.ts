@@ -1,11 +1,34 @@
 const styles: Record<string, google.maps.MapTypeStyle[]> = {
-  default: [],
+  default: [
+    {
+      elementType: 'labels.icon',
+      stylers: [{ visibility: 'off' }]
+    },
+    {
+      featureType: 'poi.business',
+      stylers: [{ visibility: 'off' }]
+    },
+    {
+      featureType: 'transit',
+      elementType: 'labels.icon',
+      stylers: [{ visibility: 'off' }]
+    }
+  ],
   silver: [
     {
       elementType: 'geometry',
       stylers: [{ color: '#f5f5f5' }]
     },
     {
+      elementType: 'labels.icon',
+      stylers: [{ visibility: 'off' }]
+    },
+    {
+      featureType: 'poi.business',
+      stylers: [{ visibility: 'off' }]
+    },
+    {
+      featureType: 'transit',
       elementType: 'labels.icon',
       stylers: [{ visibility: 'off' }]
     },
@@ -94,6 +117,19 @@ const styles: Record<string, google.maps.MapTypeStyle[]> = {
     { elementType: 'labels.text.stroke', stylers: [{ color: '#242f3e' }] },
     { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
     {
+      elementType: 'labels.icon',
+      stylers: [{ visibility: 'off' }]
+    },
+    {
+      featureType: 'poi.business',
+      stylers: [{ visibility: 'off' }]
+    },
+    {
+      featureType: 'transit',
+      elementType: 'labels.icon',
+      stylers: [{ visibility: 'off' }]
+    },
+    {
       featureType: 'administrative.locality',
       elementType: 'labels.text.fill',
       stylers: [{ color: '#d59563' }]
@@ -174,6 +210,19 @@ const styles: Record<string, google.maps.MapTypeStyle[]> = {
     { elementType: 'geometry', stylers: [{ color: '#ebe3cd' }] },
     { elementType: 'labels.text.fill', stylers: [{ color: '#523735' }] },
     { elementType: 'labels.text.stroke', stylers: [{ color: '#f5f1e6' }] },
+    {
+      elementType: 'labels.icon',
+      stylers: [{ visibility: 'off' }]
+    },
+    {
+      featureType: 'poi.business',
+      stylers: [{ visibility: 'off' }]
+    },
+    {
+      featureType: 'transit',
+      elementType: 'labels.icon',
+      stylers: [{ visibility: 'off' }]
+    },
     {
       featureType: 'administrative',
       elementType: 'geometry.stroke',

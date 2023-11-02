@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Wrapper, Status } from '@googlemaps/react-wrapper';
 import { GoogleMap } from 'googlemaps-react-primitives';
 import InfoWindow from './components/InfoWindow';
@@ -15,6 +15,7 @@ function renderLoadingStatus(status: Status) {
 function MyMap({ items }: { items: IToilet[] }) {
   const [activeMarker, setActiveMarker] = useState<string>('');
   const [infoWindowData, setInfoWindowData] = useState<string>('');
+  const [mapStyle, setMapStyle] = useState<google.maps.MapTypeStyle[]>([]);
   const [infoWindowLocation, setInfoWindowLocation] = useState<{
     lat: number;
     lng: number;
@@ -28,6 +29,14 @@ function MyMap({ items }: { items: IToilet[] }) {
       setInfoWindowLocation(marker.geometry.location);
     }
   };
+
+  useEffect(() => {
+    setMapStyle(
+      window.matchMedia('(prefers-color-scheme:dark').matches
+        ? styles.night
+        : styles.retro
+    );
+  }, [window.matchMedia('(prefers-color-scheme:dark')]);
 
   return (
     <div className='width-full'>
@@ -44,7 +53,7 @@ function MyMap({ items }: { items: IToilet[] }) {
           zoomControl={false}
           keyboardShortcuts={false}
           backgroundColor='#c8c8c8'
-          styles={styles.silver}
+          styles={mapStyle}
           onClick={() => {
             setActiveMarker('');
           }}

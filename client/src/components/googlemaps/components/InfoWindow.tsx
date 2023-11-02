@@ -10,6 +10,8 @@ function InfoWindow({ content, position }: Props) {
   const infoWindow = useRef<google.maps.InfoWindow>();
   const { map } = useMapContext();
 
+  const styledContent = `<div style="color:#040404;padding:4px;font-weight:700">${content}</div>`;
+
   useEffect(() => {
     if (!infoWindow.current) {
       infoWindow.current = new google.maps.InfoWindow({ content, position });
@@ -29,7 +31,7 @@ function InfoWindow({ content, position }: Props) {
     if (infoWindow.current && map) {
       // Only run the effect if the infoWindow and map are defined
       infoWindow.current.setOptions({
-        content,
+        content: styledContent,
         position,
         pixelOffset: new google.maps.Size(0, -40)
       });
