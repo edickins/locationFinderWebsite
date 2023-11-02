@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Wrapper, Status } from '@googlemaps/react-wrapper';
-import { GoogleMap } from 'googlemaps-react-primitives';
+import { GoogleMap, useMap, useMapContext } from 'googlemaps-react-primitives';
 import InfoWindow from './components/InfoWindow';
 import MarkerRenderer from './components/MarkerRenderer';
 import { IToilet } from '../../context/toiletContext/types';
@@ -12,14 +12,17 @@ function renderLoadingStatus(status: Status) {
   return <h1>{status}</h1>;
 }
 
-function MyMap({ items }: { items: IToilet[] }) {
+type Props = {
+  items: IToilet[];
+  setSelectedItemDetailID: (id: string | null) => void;
+};
+
+function MyMap({ items, setSelectedItemDetailID }: Props) {
   const [activeMarker, setActiveMarker] = useState<string>('');
   const [infoWindowData, setInfoWindowData] = useState<string>('');
   const [mapStyle, setMapStyle] = useState<google.maps.MapTypeStyle[]>([]);
-  const [infoWindowLocation, setInfoWindowLocation] = useState<{
-    lat: number;
-    lng: number;
-  }>({ lat: 0, lng: 0 });
+  const [infoWindowLocation, setInfoWindowLocation] =
+    useState<google.maps.LatLngLiteral>({ lat: 0, lng: 0 });
 
   const onMarkerClicked = (id: string) => {
     const marker = items.find((m) => m.id === id);
@@ -27,6 +30,12 @@ function MyMap({ items }: { items: IToilet[] }) {
       setActiveMarker(marker.id);
       setInfoWindowData(marker.long_name);
       setInfoWindowLocation(marker.geometry.location);
+      setSelectedItemDetailID(marker.id);
+      const map = useMap();
+      map.panTo({
+        lat: marker.geometry.location.lat,
+        lng: marker.geometry.location.lng - 20
+      });
     }
   };
 
@@ -55,6 +64,7 @@ function MyMap({ items }: { items: IToilet[] }) {
           backgroundColor='#c8c8c8'
           styles={mapStyle}
           onClick={() => {
+            setSelectedItemDetailID(null);
             setActiveMarker('');
           }}
           center={{ lat: 50.8249486, lng: -0.1270007 }}

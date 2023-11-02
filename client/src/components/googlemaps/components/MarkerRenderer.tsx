@@ -28,12 +28,12 @@ function MarkerRenderer({ items, onMarkerClicked }: Props) {
     if (windowSearch.indexOf('?filters=') > -1) {
       windowSearchFilters = windowSearch.substring(9);
     }
-    // if (windowSearchFilters) {
-    console.log(`markerrenderer windowSearchFilters ${windowSearchFilters}`);
+
+    // setFilters if the window.location.search is different from the filters
+    // set by useSearchParams() hook onload.
     if (windowSearchFilters !== decodeURIComponent(filters)) {
       setFilters(windowSearchFilters);
     }
-    // }
   }, [window.location.search]);
 
   useEffect(() => {
