@@ -48,6 +48,35 @@ export default function MultiMarker({
   const onClickRef = useRef(onMarkerClicked);
   onClickRef.current = onMarkerClicked;
 
+  function panToWithOffset(
+    latlng: google.maps.LatLng | google.maps.LatLngLiteral | null | undefined,
+    offsetX: number,
+    offsetY: number
+  ) {
+    if (map && latlng) {
+      const ov = new google.maps.OverlayView();
+      ov.onAdd = function () {
+        const proj = this.getProjection();
+        const aPoint: google.maps.Point | null =
+          proj.fromLatLngToContainerPixel(
+            latlng instanceof google.maps.LatLng
+              ? { lat: latlng.lat(), lng: latlng.lng() }
+              : latlng
+          );
+        if (aPoint !== null) {
+          aPoint.x = aPoint.x + offsetX;
+          aPoint.y = aPoint.y + offsetY;
+          const latLng = proj.fromContainerPixelToLatLng(aPoint);
+          if (latLng !== null) {
+            map.panTo(latLng);
+          }
+        }
+      };
+      ov.draw = function () {};
+      ov.setMap(map);
+    }
+  }
+
   useEffect(() => {
     // get the correct SVG for the Marker
     let svg = isFavourite || isFilterActive ? favouriteSVG : regularSVG;
@@ -69,6 +98,9 @@ export default function MultiMarker({
       });
       if (onMarkerClicked) {
         marker.current.addListener('click', () => onMarkerClicked(id));
+        marker.current.addListener('click', () => {
+          panToWithOffset(options.position, 0, 150);
+        });
       }
       addMarker(marker.current);
       return () => {
@@ -77,10 +109,9 @@ export default function MultiMarker({
           removeMarker(marker.current);
           marker.current = undefined;
         }
+        return undefined;
       };
     }
-
-    return undefined;
   }, [addMarker, id, map, markerIcon, onMarkerClicked, options, removeMarker]);
 
   useMapEffect(() => {

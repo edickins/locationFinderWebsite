@@ -15,9 +15,10 @@ function renderLoadingStatus(status: Status) {
 type Props = {
   items: IToilet[];
   setSelectedItemDetailID: (id: string | null) => void;
+  setShowPanel: (show: boolean) => void;
 };
 
-function MyMap({ items, setSelectedItemDetailID }: Props) {
+function MyMap({ items, setSelectedItemDetailID, setShowPanel }: Props) {
   const [activeMarker, setActiveMarker] = useState<string>('');
   const [infoWindowData, setInfoWindowData] = useState<string>('');
   const [mapStyle, setMapStyle] = useState<google.maps.MapTypeStyle[]>([]);
@@ -72,6 +73,7 @@ function MyMap({ items, setSelectedItemDetailID }: Props) {
             <InfoWindow
               content={infoWindowData}
               position={infoWindowLocation}
+              setShowPanel={setShowPanel}
             />
           )}
         </GoogleMap>

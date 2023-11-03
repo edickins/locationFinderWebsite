@@ -18,17 +18,22 @@ function Home() {
 
   const setSelectedItemDetailID = (id: string | null) => {
     const selectedItem = toilets.find((toilet) => toilet.id === id);
-    setDetailPanelItem(selectedItem);
-    setNearestAlternativeItem(
-      toilets.find((toilet) => toilet.id === selectedItem?.nearest_alternative)
-    );
-    setShowPanel(id ? true : false);
+    if (selectedItem) {
+      setDetailPanelItem(selectedItem);
+      setNearestAlternativeItem(
+        toilets.find(
+          (toilet) => toilet.id === selectedItem?.nearest_alternative
+        )
+      );
+    }
+    setShowPanel(id && selectedItem ? true : false);
   };
   return (
     <main className='absolute bottom-0 top-16 w-full' id='home-container'>
       <MyMap
         items={toilets}
         setSelectedItemDetailID={setSelectedItemDetailID}
+        setShowPanel={setShowPanel}
       />
       <DetailPanel
         item={detailPanelItem}
