@@ -13,7 +13,7 @@ function FilterButton({ onClick, isActive: isActive, children, icon }: Props) {
     <button
       type='button'
       onClick={onClick}
-      className={`mx-auto underline-offset-4  ${
+      className={`mx-auto underline-offset-4 hover:dark:text-dark-secondary-color ${
         isActive
           ? `dark:text-dark-secondary-color`
           : `dark:text-dark-primary-color`
@@ -22,7 +22,9 @@ function FilterButton({ onClick, isActive: isActive, children, icon }: Props) {
       <div className='flex'>
         <i className={`fa-solid ${icon} text-lg`}></i>
         <span
-          className={` ml-1 hover:underline ${isActive ? 'underline' : ''}`}
+          className={` ml-1 hover:underline hover:dark:text-dark-secondary-color ${
+            isActive ? 'underline ' : ''
+          }`}
         >
           {children}
         </span>

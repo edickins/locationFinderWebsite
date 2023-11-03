@@ -8,8 +8,8 @@ export default {
       },
       colors: {
         'dark-panel': '#15121e',
-        'dark-primary-color': '#ff8269',
-        'dark-secondary-color': '#8372CE'
+        'dark-secondary-color': '#ff8269',
+        'dark-primary-color': '#8372CE'
       }
     }
   },

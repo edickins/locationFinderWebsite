@@ -8,14 +8,14 @@ function Header() {
     >
       <section className='mx-auto  max-w-4xl  p-4'>
         <div className='flex items-center justify-between'>
-          <h1 className='text-1xl font-semibold dark:text-dark-primary-color'>
+          <h1 className='text-1xl font-semibold dark:text-dark-secondary-color'>
             BRIGHTON & HOVE WC WAYFINDER
           </h1>
           <div
-            className='button relative h-8 w-8 cursor-pointer text-2xl dark:text-dark-secondary-color md:hidden'
+            className='button relative  cursor-pointer text-2xl dark:text-dark-primary-color md:hidden'
             id='hamburger-button'
           >
-            &#9776;
+            <i className='fa-solid fa-bars h-full w-full'></i>
           </div>
         </div>
         <nav
