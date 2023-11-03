@@ -43,14 +43,14 @@ function MyMap({ items, setSelectedItemDetailID }: Props) {
   }, [window.matchMedia('(prefers-color-scheme:dark')]);
 
   return (
-    <div className='width-full'>
+    <div className='width-full h-full' id='map-container'>
       <Wrapper
         libraries={['geometry']}
         apiKey={import.meta.env.VITE_API_KEY}
         render={renderLoadingStatus}
       >
         <GoogleMap
-          className='mb-4 h-screen'
+          className='mb-4 h-full'
           fullscreenControl={false}
           mapTypeControl={false}
           streetViewControl={false}

@@ -44,6 +44,7 @@ function DetailPanel({ item, nearestAlternativeItem, showPanel }: Props) {
 
   return (
     <div
+      id='detail-panel'
       ref={detailPanelRef}
       className={`translate-all fixed bottom-0 grid h-1/2 w-full translate-y-full transform auto-rows-min gap-4 bg-dark-panel p-8 transition-transform duration-1000 ease-in-out sm:grid-cols-1 md:grid-cols-3 md:p-12`}
     >

@@ -25,19 +25,18 @@ function Home() {
     setShowPanel(id ? true : false);
   };
   return (
-    <div className='relative'>
+    <main className='absolute bottom-0 top-16 w-full' id='home-container'>
       <MyMap
         items={toilets}
         setSelectedItemDetailID={setSelectedItemDetailID}
       />
-      <FilterPanel />
-
       <DetailPanel
         item={detailPanelItem}
         nearestAlternativeItem={nearestAlternativeItem}
         showPanel={showPanel}
       />
-    </div>
+      <FilterPanel />
+    </main>
   );
 }
 
