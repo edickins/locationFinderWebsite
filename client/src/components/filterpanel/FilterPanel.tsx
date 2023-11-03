@@ -54,14 +54,11 @@ function FilterPanel() {
   };
 
   return (
-    <div
-      id='filter-container'
-      className='absolute left-0 right-0 top-0 bg-dark-panel'
-    >
+    <div id='filter-panel' className='absolute  left-0 right-0 top-0 '>
       <nav
         id='filter-nav'
         aria-label='filter controls'
-        className=' flex flex-col gap-2  px-4 pb-4 pt-2'
+        className=' flex flex-col gap-2  bg-dark-panel px-4 pb-4 pt-2'
       >
         <div className='flex justify-between'>
           <FilterButton
@@ -88,7 +85,7 @@ function FilterPanel() {
       <section
         id='filters-container'
         ref={filtersContainerRef}
-        className='hidden'
+        className='fixed bottom-0 left-0 right-0 top-36 hidden bg-dark-panel'
       >
         <FilterSectionFacilities
           onClick={handleFilterButtonClick}
@@ -99,8 +96,11 @@ function FilterPanel() {
           onClick={handleFavouritesButtonClick}
         />
         <FilterSectionSearch />
+        <DoneButton
+          isPanelOpen={isPanelOpen}
+          hideFilterPanel={hideFilterPanel}
+        />
       </section>
-      <DoneButton isPanelOpen={isPanelOpen} hideFilterPanel={hideFilterPanel} />
     </div>
   );
 }
