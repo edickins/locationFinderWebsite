@@ -11,7 +11,7 @@ function FilterSectionFavourites({ isFavouritesActive, onClick }: Props) {
       <FilterButton
         icon='fa-star'
         onClick={onClick}
-        isActive={isFavouritesActive}
+        isSelected={isFavouritesActive}
       >
         <span className='text-xl'>Favourites</span>
       </FilterButton>

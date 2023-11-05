@@ -6,11 +6,16 @@ import FilterSectionSearch from './FilterSectionSearch';
 import FilterSectionFavourites from './FilterSectionFavourites';
 import FilterButton from '../buttons/FilterButton';
 import DoneButton from '../buttons/DoneButton';
+import { useSearchParams } from 'react-router-dom';
 
 function FilterPanel() {
+  const [searchParams] = useSearchParams();
+  const [filters, setFilters] = useState<string>(
+    searchParams.get('filters') || ''
+  );
   const [isPanelOpen, setIsPanelOpen] = useState(false);
-  const [isFacilitiesActive, setIsFacilitiesActive] = useState(false);
-  const [isFavouritesActive, setIsFavouritesActive] = useState(false);
+  const [isFacilitiesSelected, setIsFacilitiesActive] = useState(false);
+  const [isFavouritesSelected, setIsFavouritesActive] = useState(false);
 
   const filtersContainerRef = useRef<HTMLElement | null>(null);
 
@@ -64,14 +69,15 @@ function FilterPanel() {
           <FilterButton
             icon='fa-filter'
             onClick={handleFilterButtonClick}
-            isActive={isFacilitiesActive}
+            isSelected={isFacilitiesSelected}
+            isActive={searchParams.getAll('filters').length > 0}
           >
             <span className='text-xs'>Filter</span>
           </FilterButton>
           <FilterButton
             icon='fa-star'
             onClick={handleFavouritesButtonClick}
-            isActive={isFavouritesActive}
+            isSelected={isFavouritesSelected}
           >
             <span className='text-xs'>Favourites</span>
           </FilterButton>
@@ -89,10 +95,10 @@ function FilterPanel() {
       >
         <FilterSectionFacilities
           onClick={handleFilterButtonClick}
-          isFacilitiesActive={isFacilitiesActive}
+          isFacilitiesActive={isFacilitiesSelected}
         />
         <FilterSectionFavourites
-          isFavouritesActive={isFavouritesActive}
+          isFavouritesActive={isFavouritesSelected}
           onClick={handleFavouritesButtonClick}
         />
         <FilterSectionSearch />

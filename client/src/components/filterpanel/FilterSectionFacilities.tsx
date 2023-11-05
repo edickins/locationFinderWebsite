@@ -44,7 +44,7 @@ function FilterSectionFacilities({ onClick, isFacilitiesActive }: Props) {
       <FilterButton
         icon='fa-filter'
         onClick={onClick}
-        isActive={isFacilitiesActive}
+        isSelected={isFacilitiesActive}
       >
         <span className='text-xl'>Filter</span>
       </FilterButton>
