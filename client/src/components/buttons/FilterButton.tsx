@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import ButtonActiveIcon from './ButtonActiveIcon';
-import { regularSVG } from '../googlemaps/components/markerSVGs';
+import { activeFilterSVG } from '../googlemaps/components/markerSVGs';
 
 type Props = {
   onClick: () => void;
@@ -31,7 +31,7 @@ function FilterButton({
           : `dark:text-dark-primary-color`
       }`}
     >
-      <div className='flex'>
+      <div className='flex items-center'>
         <i className={`fa-solid ${icon} text-lg`}></i>
         <span
           className={` ml-1 hover:underline hover:dark:text-dark-secondary-color ${
@@ -39,8 +39,8 @@ function FilterButton({
           }`}
         >
           {children}
-          <ButtonActiveIcon icon={regularSVG} isActive={isActive} />
         </span>
+        <ButtonActiveIcon icon={activeFilterSVG} isActive={isActive} />
       </div>
     </button>
   );

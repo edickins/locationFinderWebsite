@@ -5,10 +5,15 @@ import { useSearchParams } from 'react-router-dom';
 
 interface Props {
   onClick: () => void;
-  isFacilitiesActive: boolean;
+  isFacilitiesSelected: boolean;
+  isActive: boolean;
 }
 
-function FilterSectionFacilities({ onClick, isFacilitiesActive }: Props) {
+function FilterSectionFacilities({
+  onClick,
+  isFacilitiesSelected,
+  isActive
+}: Props) {
   const { facilities } = useToiletsContext();
   const [searchParams, setSearchParams] = useSearchParams();
   let filtersParams = searchParams.get('filters') || '';
@@ -44,11 +49,12 @@ function FilterSectionFacilities({ onClick, isFacilitiesActive }: Props) {
       <FilterButton
         icon='fa-filter'
         onClick={onClick}
-        isSelected={isFacilitiesActive}
+        isSelected={isFacilitiesSelected}
+        isActive={isActive}
       >
         <span className='text-xl'>Filter</span>
       </FilterButton>
-      {isFacilitiesActive && (
+      {isFacilitiesSelected && (
         <FacilitiesList
           facilities={facilities}
           filteredFacilities={filtersParams.split('+')}

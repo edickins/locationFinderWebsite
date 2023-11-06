@@ -1,17 +1,29 @@
 import { useEffect, useRef, useState } from 'react';
 import { IFacility, IToilet } from '../../context/toiletContext/types';
-import { prefixHash } from '../../utils/simpleHash';
+
+import DetailPanelAddress from './DetailPanelAddress';
+import DetailPanelFacilities from './DetailPanelFacilities';
+import DetailPanelOpeningTimes from './DetailPanelOpeningTimes';
+import DetailPanelDateModified from './DetailPanelDateModified';
+import DetailPanelNearestAlternative from './DetailPanelNearestAlternative';
 
 type Props = {
   item: IToilet | undefined;
   nearestAlternativeItem: IToilet | undefined;
   showPanel: boolean;
+  onNearestAlternativeClick: (id: string | undefined) => void;
 };
 
-function DetailPanel({ item, nearestAlternativeItem, showPanel }: Props) {
+function DetailPanel({
+  item,
+  nearestAlternativeItem,
+  showPanel,
+  onNearestAlternativeClick
+}: Props) {
   const [facilities, setFacilities] = useState<IFacility[]>([]);
   const [openingHours, setOpeningHours] = useState<string[]>([]);
   const [formatedModifiedDate, setFormatedModifiedDate] = useState<string>();
+  const detailPanelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (item) {
@@ -27,16 +39,20 @@ function DetailPanel({ item, nearestAlternativeItem, showPanel }: Props) {
       setFormatedModifiedDate(
         new Intl.DateTimeFormat('en-US', options).format(modifiedDate)
       );
+
+      // reset scrolling on the panel
+      if (detailPanelRef.current) {
+        detailPanelRef.current.scrollTop = 0;
+      }
     }
   }, [item]);
 
-  const detailPanelRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
-    if (showPanel) {
+    if (showPanel && detailPanelRef.current) {
       detailPanelRef.current?.classList.add(`translate-y-1/8`);
       detailPanelRef.current?.classList.remove('translate-y-full');
-    } else {
+    } else if (!showPanel && detailPanelRef.current) {
+      detailPanelRef.current.scrollTop = 0;
       detailPanelRef.current?.classList.add('translate-y-full');
       detailPanelRef.current?.classList.remove('translate-y-1/8');
     }
@@ -44,45 +60,22 @@ function DetailPanel({ item, nearestAlternativeItem, showPanel }: Props) {
 
   return (
     <div
-      id='detail-panel'
+      id='detail-panel-container'
       ref={detailPanelRef}
-      className={`translate-all fixed bottom-0 grid h-1/2 w-full translate-y-full transform auto-rows-min gap-4 bg-dark-panel p-8 transition-transform duration-1000 ease-in-out sm:grid-cols-1 md:grid-cols-3 md:p-12`}
+      className={`translate-all fixed bottom-0 grid h-1/2 w-full translate-y-full transform auto-rows-min gap-4 overflow-y-scroll bg-dark-panel p-8 transition-transform duration-1000 ease-in-out sm:grid-cols-1 md:grid-cols-3 md:p-12`}
     >
       {item && (
-        <div>
-          {' '}
-          <h1 className='text-xl font-bold dark:text-dark-primary-color'>
-            {item.long_name}
-          </h1>
-          <p>Address: {item.formatted_address}</p>
-          <p>
-            This toilet is currently {item.open_status}. Please check daily
-            opening times.
-          </p>
-          <section>
-            <h2 className=' text-lg font-medium dark:text-dark-primary-color'>
-              Facilities at this toilet:
-            </h2>
-            <ul className='list-none'>
-              {facilities.map((facility) => (
-                <li key={facility.id} className='ml-4'>
-                  {facility.full_name}
-                </li>
-              ))}
-            </ul>
-          </section>
-          <section>
-            <h2 className='dark:text-dark-primary-color'>Opening hours:</h2>
-            <ul>
-              {openingHours.map((hours) => {
-                const key = prefixHash(item.id, hours);
-                return <li key={key}>{hours}</li>;
-              })}
-            </ul>
-          </section>
-          <p className='text-xs dark:text-dark-secondary-color'>
-            This information was last modified on {formatedModifiedDate}
-          </p>
+        <div id='detail-panel'>
+          <DetailPanelAddress item={item} />
+          <DetailPanelFacilities facilities={facilities} />
+          <DetailPanelOpeningTimes openingHours={openingHours} item={item} />
+          <DetailPanelNearestAlternative
+            item={nearestAlternativeItem}
+            onNearestAlternativeClick={onNearestAlternativeClick}
+          />
+          <DetailPanelDateModified
+            formatedModifiedDate={formatedModifiedDate}
+          />
         </div>
       )}
     </div>

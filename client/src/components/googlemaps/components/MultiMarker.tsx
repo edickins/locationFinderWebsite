@@ -7,7 +7,15 @@ interface Props extends google.maps.MarkerOptions {
   isFilterActive: boolean;
   open_status: string;
   onMarkerClicked?: (id: string) => void;
+  setGooglemapMarkerRefs: React.Dispatch<
+    React.SetStateAction<IMultiMarkerRef[]>
+  >;
 }
+
+export type IMultiMarkerRef = {
+  id: string;
+  marker: google.maps.Marker | undefined;
+};
 
 interface IIcon {
   url: string;
@@ -23,6 +31,7 @@ export default function MultiMarker({
   isFilterActive,
   open_status,
   onMarkerClicked,
+  setGooglemapMarkerRefs,
   ...options
 }: Props) {
   const marker = useRef<google.maps.Marker>();
@@ -89,6 +98,15 @@ export default function MultiMarker({
         });
       }
       addMarker(marker.current);
+      if (marker.current) {
+        setGooglemapMarkerRefs((prevItems: IMultiMarkerRef[]) => [
+          ...prevItems,
+          { id: id, marker: marker.current }
+        ]);
+      } else {
+        console.log('foo');
+      }
+
       return () => {
         if (marker.current) {
           google.maps.event.clearListeners(marker, 'click');

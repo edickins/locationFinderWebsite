@@ -1,11 +1,14 @@
 import { useSearchParams } from 'react-router-dom';
 import { IToilet } from '../../../context/toiletContext/types';
-import MultiMarker from './MultiMarker';
+import MultiMarker, { IMultiMarkerRef } from './MultiMarker';
 import { useEffect, useState } from 'react';
 
 type Props = {
   items: IToilet[];
   onMarkerClicked: (id: string) => void;
+  setGooglemapMarkerRefs: React.Dispatch<
+    React.SetStateAction<IMultiMarkerRef[]>
+  >;
 };
 
 const checkForActiveFilter = (item: IToilet, filters: string[]): boolean => {
@@ -15,7 +18,11 @@ const checkForActiveFilter = (item: IToilet, filters: string[]): boolean => {
   );
 };
 
-function MarkerRenderer({ items, onMarkerClicked }: Props) {
+function MarkerRenderer({
+  items,
+  onMarkerClicked,
+  setGooglemapMarkerRefs
+}: Props) {
   const [markerElements, setMarkerElements] = useState<JSX.Element[]>([]);
   const [searchParams] = useSearchParams();
   const [filters, setFilters] = useState<string>(
@@ -51,6 +58,7 @@ function MarkerRenderer({ items, onMarkerClicked }: Props) {
           open_status={item.open_status}
           onMarkerClicked={onMarkerClicked}
           data-testid={`marker-${item.id}`}
+          setGooglemapMarkerRefs={setGooglemapMarkerRefs}
         />
       );
     });

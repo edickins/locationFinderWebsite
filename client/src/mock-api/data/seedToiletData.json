@@ -635,7 +635,7 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet035",
+    "nearest_alternative": "toilet048",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility003"],
     "address_components": [
@@ -3510,7 +3510,7 @@
     "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet049",
+    "nearest_alternative": "toilet009",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [

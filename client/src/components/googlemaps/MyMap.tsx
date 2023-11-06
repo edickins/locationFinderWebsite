@@ -4,6 +4,7 @@ import { GoogleMap } from 'googlemaps-react-primitives';
 import InfoWindow from './components/InfoWindow';
 import MarkerRenderer from './components/MarkerRenderer';
 import { IToilet } from '../../context/toiletContext/types';
+import { IMultiMarkerRef } from './components/MultiMarker';
 
 // import styles from './appStyles';
 import styles from './multiMapStyles';
@@ -16,12 +17,21 @@ type Props = {
   items: IToilet[];
   setSelectedItemDetailID: (id: string | null) => void;
   setShowPanel: (show: boolean) => void;
+  setGooglemapMarkerRefs: React.Dispatch<
+    React.SetStateAction<IMultiMarkerRef[]>
+  >;
 };
 
-function MyMap({ items, setSelectedItemDetailID, setShowPanel }: Props) {
+function MyMap({
+  items,
+  setSelectedItemDetailID,
+  setShowPanel,
+  setGooglemapMarkerRefs
+}: Props) {
   const [activeMarker, setActiveMarker] = useState<string>('');
   const [infoWindowData, setInfoWindowData] = useState<string>('');
   const [mapStyle, setMapStyle] = useState<google.maps.MapTypeStyle[]>([]);
+
   const [infoWindowLocation, setInfoWindowLocation] =
     useState<google.maps.LatLngLiteral>({ lat: 0, lng: 0 });
 
@@ -68,7 +78,11 @@ function MyMap({ items, setSelectedItemDetailID, setShowPanel }: Props) {
           minZoom={12}
           autoFit
         >
-          <MarkerRenderer onMarkerClicked={onMarkerClicked} items={items} />
+          <MarkerRenderer
+            onMarkerClicked={onMarkerClicked}
+            setGooglemapMarkerRefs={setGooglemapMarkerRefs}
+            items={items}
+          />
           {activeMarker && (
             <InfoWindow
               content={infoWindowData}

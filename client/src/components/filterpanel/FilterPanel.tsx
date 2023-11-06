@@ -95,7 +95,8 @@ function FilterPanel() {
       >
         <FilterSectionFacilities
           onClick={handleFilterButtonClick}
-          isFacilitiesActive={isFacilitiesSelected}
+          isFacilitiesSelected={isFacilitiesSelected}
+          isActive={searchParams.getAll('filters').length > 0}
         />
         <FilterSectionFavourites
           isFavouritesActive={isFavouritesSelected}

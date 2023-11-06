@@ -36,7 +36,7 @@ function InfoWindow({ content, position, setShowPanel }: Props) {
       infoWindow.current.setOptions({
         content: styledContent,
         position,
-        pixelOffset: new google.maps.Size(0, -40)
+        pixelOffset: new google.maps.Size(0, -30)
       });
     }
   }, [map, content, position]);
