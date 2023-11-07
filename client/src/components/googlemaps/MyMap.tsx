@@ -31,13 +31,15 @@ function MyMap({
   const [activeMarker, setActiveMarker] = useState<string>('');
   const [infoWindowData, setInfoWindowData] = useState<string>('');
   const [mapStyle, setMapStyle] = useState<google.maps.MapTypeStyle[]>([]);
-
+  const [markerClicks, setMarkerClicks] = useState(0);
   const [infoWindowLocation, setInfoWindowLocation] =
     useState<google.maps.LatLngLiteral>({ lat: 0, lng: 0 });
 
   const onMarkerClicked = (id: string) => {
     const marker = items.find((m) => m.id === id);
+    console.log(`MyMap onMarkerClicked marker`);
     if (marker) {
+      setMarkerClicks((prev) => prev + 1);
       setActiveMarker(marker.id);
       setInfoWindowData(marker.long_name);
       setInfoWindowLocation(marker.geometry.location);
@@ -85,6 +87,8 @@ function MyMap({
           />
           {activeMarker && (
             <InfoWindow
+              // set the key so that the InfoWindow re-renders if the same Marker is clicked
+              key={markerClicks}
               content={infoWindowData}
               position={infoWindowLocation}
               setShowPanel={setShowPanel}
