@@ -9,6 +9,7 @@ type Props = {
   setGooglemapMarkerRefs: React.Dispatch<
     React.SetStateAction<IMultiMarkerRef[]>
   >;
+  userLocation: { lat: number; lng: number } | undefined;
 };
 
 const checkForActiveFilter = (item: IToilet, filters: string[]): boolean => {
@@ -62,7 +63,6 @@ function MarkerRenderer({
         />
       );
     });
-
     setMarkerElements(markers);
   }, [filters, items]);
 

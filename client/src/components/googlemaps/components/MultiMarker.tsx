@@ -103,8 +103,6 @@ export default function MultiMarker({
           ...prevItems,
           { id: id, marker: marker.current }
         ]);
-      } else {
-        console.log('foo');
       }
 
       return () => {

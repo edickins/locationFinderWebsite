@@ -15,6 +15,9 @@ function Home() {
   const [googlemapMarkerRefs, setGooglemapMarkerRefs] = useState<
     IMultiMarkerRef[]
   >([]);
+  const [userLocation, setUserLocation] = useState<
+    { lat: number; lng: number } | undefined
+  >();
 
   const {
     state: { toilets }
@@ -33,13 +36,35 @@ function Home() {
     setShowPanel(id && selectedItem ? true : false);
   };
 
-  const onNearestAlternativeClick = (id: string | undefined) => {
+  const handleNearestAlternativeClick = (id: string | undefined) => {
     const alternativeItem = googlemapMarkerRefs.find(
       (i): i is IMultiMarkerRef => i.id === id
     );
     if (alternativeItem?.marker) {
       // trigger the click event on the google.maps.Marker for the alternative
       google.maps.event.trigger(alternativeItem.marker, 'click');
+    }
+  };
+
+  const handleFindToiletButtonClick = () => {
+    console.log('handleFindToiletButtonClick');
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position: GeolocationPosition) => {
+          const pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+
+          setUserLocation(pos);
+        },
+        () => {
+          // handleLocationError(true, infoWindow, map.getCenter()!);
+        }
+      );
+    } else {
+      // Browser doesn't support Geolocation
+      // handleLocationError(false, infoWindow, map.getCenter()!);
     }
   };
 
@@ -50,14 +75,15 @@ function Home() {
         setSelectedItemDetailID={setSelectedItemDetailID}
         setShowPanel={setShowPanel}
         setGooglemapMarkerRefs={setGooglemapMarkerRefs}
+        userLocation={userLocation}
       />
       <DetailPanel
         item={detailPanelItem}
         nearestAlternativeItem={nearestAlternativeItem}
-        onNearestAlternativeClick={onNearestAlternativeClick}
+        onNearestAlternativeClick={handleNearestAlternativeClick}
         showPanel={showPanel}
       />
-      <FilterPanel />
+      <FilterPanel handleFindToiletButtonClick={handleFindToiletButtonClick} />
     </main>
   );
 }

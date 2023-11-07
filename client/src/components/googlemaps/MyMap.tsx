@@ -8,6 +8,7 @@ import { IMultiMarkerRef } from './components/MultiMarker';
 
 // import styles from './appStyles';
 import styles from './multiMapStyles';
+import UserLocationDisplay from './components/UserLocationDisplay';
 
 function renderLoadingStatus(status: Status) {
   return <h1>{status}</h1>;
@@ -20,13 +21,15 @@ type Props = {
   setGooglemapMarkerRefs: React.Dispatch<
     React.SetStateAction<IMultiMarkerRef[]>
   >;
+  userLocation?: { lat: number; lng: number };
 };
 
 function MyMap({
   items,
   setSelectedItemDetailID,
   setShowPanel,
-  setGooglemapMarkerRefs
+  setGooglemapMarkerRefs,
+  userLocation
 }: Props) {
   const [activeMarker, setActiveMarker] = useState<string>('');
   const [infoWindowData, setInfoWindowData] = useState<string>('');
@@ -37,7 +40,6 @@ function MyMap({
 
   const onMarkerClicked = (id: string) => {
     const marker = items.find((m) => m.id === id);
-    console.log(`MyMap onMarkerClicked marker`);
     if (marker) {
       setMarkerClicks((prev) => prev + 1);
       setActiveMarker(marker.id);
@@ -84,6 +86,7 @@ function MyMap({
             onMarkerClicked={onMarkerClicked}
             setGooglemapMarkerRefs={setGooglemapMarkerRefs}
             items={items}
+            userLocation={userLocation}
           />
           {activeMarker && (
             <InfoWindow
@@ -94,6 +97,7 @@ function MyMap({
               setShowPanel={setShowPanel}
             />
           )}
+          {userLocation && <UserLocationDisplay userLocation={userLocation} />}
         </GoogleMap>
       </Wrapper>
     </div>

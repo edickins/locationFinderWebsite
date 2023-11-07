@@ -4,7 +4,7 @@ import { activeFilterSVG } from '../googlemaps/components/markerSVGs';
 
 type Props = {
   onClick: () => void;
-  isSelected: boolean;
+  isSelected?: boolean;
   isActive?: boolean;
   largeText?: boolean;
   children: ReactElement;
@@ -18,9 +18,6 @@ function FilterButton({
   children,
   icon
 }: Props) {
-  if (isActive) {
-    console.log(isActive);
-  }
   return (
     <button
       type='button'
@@ -40,7 +37,10 @@ function FilterButton({
         >
           {children}
         </span>
-        <ButtonActiveIcon icon={activeFilterSVG} isActive={isActive} />
+        {/* show the isActive icon if isActive is set*/}
+        {isActive !== undefined && (
+          <ButtonActiveIcon icon={activeFilterSVG} isActive={isActive} />
+        )}
       </div>
     </button>
   );

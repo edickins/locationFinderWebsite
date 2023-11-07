@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react';
 import SearchLocation from './SearchLocation';
-import FindToiletNearMeButton from '../buttons/FindToiletNearMeButton';
 import FilterSectionFacilities from './FilterSectionFacilities';
 import FilterSectionSearch from './FilterSectionSearch';
 import FilterSectionFavourites from './FilterSectionFavourites';
@@ -8,11 +7,13 @@ import FilterButton from '../buttons/FilterButton';
 import DoneButton from '../buttons/DoneButton';
 import { useSearchParams } from 'react-router-dom';
 
-function FilterPanel() {
+type Props = {
+  handleFindToiletButtonClick: () => void;
+};
+
+function FilterPanel({ handleFindToiletButtonClick }: Props) {
   const [searchParams] = useSearchParams();
-  const [filters, setFilters] = useState<string>(
-    searchParams.get('filters') || ''
-  );
+
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const [isFacilitiesSelected, setIsFacilitiesActive] = useState(false);
   const [isFavouritesSelected, setIsFavouritesActive] = useState(false);
@@ -74,6 +75,7 @@ function FilterPanel() {
           >
             <span className='text-xs'>Filter</span>
           </FilterButton>
+
           <FilterButton
             icon='fa-star'
             onClick={handleFavouritesButtonClick}
@@ -81,7 +83,13 @@ function FilterPanel() {
           >
             <span className='text-xs'>Favourites</span>
           </FilterButton>
-          <FindToiletNearMeButton />
+
+          <FilterButton
+            icon='fa-magnifying-glass'
+            onClick={handleFindToiletButtonClick}
+          >
+            <span className='text-xs'>Find a toilet near me</span>
+          </FilterButton>
         </div>
         <div className='flex justify-center'>
           <SearchLocation />
