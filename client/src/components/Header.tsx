@@ -12,10 +12,10 @@ function Header() {
             BRIGHTON & HOVE WC WAYFINDER
           </h1>
           <div
-            className='button relative  cursor-pointer text-2xl dark:text-dark-primary-color md:hidden'
+            className='button relative cursor-pointer text-2xl dark:text-dark-primary-color md:hidden'
             id='hamburger-button'
           >
-            <i className='fa-solid fa-bars h-full w-full'></i>
+            <i className='fa-solid fa-bars h-full w-full' />
           </div>
         </div>
         <nav
