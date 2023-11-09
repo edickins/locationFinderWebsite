@@ -21,7 +21,7 @@ function FilterPanelNav({
   return (
     <nav
       id='filter-nav'
-      aria-label='filter controls'
+      aria-label='filter control panel'
       className=' flex flex-col gap-2  bg-dark-panel px-4 pb-4 pt-2'
     >
       <div className='flex justify-between'>
