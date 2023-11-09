@@ -1,19 +1,12 @@
 import { useRef, useState } from 'react';
-import SearchLocation from './SearchLocation';
-import FilterSectionFacilities from './FilterSectionFacilities';
-import FilterSectionSearch from './FilterSectionSearch';
-import FilterSectionFavourites from './FilterSectionFavourites';
-import FilterButton from '../buttons/FilterButton';
-import DoneButton from '../buttons/DoneButton';
-import { useSearchParams } from 'react-router-dom';
+import FilterPanelNav from './FilterPanelNav';
+import FiltersContainer from './FiltersContainer';
 
 type Props = {
   handleFindToiletButtonClick: () => void;
 };
 
 function FilterPanel({ handleFindToiletButtonClick }: Props) {
-  const [searchParams] = useSearchParams();
-
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const [isFacilitiesSelected, setIsFacilitiesActive] = useState(false);
   const [isFavouritesSelected, setIsFavouritesActive] = useState(false);
@@ -61,61 +54,22 @@ function FilterPanel({ handleFindToiletButtonClick }: Props) {
 
   return (
     <div id='filter-panel' className='absolute  left-0 right-0 top-0 '>
-      <nav
-        id='filter-nav'
-        aria-label='filter controls'
-        className=' flex flex-col gap-2  bg-dark-panel px-4 pb-4 pt-2'
-      >
-        <div className='flex justify-between'>
-          <FilterButton
-            icon='fa-filter'
-            onClick={handleFilterButtonClick}
-            isSelected={isFacilitiesSelected}
-            isActive={searchParams.getAll('filters').length > 0}
-          >
-            <span className='text-xs'>Filter</span>
-          </FilterButton>
-
-          <FilterButton
-            icon='fa-star'
-            onClick={handleFavouritesButtonClick}
-            isSelected={isFavouritesSelected}
-          >
-            <span className='text-xs'>Favourites</span>
-          </FilterButton>
-
-          <FilterButton
-            icon='fa-magnifying-glass'
-            onClick={handleFindToiletButtonClick}
-          >
-            <span className='text-xs'>Find a toilet near me</span>
-          </FilterButton>
-        </div>
-        <div className='flex justify-center'>
-          <SearchLocation />
-        </div>
-      </nav>
-
-      <section
-        id='filters-container'
-        ref={filtersContainerRef}
-        className='fixed bottom-0 left-0 right-0 top-36 hidden bg-dark-panel'
-      >
-        <FilterSectionFacilities
-          onClick={handleFilterButtonClick}
-          isFacilitiesSelected={isFacilitiesSelected}
-          isActive={searchParams.getAll('filters').length > 0}
-        />
-        <FilterSectionFavourites
-          isFavouritesActive={isFavouritesSelected}
-          onClick={handleFavouritesButtonClick}
-        />
-        <FilterSectionSearch />
-        <DoneButton
-          isPanelOpen={isPanelOpen}
-          hideFilterPanel={hideFilterPanel}
-        />
-      </section>
+      <FilterPanelNav
+        handleFavouritesButtonClick={handleFavouritesButtonClick}
+        handleFilterButtonClick={handleFilterButtonClick}
+        handleFindToiletButtonClick={handleFindToiletButtonClick}
+        isFacilitiesSelected={isFacilitiesSelected}
+        isFavouritesSelected={isFavouritesSelected}
+      />
+      <FiltersContainer
+        isFacilitiesSelected={isFacilitiesSelected}
+        isFavouritesSelected={isFavouritesSelected}
+        isPanelOpen={isPanelOpen}
+        handleFilterButtonClick={handleFilterButtonClick}
+        handleFavouritesButtonClick={handleFavouritesButtonClick}
+        hideFilterPanel={hideFilterPanel}
+        filtersContainerRef={filtersContainerRef}
+      />
     </div>
   );
 }
