@@ -45,7 +45,6 @@ function Home() {
   };
 
   const handleFindToiletButtonClick = () => {
-    console.log('handleFindToiletButtonClick');
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position: GeolocationPosition) => {
@@ -55,12 +54,15 @@ function Home() {
           };
 
           setUserLocation(pos);
+          setShowPanel(false);
         },
         () => {
+          // TODO handle any errors
           // handleLocationError(true, infoWindow, map.getCenter()!);
         }
       );
     } else {
+      // TODO handle any errors
       // Browser doesn't support Geolocation
       // handleLocationError(false, infoWindow, map.getCenter()!);
     }

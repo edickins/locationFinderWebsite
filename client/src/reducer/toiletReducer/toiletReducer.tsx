@@ -2,6 +2,7 @@ import { IToilet } from '../../context/toiletContext/types';
 import { ToiletActionEnum, ToiletActionType } from './types';
 
 export default function toiletReducer(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   state: { toilets: IToilet[]; error: any },
   action: ToiletActionType
 ) {

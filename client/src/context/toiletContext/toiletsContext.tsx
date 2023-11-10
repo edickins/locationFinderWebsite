@@ -9,7 +9,7 @@ import {
 } from 'react';
 import axios from 'axios';
 
-import { IToiletsContext, IFacility } from './types';
+import { IToiletsContext } from './types';
 import toiletReducer from '../../reducer/toiletReducer/toiletReducer';
 import {
   ToiletActionEnum,
@@ -60,7 +60,7 @@ export default function ToiletsProvider({ children }: PropsWithChildren) {
       dispatchToilets,
       facilities
     }),
-    [state]
+    [facilities, state]
   );
 
   return (

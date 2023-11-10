@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export enum ToiletActionEnum {
   SET_AS_FAVOURITE = 'SET_AS_FAVOURITE',
   SET_TOILETS = 'SET_TOILETS',

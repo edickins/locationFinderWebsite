@@ -1,6 +1,7 @@
 import { useMapContext } from 'googlemaps-react-primitives';
 import { useEffect, useRef } from 'react';
 import { userLocationSVG } from './markerSVGs';
+
 type Props = {
   userLocation: { lat: number; lng: number } | undefined;
 };
@@ -9,7 +10,7 @@ function UserLocationDisplay({ userLocation }: Props) {
   const infoWindowRef = useRef<google.maps.InfoWindow>();
   const circleRef = useRef<google.maps.Circle>();
   const markerRef = useRef<google.maps.Marker>();
-  const { map, addMarker, removeMarker } = useMapContext();
+  const { map, addMarker } = useMapContext();
 
   useEffect(() => {
     if (userLocation && !infoWindowRef.current && !circleRef.current) {
@@ -22,7 +23,7 @@ function UserLocationDisplay({ userLocation }: Props) {
 
       infoWindowRef.current.setContent(styledContent);
       infoWindowRef.current.open(map);
-      let latLng = new google.maps.LatLng(userLocation.lat, userLocation.lng);
+      const latLng = new google.maps.LatLng(userLocation.lat, userLocation.lng);
       map?.panTo(latLng);
       map?.setZoom(15);
       map?.setCenter(userLocation);
@@ -67,8 +68,8 @@ function UserLocationDisplay({ userLocation }: Props) {
         circleRef.current = undefined;
       }
     };
-  }, [userLocation]);
-  return <div></div>;
+  }, [addMarker, map, userLocation]);
+  return null;
 }
 
 export default UserLocationDisplay;
