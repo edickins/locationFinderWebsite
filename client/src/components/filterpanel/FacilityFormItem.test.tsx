@@ -1,7 +1,7 @@
+import UserEvent from '@testing-library/user-event';
 import { describe, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import FacilityFormItem from './FacilityFormItem';
-import UserEvent from '@testing-library/user-event';
 
 const mockOnFilterClicked = vi.fn();
 const mockFacility = {

@@ -16,7 +16,11 @@ function FacilityFormItem({
   };
 
   return (
-    <li className='flex gap-4' role='listitem' data-testid='facility-form-item'>
+    <li
+      className='flex gap-4'
+      aria-label='available facility'
+      data-testid='facility-form-item'
+    >
       <label htmlFor={facility.short_name}>{facility.full_name}</label>
       <input
         data-testid={facility.short_name}

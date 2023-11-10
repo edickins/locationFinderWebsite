@@ -1,5 +1,6 @@
 import { IToilet } from '../../context/toiletContext/types';
 import { prefixHash } from '../../utils/simpleHash';
+
 type Props = {
   openingHours: string[];
   item: IToilet;

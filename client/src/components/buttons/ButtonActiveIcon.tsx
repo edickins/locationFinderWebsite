@@ -9,9 +9,13 @@ function ButtonActiveIcon({ icon, isActive }: Props) {
   return (
     <div className='ml-1 inline-block h-4 w-4 bg-transparent'>
       {isActive ? (
-        <img src={base64Svg} alt='SVG Image' className='h-full w-full' />
+        <img
+          src={base64Svg}
+          alt='active button indicator'
+          className='h-full w-full'
+        />
       ) : (
-        <div className='h-full w-full'></div>
+        <div className='h-full w-full' />
       )}
     </div>
   );

@@ -6,7 +6,6 @@ type Props = {
   onClick: () => void;
   isSelected?: boolean;
   isActive?: boolean;
-  largeText?: boolean;
   children: ReactElement;
   icon: string;
 };
@@ -29,7 +28,7 @@ function FilterButton({
       }`}
     >
       <div className='flex items-center'>
-        <i className={`fa-solid ${icon} text-lg`}></i>
+        <i className={`fa-solid ${icon} text-lg`} data-testid='icon' />
         <span
           className={` ml-1 hover:underline hover:dark:text-dark-secondary-color ${
             isSelected ? 'underline ' : ''
@@ -37,7 +36,7 @@ function FilterButton({
         >
           {children}
         </span>
-        {/* show the isActive icon if isActive is set*/}
+        {/* show the isActive icon if isActive is set */}
         {isActive !== undefined && (
           <ButtonActiveIcon icon={activeFilterSVG} isActive={isActive} />
         )}
@@ -45,5 +44,10 @@ function FilterButton({
     </button>
   );
 }
+
+FilterButton.defaultProps = {
+  isSelected: false,
+  isActive: false
+};
 
 export default FilterButton;

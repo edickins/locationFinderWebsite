@@ -37,6 +37,9 @@ function MyMap({
   const [markerClicks, setMarkerClicks] = useState(0);
   const [infoWindowLocation, setInfoWindowLocation] =
     useState<google.maps.LatLngLiteral>({ lat: 0, lng: 0 });
+  const [isDarkTheme, setIsDarkTheme] = useState(
+    window.matchMedia('(prefers-color-scheme:dark')
+  );
 
   const onMarkerClicked = (id: string) => {
     const marker = items.find((m) => m.id === id);
@@ -55,7 +58,7 @@ function MyMap({
         ? styles.night
         : styles.retro
     );
-  }, [window.matchMedia('(prefers-color-scheme:dark')]);
+  }, [isDarkTheme]);
 
   return (
     <div className='width-full h-full' id='map-container'>
@@ -103,5 +106,9 @@ function MyMap({
     </div>
   );
 }
+
+MyMap.defaultProps = {
+  userLocation: undefined
+};
 
 export default MyMap;

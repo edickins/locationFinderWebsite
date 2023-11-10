@@ -1,7 +1,7 @@
+import { useSearchParams } from 'react-router-dom';
 import FacilitiesList from './FacilitiesList';
 import FilterButton from '../buttons/FilterButton';
 import { useToiletsContext } from '../../context/toiletContext/toiletsContext';
-import { useSearchParams } from 'react-router-dom';
 
 interface Props {
   onClick: () => void;
@@ -19,7 +19,7 @@ function FilterSectionFacilities({
   let filtersParams = searchParams.get('filters') || '';
 
   const onFilterClicked = (facility: string, isSelected: boolean) => {
-    let arr = filtersParams.split('+').filter(Boolean);
+    const arr = filtersParams.split('+').filter(Boolean);
     const index = arr.indexOf(facility);
 
     // add or remove facilities
