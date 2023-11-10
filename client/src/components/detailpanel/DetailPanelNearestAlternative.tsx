@@ -1,4 +1,5 @@
 import { IToilet } from '../../context/toiletContext/types';
+import FilterButton from '../buttons/FilterButton';
 
 type Props = {
   item: IToilet | undefined;
@@ -11,14 +12,15 @@ function DetailPanelNearestAlternative({
 }: Props) {
   return (
     <section id='nearest-alternative-section'>
-      <h1 className='mb-4 text-lg font-bold dark:text-dark-secondary-color'>
+      <h1 className='mb-4 text-lg font-bold'>
         <p className='font-semibold'>Nearest alternative: </p>
-        <p
-          className='cursor-pointer hover:underline dark:text-white dark:hover:text-dark-primary-color'
+
+        <FilterButton
+          icon='fa-map-location-dot'
           onClick={() => onNearestAlternativeClick(item?.id)}
         >
-          {item?.long_name} (click to see on map)
-        </p>
+          <span className='text-xs'>{`${item?.long_name} (click to see on map) `}</span>
+        </FilterButton>
       </h1>
     </section>
   );

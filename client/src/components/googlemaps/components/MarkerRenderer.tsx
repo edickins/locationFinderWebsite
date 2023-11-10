@@ -1,15 +1,12 @@
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { IToilet } from '../../../context/toiletContext/types';
 import MultiMarker, { IMultiMarkerRef } from './MultiMarker';
-import { useEffect, useState } from 'react';
 
 type Props = {
   items: IToilet[];
   onMarkerClicked: (id: string) => void;
-  setGooglemapMarkerRefs: React.Dispatch<
-    React.SetStateAction<IMultiMarkerRef[]>
-  >;
-  userLocation: { lat: number; lng: number } | undefined;
+  mapMarkerRefs: React.MutableRefObject<IMultiMarkerRef[]>;
 };
 
 const checkForActiveFilter = (item: IToilet, filters: string[]): boolean => {
@@ -19,17 +16,13 @@ const checkForActiveFilter = (item: IToilet, filters: string[]): boolean => {
   );
 };
 
-function MarkerRenderer({
-  items,
-  onMarkerClicked,
-  setGooglemapMarkerRefs
-}: Props) {
-  const [markerElements, setMarkerElements] = useState<JSX.Element[]>([]);
+function MarkerRenderer({ items, onMarkerClicked, mapMarkerRefs }: Props) {
   const [searchParams] = useSearchParams();
   const [filters, setFilters] = useState<string>(
     searchParams.get('filters') || ''
   );
 
+  // udpate the list of active filters based on searchParams
   useEffect(() => {
     const windowSearch = decodeURIComponent(window.location.search);
     let windowSearchFilters = '';
@@ -42,31 +35,27 @@ function MarkerRenderer({
     if (windowSearchFilters !== decodeURIComponent(filters)) {
       setFilters(windowSearchFilters);
     }
-  }, [window.location.search]);
+  }, [searchParams, filters]);
 
-  useEffect(() => {
-    if (!items) return;
-    let arr = filters?.split('+') || [];
-    const markers = items.map((item) => {
-      const filterIsActive = checkForActiveFilter(item, arr);
-      return (
-        <MultiMarker
-          key={item.id}
-          position={item.geometry.location}
-          id={item.id}
-          isFilterActive={filterIsActive}
-          isFavourite={item.isFavourite}
-          open_status={item.open_status}
-          onMarkerClicked={onMarkerClicked}
-          data-testid={`marker-${item.id}`}
-          setGooglemapMarkerRefs={setGooglemapMarkerRefs}
-        />
-      );
-    });
-    setMarkerElements(markers);
-  }, [filters, items]);
+  if (!items || items.length === 0) return null;
 
-  return markerElements;
+  const arr = filters?.split('+') || [];
+  return items.map((item) => {
+    const filterIsActive = checkForActiveFilter(item, arr);
+    return (
+      <MultiMarker
+        key={item.id}
+        position={item.geometry.location}
+        id={item.id}
+        isFilterActive={filterIsActive}
+        isFavourite={item.isFavourite}
+        open_status={item.open_status}
+        onMarkerClicked={onMarkerClicked}
+        data-testid={`marker-${item.id}`}
+        mapMarkerRefs={mapMarkerRefs}
+      />
+    );
+  });
 }
 
 export default MarkerRenderer;

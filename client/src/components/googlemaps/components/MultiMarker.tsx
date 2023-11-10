@@ -1,15 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useMapContext, useMapEffect } from 'googlemaps-react-primitives';
 import { regularSVG, activeFilterSVG, closedSVG } from './markerSVGs';
+
 interface Props extends google.maps.MarkerOptions {
   id: string;
   isFavourite: boolean;
   isFilterActive: boolean;
   open_status: string;
   onMarkerClicked?: (id: string) => void;
-  setGooglemapMarkerRefs: React.Dispatch<
-    React.SetStateAction<IMultiMarkerRef[]>
-  >;
+  mapMarkerRefs: React.MutableRefObject<IMultiMarkerRef[]>;
 }
 
 export type IMultiMarkerRef = {
@@ -31,7 +30,7 @@ export default function MultiMarker({
   isFilterActive,
   open_status,
   onMarkerClicked,
-  setGooglemapMarkerRefs,
+  mapMarkerRefs,
   ...options
 }: Props) {
   const marker = useRef<google.maps.Marker>();
@@ -43,34 +42,41 @@ export default function MultiMarker({
   const onClickRef = useRef(onMarkerClicked);
   onClickRef.current = onMarkerClicked;
 
-  function panToWithOffset(
-    latlng: google.maps.LatLng | google.maps.LatLngLiteral | null | undefined,
-    offsetX: number,
-    offsetY: number
-  ) {
-    if (map && latlng) {
-      const ov = new google.maps.OverlayView();
-      ov.onAdd = function () {
-        const proj = this.getProjection();
-        const aPoint: google.maps.Point | null =
-          proj.fromLatLngToContainerPixel(
-            latlng instanceof google.maps.LatLng
-              ? { lat: latlng.lat(), lng: latlng.lng() }
-              : latlng
-          );
-        if (aPoint !== null) {
-          aPoint.x = aPoint.x + offsetX;
-          aPoint.y = aPoint.y + offsetY;
-          const latLng = proj.fromContainerPixelToLatLng(aPoint);
-          if (latLng !== null) {
-            map.panTo(latLng);
+  // pan to a marker location *and* offset for the available screen space
+  // to accommodate the panel which will be covering the map
+  const panToWithOffset = useCallback(
+    (
+      latlng: google.maps.LatLng | google.maps.LatLngLiteral | null | undefined,
+      offsetX: number,
+      offsetY: number
+    ) => {
+      if (map && latlng) {
+        const ov = new google.maps.OverlayView();
+        ov.onAdd = function onAdd() {
+          // eslint-disable-next-line @typescript-eslint/no-this-alias
+          const overlay = this;
+          const proj = overlay.getProjection();
+          const aPoint: google.maps.Point | null =
+            proj.fromLatLngToContainerPixel(
+              latlng instanceof google.maps.LatLng
+                ? { lat: latlng.lat(), lng: latlng.lng() }
+                : latlng
+            );
+          if (aPoint !== null) {
+            aPoint.x += offsetX;
+            aPoint.y += offsetY;
+            const latLng = proj.fromContainerPixelToLatLng(aPoint);
+            if (latLng !== null) {
+              map.panTo(latLng);
+            }
           }
-        }
-      };
-      ov.draw = function () {};
-      ov.setMap(map);
-    }
-  }
+        };
+        ov.draw = function draw() {};
+        ov.setMap(map);
+      }
+    },
+    [map]
+  );
 
   useEffect(() => {
     // get the correct SVG for the Marker
@@ -99,22 +105,32 @@ export default function MultiMarker({
       }
       addMarker(marker.current);
       if (marker.current) {
-        setGooglemapMarkerRefs((prevItems: IMultiMarkerRef[]) => [
-          ...prevItems,
-          { id: id, marker: marker.current }
-        ]);
+        // eslint-disable-next-line no-param-reassign
+        mapMarkerRefs.current = [
+          ...mapMarkerRefs.current,
+          { id, marker: marker.current }
+        ];
       }
-
-      return () => {
-        if (marker.current) {
-          google.maps.event.clearListeners(marker, 'click');
-          removeMarker(marker.current);
-          marker.current = undefined;
-        }
-        return undefined;
-      };
     }
-  }, [addMarker, id, map, markerIcon, onMarkerClicked, options, removeMarker]);
+    return () => {
+      if (marker.current) {
+        google.maps.event.clearListeners(marker, 'click');
+        removeMarker(marker.current);
+        marker.current = undefined;
+      }
+      return undefined;
+    };
+  }, [
+    addMarker,
+    id,
+    map,
+    markerIcon,
+    onMarkerClicked,
+    options,
+    panToWithOffset,
+    removeMarker,
+    mapMarkerRefs
+  ]);
 
   useMapEffect(() => {
     if (marker.current) {

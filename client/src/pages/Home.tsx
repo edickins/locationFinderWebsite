@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import DetailPanel from '../components/detailpanel/DetailPanel';
 import FilterPanel from '../components/filterpanel/FilterPanel';
 import MyMap from '../components/googlemaps/MyMap';
@@ -12,9 +12,7 @@ function Home() {
     IToilet | undefined
   >();
   const [showPanel, setShowPanel] = useState(false);
-  const [googlemapMarkerRefs, setGooglemapMarkerRefs] = useState<
-    IMultiMarkerRef[]
-  >([]);
+  const mapMarkerRefs = useRef<IMultiMarkerRef[]>([]);
   const [userLocation, setUserLocation] = useState<
     { lat: number; lng: number } | undefined
   >();
@@ -33,15 +31,15 @@ function Home() {
         )
       );
     }
-    setShowPanel(id && selectedItem ? true : false);
+    setShowPanel(!!(id && selectedItem));
   };
 
   const handleNearestAlternativeClick = (id: string | undefined) => {
-    const alternativeItem = googlemapMarkerRefs.find(
+    const alternativeItem = mapMarkerRefs.current.find(
       (i): i is IMultiMarkerRef => i.id === id
     );
     if (alternativeItem?.marker) {
-      // trigger the click event on the google.maps.Marker for the alternative
+      // trigger the click event on the google.maps.Marker for the alternative location
       google.maps.event.trigger(alternativeItem.marker, 'click');
     }
   };
@@ -74,8 +72,8 @@ function Home() {
         items={toilets}
         setSelectedItemDetailID={setSelectedItemDetailID}
         setShowPanel={setShowPanel}
-        setGooglemapMarkerRefs={setGooglemapMarkerRefs}
         userLocation={userLocation}
+        mapMarkerRefs={mapMarkerRefs}
       />
       <DetailPanel
         item={detailPanelItem}

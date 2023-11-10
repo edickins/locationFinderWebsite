@@ -18,17 +18,15 @@ type Props = {
   items: IToilet[];
   setSelectedItemDetailID: (id: string | null) => void;
   setShowPanel: (show: boolean) => void;
-  setGooglemapMarkerRefs: React.Dispatch<
-    React.SetStateAction<IMultiMarkerRef[]>
-  >;
   userLocation?: { lat: number; lng: number };
+  mapMarkerRefs: React.MutableRefObject<IMultiMarkerRef[]>;
 };
 
 function MyMap({
   items,
   setSelectedItemDetailID,
   setShowPanel,
-  setGooglemapMarkerRefs,
+  mapMarkerRefs,
   userLocation
 }: Props) {
   const [activeMarker, setActiveMarker] = useState<string>('');
@@ -52,6 +50,7 @@ function MyMap({
     }
   };
 
+  // TODO make this work for light theme too
   useEffect(() => {
     setMapStyle(
       window.matchMedia('(prefers-color-scheme:dark').matches
@@ -87,9 +86,8 @@ function MyMap({
         >
           <MarkerRenderer
             onMarkerClicked={onMarkerClicked}
-            setGooglemapMarkerRefs={setGooglemapMarkerRefs}
             items={items}
-            userLocation={userLocation}
+            mapMarkerRefs={mapMarkerRefs}
           />
           {activeMarker && (
             <InfoWindow
