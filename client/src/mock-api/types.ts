@@ -23,14 +23,14 @@ export interface FacilityModel extends Facility {
 
 // define the Models used in the AppRegistry
 export type Models = {
-  toilet: ModelDefinition;
+  location: ModelDefinition;
   facility: ModelDefinition<Facility>;
 };
 
 // add the Models to the AppRegistry
 export type AppRegistry = Registry<
   Models,
-  { toilet: ModelDefinition; facility: ModelDefinition<Facility> }
+  { location: ModelDefinition; facility: ModelDefinition<Facility> }
 >;
 
 // export AppSchema so that 'schema' can be typed on enpoints in the server

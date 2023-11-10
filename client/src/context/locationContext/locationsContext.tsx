@@ -37,14 +37,14 @@ export default function LocationsProvider({ children }: PropsWithChildren) {
 
   // get location and facilities Arrays for the context provider
   useEffect(() => {
-    const fetchLocations = axios.get('api/v1/toilets');
+    const fetchLocations = axios.get('api/v1/locations');
     const fetchFacilities = axios.get('api/v1/facilities');
 
     Promise.all([fetchLocations, fetchFacilities])
       .then((responses) => {
         dispatchLocations({
           type: LocationActionEnum.SET_LOCATIONS,
-          payload: responses[0].data.toilets
+          payload: responses[0].data.locations
         });
         setFacilities(responses[1].data.facilities);
       })

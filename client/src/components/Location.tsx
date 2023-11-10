@@ -2,19 +2,19 @@ import { ILocation } from '../context/locationContext/types';
 import { prefixHash } from '../utils/simpleHash';
 
 interface Props {
-  toilet: ILocation;
+  location: ILocation;
 }
 
-function Toilet({ toilet }: Props) {
+function Location({ location }: Props) {
   return (
     <>
-      <h3>{toilet.long_name}</h3>
-      <p>{toilet.formatted_address}</p>
+      <h3>{location.long_name}</h3>
+      <p>{location.formatted_address}</p>
       <p>facilities</p>
       <ul>
-        {toilet.facilities.map((facility) => {
+        {location.facilities.map((facility) => {
           return (
-            <li key={`${toilet.id}${facility.short_name}`}>
+            <li key={`${location.id}${facility.short_name}`}>
               {facility.full_name}
             </li>
           );
@@ -22,8 +22,8 @@ function Toilet({ toilet }: Props) {
       </ul>
       <p>opening hours</p>
       <ul>
-        {toilet.opening_hours.map((hours) => {
-          const key = prefixHash(toilet.id, hours);
+        {location.opening_hours.map((hours) => {
+          const key = prefixHash(location.id, hours);
           return <li key={key}>{hours}</li>;
         })}
       </ul>
@@ -31,4 +31,4 @@ function Toilet({ toilet }: Props) {
   );
 }
 
-export default Toilet;
+export default Location;

@@ -15,16 +15,16 @@ const CustomSerializer = RestSerializer.extend({
 export default function makeServer() {
   createServer({
     models: {
-      toilet: Model.extend({
+      location: Model.extend({
         facilities: hasMany()
       }),
       facility: Model.extend({
-        toilets: hasMany()
+        locations: hasMany()
       })
     },
 
     serializers: {
-      toilet: CustomSerializer
+      location: CustomSerializer
     },
 
     seeds(server) {
@@ -40,21 +40,21 @@ export default function makeServer() {
       });
 
       // seed the toilets referencing the temp Array of facilities
-      toiletSeedData.forEach((toiletItem) => {
+      toiletSeedData.forEach((locationItem) => {
         // grab an Array of the facility Models<FacilityModel> to replace the strings in the JSON
-        const toiletFacilities = toiletItem.facilities.map((id) =>
+        const locationFacilities = locationItem.facilities.map((id) =>
           facilities.find((item) => item.id === id)
         );
 
         // add the Array of toiletFacilities to overwrite the strings in the JSON
-        const tempObj = { ...toiletItem, facilities: toiletFacilities };
-        server.create('toilet', tempObj);
+        const tempObj = { ...locationItem, facilities: locationFacilities };
+        server.create('location', tempObj);
       });
     },
 
     routes() {
-      this.get('/api/v1/toilets', (schema: AppSchema) => {
-        return schema.all('toilet');
+      this.get('/api/v1/locations', (schema: AppSchema) => {
+        return schema.all('location');
       });
 
       this.get('api/v1/facilities', (schema: AppSchema) => {
