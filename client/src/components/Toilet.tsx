@@ -1,8 +1,8 @@
-import { IToilet } from '../context/toiletContext/types';
+import { ILocation } from '../context/locationContext/types';
 import { prefixHash } from '../utils/simpleHash';
 
 interface Props {
-  toilet: IToilet;
+  toilet: ILocation;
 }
 
 function Toilet({ toilet }: Props) {

@@ -1,16 +1,16 @@
-import { IToilet } from '../context/toiletContext/types';
+import { ILocation } from '../context/locationContext/types';
 
-function createMapper(properties: (keyof IToilet)[]) {
-  return function mapToiletProps(toilets: IToilet[]) {
+function createMapper(properties: (keyof ILocation)[]) {
+  return function mapToiletProps(toilets: ILocation[]) {
     return toilets.map((toilet) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      return properties.reduce((obj: any, prop: keyof IToilet) => {
+      return properties.reduce((obj: any, prop: keyof ILocation) => {
         if (prop in toilet) {
           // eslint-disable-next-line no-param-reassign
-          obj[prop] = (toilet as IToilet)[prop];
+          obj[prop] = (toilet as ILocation)[prop];
         }
         return obj;
-      }, {} as IToilet);
+      }, {} as ILocation);
     });
   };
 }

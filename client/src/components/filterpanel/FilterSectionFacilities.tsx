@@ -1,7 +1,7 @@
 import { useSearchParams } from 'react-router-dom';
 import FacilitiesList from './FacilitiesList';
 import FilterButton from '../buttons/FilterButton';
-import { useToiletsContext } from '../../context/toiletContext/toiletsContext';
+import { useLocationsContext } from '../../context/locationContext/locationsContext';
 
 interface Props {
   onClick: () => void;
@@ -14,7 +14,7 @@ function FilterSectionFacilities({
   isFacilitiesSelected,
   isActive
 }: Props) {
-  const { facilities } = useToiletsContext();
+  const { facilities } = useLocationsContext();
   const [searchParams, setSearchParams] = useSearchParams();
   let filtersParams = searchParams.get('filters') || '';
 

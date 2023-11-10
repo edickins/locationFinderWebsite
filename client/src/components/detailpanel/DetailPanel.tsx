@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { IFacility, IToilet } from '../../context/toiletContext/types';
+import { IFacility, ILocation } from '../../context/locationContext/types';
 
 import DetailPanelAddress from './DetailPanelAddress';
 import DetailPanelFacilities from './DetailPanelFacilities';
@@ -8,8 +8,8 @@ import DetailPanelDateModified from './DetailPanelDateModified';
 import DetailPanelNearestAlternative from './DetailPanelNearestAlternative';
 
 type Props = {
-  item: IToilet | undefined;
-  nearestAlternativeItem: IToilet | undefined;
+  item: ILocation | undefined;
+  nearestAlternativeItem: ILocation | undefined;
   showPanel: boolean;
   onNearestAlternativeClick: (id: string | undefined) => void;
 };

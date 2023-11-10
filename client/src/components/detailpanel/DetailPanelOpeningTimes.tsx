@@ -1,9 +1,9 @@
-import { IToilet } from '../../context/toiletContext/types';
+import { ILocation } from '../../context/locationContext/types';
 import { prefixHash } from '../../utils/simpleHash';
 
 type Props = {
   openingHours: string[];
-  item: IToilet;
+  item: ILocation;
 };
 
 function DetailPanelOpeningTimes({ openingHours, item }: Props) {

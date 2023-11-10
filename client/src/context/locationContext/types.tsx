@@ -1,4 +1,4 @@
-import { ToiletActionType } from '../../reducer/toiletReducer/types';
+import { LocationActionType } from '../../reducer/locationReducer/types';
 
 interface IGeometry {
   bounds?: IViewport;
@@ -27,7 +27,7 @@ interface IAddressComponent {
   types: string[];
 }
 
-export interface IToilet {
+export interface ILocation {
   id: string;
   long_name: string;
   alphabetical_name: string;
@@ -45,13 +45,13 @@ export interface IToilet {
   isFavourite: boolean;
 }
 
-export interface IToiletsContext {
-  state: IInitialToiletsState;
-  dispatchToilets: React.Dispatch<ToiletActionType>;
+export interface ILocationsContext {
+  state: IInitialLocationsState;
+  dispatchLocations: React.Dispatch<LocationActionType>;
   facilities: IFacility[];
 }
 
-export interface IInitialToiletsState {
-  toilets: IToilet[];
+export interface IInitialLocationsState {
+  locations: ILocation[];
   error: string | Error | undefined;
 }

@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import createMapper from './createMapper';
-import { IToilet } from '../context/toiletContext/types';
+import { ILocation } from '../context/locationContext/types';
 
-const toilets: IToilet[] = [
+const toilets: ILocation[] = [
   {
     id: 'toilet001',
     long_name: 'Bartholomew House',
@@ -271,7 +271,7 @@ const toilets: IToilet[] = [
 
 describe('createMapper function', () => {
   it('returns an Array of items with exactly the correct number of properties.', () => {
-    const properties: (keyof IToilet)[] = ['id', 'long_name', 'location'];
+    const properties: (keyof ILocation)[] = ['id', 'long_name', 'location'];
     const threePropMapper = createMapper(properties);
 
     toilets.forEach((item) => {
@@ -287,7 +287,7 @@ describe('createMapper function', () => {
   });
 
   it('handles an empty array', () => {
-    const properties: (keyof IToilet)[] = ['id', 'long_name', 'location'];
+    const properties: (keyof ILocation)[] = ['id', 'long_name', 'location'];
     const threePropMapper = createMapper(properties);
 
     const results = threePropMapper([]);
@@ -295,7 +295,7 @@ describe('createMapper function', () => {
   });
 
   it('handles an incorrect array of properties to filter on', () => {
-    const properties: (keyof IToilet)[] = [
+    const properties: (keyof ILocation)[] = [
       'id',
       'long_name',
       'location',

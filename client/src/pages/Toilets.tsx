@@ -1,10 +1,10 @@
 import Toilet from '../components/Toilet';
-import { useToiletsContext } from '../context/toiletContext/toiletsContext';
+import { useLocationsContext } from '../context/locationContext/locationsContext';
 
 function Toilets() {
   const {
-    state: { toilets }
-  } = useToiletsContext();
+    state: { locations: toilets }
+  } = useLocationsContext();
   return (
     <div>
       <h3>toilets</h3>

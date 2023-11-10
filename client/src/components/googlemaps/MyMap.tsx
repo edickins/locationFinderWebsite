@@ -3,7 +3,7 @@ import { Wrapper, Status } from '@googlemaps/react-wrapper';
 import { GoogleMap } from 'googlemaps-react-primitives';
 import InfoWindow from './components/InfoWindow';
 import MarkerRenderer from './components/MarkerRenderer';
-import { IToilet } from '../../context/toiletContext/types';
+import { ILocation } from '../../context/locationContext/types';
 import { IMultiMarkerRef } from './components/MultiMarker';
 
 // import styles from './appStyles';
@@ -15,7 +15,7 @@ function renderLoadingStatus(status: Status) {
 }
 
 type Props = {
-  items: IToilet[];
+  items: ILocation[];
   setSelectedItemDetailID: (id: string | null) => void;
   setShowPanel: (show: boolean) => void;
   userLocation?: { lat: number; lng: number };

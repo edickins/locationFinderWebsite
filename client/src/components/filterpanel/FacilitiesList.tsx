@@ -1,4 +1,4 @@
-import { IFacility } from '../../context/toiletContext/types';
+import { IFacility } from '../../context/locationContext/types';
 import FacilityFormItem from './FacilityFormItem';
 
 type FacilitiesProp = {

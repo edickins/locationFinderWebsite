@@ -2728,7 +2728,7 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
+    "nearest_alternative": "toilet027",
     "opening_hours": [
       "Monday, Tuesday, Thursday, Friday - 9am to 5pm",
       "Wednesday - 9am to 6pm",

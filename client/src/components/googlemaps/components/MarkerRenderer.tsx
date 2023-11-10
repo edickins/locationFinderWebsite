@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { IToilet } from '../../../context/toiletContext/types';
+import { ILocation } from '../../../context/locationContext/types';
 import MultiMarker, { IMultiMarkerRef } from './MultiMarker';
 
 type Props = {
-  items: IToilet[];
+  items: ILocation[];
   onMarkerClicked: (id: string) => void;
   mapMarkerRefs: React.MutableRefObject<IMultiMarkerRef[]>;
 };
 
-const checkForActiveFilter = (item: IToilet, filters: string[]): boolean => {
+const checkForActiveFilter = (item: ILocation, filters: string[]): boolean => {
   if (filters.length === 0) return false;
   return item.facilities.some((facility) =>
     filters.includes(facility.short_name)

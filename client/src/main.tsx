@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './index.css';
 
-import ToiletsProvider from './context/toiletContext/toiletsContext';
+import LocationsProvider from './context/locationContext/locationsContext';
 import makeServer from './mock-api/server';
 import routesConfig from './config/routerConfig';
 
@@ -18,8 +18,8 @@ const router = createBrowserRouter(routesConfig);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <ToiletsProvider>
+    <LocationsProvider>
       <RouterProvider router={router} />
-    </ToiletsProvider>
+    </LocationsProvider>
   </React.StrictMode>
 );

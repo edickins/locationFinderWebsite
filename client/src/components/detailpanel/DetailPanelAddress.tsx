@@ -1,7 +1,7 @@
-import { IToilet } from '../../context/toiletContext/types';
+import { ILocation } from '../../context/locationContext/types';
 
 type Props = {
-  item: IToilet | undefined;
+  item: ILocation | undefined;
 };
 
 function DetailPanelAddress({ item }: Props) {

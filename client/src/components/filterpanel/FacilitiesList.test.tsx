@@ -1,7 +1,7 @@
 import { describe, it, vi, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
-import { IFacility } from '../../context/toiletContext/types';
+import { IFacility } from '../../context/locationContext/types';
 import FacilitiesList from './FacilitiesList';
 
 const mockFacilitiesData = [

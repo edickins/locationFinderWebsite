@@ -1,8 +1,8 @@
-import { IToilet } from '../../context/toiletContext/types';
+import { ILocation } from '../../context/locationContext/types';
 import FilterButton from '../buttons/FilterButton';
 
 type Props = {
-  item: IToilet | undefined;
+  item: ILocation | undefined;
   onNearestAlternativeClick: (id: string | undefined) => void;
 };
 

@@ -2,14 +2,16 @@ import { useRef, useState } from 'react';
 import DetailPanel from '../components/detailpanel/DetailPanel';
 import FilterPanel from '../components/filterpanel/FilterPanel';
 import MyMap from '../components/googlemaps/MyMap';
-import { useToiletsContext } from '../context/toiletContext/toiletsContext';
-import { IToilet } from '../context/toiletContext/types';
+import { useLocationsContext } from '../context/locationContext/locationsContext';
+import { ILocation } from '../context/locationContext/types';
 import { IMultiMarkerRef } from '../components/googlemaps/components/MultiMarker';
 
 function Home() {
-  const [detailPanelItem, setDetailPanelItem] = useState<IToilet | undefined>();
+  const [detailPanelItem, setDetailPanelItem] = useState<
+    ILocation | undefined
+  >();
   const [nearestAlternativeItem, setNearestAlternativeItem] = useState<
-    IToilet | undefined
+    ILocation | undefined
   >();
   const [showPanel, setShowPanel] = useState(false);
   const mapMarkerRefs = useRef<IMultiMarkerRef[]>([]);
@@ -18,15 +20,15 @@ function Home() {
   >();
 
   const {
-    state: { toilets }
-  } = useToiletsContext();
+    state: { locations }
+  } = useLocationsContext();
 
   const setSelectedItemDetailID = (id: string | null) => {
-    const selectedItem = toilets.find((toilet) => toilet.id === id);
+    const selectedItem = locations.find((location) => location.id === id);
     if (selectedItem) {
       setDetailPanelItem(selectedItem);
       setNearestAlternativeItem(
-        toilets.find(
+        locations.find(
           (toilet) => toilet.id === selectedItem?.nearest_alternative
         )
       );
@@ -71,7 +73,7 @@ function Home() {
   return (
     <main className='absolute bottom-0 top-16 w-full' id='home-container'>
       <MyMap
-        items={toilets}
+        items={locations}
         setSelectedItemDetailID={setSelectedItemDetailID}
         setShowPanel={setShowPanel}
         userLocation={userLocation}
