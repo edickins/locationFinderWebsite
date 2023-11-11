@@ -10,6 +10,8 @@ function DetailPanelNearestAlternative({
   item,
   onNearestAlternativeClick
 }: Props) {
+  if (!item) return null;
+
   return (
     <section id='nearest-alternative-section'>
       <h1 className='mb-4 text-lg font-bold'>
@@ -17,9 +19,9 @@ function DetailPanelNearestAlternative({
 
         <FilterButton
           icon='fa-map-location-dot'
-          onClick={() => onNearestAlternativeClick(item?.id)}
+          onClick={() => onNearestAlternativeClick(item.id)}
         >
-          <span className='text-xs'>{`${item?.long_name} (click to see on map) `}</span>
+          <span className='text-xs'>{`${item.long_name} (click to see on map) `}</span>
         </FilterButton>
       </h1>
     </section>
