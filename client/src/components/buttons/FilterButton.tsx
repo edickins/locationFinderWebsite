@@ -38,7 +38,11 @@ function FilterButton({
         </span>
         {/* show the isActive icon if isActive is set */}
         {isActive !== undefined && (
-          <ButtonActiveIcon icon={activeFilterSVG} isActive={isActive} />
+          <ButtonActiveIcon
+            icon={activeFilterSVG}
+            isActive={isActive}
+            data-testid='active-icon'
+          />
         )}
       </div>
     </button>

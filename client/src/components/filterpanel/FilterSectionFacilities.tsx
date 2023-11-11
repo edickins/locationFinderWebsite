@@ -5,27 +5,23 @@ import { useLocationsContext } from '../../context/locationContext/locationsCont
 
 interface Props {
   onClick: () => void;
-  isFacilitiesSelected: boolean;
+  isSelected: boolean;
   isActive: boolean;
 }
 
-function FilterSectionFacilities({
-  onClick,
-  isFacilitiesSelected,
-  isActive
-}: Props) {
+function FilterSectionFacilities({ onClick, isSelected, isActive }: Props) {
   const { facilities } = useLocationsContext();
   const [searchParams, setSearchParams] = useSearchParams();
   let filtersParams = searchParams.get('filters') || '';
 
-  const onFilterClicked = (facility: string, isSelected: boolean) => {
+  const onFilterClicked = (facility: string, isFilterSelected: boolean) => {
     const arr = filtersParams.split('+').filter(Boolean);
     const index = arr.indexOf(facility);
 
     // add or remove facilities
-    if (isSelected && index === -1) {
+    if (isFilterSelected && index === -1) {
       arr.push(facility);
-    } else if (!isSelected && index > -1) {
+    } else if (!isFilterSelected && index > -1) {
       arr.splice(index, 1);
     } else {
       return;
@@ -49,16 +45,17 @@ function FilterSectionFacilities({
       <FilterButton
         icon='fa-filter'
         onClick={onClick}
-        isSelected={isFacilitiesSelected}
+        isSelected={isSelected}
         isActive={isActive}
       >
         <span className='text-xl'>Filter</span>
       </FilterButton>
-      {isFacilitiesSelected && (
+      {isSelected && (
         <FacilitiesList
           facilities={facilities}
           filteredFacilities={filtersParams.split('+')}
           onFilterClicked={onFilterClicked}
+          data-testid='facilities-list'
         />
       )}
     </section>

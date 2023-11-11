@@ -41,12 +41,12 @@ const FiltersContainer = forwardRef(function FiltersContainer(
       </nav>
       <FilterSectionFacilities
         onClick={handleFilterButtonClick}
-        isFacilitiesSelected={isFacilitiesSelected}
+        isSelected={isFacilitiesSelected}
         isActive={searchParams.getAll('filters').length > 0}
       />
       <FilterSectionFavourites
-        isFavouritesActive={isFavouritesSelected}
         onClick={handleFavouritesButtonClick}
+        isSelected={isFavouritesSelected}
       />
       <FilterSectionSearch />
       <DoneButton isPanelOpen={isPanelOpen} hideFilterPanel={hideFilterPanel} />
