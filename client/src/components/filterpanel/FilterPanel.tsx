@@ -68,7 +68,7 @@ function FilterPanel({ handleFindToiletButtonClick }: Props) {
         handleFilterButtonClick={handleFilterButtonClick}
         handleFavouritesButtonClick={handleFavouritesButtonClick}
         hideFilterPanel={hideFilterPanel}
-        filtersContainerRef={filtersContainerRef}
+        ref={filtersContainerRef}
       />
     </div>
   );
