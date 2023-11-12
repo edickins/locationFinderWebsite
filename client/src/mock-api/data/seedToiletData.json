@@ -6,7 +6,7 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet012",
+    "nearest_alternative": "toilet030",
     "opening_hours": [
       "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
     ],
@@ -78,7 +78,7 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet015",
+    "nearest_alternative": "toilet032",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002"],
     "address_components": [
@@ -314,7 +314,7 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
+    "nearest_alternative": "toilet026",
     "opening_hours": [
       "Tuesday-Sunday 10am-5pm",
       "Closed Mondays (except Bank Holidays 10am-5pm)"
@@ -396,7 +396,7 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
+    "nearest_alternative": "toilet004",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility003"],
     "address_components": [
@@ -475,7 +475,7 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet034",
+    "nearest_alternative": "toilet008",
     "opening_hours": [
       "Monday, Tuesday, Thursday - 9am to 7pm",
       "Wedesday, Friday - 9am to 5pm",
@@ -559,7 +559,7 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
+    "nearest_alternative": "toilet007",
     "opening_hours": [
       "Monday, Tuesday, Wednesday, Thusday, Friday, Satuday, Sunday - 9am to 5pm"
     ],
@@ -709,7 +709,7 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet027",
+    "nearest_alternative": "toilet021",
     "opening_hours": [
       "Monday, Tuesday, Thursday - 10am to 7pm",
       "Wedesday, Friday, Saturday, Sunday - 10am to 5pm"
@@ -878,7 +878,7 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet032",
+    "nearest_alternative": "toilet020",
     "opening_hours": ["Not listed."],
     "facilities": [
       "facility001",
@@ -939,7 +939,7 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet014",
+    "nearest_alternative": "toilet034",
     "opening_hours": [
       "Monday to Friday - 7am to 10pm",
       "Saturday - 9am to 5pm",
@@ -1022,7 +1022,7 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet013",
+    "nearest_alternative": "toilet034",
     "opening_hours": [
       "Monday, Wednesday, Friday - 9am to 5pm",
       "Tuesday, Thursday - 9am to 7pm",
@@ -1180,7 +1180,7 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet015",
+    "nearest_alternative": "toilet025",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002"],
     "address_components": [
@@ -1665,7 +1665,7 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
+    "nearest_alternative": "toilet032",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -1744,7 +1744,7 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet025",
+    "nearest_alternative": "toilet011",
     "opening_hours": [
       "Monday, Wednesday, Friday - 9am to 5pm",
       "Tuesday, Thursday - 9am to 7pm",
@@ -2147,7 +2147,7 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet029",
+    "nearest_alternative": "toilet025",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001"],
     "address_components": [
@@ -2226,7 +2226,7 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet035",
+    "nearest_alternative": "toilet025",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003", "facility007"],
     "address_components": [
@@ -2300,7 +2300,7 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
+    "nearest_alternative": "toilet001",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -2443,7 +2443,7 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "facility003",
+    "nearest_alternative": "toilet020",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003", "facility007"],
     "address_components": [
@@ -2579,7 +2579,7 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet013",
+    "nearest_alternative": "toilet014",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -2658,9 +2658,14 @@
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
-        "long_name": "Lewes Road",
-        "short_name": "Lewes Rd",
+        "long_name": "Kings Road",
+        "short_name": "Kings Rd",
         "types": ["route"]
+      },
+      {
+        "long_name": "Brighton and Hove",
+        "short_name": "Brighton and Hove",
+        "types": ["locality", "political"]
       },
       {
         "long_name": "Brighton",
@@ -2683,41 +2688,41 @@
         "types": ["country", "political"]
       },
       {
-        "long_name": "BN2",
-        "short_name": "BN2",
+        "long_name": "BN1",
+        "short_name": "BN1",
         "types": ["postal_code", "postal_code_prefix"]
       }
     ],
-    "formatted_address": "Lewes Rd, Brighton BN2, UK",
+    "formatted_address": "Kings Rd, Brighton and Hove, Brighton BN1, UK",
     "geometry": {
       "bounds": {
         "northeast": {
-          "lat": 50.85880390000002,
-          "lng": -0.09710339999999998
+          "lat": 50.82342569999999,
+          "lng": -0.140376
         },
         "southwest": {
-          "lat": 50.83152699999997,
-          "lng": -0.1306073
+          "lat": 50.8195346,
+          "lng": -0.156356
         }
       },
       "location": {
-        "lat": 50.8468118,
-        "lng": -0.1139131
+        "lat": 50.821255,
+        "lng": -0.1484896
       },
       "location_type": "GEOMETRIC_CENTER",
       "viewport": {
         "northeast": {
-          "lat": 50.85880390000002,
-          "lng": -0.09710339999999998
+          "lat": 50.82342569999999,
+          "lng": -0.140376
         },
         "southwest": {
-          "lat": 50.83152699999997,
-          "lng": -0.1306073
+          "lat": 50.8195346,
+          "lng": -0.156356
         }
       }
     },
-    "partial_match": true,
-    "place_id": "EhpMZXdlcyBSZCwgQnJpZ2h0b24gQk4yLCBVSyIuKiwKFAoSCc8WBfJej3VIERqdVhJ3UxeiEhQKEgl_1MjmdIV1SBGQt-Kdd6CFdw",
+    "place_id": "ChIJOQvYkA2FdUgRL4TqC7BXGRY",
+    "types": ["route"],
     "date_created": "2023-10-10T14:48:00.000Z",
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
@@ -2812,7 +2817,7 @@
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": 1,
+    "nearest_alternative": "toilet040",
     "opening_hours": [
       "Monday, Thursday - 6am to 10pm",
       "Saturday, Sunday - 7am to 6pm"
@@ -2964,7 +2969,7 @@
     "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet044",
+    "nearest_alternative": "toilet047",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -3026,7 +3031,7 @@
     "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "",
+    "nearest_alternative": "toilet037",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001"],
     "address_components": [
@@ -3091,7 +3096,7 @@
     "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet040",
+    "nearest_alternative": "toilet043",
     "opening_hours": [
       "Monday, Thursday, Friday - 9am to 5pm",
       "Wednesday, Thursday - 9am to 7pm",
@@ -3212,7 +3217,7 @@
     "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "",
+    "nearest_alternative": "toilet041",
     "opening_hours": [
       "October to March",
       "Monday to Saturday: 9am to 4pm",
@@ -3689,7 +3694,7 @@
     "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet052",
+    "nearest_alternative": "toilet053",
     "opening_hours": [
       "Monday, Thursday - 9am to 7pm",
       "Tuesday, Wednesday, Friday 9am to 5pm",
@@ -3817,7 +3822,7 @@
     "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet052",
+    "nearest_alternative": "toilet054",
     "opening_hours": ["Not listed."],
     "facilities": [
       "facility001",
@@ -3958,7 +3963,7 @@
     "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet048",
+    "nearest_alternative": "toilet049",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003", "facility008"],
     "address_components": [
