@@ -8,7 +8,14 @@
     "isFavourite": false,
     "nearest_alternative": "toilet030",
     "opening_hours": [
-      "The customer service centre is open from 9am to 4:30pm from Monday to Friday (excluding Bank Holidays)."
+      "The customer service centre is open Monday to Friday (excluding Bank Holidays).",
+      "Monday - 9am to 4.30pm",
+      "Tuesday - 9am to 4.30pm",
+      "Wednesday - 9am to 4.30pm",
+      "Thursday - 9am to 4.30pm",
+      "Friday - 9am to 4.30pm",
+      "Saturday - closed",
+      "Sunday - closed"
     ],
 
     "facilities": ["facility001", "facility002"],
@@ -233,9 +240,13 @@
     "isFavourite": false,
     "nearest_alternative": "toilet006",
     "opening_hours": [
-      "Tuesdays & Wednesdays, 12pm-5pm",
-      "Saturdays & Sundays, 10am-5pm",
-      "Closed Mondays, Thursdays and Fridays"
+      "Monday - closed",
+      "Tuesday - 12pm-5pm",
+      "Wednesday - 12pm-5pm",
+      "Thursday - closed",
+      "Friday - closed",
+      "Saturday - 10am to 5pm",
+      "Sunday - 10am to 5pm"
     ],
     "facilities": ["facility001"],
     "address_components": [
@@ -316,8 +327,13 @@
     "isFavourite": false,
     "nearest_alternative": "toilet026",
     "opening_hours": [
-      "Tuesday-Sunday 10am-5pm",
-      "Closed Mondays (except Bank Holidays 10am-5pm)"
+      "Monday - closed (except Bank Holidays 10am to 5pm)",
+      "Tuesday - 10am to 5pm",
+      "Wednesday - 10am to 5pm",
+      "Thursday - 10am to 5pm",
+      "Friday - 10am to 5pm",
+      "Saturday - 10am to 5pm",
+      "Sunday - 10am to 5pm"
     ],
     "facilities": ["facility001", "facility002"],
     "address_components": [
@@ -477,8 +493,11 @@
     "isFavourite": false,
     "nearest_alternative": "toilet008",
     "opening_hours": [
-      "Monday, Tuesday, Thursday - 9am to 7pm",
-      "Wedesday, Friday - 9am to 5pm",
+      "Monday - 9am to 7pm",
+      "Tuesday - 9am to 7pm",
+      "Wednesday - 9am to 5pm",
+      "Thursday - 9am to 7pm",
+      "Friday - 9am to 5pm",
       "Saturday - 9.30am to 5pm",
       "Sunday - 11am to 5pm"
     ],
@@ -561,7 +580,13 @@
     "isFavourite": false,
     "nearest_alternative": "toilet007",
     "opening_hours": [
-      "Monday, Tuesday, Wednesday, Thusday, Friday, Satuday, Sunday - 9am to 5pm"
+      "Monday - 9am to 5pm",
+      "Tuesday - 9am to 5pm",
+      "Wednesday - 9am to 5pm",
+      "Thursday - 9am to 5pm",
+      "Friday - 9am to 5pm",
+      "Saturday - 9am to 5pm",
+      "Sunday - 9am to 5pm"
     ],
     "facilities": ["facility001", "facility003"],
     "address_components": [
@@ -711,8 +736,13 @@
     "isFavourite": false,
     "nearest_alternative": "toilet021",
     "opening_hours": [
-      "Monday, Tuesday, Thursday - 10am to 7pm",
-      "Wedesday, Friday, Saturday, Sunday - 10am to 5pm"
+      "Monday - 10am to 7pm",
+      "Tuesday - 10am to 7pm",
+      "Wednesday - 10am to 5pm",
+      "Thursday - 10am to 7pm",
+      "Friday - 10am to 5pm",
+      "Saturday - 10am to 5pm",
+      "Sunday - 10am to 5pm"
     ],
     "facilities": ["facility001", "facility002", "facility003", "facility004"],
     "address_components": [
@@ -794,12 +824,22 @@
     "nearest_alternative": "toilet027",
     "opening_hours": [
       "October to March",
-      "Monday to Saturday: 9am to 4pm",
-      "​Sunday and public holidays: 11am to 4pm",
+      "Monday - 9am to 4pm",
+      "Tuesday - 9am to 4pm",
+      "Wednesday - 9am to 4pm",
+      "Thursday - 9am to 4pm",
+      "Friday - 9am to 4pm",
+      "Saturday - 9am to 4pm",
+      "Sunday and public holidays - 11am to 4pm",
       " ",
       "April to September",
-      "Monday to Saturday: 9am to 5.30pm",
-      "​Sunday and public holidays: 11am to 5.30pm"
+      "Monday - 9am to 5.30pm",
+      "Tuesday - 9am to 5.30pm",
+      "Wednesday - 9am to 5.30pm",
+      "Thursday - 9am to 5.30pm",
+      "Friday - 9am to 5.30pm",
+      "Saturday - 9am to 5.30pm",
+      "Sunday and public holidays - 11am to 5.30pm"
     ],
     "facilities": ["facility002"],
     "address_components": [
@@ -941,7 +981,11 @@
     "isFavourite": false,
     "nearest_alternative": "toilet034",
     "opening_hours": [
-      "Monday to Friday - 7am to 10pm",
+      "Monday - 7am to 10pm",
+      "Tuesday - 7am to 10pm",
+      "Wednesday - 7am to 10pm",
+      "Thursday - 7am to 10pm",
+      "Friday - 7am to 10pm",
       "Saturday - 9am to 5pm",
       "Sunday - 9am to 4pm"
     ],
@@ -1024,8 +1068,11 @@
     "isFavourite": false,
     "nearest_alternative": "toilet034",
     "opening_hours": [
-      "Monday, Wednesday, Friday - 9am to 5pm",
-      "Tuesday, Thursday - 9am to 7pm",
+      "Monday - 9am to 5pm",
+      "Tuesday - 9am to 7pm",
+      "Wednesday - 9am to 5pm",
+      "Thursday - 9am to 7pm",
+      "Friday - 9am to 5pm",
       "Saturday - 9.30am to 5pm",
       "Sunday - 11am to 5pm"
     ],
@@ -1266,8 +1313,11 @@
     "isFavourite": false,
     "nearest_alternative": "toilet007",
     "opening_hours": [
-      "Monday, Wednesday, Thurday - 9am to 7pm",
-      "Tuesday, Friday - 9am to 5pm",
+      "Monday - 9am to 7pm",
+      "Tuesday - 9am to 5pm",
+      "Wednesday - 9am to 7pm",
+      "Thursday - 9am to 5pm",
+      "Friday - 9am to 7pm",
       "Saturday - 9.30am to 5pm",
       "Sunday - 11am to 5pm"
     ],
@@ -1578,8 +1628,11 @@
     "isFavourite": false,
     "nearest_alternative": "toilet010",
     "opening_hours": [
-      "Monday, Thursday - 6am to 10pm",
-      "Tuesday, Wednesday, Friday 6.30am to 10pm",
+      "Monday - 6am to 10pm",
+      "Tuesday - 6.30am to 10pm",
+      "Wednesday - 6.30am to 10pm",
+      "Thursday - 6am to 10pm",
+      "Friday - 6.30am to 10pm",
       "Saturday - 8am to 6pm",
       "Sunday - 8am to 7.30pm"
     ],
@@ -1746,8 +1799,11 @@
     "isFavourite": false,
     "nearest_alternative": "toilet011",
     "opening_hours": [
-      "Monday, Wednesday, Friday - 9am to 5pm",
-      "Tuesday, Thursday - 9am to 7pm",
+      "Monday - 9am to 5pm",
+      "Tuesday - 9am to 7pm",
+      "Wednesday - 9am to 5pm",
+      "Thursday - 9am to 7pm",
+      "Friday - 9am to 5pm",
       "Saturday - 9.30am to 5pm",
       "Sunday - 11am to 5pm"
     ],
@@ -2067,8 +2123,13 @@
     "isFavourite": false,
     "nearest_alternative": "toilet036",
     "opening_hours": [
-      "Monday to Friday - 8.30am to 10pm",
-      "Saturday, Sunday - 9am to 5pm"
+      "Monday - 8.30am to 10pm",
+      "Tuesday - 8.30am to 10pm",
+      "Wednesday - 8.30am to 10pm",
+      "Thursday - 8.30am to 10pm",
+      "Friday - 8.30am to 10pm",
+      "Saturday - 9am to 5pm",
+      "Sunday - 9am to 5pm"
     ],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -2735,8 +2796,11 @@
     "isFavourite": false,
     "nearest_alternative": "toilet027",
     "opening_hours": [
-      "Monday, Tuesday, Thursday, Friday - 9am to 5pm",
+      "Monday - 9am to 5pm",
+      "Tuesday - 9am to 5pm",
       "Wednesday - 9am to 6pm",
+      "Thursday - 9am to 5pm",
+      "Friday - 9am to 5pm",
       "Saturday - 9.30am to 4pm",
       "Sunday - closed"
     ],
@@ -2819,8 +2883,13 @@
     "isFavourite": false,
     "nearest_alternative": "toilet040",
     "opening_hours": [
-      "Monday, Thursday - 6am to 10pm",
-      "Saturday, Sunday - 7am to 6pm"
+      "Monday - 6am to 10pm",
+      "Tuesday - 6am to 10pm",
+      "Wednesday - 6am to 10pm",
+      "Thursday - 6am to 10pm",
+      "Friday - 6am to 10pm",
+      "Saturday - 7am to 6pm",
+      "Sunday - 7am to 6pm"
     ],
     "facilities": ["facility001", "facility002"],
     "address_components": [
@@ -3023,7 +3092,6 @@
     "date_modified": "2023-10-10T14:48:00.000Z",
     "types": ["route"]
   },
-
   {
     "id": "toilet040",
     "long_name": "Greenleas Hangleton",
@@ -3098,8 +3166,11 @@
     "isFavourite": false,
     "nearest_alternative": "toilet043",
     "opening_hours": [
-      "Monday, Thursday, Friday - 9am to 5pm",
-      "Wednesday, Thursday - 9am to 7pm",
+      "Monday - 9am to 5pm",
+      "Tuesday - 9am to 5pm",
+      "Wednesday - 9am to 7pm",
+      "Thursday - 9am to 7pm",
+      "Friday - 9am to 5pm",
       "Saturday - 9.30am to 5pm",
       "Sunday - 11am to 5pm"
     ],
@@ -3161,12 +3232,22 @@
     "nearest_alternative": "",
     "opening_hours": [
       "October to March",
-      "Monday to Saturday: 9am to 4pm",
-      "​Sunday and public holidays: 11am to 4pm",
+      "Monday - 9am to 4pm",
+      "Tuesday - 9am to 4pm",
+      "Wednesday - 9am to 4pm",
+      "Thursday - 9am to 4pm",
+      "Friday - 9am to 4pm",
+      "Saturday - 9am to 4pm",
+      "Sunday and public holidays - 11am to 4pm",
       " ",
       "April to September",
-      "Monday to Saturday: 9am to 5.30pm",
-      "​Sunday and public holidays: 11am to 5.30pm"
+      "Monday - 9am to 5.30pm",
+      "Tuesday - 9am to 5.30pm",
+      "Wednesday - 9am to 5.30pm",
+      "Thursday - 9am to 5.30pm",
+      "Friday - 9am to 5.30pm",
+      "Saturday - 9am to 5.30pm",
+      "Sunday and public holidays - 11am to 5.30pm"
     ],
     "facilities": ["facility002"],
     "address_components": [
@@ -3220,12 +3301,22 @@
     "nearest_alternative": "toilet041",
     "opening_hours": [
       "October to March",
-      "Monday to Saturday: 9am to 4pm",
-      "​Sunday and public holidays: 11am to 4pm",
+      "Monday - 9am to 4pm",
+      "Tuesday - 9am to 4pm",
+      "Wednesday - 9am to 4pm",
+      "Thursday - 9am to 4pm",
+      "Friday - 9am to 4pm",
+      "Saturday - 9am to 4pm",
+      "Sunday and public holidays - 11am to 4pm",
       " ",
       "April to September",
-      "Monday to Saturday: 9am to 5.30pm",
-      "​Sunday and public holidays: 11am to 5.30pm"
+      "Monday - 9am to 5.30pm",
+      "Tuesday - 9am to 5.30pm",
+      "Wednesday - 9am to 5.30pm",
+      "Thursday - 9am to 5.30pm",
+      "Friday - 9am to 5.30pm",
+      "Saturday - 9am to 5.30pm",
+      "Sunday and public holidays - 11am to 5.30pm"
     ],
     "facilities": ["facility002"],
     "address_components": [
@@ -3278,8 +3369,11 @@
     "isFavourite": false,
     "nearest_alternative": "toilet045",
     "opening_hours": [
-      "Monday, Tuesday, Thursday, Friday - 10am to 5pm",
+      "Monday - 10am to 5pm",
+      "Tuesday - 10am to 5pm",
       "Wednesday - 10am to 7pm",
+      "Thursday - 10am to 5pm",
+      "Friday - 10am to 5pm",
       "Saturday - 10am to 7pm",
       "Sunday - closed"
     ],
@@ -3696,8 +3790,11 @@
     "isFavourite": false,
     "nearest_alternative": "toilet053",
     "opening_hours": [
-      "Monday, Thursday - 9am to 7pm",
-      "Tuesday, Wednesday, Friday 9am to 5pm",
+      "Monday - 9am to 7pm",
+      "Tuesday - 9am to 5pm",
+      "Wednesday - 9am to 5pm",
+      "Thursday - 9am to 7pm",
+      "Friday - 9am to 5pm",
       "Saturday - 9.30am to 5pm",
       "Sunday - 11am to 5pm"
     ],
