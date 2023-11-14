@@ -1,6 +1,10 @@
 import SearchResultsList from './SearchResultsList';
 
-function FilterSectionSearch() {
+type Props = {
+  isSelected: boolean;
+};
+
+function FilterSectionSearch({ isSelected }: Props) {
   return (
     <section id='results-container' className='p-4'>
       <h2 className='text-xl font-semibold dark:text-dark-primary-color'>

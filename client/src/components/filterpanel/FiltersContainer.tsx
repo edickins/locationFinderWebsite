@@ -12,6 +12,7 @@ type Props = {
   hideFilterPanel: () => void;
   isFacilitiesSelected: boolean;
   isFavouritesSelected: boolean;
+  isSearchActive: boolean;
   isPanelOpen: boolean;
 };
 
@@ -19,6 +20,7 @@ const FiltersContainer = forwardRef(function FiltersContainer(
   {
     isFacilitiesSelected,
     isFavouritesSelected,
+    isSearchActive,
     isPanelOpen,
     handleFilterButtonClick,
     handleFavouritesButtonClick,
@@ -48,7 +50,7 @@ const FiltersContainer = forwardRef(function FiltersContainer(
         onClick={handleFavouritesButtonClick}
         isSelected={isFavouritesSelected}
       />
-      <FilterSectionSearch />
+      <FilterSectionSearch isSelected={isSearchActive} />
       <DoneButton isPanelOpen={isPanelOpen} hideFilterPanel={hideFilterPanel} />
     </section>
   );

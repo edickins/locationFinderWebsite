@@ -6,6 +6,12 @@ type Props = {
   handleFilterButtonClick: () => void;
   handleFavouritesButtonClick: () => void;
   handleFindToiletButtonClick: () => void;
+  clearAllSearches: () => void;
+  addLocationToResults: (
+    matches: RegExpMatchArray | null,
+    locationID: string,
+    term: string
+  ) => void;
   isFacilitiesSelected: boolean;
   isFavouritesSelected: boolean;
 };
@@ -14,10 +20,13 @@ function FilterPanelNav({
   handleFilterButtonClick,
   handleFavouritesButtonClick,
   handleFindToiletButtonClick,
+  addLocationToResults,
+  clearAllSearches,
   isFacilitiesSelected,
   isFavouritesSelected
 }: Props) {
   const [searchParams] = useSearchParams();
+
   return (
     <nav
       id='filter-nav'
@@ -50,7 +59,10 @@ function FilterPanelNav({
         </FilterButton>
       </div>
       <div className='flex justify-center'>
-        <SearchLocation />
+        <SearchLocation
+          addLocationToResults={addLocationToResults}
+          clearAllSearches={clearAllSearches}
+        />
       </div>
     </nav>
   );

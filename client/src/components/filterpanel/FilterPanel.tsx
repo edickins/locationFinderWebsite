@@ -10,6 +10,9 @@ function FilterPanel({ handleFindToiletButtonClick }: Props) {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const [isFacilitiesSelected, setIsFacilitiesActive] = useState(false);
   const [isFavouritesSelected, setIsFavouritesActive] = useState(false);
+  const [isSearchActive, setIsSearchActive] = useState(false);
+  const matchesRef = useRef<Set<string>>(new Set());
+  const perfectMatchesRef = useRef<Set<string>>(new Set());
 
   const filtersContainerRef = useRef<HTMLElement | null>(null);
 
@@ -33,6 +36,7 @@ function FilterPanel({ handleFindToiletButtonClick }: Props) {
       setIsPanelOpen(false);
       setIsFavouritesActive(false);
       setIsFacilitiesActive(false);
+      setIsSearchActive(false);
     }
   };
 
@@ -41,6 +45,7 @@ function FilterPanel({ handleFindToiletButtonClick }: Props) {
       showFilterPanel();
       setIsFacilitiesActive(true);
       setIsFavouritesActive(false);
+      setIsSearchActive(false);
     }
   };
 
@@ -49,7 +54,41 @@ function FilterPanel({ handleFindToiletButtonClick }: Props) {
       showFilterPanel();
       setIsFacilitiesActive(false);
       setIsFavouritesActive(true);
+      setIsSearchActive(false);
     }
+  };
+
+  const handleSearchPanelOnChange = () => {
+    if (filtersContainerRef.current) {
+      showFilterPanel();
+      setIsFacilitiesActive(false);
+      setIsFavouritesActive(false);
+      setIsSearchActive(true);
+    }
+  };
+
+  const addLocationToResults = (
+    matches: RegExpMatchArray | null,
+    locationID: string,
+    term: string
+  ): void => {
+    if (matches !== null) {
+      matchesRef.current?.add(locationID);
+    }
+
+    matches?.forEach((match) => {
+      if (match === term) {
+        perfectMatchesRef.current?.add(locationID);
+      }
+    });
+
+    console.log(`matches ${Array.from(matchesRef.current)}`);
+    console.log(`perfect matches ${Array.from(perfectMatchesRef.current)}`);
+  };
+
+  const clearAllSearches = () => {
+    matchesRef.current.clear();
+    perfectMatchesRef.current.clear();
   };
 
   return (
@@ -58,12 +97,15 @@ function FilterPanel({ handleFindToiletButtonClick }: Props) {
         handleFavouritesButtonClick={handleFavouritesButtonClick}
         handleFilterButtonClick={handleFilterButtonClick}
         handleFindToiletButtonClick={handleFindToiletButtonClick}
+        addLocationToResults={addLocationToResults}
+        clearAllSearches={clearAllSearches}
         isFacilitiesSelected={isFacilitiesSelected}
         isFavouritesSelected={isFavouritesSelected}
       />
       <FiltersContainer
         isFacilitiesSelected={isFacilitiesSelected}
         isFavouritesSelected={isFavouritesSelected}
+        isSearchActive={isSearchActive}
         isPanelOpen={isPanelOpen}
         handleFilterButtonClick={handleFilterButtonClick}
         handleFavouritesButtonClick={handleFavouritesButtonClick}
