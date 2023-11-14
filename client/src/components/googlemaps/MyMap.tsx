@@ -11,7 +11,7 @@ import styles from './multiMapStyles';
 import UserLocationDisplay from './components/UserLocationDisplay';
 
 function renderLoadingStatus(status: Status) {
-  return <h1>{status}</h1>;
+  return <i className='fa-duotone fa-spinner fa-spin-pulse' />;
 }
 
 type Props = {

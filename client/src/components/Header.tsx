@@ -1,6 +1,10 @@
 import { NavLink } from 'react-router-dom';
 
-function Header() {
+type Props = {
+  onMenuButtonClick: () => void;
+};
+
+function Header({ onMenuButtonClick }: Props) {
   return (
     <header
       className='fixed top-0 z-10 w-full border-b-2 border-solid border-white  bg-dark-panel'
@@ -15,7 +19,9 @@ function Header() {
             className='button relative cursor-pointer text-2xl dark:text-dark-primary-color md:hidden'
             id='hamburger-button'
           >
-            <i className='fa-solid fa-bars h-full w-full' />
+            <button type='button' onClick={onMenuButtonClick}>
+              <i className='fa-solid fa-bars h-full w-full' />
+            </button>
           </div>
         </div>
         <nav

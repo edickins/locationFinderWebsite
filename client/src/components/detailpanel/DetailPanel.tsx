@@ -64,7 +64,7 @@ function DetailPanel({
     <div
       id='detail-panel-container'
       ref={detailPanelRef}
-      className='translate-all fixed bottom-0 grid h-1/2 w-full translate-y-full transform auto-rows-min gap-4 overflow-y-scroll bg-dark-panel p-8 transition-transform duration-1000 ease-in-out sm:grid-cols-1 md:grid-cols-3 md:p-12'
+      className='fixed bottom-0 grid h-1/2 w-full translate-y-full transform auto-rows-min gap-4 overflow-y-scroll bg-dark-panel p-8 transition-transform duration-1000 ease-in-out sm:grid-cols-1 md:grid-cols-3 md:p-12'
     >
       {item && (
         <div id='detail-panel'>
