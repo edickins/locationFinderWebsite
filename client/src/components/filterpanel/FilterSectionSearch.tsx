@@ -22,7 +22,10 @@ function FilterSectionSearch({
       >
         Results
       </h2>
-      <SearchResultsList />
+      <SearchResultsList
+        searchTermMatches={searchTermMatches}
+        searchTermPerfectMatches={searchTermPerfectMatches}
+      />
     </section>
   );
 }

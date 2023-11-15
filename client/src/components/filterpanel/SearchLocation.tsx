@@ -4,10 +4,12 @@ import { useLocationsContext } from '../../context/locationContext/locationsCont
 type Props = {
   setSearchTermMatches: (matches: string[]) => void;
   setSearchTermPerfectMatches: (matches: string[]) => void;
+  handleSearchPanelOnChange: () => void;
 };
 function SearchLocation({
   setSearchTermMatches,
-  setSearchTermPerfectMatches
+  setSearchTermPerfectMatches,
+  handleSearchPanelOnChange
 }: Props) {
   // store regEx matches in useRef() state
   const matchesRef = useRef<Set<string>>(new Set());
@@ -73,6 +75,7 @@ function SearchLocation({
     clearAllSearches();
     setSearchText(value);
     findTermInAddressFields(value);
+    handleSearchPanelOnChange();
   };
 
   return (

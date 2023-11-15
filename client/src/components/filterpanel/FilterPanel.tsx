@@ -76,6 +76,7 @@ function FilterPanel({ handleFindToiletButtonClick }: Props) {
         handleFavouritesButtonClick={handleFavouritesButtonClick}
         handleFilterButtonClick={handleFilterButtonClick}
         handleFindToiletButtonClick={handleFindToiletButtonClick}
+        handleSearchPanelOnChange={handleSearchPanelOnChange}
         setSearchTermMatches={setSearchTermMatches}
         setSearchTermPerfectMatches={setSearchTermPerfectMatches}
         isFacilitiesSelected={isFacilitiesSelected}

@@ -6,6 +6,7 @@ type Props = {
   handleFilterButtonClick: () => void;
   handleFavouritesButtonClick: () => void;
   handleFindToiletButtonClick: () => void;
+  handleSearchPanelOnChange: () => void;
   setSearchTermMatches: (matches: string[]) => void;
   setSearchTermPerfectMatches: (matches: string[]) => void;
   isFacilitiesSelected: boolean;
@@ -16,6 +17,7 @@ function FilterPanelNav({
   handleFilterButtonClick,
   handleFavouritesButtonClick,
   handleFindToiletButtonClick,
+  handleSearchPanelOnChange,
   setSearchTermMatches,
   setSearchTermPerfectMatches,
   isFacilitiesSelected,
@@ -58,6 +60,7 @@ function FilterPanelNav({
         <SearchLocation
           setSearchTermMatches={setSearchTermMatches}
           setSearchTermPerfectMatches={setSearchTermPerfectMatches}
+          handleSearchPanelOnChange={handleSearchPanelOnChange}
         />
       </div>
     </nav>
