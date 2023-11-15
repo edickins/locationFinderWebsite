@@ -13,6 +13,10 @@ function FilterPanel({ handleFindToiletButtonClick }: Props) {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const matchesRef = useRef<Set<string>>(new Set());
   const perfectMatchesRef = useRef<Set<string>>(new Set());
+  const [searchTermMatches, setSearchTermMatches] = useState<string[]>([]);
+  const [searchTermPerfectMatches, setSearchTermPerfectMatches] = useState<
+    string[]
+  >([]);
 
   const filtersContainerRef = useRef<HTMLElement | null>(null);
 
@@ -68,22 +72,22 @@ function FilterPanel({ handleFindToiletButtonClick }: Props) {
   };
 
   const addLocationToResults = (
-    matches: RegExpMatchArray | null,
+    regExMatches: RegExpMatchArray | null,
     locationID: string,
     term: string
   ): void => {
-    if (matches !== null) {
+    if (regExMatches !== null) {
       matchesRef.current?.add(locationID);
     }
 
-    matches?.forEach((match) => {
+    regExMatches?.forEach((match) => {
       if (match === term) {
         perfectMatchesRef.current?.add(locationID);
       }
     });
 
-    console.log(`matches ${Array.from(matchesRef.current)}`);
-    console.log(`perfect matches ${Array.from(perfectMatchesRef.current)}`);
+    setSearchTermMatches(Array.from(matchesRef.current));
+    setSearchTermPerfectMatches(Array.from(perfectMatchesRef.current));
   };
 
   const clearAllSearches = () => {
@@ -110,6 +114,8 @@ function FilterPanel({ handleFindToiletButtonClick }: Props) {
         handleFilterButtonClick={handleFilterButtonClick}
         handleFavouritesButtonClick={handleFavouritesButtonClick}
         hideFilterPanel={hideFilterPanel}
+        searchTermMatches={searchTermMatches}
+        searchTermPerfectMatches={searchTermPerfectMatches}
         ref={filtersContainerRef}
       />
     </div>

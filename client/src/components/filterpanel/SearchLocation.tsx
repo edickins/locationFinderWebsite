@@ -25,6 +25,7 @@ function SearchLocation({ addLocationToResults, clearAllSearches }: Props) {
         if (!('political' in addressComponent.types)) {
           const longNameMatches = addressComponent.long_name.match(regEx);
           const shortNameMatches = addressComponent.short_name.match(regEx);
+
           addLocationToResults(
             longNameMatches,
             location.id,

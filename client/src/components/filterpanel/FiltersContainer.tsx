@@ -10,6 +10,8 @@ type Props = {
   handleFilterButtonClick: () => void;
   handleFavouritesButtonClick: () => void;
   hideFilterPanel: () => void;
+  searchTermMatches: string[];
+  searchTermPerfectMatches: string[];
   isFacilitiesSelected: boolean;
   isFavouritesSelected: boolean;
   isSearchActive: boolean;
@@ -22,6 +24,8 @@ const FiltersContainer = forwardRef(function FiltersContainer(
     isFavouritesSelected,
     isSearchActive,
     isPanelOpen,
+    searchTermMatches,
+    searchTermPerfectMatches,
     handleFilterButtonClick,
     handleFavouritesButtonClick,
     hideFilterPanel
@@ -50,7 +54,11 @@ const FiltersContainer = forwardRef(function FiltersContainer(
         onClick={handleFavouritesButtonClick}
         isSelected={isFavouritesSelected}
       />
-      <FilterSectionSearch isSelected={isSearchActive} />
+      <FilterSectionSearch
+        isSelected={isSearchActive}
+        searchTermMatches={searchTermMatches}
+        searchTermPerfectMatches={searchTermPerfectMatches}
+      />
       <DoneButton isPanelOpen={isPanelOpen} hideFilterPanel={hideFilterPanel} />
     </section>
   );
