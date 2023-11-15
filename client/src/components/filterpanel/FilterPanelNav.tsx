@@ -6,12 +6,8 @@ type Props = {
   handleFilterButtonClick: () => void;
   handleFavouritesButtonClick: () => void;
   handleFindToiletButtonClick: () => void;
-  clearAllSearches: () => void;
-  addLocationToResults: (
-    matches: RegExpMatchArray | null,
-    locationID: string,
-    term: string
-  ) => void;
+  setSearchTermMatches: (matches: string[]) => void;
+  setSearchTermPerfectMatches: (matches: string[]) => void;
   isFacilitiesSelected: boolean;
   isFavouritesSelected: boolean;
 };
@@ -20,8 +16,8 @@ function FilterPanelNav({
   handleFilterButtonClick,
   handleFavouritesButtonClick,
   handleFindToiletButtonClick,
-  addLocationToResults,
-  clearAllSearches,
+  setSearchTermMatches,
+  setSearchTermPerfectMatches,
   isFacilitiesSelected,
   isFavouritesSelected
 }: Props) {
@@ -60,8 +56,8 @@ function FilterPanelNav({
       </div>
       <div className='flex justify-center'>
         <SearchLocation
-          addLocationToResults={addLocationToResults}
-          clearAllSearches={clearAllSearches}
+          setSearchTermMatches={setSearchTermMatches}
+          setSearchTermPerfectMatches={setSearchTermPerfectMatches}
         />
       </div>
     </nav>

@@ -11,8 +11,6 @@ function FilterSectionSearch({
   searchTermMatches,
   searchTermPerfectMatches
 }: Props) {
-  console.log(searchTermMatches);
-  console.log(searchTermPerfectMatches);
   return (
     <section id='results-container' className='p-4'>
       <h2

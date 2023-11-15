@@ -1,15 +1,42 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useLocationsContext } from '../../context/locationContext/locationsContext';
 
 type Props = {
-  addLocationToResults: (
-    matches: RegExpMatchArray | null,
+  setSearchTermMatches: (matches: string[]) => void;
+  setSearchTermPerfectMatches: (matches: string[]) => void;
+};
+function SearchLocation({
+  setSearchTermMatches,
+  setSearchTermPerfectMatches
+}: Props) {
+  // store regEx matches in useRef() state
+  const matchesRef = useRef<Set<string>>(new Set());
+  const perfectMatchesRef = useRef<Set<string>>(new Set());
+
+  const addLocationToResults = (
+    regExMatches: RegExpMatchArray | null,
     locationID: string,
     term: string
-  ) => void;
-  clearAllSearches: () => void;
-};
-function SearchLocation({ addLocationToResults, clearAllSearches }: Props) {
+  ): void => {
+    if (regExMatches !== null) {
+      matchesRef.current?.add(locationID);
+    }
+
+    regExMatches?.forEach((match) => {
+      if (match === term) {
+        perfectMatchesRef.current?.add(locationID);
+      }
+    });
+
+    setSearchTermMatches(Array.from(matchesRef.current));
+    setSearchTermPerfectMatches(Array.from(perfectMatchesRef.current));
+  };
+
+  const clearAllSearches = () => {
+    matchesRef.current.clear();
+    perfectMatchesRef.current.clear();
+  };
+
   const [searchText, setSearchText] = useState('');
   const {
     state: { locations }
@@ -42,10 +69,10 @@ function SearchLocation({ addLocationToResults, clearAllSearches }: Props) {
   };
 
   const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value: term } = e.target;
-    setSearchText(term);
+    const { value } = e.target;
     clearAllSearches();
-    findTermInAddressFields(term);
+    setSearchText(value);
+    findTermInAddressFields(value);
   };
 
   return (
