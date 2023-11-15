@@ -1,4 +1,3 @@
-import React from 'react';
 import { ILocation } from '../../context/locationContext/types';
 
 type Props = {

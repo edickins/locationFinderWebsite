@@ -67,6 +67,15 @@ function SearchLocation({
           );
         }
       });
+
+      const longNameMatches = location.long_name.match(regEx);
+      addLocationToResults(longNameMatches, location.id, location.long_name);
+      const formattedAddressMatches = location.formatted_address.match(regEx);
+      addLocationToResults(
+        formattedAddressMatches,
+        location.id,
+        location.formatted_address
+      );
     });
   };
 
@@ -74,6 +83,11 @@ function SearchLocation({
     const { value } = e.target;
     clearAllSearches();
     setSearchText(value);
+    if (value === '') {
+      setSearchTermMatches([]);
+      setSearchTermPerfectMatches([]);
+      return;
+    }
     findTermInAddressFields(value);
     handleSearchPanelOnChange();
   };
