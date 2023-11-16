@@ -2,17 +2,23 @@ import { useSearchParams } from 'react-router-dom';
 import FacilitiesList from './FacilitiesList';
 import FilterButton from '../buttons/FilterButton';
 import { useLocationsContext } from '../../context/locationContext/locationsContext';
+import { useFiltersContext } from '../../context/filtersContext/filtersContext';
+import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
 
 interface Props {
-  onClick: () => void;
-  isSelected: boolean;
   isActive: boolean;
 }
 
-function FilterSectionFacilities({ onClick, isSelected, isActive }: Props) {
+function FilterSectionFacilities({ isActive }: Props) {
   const { facilities } = useLocationsContext();
   const [searchParams, setSearchParams] = useSearchParams();
   let filtersParams = searchParams.get('filters') || '';
+  const { state, dispatchFilters } = useFiltersContext();
+  const isSelected = state.isFacilitiesSelected;
+
+  const onClick = () => {
+    dispatchFilters({ type: FiltersActionEnum.FILTER_BUTTON_CLICK });
+  };
 
   const onFilterClicked = (facility: string, isFilterSelected: boolean) => {
     const arr = filtersParams.split('+').filter(Boolean);

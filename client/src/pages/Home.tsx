@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import FiltersProvider from '../context/filtersContext/filtersContext';
 import DetailPanel from '../components/detailpanel/DetailPanel';
 import FilterPanel from '../components/filterpanel/FilterPanel';
 import MyMap from '../components/googlemaps/MyMap';
@@ -71,22 +72,26 @@ function Home() {
   };
 
   return (
-    <main className='absolute bottom-0 top-16 w-full' id='home-container'>
-      <MyMap
-        items={locations}
-        setSelectedItemDetailID={setSelectedItemDetailID}
-        setShowPanel={setShowPanel}
-        userLocation={userLocation}
-        mapMarkerRefs={mapMarkerRefs}
-      />
-      <DetailPanel
-        item={detailPanelItem}
-        nearestAlternativeItem={nearestAlternativeItem}
-        onNearestAlternativeClick={handleNearestAlternativeClick}
-        showPanel={showPanel}
-      />
-      <FilterPanel handleFindToiletButtonClick={handleFindToiletButtonClick} />
-    </main>
+    <FiltersProvider>
+      <main className='absolute bottom-0 top-16 w-full' id='home-container'>
+        <MyMap
+          items={locations}
+          setSelectedItemDetailID={setSelectedItemDetailID}
+          setShowPanel={setShowPanel}
+          userLocation={userLocation}
+          mapMarkerRefs={mapMarkerRefs}
+        />
+        <DetailPanel
+          item={detailPanelItem}
+          nearestAlternativeItem={nearestAlternativeItem}
+          onNearestAlternativeClick={handleNearestAlternativeClick}
+          showPanel={showPanel}
+        />
+        <FilterPanel
+          handleFindToiletButtonClick={handleFindToiletButtonClick}
+        />
+      </main>
+    </FiltersProvider>
   );
 }
 

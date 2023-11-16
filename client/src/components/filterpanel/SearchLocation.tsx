@@ -1,19 +1,24 @@
 import { useRef, useState } from 'react';
 import { useLocationsContext } from '../../context/locationContext/locationsContext';
+import { useFiltersContext } from '../../context/filtersContext/filtersContext';
+import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
 
 type Props = {
   setSearchTermMatches: (matches: string[]) => void;
   setSearchTermPerfectMatches: (matches: string[]) => void;
-  handleSearchPanelOnChange: () => void;
 };
 function SearchLocation({
   setSearchTermMatches,
-  setSearchTermPerfectMatches,
-  handleSearchPanelOnChange
+  setSearchTermPerfectMatches
 }: Props) {
   // store regEx matches in useRef() state
   const matchesRef = useRef<Set<string>>(new Set());
   const perfectMatchesRef = useRef<Set<string>>(new Set());
+  const { state, dispatchFilters } = useFiltersContext();
+
+  const onSearchPanelChange = () => {
+    dispatchFilters({ type: FiltersActionEnum.SEARCH_TERM_CHANGE });
+  };
 
   const addLocationToResults = (
     regExMatches: RegExpMatchArray | null,
@@ -89,7 +94,7 @@ function SearchLocation({
       return;
     }
     findTermInAddressFields(value);
-    handleSearchPanelOnChange();
+    onSearchPanelChange();
   };
 
   return (

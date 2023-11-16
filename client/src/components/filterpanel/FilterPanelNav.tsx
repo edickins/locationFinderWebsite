@@ -1,29 +1,31 @@
 import { useSearchParams } from 'react-router-dom';
 import FilterButton from '../buttons/FilterButton';
 import SearchLocation from './SearchLocation';
+import { useFiltersContext } from '../../context/filtersContext/filtersContext';
+import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
 
 type Props = {
-  handleFilterButtonClick: () => void;
-  handleFavouritesButtonClick: () => void;
   handleFindToiletButtonClick: () => void;
-  handleSearchPanelOnChange: () => void;
   setSearchTermMatches: (matches: string[]) => void;
   setSearchTermPerfectMatches: (matches: string[]) => void;
-  isFacilitiesSelected: boolean;
-  isFavouritesSelected: boolean;
 };
 
 function FilterPanelNav({
-  handleFilterButtonClick,
-  handleFavouritesButtonClick,
   handleFindToiletButtonClick,
-  handleSearchPanelOnChange,
   setSearchTermMatches,
-  setSearchTermPerfectMatches,
-  isFacilitiesSelected,
-  isFavouritesSelected
+  setSearchTermPerfectMatches
 }: Props) {
   const [searchParams] = useSearchParams();
+  const { state, dispatchFilters } = useFiltersContext();
+  const { isFavouritesSelected, isFacilitiesSelected } = state;
+
+  const onFilterButtonClick = () => {
+    dispatchFilters({ type: FiltersActionEnum.FILTER_BUTTON_CLICK });
+  };
+
+  const onFavouriteButtonClick = () => {
+    dispatchFilters({ type: FiltersActionEnum.FAVOURITES_BUTTON_CLICK });
+  };
 
   return (
     <nav
@@ -34,7 +36,7 @@ function FilterPanelNav({
       <div className='flex justify-between'>
         <FilterButton
           icon='fa-filter'
-          onClick={handleFilterButtonClick}
+          onClick={onFilterButtonClick}
           isSelected={isFacilitiesSelected}
           isActive={searchParams.getAll('filters').length > 0}
         >
@@ -43,7 +45,7 @@ function FilterPanelNav({
 
         <FilterButton
           icon='fa-star'
-          onClick={handleFavouritesButtonClick}
+          onClick={onFavouriteButtonClick}
           isSelected={isFavouritesSelected}
         >
           <span className='text-xs'>Favourites</span>
@@ -60,7 +62,6 @@ function FilterPanelNav({
         <SearchLocation
           setSearchTermMatches={setSearchTermMatches}
           setSearchTermPerfectMatches={setSearchTermPerfectMatches}
-          handleSearchPanelOnChange={handleSearchPanelOnChange}
         />
       </div>
     </nav>
