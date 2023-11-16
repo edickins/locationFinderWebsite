@@ -10,11 +10,9 @@ import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
 type Props = {
   searchTermMatches: string[];
   searchTermPerfectMatches: string[];
-  isSearchActive: boolean;
 };
 
 const FiltersContainer = function FiltersContainer({
-  isSearchActive,
   searchTermMatches,
   searchTermPerfectMatches
 }: Props) {
@@ -44,7 +42,6 @@ const FiltersContainer = function FiltersContainer({
       />
       <FilterSectionFavourites />
       <FilterSectionSearch
-        isSelected={isSearchActive}
         searchTermMatches={searchTermMatches}
         searchTermPerfectMatches={searchTermPerfectMatches}
       />

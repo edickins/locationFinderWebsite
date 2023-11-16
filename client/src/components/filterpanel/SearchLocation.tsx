@@ -14,7 +14,7 @@ function SearchLocation({
   // store regEx matches in useRef() state
   const matchesRef = useRef<Set<string>>(new Set());
   const perfectMatchesRef = useRef<Set<string>>(new Set());
-  const { state, dispatchFilters } = useFiltersContext();
+  const { dispatchFilters } = useFiltersContext();
 
   const onSearchPanelChange = () => {
     dispatchFilters({ type: FiltersActionEnum.SEARCH_TERM_CHANGE });

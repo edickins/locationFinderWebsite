@@ -1,18 +1,12 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import FilterPanelNav from './FilterPanelNav';
 import FiltersContainer from './FiltersContainer';
-import { useFiltersContext } from '../../context/filtersContext/filtersContext';
 
 type Props = {
   handleFindToiletButtonClick: () => void;
 };
 
 function FilterPanel({ handleFindToiletButtonClick }: Props) {
-  const [isPanelOpen, setIsPanelOpen] = useState(false);
-  const [isFacilitiesSelected, setIsFacilitiesActive] = useState(false);
-  const [isFavouritesSelected, setIsFavouritesActive] = useState(false);
-  const [isSearchActive, setIsSearchActive] = useState(false);
-
   const [searchTermMatches, setSearchTermMatches] = useState<string[]>([]);
   const [searchTermPerfectMatches, setSearchTermPerfectMatches] = useState<
     string[]
@@ -26,7 +20,6 @@ function FilterPanel({ handleFindToiletButtonClick }: Props) {
         setSearchTermPerfectMatches={setSearchTermPerfectMatches}
       />
       <FiltersContainer
-        isSearchActive={isSearchActive}
         searchTermMatches={searchTermMatches}
         searchTermPerfectMatches={searchTermPerfectMatches}
       />
