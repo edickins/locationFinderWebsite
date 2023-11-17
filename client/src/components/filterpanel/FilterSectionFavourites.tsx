@@ -7,7 +7,7 @@ function FilterSectionFavourites() {
   const isSelected = state.isFavouritesSelected;
 
   const onClick = () => {
-    dispatchFilters({ type: FiltersActionEnum.FILTER_BUTTON_CLICK });
+    dispatchFilters({ type: FiltersActionEnum.FAVOURITES_BUTTON_CLICK });
   };
   return (
     <section id='favourites-container' className='p-4'>

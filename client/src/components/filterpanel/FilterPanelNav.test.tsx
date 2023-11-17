@@ -4,8 +4,6 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import FilterPanelNav from './FilterPanelNav';
 
-const handleFilterButtonClick = vi.fn();
-const handleFavouritesButtonClick = vi.fn();
 const handleFindToiletButtonClick = vi.fn();
 
 vi.doMock('react-router-dom', () => ({
@@ -18,11 +16,9 @@ describe('FilterPanelNav', () => {
     render(
       <MemoryRouter>
         <FilterPanelNav
-          handleFavouritesButtonClick={handleFavouritesButtonClick}
-          handleFilterButtonClick={handleFilterButtonClick}
           handleFindToiletButtonClick={handleFindToiletButtonClick}
-          isFacilitiesSelected={false}
-          isFavouritesSelected={false}
+          setSearchTermMatches={() => {}}
+          setSearchTermPerfectMatches={() => {}}
         />
       </MemoryRouter>
     );
@@ -40,28 +36,21 @@ describe('FilterPanelNav', () => {
     render(
       <MemoryRouter>
         <FilterPanelNav
-          handleFavouritesButtonClick={handleFavouritesButtonClick}
-          handleFilterButtonClick={handleFilterButtonClick}
           handleFindToiletButtonClick={handleFindToiletButtonClick}
-          isFacilitiesSelected={false}
-          isFavouritesSelected={false}
+          setSearchTermMatches={() => {}}
+          setSearchTermPerfectMatches={() => {}}
         />
       </MemoryRouter>
     );
 
     const user = userEvent.setup();
-    const filterButton = screen.getByRole('button', { name: 'Filter' });
-    const favouritesButton = screen.getByRole('button', { name: 'Favourites' });
+
     const nearestToiletButton = screen.getByRole('button', {
       name: 'Find a toilet near me'
     });
 
-    await user.click(filterButton);
-    await user.click(favouritesButton);
     await user.click(nearestToiletButton);
 
-    expect(handleFilterButtonClick).toHaveBeenCalledOnce();
-    expect(handleFavouritesButtonClick).toHaveBeenCalledOnce();
     expect(handleFindToiletButtonClick).toHaveBeenCalledOnce();
   });
 });
