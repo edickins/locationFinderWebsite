@@ -7,7 +7,7 @@ import {
 } from 'react';
 import filtersReducer from '../../reducer/filtersReducer/filtersReducer';
 import { IFiltersContext } from './types';
-import { FiltersActionType } from '../../reducer/filtersReducer/types';
+import searchReducer from '../../reducer/searchReducer/searchReducer';
 
 const FiltersContext = createContext<IFiltersContext>({
   state: {
@@ -16,29 +16,33 @@ const FiltersContext = createContext<IFiltersContext>({
     isFavouritesSelected: false,
     isSearchActive: false
   },
-  dispatchFilters: () => {}
+  matchingLocationIds: { searchTerms: [], searchTermsPerfectMatch: [] },
+  dispatchFilters: () => {},
+  dispatchSearchResults: () => {}
 });
 
 export default function FiltersProvider({ children }: PropsWithChildren) {
-  const [state, dispatch] = useReducer(filtersReducer, {
+  const [state, dispatchFilters] = useReducer(filtersReducer, {
     isPanelOpen: false,
     isFacilitiesSelected: false,
     isFavouritesSelected: false,
     isSearchActive: false
   });
 
-  // rename 'action' to make it clear which Reducer it is from
-  const dispatchFilters = (action: FiltersActionType) => {
-    dispatch(action);
-  };
+  const [matchingLocationIds, dispatchSearchResults] = useReducer(
+    searchReducer,
+    { searchTerms: [], searchTermsPerfectMatch: [] }
+  );
 
   // create context initialValue
   const initialValue: IFiltersContext = useMemo(
     () => ({
       state,
-      dispatchFilters
+      matchingLocationIds,
+      dispatchFilters,
+      dispatchSearchResults
     }),
-    [state]
+    [state, matchingLocationIds]
   );
 
   return (
@@ -48,7 +52,7 @@ export default function FiltersProvider({ children }: PropsWithChildren) {
   );
 }
 
-// hook
+// hooks
 export const useFiltersContext = () => {
   const context = useContext(FiltersContext);
   return context;

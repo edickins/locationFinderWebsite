@@ -2,19 +2,13 @@ import { useRef, useState } from 'react';
 import { useLocationsContext } from '../../context/locationContext/locationsContext';
 import { useFiltersContext } from '../../context/filtersContext/filtersContext';
 import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
+import { SearchActionEnum } from '../../reducer/searchReducer/types';
 
-type Props = {
-  setSearchTermMatches: (matches: string[]) => void;
-  setSearchTermPerfectMatches: (matches: string[]) => void;
-};
-function SearchLocation({
-  setSearchTermMatches,
-  setSearchTermPerfectMatches
-}: Props) {
+function SearchLocation() {
   // store regEx matches in useRef() state
   const matchesRef = useRef<Set<string>>(new Set());
   const perfectMatchesRef = useRef<Set<string>>(new Set());
-  const { dispatchFilters } = useFiltersContext();
+  const { dispatchFilters, dispatchSearchResults } = useFiltersContext();
 
   const onSearchPanelChange = () => {
     dispatchFilters({ type: FiltersActionEnum.SEARCH_TERM_CHANGE });
@@ -34,9 +28,6 @@ function SearchLocation({
         perfectMatchesRef.current?.add(locationID);
       }
     });
-
-    setSearchTermMatches(Array.from(matchesRef.current));
-    setSearchTermPerfectMatches(Array.from(perfectMatchesRef.current));
   };
 
   const clearAllSearches = () => {
@@ -65,6 +56,7 @@ function SearchLocation({
             location.id,
             addressComponent.long_name
           );
+
           addLocationToResults(
             shortNameMatches,
             location.id,
@@ -82,6 +74,16 @@ function SearchLocation({
         location.formatted_address
       );
     });
+
+    dispatchSearchResults({
+      type: SearchActionEnum.ADD_SEARCH_MATCH_IDS,
+      payload: Array.from(matchesRef.current)
+    });
+
+    dispatchSearchResults({
+      type: SearchActionEnum.ADD_SEARCH_PERFECT_MATCH_IDS,
+      payload: Array.from(perfectMatchesRef.current)
+    });
   };
 
   const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -89,8 +91,15 @@ function SearchLocation({
     clearAllSearches();
     setSearchText(value);
     if (value === '') {
-      setSearchTermMatches([]);
-      setSearchTermPerfectMatches([]);
+      dispatchSearchResults({
+        type: SearchActionEnum.ADD_SEARCH_MATCH_IDS,
+        payload: []
+      });
+
+      dispatchSearchResults({
+        type: SearchActionEnum.ADD_SEARCH_PERFECT_MATCH_IDS,
+        payload: []
+      });
       return;
     }
     findTermInAddressFields(value);

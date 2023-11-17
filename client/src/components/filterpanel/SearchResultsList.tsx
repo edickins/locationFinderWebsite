@@ -2,20 +2,13 @@ import { useEffect, useState } from 'react';
 import SearchResultItem from './SearchResultItem';
 import { ILocation } from '../../context/locationContext/types';
 import { useLocationsContext } from '../../context/locationContext/locationsContext';
-
-type Props = {
-  searchTermMatches: string[];
-  searchTermPerfectMatches: string[];
-};
+import { useFiltersContext } from '../../context/filtersContext/filtersContext';
 
 function NoResults() {
   return <p>No results found.</p>;
 }
 
-function SearchResultsList({
-  searchTermMatches,
-  searchTermPerfectMatches
-}: Props) {
+function SearchResultsList() {
   const [partialMatches, setPartialMatches] = useState<ILocation[]>([]);
   const [perfectMatches, setPerfectMatches] = useState<ILocation[]>([]);
   const [searchResults, setSearchResults] = useState<ILocation[]>([]);
@@ -23,10 +16,14 @@ function SearchResultsList({
     state: { locations }
   } = useLocationsContext();
 
+  const { matchingLocationIds } = useFiltersContext();
+
+  const { searchTerms, searchTermsPerfectMatch } = matchingLocationIds;
+
   // sideEffect when search terms are updated
   useEffect(() => {
     setPartialMatches([]);
-    let matches: ILocation[] = searchTermMatches.reduce(
+    let matches: ILocation[] = searchTerms.reduce(
       (acc: ILocation[], locationID) => {
         const foundLocation = locations.find(
           (location) => location.id === locationID
@@ -38,17 +35,14 @@ function SearchResultsList({
     setPartialMatches(matches);
 
     setPerfectMatches([]);
-    matches = searchTermPerfectMatches.reduce(
-      (acc: ILocation[], locationID) => {
-        const foundLocation = locations.find(
-          (location) => location.id === locationID
-        );
-        return foundLocation ? [...acc, foundLocation] : acc;
-      },
-      []
-    );
+    matches = searchTermsPerfectMatch.reduce((acc: ILocation[], locationID) => {
+      const foundLocation = locations.find(
+        (location) => location.id === locationID
+      );
+      return foundLocation ? [...acc, foundLocation] : acc;
+    }, []);
     setPerfectMatches(matches);
-  }, [locations, searchTermMatches, searchTermPerfectMatches]);
+  }, [locations, searchTerms, searchTermsPerfectMatch]);
 
   // sideEffect when partial and perfect match Arrays are updated
   useEffect(() => {
@@ -77,8 +71,9 @@ function SearchResultsList({
 
   return (
     <div>
-      {searchTermPerfectMatches.length === 0 &&
-        searchTermMatches.length === 0 && <NoResults />}
+      {searchTerms.length === 0 && searchTermsPerfectMatch.length === 0 && (
+        <NoResults />
+      )}
       {searchResults.length > 0 &&
         searchResults.map((location) => {
           return <SearchResultItem key={location.id} location={location} />;

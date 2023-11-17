@@ -17,8 +17,6 @@ describe('FilterPanelNav', () => {
       <MemoryRouter>
         <FilterPanelNav
           handleFindToiletButtonClick={handleFindToiletButtonClick}
-          setSearchTermMatches={() => {}}
-          setSearchTermPerfectMatches={() => {}}
         />
       </MemoryRouter>
     );
@@ -37,8 +35,6 @@ describe('FilterPanelNav', () => {
       <MemoryRouter>
         <FilterPanelNav
           handleFindToiletButtonClick={handleFindToiletButtonClick}
-          setSearchTermMatches={() => {}}
-          setSearchTermPerfectMatches={() => {}}
         />
       </MemoryRouter>
     );

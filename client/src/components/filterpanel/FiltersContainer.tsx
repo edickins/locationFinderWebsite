@@ -7,15 +7,7 @@ import ClosePanelButton from '../buttons/ClosePanelButton';
 import { useFiltersContext } from '../../context/filtersContext/filtersContext';
 import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
 
-type Props = {
-  searchTermMatches: string[];
-  searchTermPerfectMatches: string[];
-};
-
-const FiltersContainer = function FiltersContainer({
-  searchTermMatches,
-  searchTermPerfectMatches
-}: Props) {
+const FiltersContainer = function FiltersContainer() {
   const [searchParams] = useSearchParams();
   const { state, dispatchFilters } = useFiltersContext();
   const { isPanelOpen } = state;
@@ -41,10 +33,7 @@ const FiltersContainer = function FiltersContainer({
         isActive={searchParams.getAll('filters').length > 0}
       />
       <FilterSectionFavourites />
-      <FilterSectionSearch
-        searchTermMatches={searchTermMatches}
-        searchTermPerfectMatches={searchTermPerfectMatches}
-      />
+      <FilterSectionSearch />
       <DoneButton isPanelOpen={isPanelOpen} hideFilterPanel={hideFilterPanel} />
     </section>
   );

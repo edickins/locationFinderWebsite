@@ -6,15 +6,9 @@ import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
 
 type Props = {
   handleFindToiletButtonClick: () => void;
-  setSearchTermMatches: (matches: string[]) => void;
-  setSearchTermPerfectMatches: (matches: string[]) => void;
 };
 
-function FilterPanelNav({
-  handleFindToiletButtonClick,
-  setSearchTermMatches,
-  setSearchTermPerfectMatches
-}: Props) {
+function FilterPanelNav({ handleFindToiletButtonClick }: Props) {
   const [searchParams] = useSearchParams();
   const { state, dispatchFilters } = useFiltersContext();
   const { isFavouritesSelected, isFacilitiesSelected } = state;
@@ -59,10 +53,7 @@ function FilterPanelNav({
         </FilterButton>
       </div>
       <div className='flex justify-center'>
-        <SearchLocation
-          setSearchTermMatches={setSearchTermMatches}
-          setSearchTermPerfectMatches={setSearchTermPerfectMatches}
-        />
+        <SearchLocation />
       </div>
     </nav>
   );
