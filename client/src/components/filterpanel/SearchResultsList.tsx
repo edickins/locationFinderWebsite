@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import SearchResultItem from './SearchResultItem';
 import { ILocation } from '../../context/locationContext/types';
 import { useLocationsContext } from '../../context/locationContext/locationsContext';
 import { useFiltersContext } from '../../context/filtersContext/filtersContext';
+import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
 
 function NoResults() {
   return <p>No results found.</p>;
@@ -16,9 +18,23 @@ function SearchResultsList() {
     state: { locations }
   } = useLocationsContext();
 
-  const { matchingLocationIds } = useFiltersContext();
-
+  const { matchingLocationIds, dispatchFilters } = useFiltersContext();
   const { searchTerms, searchTermsPerfectMatch } = matchingLocationIds;
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const onSearchResultClick = (locationID: string): void => {
+    // Create a new URLSearchParams instance to clone the current parameters
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+
+    // Set the new locationID parameter
+    newSearchParams.set('locationID', locationID);
+
+    // Replace the search parameters - this will be picked up in MyMap
+    setSearchParams(newSearchParams);
+
+    // close the filter panel
+    dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
+  };
 
   // sideEffect when search terms are updated
   useEffect(() => {
@@ -76,7 +92,13 @@ function SearchResultsList() {
       )}
       {searchResults.length > 0 &&
         searchResults.map((location) => {
-          return <SearchResultItem key={location.id} location={location} />;
+          return (
+            <SearchResultItem
+              key={location.id}
+              location={location}
+              onSearchResultClick={onSearchResultClick}
+            />
+          );
         })}
     </div>
   );

@@ -14,7 +14,7 @@ function FacilitiesList({
 }: FacilitiesProp) {
   return (
     <>
-      <ul className='list-none'>
+      <ul className='mt-4 list-none'>
         {facilities &&
           facilities.map((facility) => {
             return (

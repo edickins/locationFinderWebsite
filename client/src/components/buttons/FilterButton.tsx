@@ -6,6 +6,7 @@ type Props = {
   onClick: () => void;
   isSelected?: boolean;
   isActive?: boolean;
+  reverseColours?: boolean;
   children: ReactElement;
   icon: string;
 };
@@ -14,25 +15,29 @@ function FilterButton({
   onClick,
   isSelected,
   isActive,
+  reverseColours,
   children,
   icon
 }: Props) {
+  const regularColour = reverseColours
+    ? 'dark:text-dark-secondary-color'
+    : 'dark:text-dark-primary-color';
+  const hoverColour = reverseColours
+    ? `dark:text-dark-primary-color`
+    : 'dark:text-dark-secondary-color';
+
   return (
     <button
       type='button'
       onClick={onClick}
-      className={`mx-auto underline-offset-4 hover:dark:text-dark-secondary-color ${
-        isSelected
-          ? `dark:text-dark-secondary-color`
-          : `dark:text-dark-primary-color`
+      className={`mx-auto underline-offset-4 text:${regularColour} hover:${hoverColour} ${
+        isSelected ? hoverColour : regularColour
       }`}
     >
       <div className='flex items-center'>
         <i className={`fa-solid ${icon} text-lg`} data-testid='icon' />
         <span
-          className={` ml-1 hover:underline hover:dark:text-dark-secondary-color ${
-            isSelected ? 'underline ' : ''
-          }`}
+          className={` ml-1 hover:underline  ${isSelected ? 'underline ' : ''}`}
         >
           {children}
         </span>
@@ -51,7 +56,8 @@ function FilterButton({
 
 FilterButton.defaultProps = {
   isSelected: false,
-  isActive: false
+  isActive: false,
+  reverseColours: false
 };
 
 export default FilterButton;

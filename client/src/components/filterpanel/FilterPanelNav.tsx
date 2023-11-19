@@ -47,6 +47,7 @@ function FilterPanelNav({ handleFindToiletButtonClick }: Props) {
 
         <FilterButton
           icon='fa-magnifying-glass'
+          reverseColours
           onClick={handleFindToiletButtonClick}
         >
           <span className='text-xs'>Find a toilet near me</span>

@@ -88,6 +88,7 @@ function SearchLocation() {
 
   const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
+    // set the useRef values to empty strings
     clearAllSearches();
     setSearchText(value);
     if (value === '') {
@@ -102,6 +103,7 @@ function SearchLocation() {
       });
       return;
     }
+    // look for the entered text in the address_component fields
     findTermInAddressFields(value);
     onSearchPanelChange();
   };
@@ -112,8 +114,9 @@ function SearchLocation() {
       name='search'
       id='search'
       placeholder='search location...'
-      className='w-48 rounded-md px-2 dark:text-gray-900'
+      className='mb-1 w-48 rounded-sm px-2  dark:text-gray-900'
       onChange={onSearchChange}
+      onFocus={onSearchChange}
     />
   );
 }

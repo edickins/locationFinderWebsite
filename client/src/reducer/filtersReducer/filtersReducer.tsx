@@ -20,7 +20,10 @@ export default function filtersReducer(
     case FiltersActionEnum.HIDE_FILTER_PANEL:
       return {
         ...state,
-        isPanelOpen: false
+        isPanelOpen: false,
+        isFacilitiesSelected: false,
+        isFavouritesSelected: false,
+        isSearchActive: false
       };
     case FiltersActionEnum.FILTER_BUTTON_CLICK:
       return {

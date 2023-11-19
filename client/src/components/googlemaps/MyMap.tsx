@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Wrapper, Status } from '@googlemaps/react-wrapper';
 import { GoogleMap } from 'googlemaps-react-primitives';
 import InfoWindow from './components/InfoWindow';
@@ -29,6 +30,7 @@ function MyMap({
   mapMarkerRefs,
   userLocation
 }: Props) {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [activeMarker, setActiveMarker] = useState<string>('');
   const [infoWindowData, setInfoWindowData] = useState<string>('');
   const [mapStyle, setMapStyle] = useState<google.maps.MapTypeStyle[]>([]);
@@ -55,6 +57,14 @@ function MyMap({
         : styles.retro
     );
   }, []);
+
+  useEffect(() => {
+    console.log(searchParams.get('locationID'));
+    const locationID = searchParams.get('locationID');
+    if (locationID) {
+      // onMarkerClicked(locationID);
+    }
+  }, [searchParams]);
 
   return (
     <div className='width-full h-full' id='map-container'>

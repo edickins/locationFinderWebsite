@@ -19,7 +19,7 @@ const FiltersContainer = function FiltersContainer() {
   return (
     <section
       id='filters-container'
-      className={`fixed bottom-0 left-0 right-0 top-36  m-4 bg-dark-panel  bg-opacity-95 p-4 ${
+      className={`fixed bottom-0 left-0 right-0 top-36  mx-2 my-4 bg-dark-panel  bg-opacity-95 p-4 ${
         isPanelOpen ? 'block' : 'hidden'
       }`}
     >
