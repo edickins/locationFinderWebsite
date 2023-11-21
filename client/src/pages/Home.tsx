@@ -25,7 +25,7 @@ function Home() {
     googleMapRef.current = map;
   };
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [searchParams, unused] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const {
     state: { locations }
   } = useLocationsContext();
@@ -96,8 +96,10 @@ function Home() {
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
-
-          setUserLocation(pos);
+          const newSearchParams = new URLSearchParams(searchParams.toString());
+          newSearchParams.set('userLocation', JSON.stringify(pos));
+          setSearchParams(newSearchParams);
+          // setUserLocation(pos);
           setShowPanel(false);
         },
         () => {
@@ -118,7 +120,7 @@ function Home() {
         <MyMap
           items={locations}
           setSelectedItemDetailID={setSelectedItemDetailID}
-          userLocation={userLocation}
+          // userLocation={userLocation}
           mapMarkerRefs={mapMarkerRefs}
           setGoogleMapRef={setGoogleMapRef}
         />

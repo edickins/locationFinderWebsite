@@ -20,7 +20,7 @@ type Props = {
   items: ILocation[];
   setSelectedItemDetailID: (id: string | null) => void;
   setGoogleMapRef: (map: google.maps.Map) => void;
-  userLocation?: { lat: number; lng: number };
+  // userLocation?: { lat: number; lng: number };
   mapMarkerRefs: React.MutableRefObject<IMultiMarkerRef[]>;
 };
 
@@ -29,9 +29,9 @@ function MyMap({
   setSelectedItemDetailID,
 
   setGoogleMapRef,
-  mapMarkerRefs,
-  userLocation
-}: Props) {
+  mapMarkerRefs
+}: // userLocation
+Props) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, unused] = useSearchParams();
   const [activeMarker, setActiveMarker] = useState<string>('');
@@ -100,15 +100,11 @@ function MyMap({
               position={infoWindowLocation}
             />
           )}
-          {userLocation && <UserLocationDisplay userLocation={userLocation} />}
+          <UserLocationDisplay />
         </GoogleMap>
       </Wrapper>
     </div>
   );
 }
-
-MyMap.defaultProps = {
-  userLocation: undefined
-};
 
 export default MyMap;

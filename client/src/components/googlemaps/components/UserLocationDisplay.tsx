@@ -1,16 +1,33 @@
+import { useSearchParams } from 'react-router-dom';
 import { useMapContext } from 'googlemaps-react-primitives';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { userLocationSVG } from './markerSVGs';
 
-type Props = {
-  userLocation: { lat: number; lng: number } | undefined;
-};
-
-function UserLocationDisplay({ userLocation }: Props) {
+function UserLocationDisplay() {
   const infoWindowRef = useRef<google.maps.InfoWindow>();
   const circleRef = useRef<google.maps.Circle>();
   const markerRef = useRef<google.maps.Marker>();
   const { map, addMarker } = useMapContext();
+  const [userLocation, setUserLocation] = useState<
+    { lat: number; lng: number } | undefined
+  >();
+  const [searchParams, unused] = useSearchParams();
+
+  useEffect(() => {
+    const posString = searchParams.get('userLocation');
+    if (posString) {
+      const pos = JSON.parse(posString);
+
+      // Check if pos is a valid LatLng object
+      if (pos && typeof pos.lat === 'number' && typeof pos.lng === 'number') {
+        setUserLocation(pos);
+      } else {
+        console.error('Invalid userLocation:', pos);
+        // TODO handle this error
+        // Handle the error...
+      }
+    }
+  }, [searchParams, setUserLocation]);
 
   useEffect(() => {
     if (userLocation && !infoWindowRef.current && !circleRef.current) {
