@@ -42,6 +42,9 @@ export default function MultiMarker({
 
   useEffect(() => {
     // get the correct SVG for the Marker
+
+    console.log(isFilterActive);
+
     let svg = isFavourite || isFilterActive ? activeFilterSVG : regularSVG;
     svg = open_status === `closed` ? closedSVG : svg;
     const icon = {

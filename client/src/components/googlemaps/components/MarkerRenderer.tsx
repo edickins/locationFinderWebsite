@@ -23,16 +23,15 @@ function MarkerRenderer({ items, mapMarkerRefs }: Props) {
 
   // udpate the list of active filters based on searchParams
   useEffect(() => {
-    const windowSearch = decodeURIComponent(window.location.search);
-    let windowSearchFilters = '';
-    if (windowSearch.indexOf('?filters=') > -1) {
-      windowSearchFilters = windowSearch.substring(9);
-    }
+    const searchParamsFilters = searchParams.get('filters') || '';
 
-    // setFilters if the window.location.search is different from the filters
+    // decode the filters from the URL
+    const decodedSearchParamsFilters = decodeURIComponent(searchParamsFilters);
+
+    // setFilters if the decodedSearchParamsFilters are different from the filters
     // set by useSearchParams() hook onload.
-    if (windowSearchFilters !== decodeURIComponent(filters)) {
-      setFilters(windowSearchFilters);
+    if (decodedSearchParamsFilters !== decodeURIComponent(filters)) {
+      setFilters(decodedSearchParamsFilters);
     }
   }, [searchParams, filters]);
 
