@@ -1,4 +1,5 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import FiltersProvider from '../context/filtersContext/filtersContext';
 import DetailPanel from '../components/detailpanel/DetailPanel';
 import FilterPanel from '../components/filterpanel/FilterPanel';
@@ -19,10 +20,59 @@ function Home() {
   const [userLocation, setUserLocation] = useState<
     { lat: number; lng: number } | undefined
   >();
-
+  const googleMapRef = useRef<google.maps.Map | null>(null);
+  const setGoogleMapRef = (map: google.maps.Map) => {
+    googleMapRef.current = map;
+  };
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [searchParams, unused] = useSearchParams();
   const {
     state: { locations }
   } = useLocationsContext();
+
+  // pan to a marker location *and* offset for the available screen space
+  // to accommodate the panel which will be covering the map
+  const panToWithOffset = (
+    latlng: google.maps.LatLng | google.maps.LatLngLiteral | null | undefined,
+    offsetX: number,
+    offsetY: number
+  ) => {
+    if (googleMapRef.current && latlng) {
+      const ov = new google.maps.OverlayView();
+      ov.onAdd = function onAdd() {
+        // eslint-disable-next-line @typescript-eslint/no-this-alias
+        const overlay = this;
+        const proj = overlay.getProjection();
+        const aPoint: google.maps.Point | null =
+          proj.fromLatLngToContainerPixel(
+            latlng instanceof google.maps.LatLng
+              ? { lat: latlng.lat(), lng: latlng.lng() }
+              : latlng
+          );
+        if (aPoint !== null) {
+          aPoint.x += offsetX;
+          aPoint.y += offsetY;
+          const latLng = proj.fromContainerPixelToLatLng(aPoint);
+          if (latLng !== null) {
+            if (googleMapRef.current) {
+              googleMapRef.current.panTo(latLng);
+            }
+          }
+        }
+      };
+      ov.draw = function draw() {};
+      ov.setMap(googleMapRef.current);
+    }
+  };
+
+  // respond to locationID being set in searchParams
+  useEffect(() => {
+    const locationID = searchParams.get('locationID');
+    if (locationID) {
+      const location = locations.find((loc) => loc.id === locationID);
+      panToWithOffset(location?.geometry.location, 0, 150);
+    }
+  }, [locations, searchParams]);
 
   const setSelectedItemDetailID = (id: string | null) => {
     const selectedItem = locations.find((location) => location.id === id);
@@ -30,23 +80,14 @@ function Home() {
       setDetailPanelItem(selectedItem);
       setNearestAlternativeItem(
         locations.find(
-          (toilet) => toilet.id === selectedItem?.nearest_alternative
+          (location) => location.id === selectedItem?.nearest_alternative
         )
       );
     }
     setShowPanel(!!(id && selectedItem));
   };
 
-  const handleNearestAlternativeClick = (id: string | undefined) => {
-    const alternativeItem = mapMarkerRefs.current.find(
-      (i): i is IMultiMarkerRef => i.id === id
-    );
-    if (alternativeItem?.marker) {
-      // trigger the click event on the google.maps.Marker for the alternative location
-      google.maps.event.trigger(alternativeItem.marker, 'click');
-    }
-  };
-
+  // handler for 'Find a toilet near me' button
   const handleFindToiletButtonClick = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -77,14 +118,13 @@ function Home() {
         <MyMap
           items={locations}
           setSelectedItemDetailID={setSelectedItemDetailID}
-          setShowPanel={setShowPanel}
           userLocation={userLocation}
           mapMarkerRefs={mapMarkerRefs}
+          setGoogleMapRef={setGoogleMapRef}
         />
         <DetailPanel
           item={detailPanelItem}
           nearestAlternativeItem={nearestAlternativeItem}
-          onNearestAlternativeClick={handleNearestAlternativeClick}
           showPanel={showPanel}
         />
         <FilterPanel

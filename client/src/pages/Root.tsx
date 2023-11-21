@@ -7,7 +7,6 @@ function Root() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const onMenuButtonClick = () => {
-    console.log('onMenuButtonClick');
     setIsMenuOpen((prevMenuOpen) => !prevMenuOpen);
   };
 

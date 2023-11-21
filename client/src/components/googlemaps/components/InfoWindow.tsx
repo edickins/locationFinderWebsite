@@ -1,16 +1,18 @@
 import { useEffect, useRef } from 'react';
 import { useMapContext } from 'googlemaps-react-primitives';
+import { useSearchParams } from 'react-router-dom';
 
 interface Props extends google.maps.InfoWindowOptions {
   content: string;
   position: google.maps.LatLngLiteral;
-  setShowPanel: (show: boolean) => void;
+  // setShowPanel: (show: boolean) => void;
 }
 
-function InfoWindow({ content, position, setShowPanel }: Props) {
+function InfoWindow({ content, position }: Props) {
   const infoWindowRef = useRef<google.maps.InfoWindow>();
   const clickListenerRef = useRef<google.maps.MapsEventListener | undefined>();
   const { map } = useMapContext();
+  const [unused, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     if (!infoWindowRef.current) {
@@ -27,7 +29,7 @@ function InfoWindow({ content, position, setShowPanel }: Props) {
         infoWindowRef.current,
         'closeclick',
         () => {
-          setShowPanel(false);
+          setSearchParams('');
         }
       );
     }
@@ -42,7 +44,7 @@ function InfoWindow({ content, position, setShowPanel }: Props) {
         infoWindowRef.current = undefined;
       }
     };
-  }, [map, content, position, setShowPanel]);
+  }, [map, content, position, setSearchParams]);
 
   return null;
 }

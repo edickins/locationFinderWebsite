@@ -4,6 +4,7 @@ import { Wrapper, Status } from '@googlemaps/react-wrapper';
 import { GoogleMap } from 'googlemaps-react-primitives';
 import InfoWindow from './components/InfoWindow';
 import MarkerRenderer from './components/MarkerRenderer';
+import MapReporter from './components/MapReporter';
 import { ILocation } from '../../context/locationContext/types';
 import { IMultiMarkerRef } from './components/MultiMarker';
 
@@ -18,7 +19,7 @@ function renderLoadingStatus(status: Status) {
 type Props = {
   items: ILocation[];
   setSelectedItemDetailID: (id: string | null) => void;
-  setShowPanel: (show: boolean) => void;
+  setGoogleMapRef: (map: google.maps.Map) => void;
   userLocation?: { lat: number; lng: number };
   mapMarkerRefs: React.MutableRefObject<IMultiMarkerRef[]>;
 };
@@ -26,11 +27,13 @@ type Props = {
 function MyMap({
   items,
   setSelectedItemDetailID,
-  setShowPanel,
+
+  setGoogleMapRef,
   mapMarkerRefs,
   userLocation
 }: Props) {
-  const [searchParams, setSearchParams] = useSearchParams();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [searchParams, unused] = useSearchParams();
   const [activeMarker, setActiveMarker] = useState<string>('');
   const [infoWindowData, setInfoWindowData] = useState<string>('');
   const [mapStyle, setMapStyle] = useState<google.maps.MapTypeStyle[]>([]);
@@ -38,16 +41,17 @@ function MyMap({
   const [infoWindowLocation, setInfoWindowLocation] =
     useState<google.maps.LatLngLiteral>({ lat: 0, lng: 0 });
 
-  const onMarkerClicked = (id: string) => {
-    const marker = items.find((m) => m.id === id);
-    if (marker) {
+  useEffect(() => {
+    const locationID = searchParams.get('locationID');
+    const location = items.find((loc) => loc.id === locationID);
+    if (location) {
       setMarkerClicks((prev) => prev + 1);
-      setActiveMarker(marker.id);
-      setInfoWindowData(marker.long_name);
-      setInfoWindowLocation(marker.geometry.location);
-      setSelectedItemDetailID(marker.id);
+      setActiveMarker(location.id);
+      setInfoWindowData(location.long_name);
+      setInfoWindowLocation(location.geometry.location);
+      setSelectedItemDetailID(location.id);
     }
-  };
+  }, [items, searchParams, setSelectedItemDetailID]);
 
   // TODO make this work for light theme too
   useEffect(() => {
@@ -57,14 +61,6 @@ function MyMap({
         : styles.retro
     );
   }, []);
-
-  useEffect(() => {
-    console.log(searchParams.get('locationID'));
-    const locationID = searchParams.get('locationID');
-    if (locationID) {
-      // onMarkerClicked(locationID);
-    }
-  }, [searchParams]);
 
   return (
     <div className='width-full h-full' id='map-container'>
@@ -91,18 +87,15 @@ function MyMap({
           minZoom={12}
           autoFit
         >
-          <MarkerRenderer
-            onMarkerClicked={onMarkerClicked}
-            items={items}
-            mapMarkerRefs={mapMarkerRefs}
-          />
+          <MapReporter setGoogleMapRef={setGoogleMapRef} />
+          <MarkerRenderer items={items} mapMarkerRefs={mapMarkerRefs} />
           {activeMarker && (
             <InfoWindow
               // set the key so that the InfoWindow re-renders if the same Marker is clicked
               key={markerClicks}
               content={infoWindowData}
               position={infoWindowLocation}
-              setShowPanel={setShowPanel}
+              // setShowPanel={setShowPanel}
             />
           )}
           {userLocation && <UserLocationDisplay userLocation={userLocation} />}

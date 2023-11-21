@@ -11,15 +11,9 @@ type Props = {
   item: ILocation | undefined;
   nearestAlternativeItem: ILocation | undefined;
   showPanel: boolean;
-  onNearestAlternativeClick: (id: string | undefined) => void;
 };
 
-function DetailPanel({
-  item,
-  nearestAlternativeItem,
-  showPanel,
-  onNearestAlternativeClick
-}: Props) {
+function DetailPanel({ item, nearestAlternativeItem, showPanel }: Props) {
   const [facilities, setFacilities] = useState<IFacility[]>([]);
   const [openingHours, setOpeningHours] = useState<string[]>([]);
   const [formatedModifiedDate, setFormatedModifiedDate] = useState<string>();
@@ -71,10 +65,7 @@ function DetailPanel({
           <DetailPanelAddress item={item} />
           <DetailPanelFacilities facilities={facilities} />
           <DetailPanelOpeningTimes openingHours={openingHours} item={item} />
-          <DetailPanelNearestAlternative
-            item={nearestAlternativeItem}
-            onNearestAlternativeClick={onNearestAlternativeClick}
-          />
+          <DetailPanelNearestAlternative item={nearestAlternativeItem} />
           <DetailPanelDateModified
             formatedModifiedDate={formatedModifiedDate}
           />

@@ -5,7 +5,6 @@ import MultiMarker, { IMultiMarkerRef } from './MultiMarker';
 
 type Props = {
   items: ILocation[];
-  onMarkerClicked: (id: string) => void;
   mapMarkerRefs: React.MutableRefObject<IMultiMarkerRef[]>;
 };
 
@@ -16,7 +15,7 @@ const checkForActiveFilter = (item: ILocation, filters: string[]): boolean => {
   );
 };
 
-function MarkerRenderer({ items, onMarkerClicked, mapMarkerRefs }: Props) {
+function MarkerRenderer({ items, mapMarkerRefs }: Props) {
   const [searchParams] = useSearchParams();
   const [filters, setFilters] = useState<string>(
     searchParams.get('filters') || ''
@@ -50,7 +49,6 @@ function MarkerRenderer({ items, onMarkerClicked, mapMarkerRefs }: Props) {
         isFilterActive={filterIsActive}
         isFavourite={item.isFavourite}
         open_status={item.open_status}
-        onMarkerClicked={onMarkerClicked}
         data-testid={`marker-${item.id}`}
         mapMarkerRefs={mapMarkerRefs}
       />

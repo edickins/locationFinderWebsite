@@ -1,4 +1,4 @@
-import { describe, vi, test } from 'vitest';
+import { describe, test } from 'vitest';
 import searchReducer from './searchReducer';
 import { ISearchResultsInitialState } from '../../context/filtersContext/types';
 import { SearchActionEnum } from './types';
