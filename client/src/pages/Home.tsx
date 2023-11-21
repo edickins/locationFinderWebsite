@@ -17,9 +17,6 @@ function Home() {
   >();
   const [showPanel, setShowPanel] = useState(false);
   const mapMarkerRefs = useRef<IMultiMarkerRef[]>([]);
-  const [userLocation, setUserLocation] = useState<
-    { lat: number; lng: number } | undefined
-  >();
   const googleMapRef = useRef<google.maps.Map | null>(null);
   const setGoogleMapRef = (map: google.maps.Map) => {
     googleMapRef.current = map;

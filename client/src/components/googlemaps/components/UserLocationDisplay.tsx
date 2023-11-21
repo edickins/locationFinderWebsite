@@ -4,14 +4,16 @@ import { useEffect, useRef, useState } from 'react';
 import { userLocationSVG } from './markerSVGs';
 
 function UserLocationDisplay() {
-  const infoWindowRef = useRef<google.maps.InfoWindow>();
-  const circleRef = useRef<google.maps.Circle>();
-  const markerRef = useRef<google.maps.Marker>();
-  const { map, addMarker } = useMapContext();
+  const [searchParams, unused] = useSearchParams();
+  const infoWindowRef = useRef<google.maps.InfoWindow | null>(null);
+  const circleRef = useRef<google.maps.Circle | null>(null);
+  const markerRef = useRef<google.maps.Marker | null>(null);
+
+  const userLocationRef = useRef<{ lat: number; lng: number } | undefined>();
   const [userLocation, setUserLocation] = useState<
     { lat: number; lng: number } | undefined
   >();
-  const [searchParams, unused] = useSearchParams();
+  const { map, addMarker } = useMapContext();
 
   useEffect(() => {
     const posString = searchParams.get('userLocation');
@@ -20,7 +22,14 @@ function UserLocationDisplay() {
 
       // Check if pos is a valid LatLng object
       if (pos && typeof pos.lat === 'number' && typeof pos.lng === 'number') {
-        setUserLocation(pos);
+        if (
+          !userLocationRef.current ||
+          userLocationRef.current.lat !== pos.lat ||
+          userLocationRef.current.lng !== pos.lng
+        ) {
+          setUserLocation(pos);
+          userLocationRef.current = pos;
+        }
       } else {
         console.error('Invalid userLocation:', pos);
         // TODO handle this error
@@ -30,22 +39,27 @@ function UserLocationDisplay() {
   }, [searchParams, setUserLocation]);
 
   useEffect(() => {
-    if (userLocation && !infoWindowRef.current && !circleRef.current) {
-      infoWindowRef.current = new google.maps.InfoWindow();
-      infoWindowRef.current.setPosition(userLocation);
-      infoWindowRef.current.setOptions({
+    if (
+      userLocation &&
+      !infoWindowRef.current &&
+      !circleRef.current &&
+      !markerRef.current
+    ) {
+      const infoW = new google.maps.InfoWindow();
+      infoW.setPosition(userLocation);
+      infoW.setOptions({
         pixelOffset: new google.maps.Size(0, -30)
       });
       const styledContent = `<div style="color:#040404;padding:4px;font-weight:700">You are here</div>`;
 
-      infoWindowRef.current.setContent(styledContent);
-      infoWindowRef.current.open(map);
+      infoW.setContent(styledContent);
+      infoW.open(map);
       const latLng = new google.maps.LatLng(userLocation.lat, userLocation.lng);
       map?.panTo(latLng);
       map?.setZoom(15);
       map?.setCenter(userLocation);
 
-      circleRef.current = new google.maps.Circle({
+      const c = new google.maps.Circle({
         strokeColor: '#FF0000',
         strokeOpacity: 0.8,
         strokeWeight: 2,
@@ -61,28 +75,32 @@ function UserLocationDisplay() {
         scaledSize: new google.maps.Size(25, 25)
       };
 
-      markerRef.current = new google.maps.Marker({
+      const m = new google.maps.Marker({
         ...{ position: latLng },
         map,
         icon: markerOptions
       });
 
-      addMarker(markerRef.current);
+      addMarker(m);
+
+      infoWindowRef.current = infoW;
+      circleRef.current = c;
+      markerRef.current = m;
     }
 
     // cleanup function
     return () => {
       if (infoWindowRef.current) {
         infoWindowRef.current.close();
-        infoWindowRef.current = undefined;
+        infoWindowRef.current = null;
       }
       if (circleRef.current) {
         circleRef.current.setMap(null);
-        circleRef.current = undefined;
+        circleRef.current = null;
       }
       if (markerRef.current) {
         markerRef.current.setMap(null);
-        circleRef.current = undefined;
+        markerRef.current = null;
       }
     };
   }, [addMarker, map, userLocation]);

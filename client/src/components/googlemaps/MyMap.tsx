@@ -33,13 +33,16 @@ function MyMap({
 }: // userLocation
 Props) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [searchParams, unused] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [activeMarker, setActiveMarker] = useState<string>('');
   const [infoWindowData, setInfoWindowData] = useState<string>('');
   const [mapStyle, setMapStyle] = useState<google.maps.MapTypeStyle[]>([]);
   const [markerClicks, setMarkerClicks] = useState(0);
   const [infoWindowLocation, setInfoWindowLocation] =
     useState<google.maps.LatLngLiteral>({ lat: 0, lng: 0 });
+  const [userLocation, setUserLocation] = useState<
+    { lat: number; lng: number } | undefined
+  >();
 
   useEffect(() => {
     const locationID = searchParams.get('locationID');
@@ -56,6 +59,22 @@ Props) {
     }
   }, [items, searchParams, setSelectedItemDetailID]);
 
+  /* useEffect(() => {
+    const posString = searchParams.get('userLocation');
+    if (posString) {
+      const pos = JSON.parse(posString);
+
+      // Check if pos is a valid LatLng object
+      if (pos && typeof pos.lat === 'number' && typeof pos.lng === 'number') {
+        setUserLocation(pos);
+      } else {
+        console.error('Invalid userLocation:', pos);
+        // TODO handle this error
+        // Handle the error...
+      }
+    }
+  }, [searchParams, setUserLocation]); */
+
   // TODO make this work for light theme too
   useEffect(() => {
     setMapStyle(
@@ -64,6 +83,14 @@ Props) {
         : styles.retro
     );
   }, []);
+
+  function clearLocationID() {
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+    // delete the locationID searchParam
+    newSearchParams.delete('locationID');
+    // Replace the search parameters - this will be picked up in MyMap and Home
+    setSearchParams(newSearchParams);
+  }
 
   return (
     <div className='width-full h-full' id='map-container'>
@@ -84,6 +111,7 @@ Props) {
           onClick={() => {
             setSelectedItemDetailID(null);
             setActiveMarker('');
+            clearLocationID();
           }}
           center={{ lat: 50.8249486, lng: -0.1270007 }}
           zoom={12}
