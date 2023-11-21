@@ -12,9 +12,17 @@ function InfoWindow({ content, position }: Props) {
   const infoWindowRef = useRef<google.maps.InfoWindow>();
   const clickListenerRef = useRef<google.maps.MapsEventListener | undefined>();
   const { map } = useMapContext();
-  const [unused, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
+    function clearLocationID() {
+      const newSearchParams = new URLSearchParams(searchParams.toString());
+      // delete the locationID searchParam
+      newSearchParams.delete('locationID');
+      // Replace the search parameters - this will be picked up in MyMap and Home
+      setSearchParams(newSearchParams);
+    }
+
     if (!infoWindowRef.current) {
       infoWindowRef.current = new google.maps.InfoWindow({ content, position });
       const styledContent = `<div style="color:#040404;padding:4px;font-weight:700">${content}</div>`;
@@ -29,7 +37,7 @@ function InfoWindow({ content, position }: Props) {
         infoWindowRef.current,
         'closeclick',
         () => {
-          setSearchParams('');
+          clearLocationID();
         }
       );
     }
@@ -44,7 +52,7 @@ function InfoWindow({ content, position }: Props) {
         infoWindowRef.current = undefined;
       }
     };
-  }, [map, content, position, setSearchParams]);
+  }, [map, content, position, setSearchParams, searchParams]);
 
   return null;
 }

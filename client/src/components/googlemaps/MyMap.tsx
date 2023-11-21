@@ -50,6 +50,9 @@ function MyMap({
       setInfoWindowData(location.long_name);
       setInfoWindowLocation(location.geometry.location);
       setSelectedItemDetailID(location.id);
+    } else {
+      setSelectedItemDetailID(null);
+      setActiveMarker('');
     }
   }, [items, searchParams, setSelectedItemDetailID]);
 
@@ -95,7 +98,6 @@ function MyMap({
               key={markerClicks}
               content={infoWindowData}
               position={infoWindowLocation}
-              // setShowPanel={setShowPanel}
             />
           )}
           {userLocation && <UserLocationDisplay userLocation={userLocation} />}
