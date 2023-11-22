@@ -49,7 +49,11 @@ Props) {
     if (location) {
       setMarkerClicks((prev) => prev + 1);
       setActiveMarker(location.id);
-      setInfoWindowData(location.long_name);
+      const infoData = /closed/i.test(location.open_status)
+        ? `${location.long_name} \ncurrently closed`
+        : location.long_name;
+
+      setInfoWindowData(infoData);
       setInfoWindowLocation(location.geometry.location);
       setSelectedItemDetailID(location.id);
     } else {

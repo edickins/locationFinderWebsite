@@ -15,8 +15,8 @@ function MobileMenu({ isMenuOpen, setIsMenuOpen }: Props) {
     >
       <nav
         className={`h-full w-full
-         bg-black transition-transform
-        duration-500 ease-in-out ${
+         bg-light-panel-secondary transition-transform duration-500
+        ease-in-out dark:bg-black ${
           isMenuOpen ? 'translate-y-0' : '-translate-y-full'
         }`}
         aria-label='main navigation'
@@ -28,7 +28,9 @@ function MobileMenu({ isMenuOpen, setIsMenuOpen }: Props) {
               onClick={() => setIsMenuOpen(false)}
               to='/'
               className={({ isActive }) =>
-                isActive ? 'dark:text-dark-secondary-color' : 'dark:text-white'
+                isActive
+                  ? 'text-light-secondary-color dark:text-dark-secondary-color'
+                  : 'text-light-primary-color dark:text-white'
               }
             >
               Toilet Map
@@ -39,7 +41,9 @@ function MobileMenu({ isMenuOpen, setIsMenuOpen }: Props) {
               onClick={() => setIsMenuOpen(false)}
               to='toilets'
               className={({ isActive }) =>
-                isActive ? 'dark:text-dark-secondary-color' : 'dark:text-white'
+                isActive
+                  ? 'text-light-secondary-color dark:text-dark-secondary-color'
+                  : 'text-light-primary-color dark:text-white'
               }
             >
               List of Toilets
@@ -50,7 +54,9 @@ function MobileMenu({ isMenuOpen, setIsMenuOpen }: Props) {
               onClick={() => setIsMenuOpen(false)}
               to='contact'
               className={({ isActive }) =>
-                isActive ? 'dark:text-dark-secondary-color' : 'dark:text-white'
+                isActive
+                  ? 'text-light-secondary-color dark:text-dark-secondary-color'
+                  : 'text-light-primary-color dark:text-white'
               }
             >
               Contact Page

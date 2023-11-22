@@ -43,7 +43,8 @@ export default function MultiMarker({
   useEffect(() => {
     // get the correct SVG for the Marker
     let svg = isFavourite || isFilterActive ? activeFilterSVG : regularSVG;
-    svg = open_status === `closed` ? closedSVG : svg;
+    svg = /closed/i.test(open_status) ? closedSVG : svg;
+
     const icon = {
       url: `data:image/svg+xml;base64,${window.btoa(svg)}`,
       scaledSize: new google.maps.Size(markerWidth, markerHeight)

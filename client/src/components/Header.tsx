@@ -7,16 +7,16 @@ type Props = {
 function Header({ onMenuButtonClick }: Props) {
   return (
     <header
-      className='fixed top-0 z-10 w-full border-b-2 border-solid border-white  bg-dark-panel'
+      className='fixed top-0 z-10 w-full border-b-2 border-solid border-white bg-light-panel dark:bg-dark-panel'
       id='header-container'
     >
       <section className='mx-auto  max-w-4xl  p-4'>
         <div className='flex items-center justify-between'>
-          <h1 className='text-1xl font-semibold dark:text-dark-secondary-color'>
+          <h1 className='text-1xl font-semibold text-light-secondary-color dark:text-dark-secondary-color'>
             BRIGHTON & HOVE WC WAYFINDER
           </h1>
           <div
-            className='button relative cursor-pointer text-2xl dark:text-dark-primary-color md:hidden'
+            className='button relative cursor-pointer text-2xl text-light-secondary-color dark:text-dark-primary-color md:hidden'
             id='hamburger-button'
           >
             <button type='button' onClick={onMenuButtonClick}>

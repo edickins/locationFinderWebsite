@@ -58,10 +58,10 @@ function DetailPanel({ item, nearestAlternativeItem, showPanel }: Props) {
     <div
       id='detail-panel-container'
       ref={detailPanelRef}
-      className='fixed bottom-0 grid h-1/2 w-full translate-y-full transform auto-rows-min gap-4 overflow-y-scroll bg-dark-panel p-8 transition-transform duration-1000 ease-in-out sm:grid-cols-1 md:grid-cols-3 md:p-12'
+      className='fixed bottom-0 grid h-1/2 w-full translate-y-full transform auto-rows-min gap-4 overflow-y-scroll border-t border-gray-600 bg-light-panel-secondary bg-opacity-80 p-8 transition-transform duration-1000 ease-in-out dark:bg-dark-panel sm:grid-cols-1 md:grid-cols-3 md:p-12'
     >
       {item && (
-        <div id='detail-panel'>
+        <div id='detail-panel' className=''>
           <DetailPanelAddress item={item} />
           <DetailPanelFacilities facilities={facilities} />
           <DetailPanelOpeningTimes openingHours={openingHours} item={item} />

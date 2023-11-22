@@ -10,12 +10,12 @@ function Location({ location, mtValue }: Props) {
   return (
     <>
       <h3
-        className={`mt-${mtValue} text-xl font-bold  dark:text-dark-secondary-color`}
+        className={`mt-${mtValue} text-xl font-bold text-light-secondary-color dark:text-dark-secondary-color`}
       >
         {location.long_name}
       </h3>
       <p>{location.formatted_address}</p>
-      <h4 className='mt-4 text-lg  dark:text-dark-secondary-color'>
+      <h4 className='mt-4 text-lg text-light-secondary-color dark:text-dark-secondary-color'>
         Facilities at this location
       </h4>
       <ul>
@@ -27,7 +27,7 @@ function Location({ location, mtValue }: Props) {
           );
         })}
       </ul>
-      <p className='mt-4 text-lg  dark:text-dark-secondary-color'>
+      <p className='mt-4 text-lg text-light-secondary-color dark:text-dark-secondary-color'>
         opening hours
       </p>
       <ul className='mt-2'>

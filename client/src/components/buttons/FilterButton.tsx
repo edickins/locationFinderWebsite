@@ -20,11 +20,11 @@ function FilterButton({
   icon
 }: Props) {
   const regularColour = reverseColours
-    ? 'dark:text-dark-secondary-color'
-    : 'dark:text-dark-primary-color';
+    ? 'text-light-secondary-color dark:text-dark-secondary-color'
+    : 'text-light-primary-color dark:text-dark-primary-color';
   const hoverColour = reverseColours
-    ? `dark:text-dark-primary-color`
-    : 'dark:text-dark-secondary-color';
+    ? `text-light-primary-color dark:text-dark-primary-color`
+    : 'text-light-secondary-color dark:text-dark-secondary-color';
 
   return (
     <button
