@@ -52,7 +52,9 @@ function Home() {
           const latLng = proj.fromContainerPixelToLatLng(aPoint);
           if (latLng !== null) {
             if (googleMapRef.current) {
-              googleMapRef.current.panTo(latLng);
+              setTimeout(() => {
+                googleMapRef.current?.panTo(latLng);
+              }, 500);
             }
           }
         }
@@ -68,6 +70,7 @@ function Home() {
     if (locationID) {
       const location = locations.find((loc) => loc.id === locationID);
       panToWithOffset(location?.geometry.location, 0, 150);
+      // panToTopHalfOfScreen(location?.geometry.location);
     }
   }, [locations, searchParams]);
 
@@ -117,7 +120,6 @@ function Home() {
         <MyMap
           items={locations}
           setSelectedItemDetailID={setSelectedItemDetailID}
-          // userLocation={userLocation}
           mapMarkerRefs={mapMarkerRefs}
           setGoogleMapRef={setGoogleMapRef}
         />
