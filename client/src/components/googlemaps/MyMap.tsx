@@ -27,7 +27,6 @@ type Props = {
 function MyMap({
   items,
   setSelectedItemDetailID,
-
   setGoogleMapRef,
   mapMarkerRefs
 }: // userLocation
@@ -58,22 +57,6 @@ Props) {
       setActiveMarker('');
     }
   }, [items, searchParams, setSelectedItemDetailID]);
-
-  /* useEffect(() => {
-    const posString = searchParams.get('userLocation');
-    if (posString) {
-      const pos = JSON.parse(posString);
-
-      // Check if pos is a valid LatLng object
-      if (pos && typeof pos.lat === 'number' && typeof pos.lng === 'number') {
-        setUserLocation(pos);
-      } else {
-        console.error('Invalid userLocation:', pos);
-        // TODO handle this error
-        // Handle the error...
-      }
-    }
-  }, [searchParams, setUserLocation]); */
 
   // TODO make this work for light theme too
   useEffect(() => {

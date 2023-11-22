@@ -3,14 +3,21 @@ import { prefixHash } from '../utils/simpleHash';
 
 interface Props {
   location: ILocation;
+  mtValue: number;
 }
 
-function Location({ location }: Props) {
+function Location({ location, mtValue }: Props) {
   return (
     <>
-      <h3>{location.long_name}</h3>
+      <h3
+        className={`mt-${mtValue} text-xl font-bold  dark:text-dark-secondary-color`}
+      >
+        {location.long_name}
+      </h3>
       <p>{location.formatted_address}</p>
-      <p>facilities</p>
+      <h4 className='mt-4 text-lg  dark:text-dark-secondary-color'>
+        Facilities at this location
+      </h4>
       <ul>
         {location.facilities.map((facility) => {
           return (
@@ -20,8 +27,10 @@ function Location({ location }: Props) {
           );
         })}
       </ul>
-      <p>opening hours</p>
-      <ul>
+      <p className='mt-4 text-lg  dark:text-dark-secondary-color'>
+        opening hours
+      </p>
+      <ul className='mt-2'>
         {location.opening_hours.map((hours) => {
           const key = prefixHash(location.id, hours);
           return <li key={key}>{hours}</li>;

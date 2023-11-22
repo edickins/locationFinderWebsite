@@ -95,8 +95,8 @@ function Home() {
           };
           const newSearchParams = new URLSearchParams(searchParams.toString());
           newSearchParams.set('userLocation', JSON.stringify(pos));
+          newSearchParams.delete('locationID');
           setSearchParams(newSearchParams);
-          // setUserLocation(pos);
           setShowPanel(false);
         },
         () => {
