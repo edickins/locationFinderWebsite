@@ -85,12 +85,14 @@ function SearchResultsList() {
     setSearchResults(results);
   }, [partialMatches, perfectMatches]);
 
+  if (searchResults.length === 0) return null;
+
   return (
     <div>
       {searchTerms.length === 0 && searchTermsPerfectMatch.length === 0 && (
         <NoResults />
       )}
-      <ul className='mt-2 bg-white px-4 py-2 dark:text-gray-900'>
+      <ul className='mt-2 bg-white bg-opacity-80 px-4 py-2 dark:text-gray-900'>
         {searchResults.length > 0 &&
           searchResults.map((location) => {
             return (
