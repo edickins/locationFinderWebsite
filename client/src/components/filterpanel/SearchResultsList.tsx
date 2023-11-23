@@ -90,16 +90,18 @@ function SearchResultsList() {
       {searchTerms.length === 0 && searchTermsPerfectMatch.length === 0 && (
         <NoResults />
       )}
-      {searchResults.length > 0 &&
-        searchResults.map((location) => {
-          return (
-            <SearchResultItem
-              key={location.id}
-              location={location}
-              onSearchResultClick={onSearchResultClick}
-            />
-          );
-        })}
+      <ul className='mt-2 bg-white px-4 py-2 dark:text-gray-900'>
+        {searchResults.length > 0 &&
+          searchResults.map((location) => {
+            return (
+              <SearchResultItem
+                key={location.id}
+                location={location}
+                onSearchResultClick={onSearchResultClick}
+              />
+            );
+          })}
+      </ul>
     </div>
   );
 }

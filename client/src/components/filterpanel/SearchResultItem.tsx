@@ -10,9 +10,11 @@ function SearchResultItem({ location, onSearchResultClick }: Props) {
     onSearchResultClick(location.id);
   };
   return (
-    <button type='button' onClick={() => onClick()}>
-      {location && location.long_name}
-    </button>
+    <li className='py-2'>
+      <button type='button' onClick={() => onClick()}>
+        {location && location.long_name}
+      </button>
+    </li>
   );
 }
 

@@ -14,7 +14,7 @@ function FacilitiesList({
 }: FacilitiesProp) {
   return (
     <>
-      <ul className='mt-4 list-none'>
+      <ul className='mt-4 list-none bg-white px-4 py-2'>
         {facilities &&
           facilities.map((facility) => {
             return (
