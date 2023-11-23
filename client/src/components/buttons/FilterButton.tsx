@@ -30,7 +30,7 @@ function FilterButton({
     <button
       type='button'
       onClick={onClick}
-      className={`mx-auto underline-offset-4 text:${regularColour} hover:${hoverColour} ${
+      className={`mx-auto underline-offset-4 md:mx-0 text:${regularColour} hover:${hoverColour} ${
         isSelected ? hoverColour : regularColour
       }`}
     >
