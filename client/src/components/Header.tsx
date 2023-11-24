@@ -25,7 +25,7 @@ function Header({ onMenuButtonClick }: Props) {
           </div>
         </div>
         <nav
-          className='hidden items-center justify-between md:flex'
+          className='hidden items-center justify-between md:flex md:justify-start md:gap-4'
           aria-label='main navigation'
         >
           <NavLink to='/'>home</NavLink>

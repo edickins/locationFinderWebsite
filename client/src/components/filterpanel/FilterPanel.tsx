@@ -9,9 +9,9 @@ function FilterPanel({ handleFindToiletButtonClick }: Props) {
   return (
     <div
       id='filter-panel'
-      className='absolute  left-0 right-0 top-0 md:left-32 md:top-8 md:w-4/12 '
+      className=' absolute left-0 right-0  top-0 md:bottom-12 md:left-24 md:top-16 md:flex md:max-w-md  '
     >
-      <div>
+      <div className='md:w-full'>
         <FilterPanelNav
           handleFindToiletButtonClick={handleFindToiletButtonClick}
         />

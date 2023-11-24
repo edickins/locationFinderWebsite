@@ -62,48 +62,30 @@ function SearchResultsList() {
 
   // sideEffect when partial and perfect match Arrays are updated
   useEffect(() => {
-    const sortPerfectMatches = () => {
-      let results: ILocation[] = [];
-      if (perfectMatches.length > 0) {
-        results = perfectMatches.slice(0, 9);
-      }
+    let set = new Set<ILocation>(perfectMatches);
+    set = new Set([...set, ...partialMatches]);
+    const uniqueIDs = Array.from(set);
 
-      return results;
-    };
-
-    const sortPartialMatches = () => {
-      let results: ILocation[] = [];
-      if (perfectMatches.length < 5) {
-        results = partialMatches.slice(0, 5);
-      }
-      return results;
-    };
-
-    let results = sortPerfectMatches();
-    results = results.concat(sortPartialMatches());
-
-    setSearchResults(results);
+    setSearchResults(uniqueIDs);
   }, [partialMatches, perfectMatches]);
-
-  if (searchResults.length === 0) return null;
 
   return (
     <div>
-      {searchTerms.length === 0 && searchTermsPerfectMatch.length === 0 && (
-        <NoResults />
+      {searchTerms.length === 0 && <NoResults />}
+      {searchTerms.length !== 0 && (
+        <ul className='mt-2 bg-white bg-opacity-80 px-4 py-2 dark:text-gray-900'>
+          {searchResults.length > 0 &&
+            searchResults.map((location) => {
+              return (
+                <SearchResultItem
+                  key={location.id}
+                  location={location}
+                  onSearchResultClick={onSearchResultClick}
+                />
+              );
+            })}
+        </ul>
       )}
-      <ul className='mt-2 bg-white bg-opacity-80 px-4 py-2 dark:text-gray-900'>
-        {searchResults.length > 0 &&
-          searchResults.map((location) => {
-            return (
-              <SearchResultItem
-                key={location.id}
-                location={location}
-                onSearchResultClick={onSearchResultClick}
-              />
-            );
-          })}
-      </ul>
     </div>
   );
 }

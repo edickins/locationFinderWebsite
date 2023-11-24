@@ -1,4 +1,5 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { useLocationsContext } from '../../context/locationContext/locationsContext';
 import { useFiltersContext } from '../../context/filtersContext/filtersContext';
 import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
@@ -9,6 +10,8 @@ function SearchLocation() {
   const matchesRef = useRef<Set<string>>(new Set());
   const perfectMatchesRef = useRef<Set<string>>(new Set());
   const { dispatchFilters, dispatchSearchResults } = useFiltersContext();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchText, setSearchText] = useState('');
 
   const onSearchPanelChange = () => {
     dispatchFilters({ type: FiltersActionEnum.SEARCH_TERM_CHANGE });
@@ -35,7 +38,6 @@ function SearchLocation() {
     perfectMatchesRef.current.clear();
   };
 
-  const [searchText, setSearchText] = useState('');
   const {
     state: { locations }
   } = useLocationsContext();
@@ -108,16 +110,37 @@ function SearchLocation() {
     onSearchPanelChange();
   };
 
+  useEffect(() => {
+    // Create a new URLSearchParams instance to clone the current parameters
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+
+    // delete the searchParam for search if there is no search term
+    if (searchText === '') {
+      newSearchParams.delete('search');
+    }
+
+    // Set the new locationID parameter
+    if (searchText !== '') {
+      newSearchParams.set('search', searchText);
+    }
+
+    // Replace the search parameters - this will be picked up in Home
+    setSearchParams(newSearchParams);
+  }, [searchParams, searchText, setSearchParams]);
+
   return (
-    <input
-      type='text'
-      name='search'
-      id='search'
-      placeholder='search location...'
-      className='mb-1 w-48 rounded-sm px-2  dark:text-gray-900'
-      onChange={onSearchChange}
-      onFocus={onSearchChange}
-    />
+    <>
+      <span className='mx-2  md:shrink-0'>Search location or facilities</span>
+      <input
+        type='text'
+        name='search'
+        id='search'
+        placeholder='type your search here...'
+        className='mb-1 w-48 rounded-sm px-2  dark:text-gray-900'
+        onChange={onSearchChange}
+        onFocus={onSearchChange}
+      />
+    </>
   );
 }
 
