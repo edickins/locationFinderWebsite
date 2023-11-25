@@ -130,7 +130,10 @@ function SearchLocation() {
 
   return (
     <>
-      <span className='mx-2  md:shrink-0'>Search location or facilities</span>
+      <span className='mx-2  md:shrink-0'>
+        Search{' '}
+        <span className='hidden md:inline-block'>location or facilities</span>
+      </span>
       <input
         type='text'
         name='search'

@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import FiltersProvider from '../context/filtersContext/filtersContext';
+import FiltersProvider, {
+  useFiltersContext
+} from '../context/filtersContext/filtersContext';
 import DetailPanel from '../components/detailpanel/DetailPanel';
 import FilterPanel from '../components/filterpanel/FilterPanel';
 import MyMap from '../components/googlemaps/MyMap';
 import { useLocationsContext } from '../context/locationContext/locationsContext';
 import { ILocation } from '../context/locationContext/types';
 import { IMultiMarkerRef } from '../components/googlemaps/components/MultiMarker';
+import { FiltersActionEnum } from '../reducer/filtersReducer/types';
 
 function Home() {
   const [detailPanelItem, setDetailPanelItem] = useState<
@@ -26,6 +29,7 @@ function Home() {
   const {
     state: { locations }
   } = useLocationsContext();
+  const { dispatchFilters } = useFiltersContext();
 
   // pan to a marker location *and* offset for the available screen space
   // to accommodate the panel which will be covering the map
@@ -101,6 +105,7 @@ function Home() {
           newSearchParams.delete('locationID');
           setSearchParams(newSearchParams);
           setShowPanel(false);
+          dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
         },
         () => {
           // TODO handle any errors

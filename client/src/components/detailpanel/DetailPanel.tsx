@@ -6,6 +6,7 @@ import DetailPanelFacilities from './DetailPanelFacilities';
 import DetailPanelOpeningTimes from './DetailPanelOpeningTimes';
 import DetailPanelDateModified from './DetailPanelDateModified';
 import DetailPanelNearestAlternative from './DetailPanelNearestAlternative';
+import ClosePanelButton from '../buttons/ClosePanelButton';
 
 type Props = {
   item: ILocation | undefined;
@@ -43,14 +44,24 @@ function DetailPanel({ item, nearestAlternativeItem, showPanel }: Props) {
     }
   }, [item]);
 
-  useEffect(() => {
-    if (showPanel && detailPanelRef.current) {
-      detailPanelRef.current?.classList.add(`translate-y-1/8`);
-      detailPanelRef.current?.classList.remove('translate-y-full');
-    } else if (!showPanel && detailPanelRef.current) {
+  const doShowPanel = () => {
+    detailPanelRef.current?.classList.add(`translate-y-1/8`);
+    detailPanelRef.current?.classList.remove('translate-y-full');
+  };
+
+  const doHidePanel = () => {
+    if (detailPanelRef.current) {
       detailPanelRef.current.scrollTop = 0;
       detailPanelRef.current?.classList.add('translate-y-full');
       detailPanelRef.current?.classList.remove('translate-y-1/8');
+    }
+  };
+
+  useEffect(() => {
+    if (showPanel && detailPanelRef.current) {
+      doShowPanel();
+    } else if (!showPanel && detailPanelRef.current) {
+      doHidePanel();
     }
   }, [showPanel]);
 
@@ -58,17 +69,22 @@ function DetailPanel({ item, nearestAlternativeItem, showPanel }: Props) {
     <div
       id='detail-panel-container'
       ref={detailPanelRef}
-      className='fixed bottom-0 grid h-1/2 w-full translate-y-full transform auto-rows-min gap-4 overflow-y-scroll border-t border-gray-600 bg-light-panel-secondary bg-opacity-80 p-8 transition-transform duration-1000 ease-in-out dark:bg-dark-panel sm:grid-cols-1 md:grid-cols-3 md:p-12'
+      className='fixed bottom-0  h-1/2 w-full translate-y-full transform auto-rows-min gap-4 overflow-y-scroll border-t border-gray-600 bg-light-panel-secondary bg-opacity-80 p-8 transition-transform duration-1000 ease-in-out dark:bg-dark-panel  md:p-8'
     >
       {item && (
         <div id='detail-panel' className=''>
-          <DetailPanelAddress item={item} />
-          <DetailPanelFacilities facilities={facilities} />
-          <DetailPanelOpeningTimes openingHours={openingHours} item={item} />
-          <DetailPanelNearestAlternative item={nearestAlternativeItem} />
-          <DetailPanelDateModified
-            formatedModifiedDate={formatedModifiedDate}
-          />
+          <div className='flex justify-end'>
+            <ClosePanelButton onClick={doHidePanel} isPanelOpen />
+          </div>
+          <div className='grid sm:grid-cols-1 md:grid-cols-3 md:gap-8'>
+            <DetailPanelAddress item={item} />
+            <DetailPanelFacilities facilities={facilities} />
+            <DetailPanelOpeningTimes openingHours={openingHours} item={item} />
+            <DetailPanelNearestAlternative item={nearestAlternativeItem} />
+            <DetailPanelDateModified
+              formatedModifiedDate={formatedModifiedDate}
+            />
+          </div>
         </div>
       )}
     </div>

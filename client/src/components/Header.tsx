@@ -10,7 +10,7 @@ function Header({ onMenuButtonClick }: Props) {
       className='fixed top-0 z-10 w-full border-b-2 border-solid border-white bg-light-panel dark:bg-dark-panel'
       id='header-container'
     >
-      <section className='mx-auto  max-w-4xl  p-4'>
+      <section className='mx-auto  max-w-6xl  p-4'>
         <div className='flex items-center justify-between'>
           <h1 className='text-1xl font-semibold  dark:text-dark-secondary-color'>
             BRIGHTON & HOVE WC WAYFINDER
