@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import FiltersProvider, {
   useFiltersContext
@@ -12,6 +12,26 @@ import { IMultiMarkerRef } from '../components/googlemaps/components/MultiMarker
 import { FiltersActionEnum } from '../reducer/filtersReducer/types';
 
 function Home() {
+  // Define your enum
+  const ScreenSize = {
+    XS: 'xs',
+    SM: 'sm',
+    MD: 'md',
+    LG: 'lg',
+    XL: 'xl'
+  };
+
+  // Define your breakpoints
+  const breakpoints = {
+    xs: 320,
+    sm: 640,
+    md: 768,
+    lg: 1024,
+    xl: 1280
+  };
+
+  // State variable for screen size
+  const [screenSize, setScreenSize] = useState<string | undefined>();
   const [detailPanelItem, setDetailPanelItem] = useState<
     ILocation | undefined
   >();
@@ -31,52 +51,137 @@ function Home() {
   } = useLocationsContext();
   const { dispatchFilters } = useFiltersContext();
 
+  const getScreenSize = useCallback(
+    (width: number) => {
+      if (width < breakpoints.xs) {
+        return ScreenSize.XS;
+      }
+      if (width < breakpoints.sm) {
+        return ScreenSize.SM;
+      }
+      if (width < breakpoints.md) {
+        return ScreenSize.MD;
+      }
+      if (width < breakpoints.lg) {
+        return ScreenSize.LG;
+      }
+      return ScreenSize.XL;
+    },
+    [
+      ScreenSize.LG,
+      ScreenSize.MD,
+      ScreenSize.SM,
+      ScreenSize.XL,
+      ScreenSize.XS,
+      breakpoints.lg,
+      breakpoints.md,
+      breakpoints.sm,
+      breakpoints.xs
+    ]
+  );
+
   // pan to a marker location *and* offset for the available screen space
   // to accommodate the panel which will be covering the map
-  const panToWithOffset = (
-    latlng: google.maps.LatLng | google.maps.LatLngLiteral | null | undefined,
-    offsetX: number,
-    offsetY: number
-  ) => {
-    if (googleMapRef.current && latlng) {
-      const ov = new google.maps.OverlayView();
-      ov.onAdd = function onAdd() {
-        // eslint-disable-next-line @typescript-eslint/no-this-alias
-        const overlay = this;
-        const proj = overlay.getProjection();
-        const aPoint: google.maps.Point | null =
-          proj.fromLatLngToContainerPixel(
-            latlng instanceof google.maps.LatLng
-              ? { lat: latlng.lat(), lng: latlng.lng() }
-              : latlng
-          );
-        if (aPoint !== null) {
-          aPoint.x += offsetX;
-          aPoint.y += offsetY;
-          const latLng = proj.fromContainerPixelToLatLng(aPoint);
-          if (latLng !== null) {
-            if (googleMapRef.current) {
-              setTimeout(() => {
-                googleMapRef.current?.panTo(latLng);
-              }, 500);
+  const panToWithOffset = useCallback(
+    (
+      latlng: google.maps.LatLng | google.maps.LatLngLiteral | null | undefined
+    ) => {
+      let offsetX = 0;
+      let offsetY = 150;
+
+      switch (screenSize) {
+        case ScreenSize.XL:
+        case ScreenSize.LG:
+        case ScreenSize.MD:
+          offsetX = -150;
+          offsetY = 150;
+          break;
+        case ScreenSize.SM:
+        case ScreenSize.XS:
+          offsetX = 0;
+          offsetY = 80;
+          break;
+
+        default:
+          offsetX = 0;
+          offsetY = 0;
+      }
+
+      if (googleMapRef.current && latlng) {
+        const ov = new google.maps.OverlayView();
+        ov.onAdd = function onAdd() {
+          // eslint-disable-next-line @typescript-eslint/no-this-alias
+          const overlay = this;
+          const proj = overlay.getProjection();
+          const aPoint: google.maps.Point | null =
+            proj.fromLatLngToContainerPixel(
+              latlng instanceof google.maps.LatLng
+                ? { lat: latlng.lat(), lng: latlng.lng() }
+                : latlng
+            );
+          if (aPoint !== null) {
+            aPoint.x += offsetX;
+            aPoint.y += offsetY;
+            const latLng = proj.fromContainerPixelToLatLng(aPoint);
+            if (latLng !== null) {
+              if (googleMapRef.current) {
+                setTimeout(() => {
+                  googleMapRef.current?.panTo(latLng);
+                }, 500);
+              }
             }
           }
-        }
-      };
-      ov.draw = function draw() {};
-      ov.setMap(googleMapRef.current);
-    }
-  };
+        };
+        ov.draw = function draw() {};
+        ov.setMap(googleMapRef.current);
+      }
+    },
+    [
+      ScreenSize.LG,
+      ScreenSize.MD,
+      ScreenSize.SM,
+      ScreenSize.XL,
+      ScreenSize.XS,
+      screenSize
+    ]
+  );
+
+  useEffect(() => {
+    // Handler to call on window resize
+    const handleResize = () => {
+      const newWidth = window.innerWidth;
+      setScreenSize(getScreenSize(newWidth));
+    };
+
+    handleResize();
+
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+
+    // Call handler right away so state gets updated with initial window size
+    handleResize();
+
+    // Remove event listener on cleanup
+    return () => window.removeEventListener('resize', handleResize);
+  }, [
+    ScreenSize.LG,
+    ScreenSize.MD,
+    ScreenSize.SM,
+    ScreenSize.XL,
+    breakpoints.lg,
+    breakpoints.md,
+    breakpoints.sm,
+    getScreenSize
+  ]);
 
   // respond to locationID being set in searchParams
   useEffect(() => {
     const locationID = searchParams.get('locationID');
     if (locationID) {
       const location = locations.find((loc) => loc.id === locationID);
-      panToWithOffset(location?.geometry.location, 0, 150);
-      // panToTopHalfOfScreen(location?.geometry.location);
+      panToWithOffset(location?.geometry.location);
     }
-  }, [locations, searchParams]);
+  }, [locations, panToWithOffset, searchParams]);
 
   const setSelectedItemDetailID = (id: string | null) => {
     const selectedItem = locations.find((location) => location.id === id);
@@ -133,9 +238,11 @@ function Home() {
           nearestAlternativeItem={nearestAlternativeItem}
           showPanel={showPanel}
         />
-        <FilterPanel
-          handleFindToiletButtonClick={handleFindToiletButtonClick}
-        />
+        <div className='pointer-events-none  absolute bottom-0 left-0 right-0 top-0 mx-auto max-w-6xl'>
+          <FilterPanel
+            handleFindToiletButtonClick={handleFindToiletButtonClick}
+          />
+        </div>
       </main>
     </FiltersProvider>
   );

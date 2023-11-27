@@ -22,8 +22,9 @@ function InfoWindow({ content, position }: Props) {
       // Replace the search parameters - this will be picked up in MyMap and Home
       setSearchParams(newSearchParams);
     }
+    const locationID = searchParams.get('locationID');
 
-    if (!infoWindowRef.current) {
+    if (!infoWindowRef.current && locationID) {
       infoWindowRef.current = new google.maps.InfoWindow({ content, position });
       const styledContent = `<div style="color:#040404;padding:4px;font-weight:700">${content}</div>`;
       infoWindowRef.current.setOptions({

@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { IFacility, ILocation } from '../../context/locationContext/types';
 
 import DetailPanelAddress from './DetailPanelAddress';
@@ -18,6 +19,7 @@ function DetailPanel({ item, nearestAlternativeItem, showPanel }: Props) {
   const [facilities, setFacilities] = useState<IFacility[]>([]);
   const [openingHours, setOpeningHours] = useState<string[]>([]);
   const [formatedModifiedDate, setFormatedModifiedDate] = useState<string>();
+  const [searchParams, setSearchParams] = useSearchParams();
   const detailPanelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -49,13 +51,21 @@ function DetailPanel({ item, nearestAlternativeItem, showPanel }: Props) {
     detailPanelRef.current?.classList.remove('translate-y-full');
   };
 
-  const doHidePanel = () => {
+  const doHidePanel = useCallback(() => {
+    function clearLocationID() {
+      const newSearchParams = new URLSearchParams(searchParams.toString());
+      // delete the locationID searchParam
+      newSearchParams.delete('locationID');
+      // Replace the search parameters - this will be picked up in MyMap and Home
+      setSearchParams(newSearchParams);
+    }
     if (detailPanelRef.current) {
+      clearLocationID();
       detailPanelRef.current.scrollTop = 0;
       detailPanelRef.current?.classList.add('translate-y-full');
       detailPanelRef.current?.classList.remove('translate-y-1/8');
     }
-  };
+  }, [searchParams, setSearchParams]);
 
   useEffect(() => {
     if (showPanel && detailPanelRef.current) {
@@ -63,7 +73,7 @@ function DetailPanel({ item, nearestAlternativeItem, showPanel }: Props) {
     } else if (!showPanel && detailPanelRef.current) {
       doHidePanel();
     }
-  }, [showPanel]);
+  }, [doHidePanel, showPanel]);
 
   return (
     <div

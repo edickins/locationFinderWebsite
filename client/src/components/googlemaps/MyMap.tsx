@@ -20,7 +20,6 @@ type Props = {
   items: ILocation[];
   setSelectedItemDetailID: (id: string | null) => void;
   setGoogleMapRef: (map: google.maps.Map) => void;
-  // userLocation?: { lat: number; lng: number };
   mapMarkerRefs: React.MutableRefObject<IMultiMarkerRef[]>;
 };
 
@@ -29,26 +28,21 @@ function MyMap({
   setSelectedItemDetailID,
   setGoogleMapRef,
   mapMarkerRefs
-}: // userLocation
-Props) {
+}: Props) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
-  const [activeMarker, setActiveMarker] = useState<string>('');
+
   const [infoWindowData, setInfoWindowData] = useState<string>('');
   const [mapStyle, setMapStyle] = useState<google.maps.MapTypeStyle[]>([]);
   const [markerClicks, setMarkerClicks] = useState(0);
   const [infoWindowLocation, setInfoWindowLocation] =
     useState<google.maps.LatLngLiteral>({ lat: 0, lng: 0 });
-  const [userLocation, setUserLocation] = useState<
-    { lat: number; lng: number } | undefined
-  >();
 
   useEffect(() => {
     const locationID = searchParams.get('locationID');
     const location = items.find((loc) => loc.id === locationID);
     if (location) {
       setMarkerClicks((prev) => prev + 1);
-      setActiveMarker(location.id);
       const infoData = /closed/i.test(location.open_status)
         ? `${location.long_name} \ncurrently closed`
         : location.long_name;
@@ -58,7 +52,6 @@ Props) {
       setSelectedItemDetailID(location.id);
     } else {
       setSelectedItemDetailID(null);
-      setActiveMarker('');
     }
   }, [items, searchParams, setSelectedItemDetailID]);
 
@@ -97,7 +90,6 @@ Props) {
           styles={mapStyle}
           onClick={() => {
             setSelectedItemDetailID(null);
-            setActiveMarker('');
             clearLocationID();
           }}
           center={{ lat: 50.8249486, lng: -0.1270007 }}
@@ -107,14 +99,14 @@ Props) {
         >
           <MapReporter setGoogleMapRef={setGoogleMapRef} />
           <MarkerRenderer items={items} mapMarkerRefs={mapMarkerRefs} />
-          {activeMarker && (
-            <InfoWindow
-              // set the key so that the InfoWindow re-renders if the same Marker is clicked
-              key={markerClicks}
-              content={infoWindowData}
-              position={infoWindowLocation}
-            />
-          )}
+          {/* {activeMarker && ( */}
+          <InfoWindow
+            // set the key so that the InfoWindow re-renders if the same Marker is clicked
+            key={markerClicks}
+            content={infoWindowData}
+            position={infoWindowLocation}
+          />
+          {/* )} */}
           <UserLocationDisplay />
         </GoogleMap>
       </Wrapper>
