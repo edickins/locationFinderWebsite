@@ -12,10 +12,9 @@ import ClosePanelButton from '../buttons/ClosePanelButton';
 type Props = {
   item: ILocation | undefined;
   nearestAlternativeItem: ILocation | undefined;
-  showPanel: boolean;
 };
 
-function DetailPanel({ item, nearestAlternativeItem, showPanel }: Props) {
+function DetailPanel({ item, nearestAlternativeItem }: Props) {
   const [facilities, setFacilities] = useState<IFacility[]>([]);
   const [openingHours, setOpeningHours] = useState<string[]>([]);
   const [formatedModifiedDate, setFormatedModifiedDate] = useState<string>();
@@ -68,25 +67,25 @@ function DetailPanel({ item, nearestAlternativeItem, showPanel }: Props) {
   }, [searchParams, setSearchParams]);
 
   useEffect(() => {
-    if (showPanel && detailPanelRef.current) {
+    if (item && detailPanelRef.current) {
       doShowPanel();
-    } else if (!showPanel && detailPanelRef.current) {
+    } else if (!item && detailPanelRef.current) {
       doHidePanel();
     }
-  }, [doHidePanel, showPanel]);
+  }, [doHidePanel, item]);
 
   return (
     <div
       id='detail-panel-container'
       ref={detailPanelRef}
-      className='fixed bottom-0  h-1/2 w-full translate-y-full transform auto-rows-min gap-4 overflow-y-scroll border-t border-gray-600 bg-light-panel-secondary bg-opacity-80 p-8 transition-transform duration-1000 ease-in-out dark:bg-dark-panel  md:p-8'
+      className='fixed bottom-0  h-1/2 w-full translate-y-full transform auto-rows-min gap-4 overflow-y-scroll border-t border-gray-600 bg-light-panel-secondary bg-opacity-80 p-2 transition-transform duration-1000 ease-in-out dark:bg-dark-panel  md:p-8'
     >
       {item && (
         <div id='detail-panel' className=''>
           <div className='flex justify-end'>
             <ClosePanelButton onClick={doHidePanel} isPanelOpen />
           </div>
-          <div className='grid sm:grid-cols-1 md:grid-cols-3 md:gap-8'>
+          <div className='grid text-sm sm:grid-cols-1 md:grid-cols-3 md:gap-8 md:text-base'>
             <DetailPanelAddress item={item} />
             <DetailPanelFacilities facilities={facilities} />
             <DetailPanelOpeningTimes openingHours={openingHours} item={item} />

@@ -7,7 +7,7 @@ function DoneButton({ hideFilterPanel, isPanelOpen }: Props) {
   if (!isPanelOpen) return null;
 
   return (
-    <div className='flex justify-center'>
+    <div className='flex justify-center font-semibold'>
       <button type='button' onClick={hideFilterPanel}>
         Done
       </button>

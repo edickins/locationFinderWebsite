@@ -129,21 +129,21 @@ function SearchLocation() {
   }, [searchParams, searchText, setSearchParams]);
 
   return (
-    <>
-      <span className='mx-2  md:shrink-0'>
+    <div className='flex content-center justify-center md:mr-4 md:justify-start'>
+      <span className='mx-2  text-sm md:shrink-0 '>
         Search{' '}
-        <span className='hidden md:inline-block'>location or facilities</span>
+        <span className='hidden md:inline-block'>locations or facilities</span>
       </span>
       <input
         type='text'
         name='search'
         id='search'
         placeholder='type your search here...'
-        className='mb-1 w-48 rounded-sm px-2  dark:text-gray-900'
+        className='mb-1 w-48 rounded-sm px-2 text-sm dark:text-gray-900  '
         onChange={onSearchChange}
         onFocus={onSearchChange}
       />
-    </>
+    </div>
   );
 }
 

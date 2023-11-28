@@ -32,13 +32,12 @@ function Home() {
 
   // State variable for screen size
   const [screenSize, setScreenSize] = useState<string | undefined>();
-  const [detailPanelItem, setDetailPanelItem] = useState<
-    ILocation | undefined
-  >();
+  const [detailPanelItem, setDetailPanelItem] = useState<ILocation | undefined>(
+    undefined
+  );
   const [nearestAlternativeItem, setNearestAlternativeItem] = useState<
     ILocation | undefined
-  >();
-  const [showPanel, setShowPanel] = useState(false);
+  >(undefined);
   const mapMarkerRefs = useRef<IMultiMarkerRef[]>([]);
   const googleMapRef = useRef<google.maps.Map | null>(null);
   const setGoogleMapRef = (map: google.maps.Map) => {
@@ -49,7 +48,7 @@ function Home() {
   const {
     state: { locations }
   } = useLocationsContext();
-  const { dispatchFilters } = useFiltersContext();
+  const { state, dispatchFilters } = useFiltersContext();
 
   const getScreenSize = useCallback(
     (width: number) => {
@@ -97,11 +96,13 @@ function Home() {
           offsetY = 150;
           break;
         case ScreenSize.SM:
-        case ScreenSize.XS:
           offsetX = 0;
           offsetY = 80;
           break;
-
+        case ScreenSize.XS:
+          offsetX = 0;
+          offsetY = -5;
+          break;
         default:
           offsetX = 0;
           offsetY = 0;
@@ -192,9 +193,18 @@ function Home() {
           (location) => location.id === selectedItem?.nearest_alternative
         )
       );
+    } else {
+      setDetailPanelItem(undefined);
+      setNearestAlternativeItem(undefined);
     }
-    setShowPanel(!!(id && selectedItem));
   };
+
+  useEffect(() => {
+    console.log(state.isPanelOpen);
+    if (state.isPanelOpen) {
+      dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
+    }
+  }, [dispatchFilters, state.isPanelOpen]);
 
   // handler for 'Find a toilet near me' button
   const handleFindToiletButtonClick = () => {
@@ -209,7 +219,6 @@ function Home() {
           newSearchParams.set('userLocation', JSON.stringify(pos));
           newSearchParams.delete('locationID');
           setSearchParams(newSearchParams);
-          setShowPanel(false);
           dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
         },
         () => {
@@ -226,7 +235,10 @@ function Home() {
 
   return (
     <FiltersProvider>
-      <main className='absolute bottom-0 top-16 w-full' id='home-container'>
+      <main
+        className='absolute bottom-0 top-10 w-full md:top-16'
+        id='home-container'
+      >
         <MyMap
           items={locations}
           setSelectedItemDetailID={setSelectedItemDetailID}
@@ -236,7 +248,6 @@ function Home() {
         <DetailPanel
           item={detailPanelItem}
           nearestAlternativeItem={nearestAlternativeItem}
-          showPanel={showPanel}
         />
         <div className='pointer-events-none  absolute bottom-0 left-0 right-0 top-0 mx-auto max-w-6xl'>
           <FilterPanel

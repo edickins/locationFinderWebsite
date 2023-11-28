@@ -25,7 +25,7 @@ function FilterPanelNav({ handleFindToiletButtonClick }: Props) {
     <nav
       id='filter-nav'
       aria-label='filter control panel'
-      className='pointer-events-auto  flex flex-col gap-2 bg-light-panel px-4 pb-4 pt-2 dark:bg-dark-panel md:relative md:flex-grow md:bg-light-panel-secondary md:bg-opacity-95'
+      className='pointer-events-auto  flex flex-col gap-1 bg-light-panel px-2 pb-2 pt-2 dark:bg-dark-panel md:relative md:flex-grow md:gap-2 md:bg-light-panel-secondary md:bg-opacity-95 md:px-4 md:pb-4'
     >
       <div className='flex justify-between '>
         <FilterButton
@@ -50,12 +50,11 @@ function FilterPanelNav({ handleFindToiletButtonClick }: Props) {
           reverseColours
           onClick={handleFindToiletButtonClick}
         >
-          <span className='text-xs'>Find a toilet near me</span>
+          <span className='text-xs'>Find nearest toilet</span>
         </FilterButton>
       </div>
-      <div className='st flex justify-center md:mr-4 md:justify-start'>
-        <SearchLocation />
-      </div>
+
+      <SearchLocation />
     </nav>
   );
 }

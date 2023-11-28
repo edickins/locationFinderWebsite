@@ -10,13 +10,13 @@ function Header({ onMenuButtonClick }: Props) {
       className='fixed top-0 z-10 w-full border-b-2 border-solid border-white bg-light-panel dark:bg-dark-panel'
       id='header-container'
     >
-      <section className='mx-auto  max-w-6xl  p-4'>
+      <section className='mx-auto  max-w-6xl p-2 md:p-4'>
         <div className='flex items-center justify-between'>
-          <h1 className='text-1xl font-semibold  dark:text-dark-secondary-color'>
+          <h1 className='xs:text-sm xs:font-normal text-xs  dark:text-dark-secondary-color md:text-xl md:font-semibold'>
             BRIGHTON & HOVE WC WAYFINDER
           </h1>
           <div
-            className='button relative cursor-pointer text-2xl dark:text-dark-primary-color md:hidden'
+            className='button relative cursor-pointer text-xl dark:text-dark-primary-color md:hidden '
             id='hamburger-button'
           >
             <button type='button' onClick={onMenuButtonClick}>

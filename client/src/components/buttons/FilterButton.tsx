@@ -30,12 +30,12 @@ function FilterButton({
     <button
       type='button'
       onClick={onClick}
-      className={`mx-auto underline-offset-4 md:mx-0 text:${regularColour} hover:${hoverColour} ${
+      className={`mx-auto underline-offset-4 md:mx-0 ${regularColour} hover:${hoverColour} ${
         isSelected ? hoverColour : regularColour
       }`}
     >
-      <div className='flex items-center'>
-        <i className={`fa-solid ${icon} text-lg`} data-testid='icon' />
+      <div className='flex content-end items-center'>
+        <i className={`fa-solid mt-1 ${icon} text-xs`} data-testid='icon' />
         <span
           className={` ml-1 hover:underline  ${isSelected ? 'underline ' : ''}`}
         >
