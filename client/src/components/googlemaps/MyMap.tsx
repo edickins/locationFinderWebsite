@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+
 import { Wrapper, Status } from '@googlemaps/react-wrapper';
 import { GoogleMap } from 'googlemaps-react-primitives';
 import InfoWindow from './components/InfoWindow';
@@ -11,6 +12,8 @@ import { IMultiMarkerRef } from './components/MultiMarker';
 // import styles from './appStyles';
 import styles from './multiMapStyles';
 import UserLocationDisplay from './components/UserLocationDisplay';
+import { useFiltersContext } from '../../context/filtersContext/filtersContext';
+import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
 
 function renderLoadingStatus(status: Status) {
   return <i className='fa-duotone fa-spinner fa-spin-pulse' />;
@@ -31,6 +34,7 @@ function MyMap({
 }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
+  const { state, dispatchFilters } = useFiltersContext();
 
   const [infoWindowData, setInfoWindowData] = useState<string>('');
   const [mapStyle, setMapStyle] = useState<google.maps.MapTypeStyle[]>([]);
@@ -50,10 +54,11 @@ function MyMap({
       setInfoWindowData(infoData);
       setInfoWindowLocation(location.geometry.location);
       setSelectedItemDetailID(location.id);
+      dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
     } else {
       setSelectedItemDetailID(null);
     }
-  }, [items, searchParams, setSelectedItemDetailID]);
+  }, [dispatchFilters, items, searchParams, setSelectedItemDetailID]);
 
   // TODO make this work for light theme too
   useEffect(() => {
@@ -99,14 +104,13 @@ function MyMap({
         >
           <MapReporter setGoogleMapRef={setGoogleMapRef} />
           <MarkerRenderer items={items} mapMarkerRefs={mapMarkerRefs} />
-          {/* {activeMarker && ( */}
           <InfoWindow
             // set the key so that the InfoWindow re-renders if the same Marker is clicked
             key={markerClicks}
             content={infoWindowData}
             position={infoWindowLocation}
           />
-          {/* )} */}
+
           <UserLocationDisplay />
         </GoogleMap>
       </Wrapper>

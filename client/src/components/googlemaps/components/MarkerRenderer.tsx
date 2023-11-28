@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, memo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ILocation } from '../../../context/locationContext/types';
 import MultiMarker, { IMultiMarkerRef } from './MultiMarker';
@@ -25,12 +25,12 @@ function MarkerRenderer({ items, mapMarkerRefs }: Props) {
   useEffect(() => {
     const searchParamsFilters = searchParams.get('filters') || '';
 
-    // decode the filters from the URL
-    const decodedSearchParamsFilters = decodeURIComponent(searchParamsFilters);
+    // Only call setFilters if searchParamsFilters and filters are different
+    if (searchParamsFilters !== filters) {
+      // Decode the filters from the URL
+      const decodedSearchParamsFilters =
+        decodeURIComponent(searchParamsFilters);
 
-    // setFilters if the decodedSearchParamsFilters are different from the filters
-    // set by useSearchParams() hook onload.
-    if (decodedSearchParamsFilters !== decodeURIComponent(filters)) {
       setFilters(decodedSearchParamsFilters);
     }
   }, [searchParams, filters]);
@@ -55,4 +55,4 @@ function MarkerRenderer({ items, mapMarkerRefs }: Props) {
   });
 }
 
-export default MarkerRenderer;
+export default memo(MarkerRenderer);

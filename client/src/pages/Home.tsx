@@ -1,15 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import FiltersProvider, {
-  useFiltersContext
-} from '../context/filtersContext/filtersContext';
+import FiltersProvider from '../context/filtersContext/filtersContext';
 import DetailPanel from '../components/detailpanel/DetailPanel';
 import FilterPanel from '../components/filterpanel/FilterPanel';
 import MyMap from '../components/googlemaps/MyMap';
 import { useLocationsContext } from '../context/locationContext/locationsContext';
 import { ILocation } from '../context/locationContext/types';
 import { IMultiMarkerRef } from '../components/googlemaps/components/MultiMarker';
-import { FiltersActionEnum } from '../reducer/filtersReducer/types';
 
 function Home() {
   // Define your enum
@@ -48,7 +45,6 @@ function Home() {
   const {
     state: { locations }
   } = useLocationsContext();
-  const { state, dispatchFilters } = useFiltersContext();
 
   const getScreenSize = useCallback(
     (width: number) => {
@@ -199,40 +195,6 @@ function Home() {
     }
   };
 
-  useEffect(() => {
-    console.log(state.isPanelOpen);
-    if (state.isPanelOpen) {
-      dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
-    }
-  }, [dispatchFilters, state.isPanelOpen]);
-
-  // handler for 'Find a toilet near me' button
-  const handleFindToiletButtonClick = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position: GeolocationPosition) => {
-          const pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-          const newSearchParams = new URLSearchParams(searchParams.toString());
-          newSearchParams.set('userLocation', JSON.stringify(pos));
-          newSearchParams.delete('locationID');
-          setSearchParams(newSearchParams);
-          dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
-        },
-        () => {
-          // TODO handle any errors
-          // handleLocationError(true, infoWindow, map.getCenter()!);
-        }
-      );
-    } else {
-      // TODO handle any errors
-      // Browser doesn't support Geolocation
-      // handleLocationError(false, infoWindow, map.getCenter()!);
-    }
-  };
-
   return (
     <FiltersProvider>
       <main
@@ -250,9 +212,7 @@ function Home() {
           nearestAlternativeItem={nearestAlternativeItem}
         />
         <div className='pointer-events-none  absolute bottom-0 left-0 right-0 top-0 mx-auto max-w-6xl'>
-          <FilterPanel
-            handleFindToiletButtonClick={handleFindToiletButtonClick}
-          />
+          <FilterPanel />
         </div>
       </main>
     </FiltersProvider>
