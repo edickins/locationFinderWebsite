@@ -13,7 +13,6 @@ import { IMultiMarkerRef } from './components/MultiMarker';
 import styles from './multiMapStyles';
 import UserLocationDisplay from './components/UserLocationDisplay';
 import { useFiltersContext } from '../../context/filtersContext/filtersContext';
-import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
 
 function renderLoadingStatus(status: Status) {
   return <i className='fa-duotone fa-spinner fa-spin-pulse' />;
@@ -57,7 +56,8 @@ function MyMap({
         setInfoWindowData(infoData);
         setInfoWindowLocation(location.geometry.location);
         setSelectedItemDetailID(location.id);
-        dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
+        // TODO don't forget that I commented this line out whilst investigating how the filters panel opens and closes
+        // dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
       } else {
         setSelectedItemDetailID(null);
       }

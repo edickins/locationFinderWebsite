@@ -14,6 +14,7 @@ const FiltersContext = createContext<IFiltersContext>({
     isPanelOpen: false,
     isFacilitiesSelected: false,
     isFavouritesSelected: false,
+    isSearchSelected: false,
     isSearchActive: false
   },
   matchingLocationIds: { searchTerms: [], searchTermsPerfectMatch: [] },
@@ -26,6 +27,7 @@ export default function FiltersProvider({ children }: PropsWithChildren) {
     isPanelOpen: false,
     isFacilitiesSelected: false,
     isFavouritesSelected: false,
+    isSearchSelected: false,
     isSearchActive: false
   });
 

@@ -5,6 +5,7 @@ export type IFiltersInitialState = {
   isPanelOpen: boolean;
   isFacilitiesSelected: boolean;
   isFavouritesSelected: boolean;
+  isSearchSelected: boolean;
   isSearchActive: boolean;
 };
 
@@ -13,6 +14,7 @@ export interface IFiltersContext {
     isPanelOpen: boolean;
     isFacilitiesSelected: boolean;
     isFavouritesSelected: boolean;
+    isSearchSelected: boolean;
     isSearchActive: boolean;
   };
   matchingLocationIds: {

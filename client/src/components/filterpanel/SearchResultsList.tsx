@@ -35,7 +35,7 @@ function SearchResultsList() {
     // close the filter panel
     setTimeout(() => {
       dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
-    }, 1500);
+    }, 300);
   };
 
   // sideEffect when search terms are updated

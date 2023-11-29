@@ -6,25 +6,19 @@ export default function filtersReducer(
   action: FiltersActionType
 ) {
   const { type } = action;
-  // let payload;
-  // if ('payload' in action) {
-  //   payload = action.payload;
-  // }
-
   switch (type) {
     case FiltersActionEnum.SHOW_FILTER_PANEL:
-      console.log('reducer show filter panel');
       return {
         ...state,
         isPanelOpen: true
       };
     case FiltersActionEnum.HIDE_FILTER_PANEL:
-      console.log('reducer hide filter panel');
       return {
         ...state,
         isPanelOpen: false,
         isFacilitiesSelected: false,
         isFavouritesSelected: false,
+        isSearchSelected: false,
         isSearchActive: false
       };
     case FiltersActionEnum.FILTER_BUTTON_CLICK:
@@ -33,6 +27,7 @@ export default function filtersReducer(
         isPanelOpen: true,
         isFacilitiesSelected: true,
         isFavouritesSelected: false,
+        isSearchSelected: false,
         isSearchActive: false
       };
     case FiltersActionEnum.FAVOURITES_BUTTON_CLICK:
@@ -41,6 +36,7 @@ export default function filtersReducer(
         isPanelOpen: true,
         isFacilitiesSelected: false,
         isFavouritesSelected: true,
+        isSearchSelected: false,
         isSearchActive: false
       };
     case FiltersActionEnum.SEARCH_TERM_CHANGE: {
@@ -49,6 +45,7 @@ export default function filtersReducer(
         isPanelOpen: true,
         isFacilitiesSelected: false,
         isFavouritesSelected: false,
+        isSearchSelected: true,
         isSearchActive: true
       };
     }

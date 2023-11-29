@@ -1,5 +1,4 @@
 import { useSearchParams } from 'react-router-dom';
-import { useEffect } from 'react';
 import FilterSectionFacilities from './FilterSectionFacilities';
 import FilterSectionFavourites from './FilterSectionFavourites';
 import FilterSectionSearch from './FilterSectionSearch';
@@ -16,10 +15,6 @@ const FiltersContainer = function FiltersContainer() {
   const hideFilterPanel = () => {
     dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
   };
-
-  useEffect(() => {
-    console.log(`isPanelOpen ${isPanelOpen}`);
-  }, [isPanelOpen]);
 
   return (
     <section
