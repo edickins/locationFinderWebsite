@@ -17,7 +17,7 @@ function FacilityFormItem({
 
   return (
     <li
-      className='flex justify-between gap-4 py-2 dark:text-gray-900'
+      className='flex justify-between gap-4 py-1 dark:text-gray-900 md:py-1'
       aria-label='available facility'
       data-testid='facility-form-item'
     >

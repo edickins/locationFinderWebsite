@@ -74,6 +74,7 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
   }, [translateYClass]);
 
   const doHidePanel = useCallback(() => {
+    console.log('doHidePanel');
     function clearLocationID() {
       const newSearchParams = new URLSearchParams(searchParams.toString());
       // delete the locationID searchParam
@@ -101,14 +102,14 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
     <div
       id='detail-panel-container'
       ref={detailPanelRef}
-      className='fixed bottom-0  h-2/3 w-full translate-y-full transform auto-rows-min gap-4 overflow-y-scroll border-t border-gray-600 bg-light-panel-secondary  bg-opacity-80 px-4 pb-8 transition-transform duration-1000 ease-in-out dark:bg-dark-panel   md:p-8 '
+      className='fixed bottom-0  h-2/3 w-full translate-y-full transform auto-rows-min gap-4 overflow-y-scroll border-t border-gray-600 bg-light-panel-secondary  bg-opacity-80 px-4 pb-8 transition-transform duration-1000 ease-in-out dark:bg-dark-panel md:p-8 '
     >
       {item && (
-        <div id='detail-panel' className=''>
-          <div className='flex justify-end'>
+        <div id='detail-panel'>
+          <div className='sticky top-4 flex justify-end'>
             <ClosePanelButton onClick={doHidePanel} isPanelOpen />
           </div>
-          <div className='grid text-sm sm:grid-cols-1 md:grid-cols-3 md:gap-8 md:text-base'>
+          <div className='mr-8 grid text-sm sm:grid-cols-1 md:grid-cols-3 md:gap-8 md:text-base'>
             <DetailPanelAddress item={item} />
             <DetailPanelFacilities facilities={facilities} />
             <DetailPanelOpeningTimes openingHours={openingHours} item={item} />

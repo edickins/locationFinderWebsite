@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { Wrapper, Status } from '@googlemaps/react-wrapper';
@@ -41,23 +41,29 @@ function MyMap({
   const [markerClicks, setMarkerClicks] = useState(0);
   const [infoWindowLocation, setInfoWindowLocation] =
     useState<google.maps.LatLngLiteral>({ lat: 0, lng: 0 });
+  const lastLocationIDRef = useRef<string | null>();
 
   useEffect(() => {
     const locationID = searchParams.get('locationID');
-    const location = items.find((loc) => loc.id === locationID);
-    if (location) {
-      setMarkerClicks((prev) => prev + 1);
-      const infoData = /closed/i.test(location.open_status)
-        ? `${location.long_name} \ncurrently closed`
-        : location.long_name;
 
-      setInfoWindowData(infoData);
-      setInfoWindowLocation(location.geometry.location);
-      setSelectedItemDetailID(location.id);
-      dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
-    } else {
-      setSelectedItemDetailID(null);
+    if (lastLocationIDRef.current !== locationID) {
+      const location = items.find((loc) => loc.id === locationID);
+      if (location) {
+        setMarkerClicks((prev) => prev + 1);
+        const infoData = /closed/i.test(location.open_status)
+          ? `${location.long_name} \ncurrently closed`
+          : location.long_name;
+
+        setInfoWindowData(infoData);
+        setInfoWindowLocation(location.geometry.location);
+        setSelectedItemDetailID(location.id);
+        dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
+      } else {
+        setSelectedItemDetailID(null);
+      }
     }
+
+    lastLocationIDRef.current = locationID;
   }, [dispatchFilters, items, searchParams, setSelectedItemDetailID]);
 
   // TODO make this work for light theme too

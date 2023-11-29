@@ -47,7 +47,7 @@ function FilterSectionFacilities({ isActive }: Props) {
   };
 
   return (
-    <section id='facilities-container' className='p-4'>
+    <section id='facilities-container' className='px-4 py-2 md:py-1'>
       <FilterButton
         icon='fa-filter'
         onClick={onClick}

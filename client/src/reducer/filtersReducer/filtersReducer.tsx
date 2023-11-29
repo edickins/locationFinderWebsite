@@ -13,11 +13,13 @@ export default function filtersReducer(
 
   switch (type) {
     case FiltersActionEnum.SHOW_FILTER_PANEL:
+      console.log('reducer show filter panel');
       return {
         ...state,
         isPanelOpen: true
       };
     case FiltersActionEnum.HIDE_FILTER_PANEL:
+      console.log('reducer hide filter panel');
       return {
         ...state,
         isPanelOpen: false,
