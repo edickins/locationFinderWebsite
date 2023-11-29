@@ -88,6 +88,36 @@ function SearchLocation() {
     });
   };
 
+  const findTermInFacilitiesList = (term: string) => {
+    // Escape special characters in the term
+    const escapedTerm = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regEx = new RegExp(escapedTerm, 'i');
+
+    locations.forEach((location) => {
+      location.facilities.forEach((facility) => {
+        const longNameMatches = facility.full_name.match(regEx);
+        const shortNameMatches = facility.short_name.match(regEx);
+
+        addLocationToResults(longNameMatches, location.id, facility.full_name);
+        addLocationToResults(
+          shortNameMatches,
+          location.id,
+          facility.short_name
+        );
+      });
+    });
+
+    dispatchSearchResults({
+      type: SearchActionEnum.ADD_SEARCH_MATCH_IDS,
+      payload: Array.from(matchesRef.current)
+    });
+
+    dispatchSearchResults({
+      type: SearchActionEnum.ADD_SEARCH_PERFECT_MATCH_IDS,
+      payload: Array.from(perfectMatchesRef.current)
+    });
+  };
+
   const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     // set the useRef values to empty strings
@@ -107,6 +137,7 @@ function SearchLocation() {
     }
     // look for the entered text in the address_component fields
     findTermInAddressFields(value);
+    findTermInFacilitiesList(value);
     onSearchPanelChange();
   };
 

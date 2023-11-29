@@ -7,28 +7,10 @@ import MyMap from '../components/googlemaps/MyMap';
 import { useLocationsContext } from '../context/locationContext/locationsContext';
 import { ILocation } from '../context/locationContext/types';
 import { IMultiMarkerRef } from '../components/googlemaps/components/MultiMarker';
+import useGetScreensize, { ScreenSizeEnum } from '../hooks/getScreensize';
 
 function Home() {
-  // Define your enum
-  const ScreenSize = {
-    XS: 'xs',
-    SM: 'sm',
-    MD: 'md',
-    LG: 'lg',
-    XL: 'xl'
-  };
-
-  // Define your breakpoints
-  const breakpoints = {
-    xs: 320,
-    sm: 640,
-    md: 768,
-    lg: 1024,
-    xl: 1280
-  };
-
-  // State variable for screen size
-  const [screenSize, setScreenSize] = useState<string | undefined>();
+  const screenSize = useGetScreensize();
   const [detailPanelItem, setDetailPanelItem] = useState<ILocation | undefined>(
     undefined
   );
@@ -46,35 +28,6 @@ function Home() {
     state: { locations }
   } = useLocationsContext();
 
-  const getScreenSize = useCallback(
-    (width: number) => {
-      if (width < breakpoints.xs) {
-        return ScreenSize.XS;
-      }
-      if (width < breakpoints.sm) {
-        return ScreenSize.SM;
-      }
-      if (width < breakpoints.md) {
-        return ScreenSize.MD;
-      }
-      if (width < breakpoints.lg) {
-        return ScreenSize.LG;
-      }
-      return ScreenSize.XL;
-    },
-    [
-      ScreenSize.LG,
-      ScreenSize.MD,
-      ScreenSize.SM,
-      ScreenSize.XL,
-      ScreenSize.XS,
-      breakpoints.lg,
-      breakpoints.md,
-      breakpoints.sm,
-      breakpoints.xs
-    ]
-  );
-
   // pan to a marker location *and* offset for the available screen space
   // to accommodate the panel which will be covering the map
   const panToWithOffset = useCallback(
@@ -85,19 +38,19 @@ function Home() {
       let offsetY = 150;
 
       switch (screenSize) {
-        case ScreenSize.XL:
-        case ScreenSize.LG:
-        case ScreenSize.MD:
+        case ScreenSizeEnum.XL:
+        case ScreenSizeEnum.LG:
+        case ScreenSizeEnum.MD:
           offsetX = -150;
           offsetY = 150;
           break;
-        case ScreenSize.SM:
+        case ScreenSizeEnum.SM:
           offsetX = 0;
-          offsetY = 80;
+          offsetY = 175;
           break;
-        case ScreenSize.XS:
+        case ScreenSizeEnum.XS:
           offsetX = 0;
-          offsetY = -5;
+          offsetY = 175;
           break;
         default:
           offsetX = 0;
@@ -133,43 +86,8 @@ function Home() {
         ov.setMap(googleMapRef.current);
       }
     },
-    [
-      ScreenSize.LG,
-      ScreenSize.MD,
-      ScreenSize.SM,
-      ScreenSize.XL,
-      ScreenSize.XS,
-      screenSize
-    ]
+    [screenSize]
   );
-
-  useEffect(() => {
-    // Handler to call on window resize
-    const handleResize = () => {
-      const newWidth = window.innerWidth;
-      setScreenSize(getScreenSize(newWidth));
-    };
-
-    handleResize();
-
-    // Add event listener
-    window.addEventListener('resize', handleResize);
-
-    // Call handler right away so state gets updated with initial window size
-    handleResize();
-
-    // Remove event listener on cleanup
-    return () => window.removeEventListener('resize', handleResize);
-  }, [
-    ScreenSize.LG,
-    ScreenSize.MD,
-    ScreenSize.SM,
-    ScreenSize.XL,
-    breakpoints.lg,
-    breakpoints.md,
-    breakpoints.sm,
-    getScreenSize
-  ]);
 
   // respond to locationID being set in searchParams
   useEffect(() => {

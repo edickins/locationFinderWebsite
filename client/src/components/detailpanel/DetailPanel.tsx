@@ -8,6 +8,7 @@ import DetailPanelOpeningTimes from './DetailPanelOpeningTimes';
 import DetailPanelDateModified from './DetailPanelDateModified';
 import DetailPanelNearestAlternative from './DetailPanelNearestAlternative';
 import ClosePanelButton from '../buttons/ClosePanelButton';
+import useGetScreensize, { ScreenSizeEnum } from '../../hooks/getScreensize';
 
 type Props = {
   item: ILocation | undefined;
@@ -15,11 +16,33 @@ type Props = {
 };
 
 function DetailPanel({ item, nearestAlternativeItem }: Props) {
+  const screenSize = useGetScreensize();
+  const translateClassSmall = 'translate-y-4';
+  const translateClassLarge = 'translate-y-1/4';
   const [facilities, setFacilities] = useState<IFacility[]>([]);
   const [openingHours, setOpeningHours] = useState<string[]>([]);
   const [formatedModifiedDate, setFormatedModifiedDate] = useState<string>();
+  const [translateYClass, setTranslateYClass] =
+    useState<string>(translateClassSmall);
   const [searchParams, setSearchParams] = useSearchParams();
   const detailPanelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!screenSize) return;
+    switch (screenSize) {
+      case ScreenSizeEnum.XS:
+      case ScreenSizeEnum.SM:
+        setTranslateYClass(translateClassSmall);
+        break;
+      case ScreenSizeEnum.LG:
+      case ScreenSizeEnum.MD:
+      case ScreenSizeEnum.XL:
+        setTranslateYClass(translateClassLarge);
+        break;
+      default:
+        setTranslateYClass(translateClassSmall);
+    }
+  }, [screenSize]);
 
   useEffect(() => {
     if (item) {
@@ -45,10 +68,10 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
     }
   }, [item]);
 
-  const doShowPanel = () => {
-    detailPanelRef.current?.classList.add(`translate-y-1/8`);
+  const doShowPanel = useCallback(() => {
+    detailPanelRef.current?.classList.add(translateYClass);
     detailPanelRef.current?.classList.remove('translate-y-full');
-  };
+  }, [translateYClass]);
 
   const doHidePanel = useCallback(() => {
     function clearLocationID() {
@@ -62,9 +85,9 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
       clearLocationID();
       detailPanelRef.current.scrollTop = 0;
       detailPanelRef.current?.classList.add('translate-y-full');
-      detailPanelRef.current?.classList.remove('translate-y-1/8');
+      detailPanelRef.current?.classList.remove(translateYClass);
     }
-  }, [searchParams, setSearchParams]);
+  }, [searchParams, setSearchParams, translateYClass]);
 
   useEffect(() => {
     if (item && detailPanelRef.current) {
@@ -72,13 +95,13 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
     } else if (!item && detailPanelRef.current) {
       doHidePanel();
     }
-  }, [doHidePanel, item]);
+  }, [doHidePanel, doShowPanel, item]);
 
   return (
     <div
       id='detail-panel-container'
       ref={detailPanelRef}
-      className='fixed bottom-0  h-1/2 w-full translate-y-full transform auto-rows-min gap-4 overflow-y-scroll border-t border-gray-600 bg-light-panel-secondary bg-opacity-80 p-2 transition-transform duration-1000 ease-in-out dark:bg-dark-panel  md:p-8'
+      className='fixed bottom-0  h-2/3 w-full translate-y-full transform auto-rows-min gap-4 overflow-y-scroll border-t border-gray-600 bg-light-panel-secondary  bg-opacity-80 px-4 pb-8 transition-transform duration-1000 ease-in-out dark:bg-dark-panel   md:p-8 '
     >
       {item && (
         <div id='detail-panel' className=''>

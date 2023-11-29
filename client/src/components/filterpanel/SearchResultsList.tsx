@@ -33,7 +33,9 @@ function SearchResultsList() {
     setSearchParams(newSearchParams);
 
     // close the filter panel
-    dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
+    setTimeout(() => {
+      dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
+    }, 1500);
   };
 
   // sideEffect when search terms are updated
