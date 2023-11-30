@@ -33,6 +33,7 @@ function MyMap({
 }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
+  const [locationID, setLocationID] = useState(searchParams.get('locationID'));
   const { state, dispatchFilters } = useFiltersContext();
 
   const [infoWindowData, setInfoWindowData] = useState<string>('');
@@ -43,8 +44,13 @@ function MyMap({
   const lastLocationIDRef = useRef<string | null>();
 
   useEffect(() => {
-    const locationID = searchParams.get('locationID');
+    const newLocationID = searchParams.get('locationID');
+    if (newLocationID !== locationID) {
+      setLocationID(newLocationID);
+    }
+  }, [locationID, searchParams]);
 
+  useEffect(() => {
     if (lastLocationIDRef.current !== locationID) {
       const location = items.find((loc) => loc.id === locationID);
       if (location) {
@@ -56,15 +62,19 @@ function MyMap({
         setInfoWindowData(infoData);
         setInfoWindowLocation(location.geometry.location);
         setSelectedItemDetailID(location.id);
-        // TODO don't forget that I commented this line out whilst investigating how the filters panel opens and closes
-        // dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
       } else {
         setSelectedItemDetailID(null);
       }
     }
 
     lastLocationIDRef.current = locationID;
-  }, [dispatchFilters, items, searchParams, setSelectedItemDetailID]);
+  }, [
+    dispatchFilters,
+    items,
+    locationID,
+    searchParams,
+    setSelectedItemDetailID
+  ]);
 
   // TODO make this work for light theme too
   useEffect(() => {

@@ -19,6 +19,7 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
   const screenSize = useGetScreensize();
   const translateClassSmall = 'translate-y-4';
   const translateClassLarge = 'translate-y-1/4';
+
   const [facilities, setFacilities] = useState<IFacility[]>([]);
   const [openingHours, setOpeningHours] = useState<string[]>([]);
   const [formatedModifiedDate, setFormatedModifiedDate] = useState<string>();
@@ -69,12 +70,12 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
   }, [item]);
 
   const doShowPanel = useCallback(() => {
+    console.log('doShowPanel');
     detailPanelRef.current?.classList.add(translateYClass);
     detailPanelRef.current?.classList.remove('translate-y-full');
   }, [translateYClass]);
 
   const doHidePanel = useCallback(() => {
-    console.log('doHidePanel');
     function clearLocationID() {
       const newSearchParams = new URLSearchParams(searchParams.toString());
       // delete the locationID searchParam
@@ -86,14 +87,17 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
       clearLocationID();
       detailPanelRef.current.scrollTop = 0;
       detailPanelRef.current?.classList.add('translate-y-full');
-      detailPanelRef.current?.classList.remove(translateYClass);
+      detailPanelRef.current?.classList.remove(translateClassSmall);
+      detailPanelRef.current?.classList.remove(translateClassLarge);
     }
-  }, [searchParams, setSearchParams, translateYClass]);
+  }, [searchParams, setSearchParams]);
 
   useEffect(() => {
     if (item && detailPanelRef.current) {
+      console.log('doShowPanel');
       doShowPanel();
     } else if (!item && detailPanelRef.current) {
+      console.log('doHidePanel');
       doHidePanel();
     }
   }, [doHidePanel, doShowPanel, item]);

@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import FiltersProvider from '../context/filtersContext/filtersContext';
+import FiltersProvider, {
+  useFiltersContext
+} from '../context/filtersContext/filtersContext';
 import DetailPanel from '../components/detailpanel/DetailPanel';
 import FilterPanel from '../components/filterpanel/FilterPanel';
 import MyMap from '../components/googlemaps/MyMap';
@@ -18,15 +20,20 @@ function Home() {
     ILocation | undefined
   >(undefined);
   const mapMarkerRefs = useRef<IMultiMarkerRef[]>([]);
+
+  // google.maps.Map as useRef
   const googleMapRef = useRef<google.maps.Map | null>(null);
   const setGoogleMapRef = (map: google.maps.Map) => {
     googleMapRef.current = map;
   };
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
+  const [locationID, setLocationID] = useState(searchParams.get('locationID'));
   const {
     state: { locations }
   } = useLocationsContext();
+  const { dispatchFilters } = useFiltersContext();
 
   // pan to a marker location *and* offset for the available screen space
   // to accommodate the panel which will be covering the map
@@ -89,14 +96,22 @@ function Home() {
     [screenSize]
   );
 
+  useEffect(() => {
+    const newLocationID = searchParams.get('locationID');
+    if (newLocationID !== locationID) {
+      setLocationID(newLocationID);
+    }
+  }, [locationID, searchParams]);
+
   // respond to locationID being set in searchParams
   useEffect(() => {
-    const locationID = searchParams.get('locationID');
     if (locationID) {
       const location = locations.find((loc) => loc.id === locationID);
-      panToWithOffset(location?.geometry.location);
+      if (location) {
+        panToWithOffset(location.geometry.location);
+      }
     }
-  }, [locations, panToWithOffset, searchParams]);
+  }, [locationID, locations, panToWithOffset, searchParams]);
 
   const setSelectedItemDetailID = (id: string | null) => {
     const selectedItem = locations.find((location) => location.id === id);
