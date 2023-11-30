@@ -38,7 +38,7 @@ function FilterPanel() {
   return (
     <div
       id='filter-panel'
-      className=' pointer-events-none absolute left-0  right-0 top-0 md:bottom-12 md:left-4 md:top-12 md:flex md:max-w-md md:dark:border-gray-100 md:border '
+      className=' pointer-events-none absolute left-0  right-0 top-0 md:bottom-12 md:left-4 md:top-12 md:flex md:max-w-md  '
     >
       <div className='md:w-full '>
         <FilterPanelNav
