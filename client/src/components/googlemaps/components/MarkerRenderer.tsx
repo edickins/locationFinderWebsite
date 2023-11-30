@@ -1,4 +1,4 @@
-import { useEffect, useState, memo, useRef } from 'react';
+import { useEffect, memo, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ILocation } from '../../../context/locationContext/types';
 import MultiMarker, { IMultiMarkerRef } from './MultiMarker';
@@ -6,6 +6,7 @@ import MultiMarker, { IMultiMarkerRef } from './MultiMarker';
 type Props = {
   items: ILocation[];
   mapMarkerRefs: React.MutableRefObject<IMultiMarkerRef[]>;
+  activeFilters: string | null | undefined;
 };
 
 const checkForActiveFilter = (item: ILocation, filters: string[]): boolean => {
@@ -15,7 +16,7 @@ const checkForActiveFilter = (item: ILocation, filters: string[]): boolean => {
   );
 };
 
-function MarkerRenderer({ items, mapMarkerRefs }: Props) {
+function MarkerRenderer({ items, mapMarkerRefs, activeFilters }: Props) {
   const [searchParams] = useSearchParams();
   const filtersRef = useRef<string | null | undefined>();
 
@@ -35,7 +36,7 @@ function MarkerRenderer({ items, mapMarkerRefs }: Props) {
 
   if (!items || items.length === 0) return null;
 
-  const arr = filtersRef.current?.split('+') || [];
+  const arr = activeFilters?.split('+') || [];
   return items.map((item) => {
     const filterIsActive = checkForActiveFilter(item, arr);
     return (

@@ -34,6 +34,7 @@ function MyMap({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
   const [locationID, setLocationID] = useState(searchParams.get('locationID'));
+  const [activeFilters, setActiveFilters] = useState<string | null>();
   const { state, dispatchFilters } = useFiltersContext();
 
   const [infoWindowData, setInfoWindowData] = useState<string>('');
@@ -49,6 +50,13 @@ function MyMap({
       setLocationID(newLocationID);
     }
   }, [locationID, searchParams]);
+
+  useEffect(() => {
+    const newFilters = searchParams.get('filters');
+    if (newFilters !== activeFilters) {
+      setActiveFilters(newFilters);
+    }
+  }, [activeFilters, searchParams]);
 
   useEffect(() => {
     if (lastLocationIDRef.current !== locationID) {
@@ -119,7 +127,11 @@ function MyMap({
           autoFit
         >
           <MapReporter setGoogleMapRef={setGoogleMapRef} />
-          <MarkerRenderer items={items} mapMarkerRefs={mapMarkerRefs} />
+          <MarkerRenderer
+            items={items}
+            mapMarkerRefs={mapMarkerRefs}
+            activeFilters={activeFilters}
+          />
           <InfoWindow
             // set the key so that the InfoWindow re-renders if the same Marker is clicked
             key={markerClicks}
