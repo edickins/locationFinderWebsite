@@ -17,6 +17,7 @@ const checkForActiveFilter = (item: ILocation, filters: string[]): boolean => {
 };
 
 function MarkerRenderer({ items, mapMarkerRefs, activeFilters }: Props) {
+  console.log('render');
   const [searchParams] = useSearchParams();
   const filtersRef = useRef<string | null | undefined>();
 

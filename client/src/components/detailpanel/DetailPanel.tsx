@@ -76,21 +76,13 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
   }, [translateYClass]);
 
   const doHidePanel = useCallback(() => {
-    function clearLocationID() {
-      const newSearchParams = new URLSearchParams(searchParams.toString());
-      // delete the locationID searchParam
-      newSearchParams.delete('locationID');
-      // Replace the search parameters - this will be picked up in MyMap and Home
-      setSearchParams(newSearchParams);
-    }
     if (detailPanelRef.current) {
-      clearLocationID();
       detailPanelRef.current.scrollTop = 0;
       detailPanelRef.current?.classList.add('translate-y-full');
       detailPanelRef.current?.classList.remove(translateClassSmall);
       detailPanelRef.current?.classList.remove(translateClassLarge);
     }
-  }, [searchParams, setSearchParams]);
+  }, []);
 
   useEffect(() => {
     if (item && detailPanelRef.current) {

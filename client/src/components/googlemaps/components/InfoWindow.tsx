@@ -19,7 +19,7 @@ function InfoWindow({ content, position }: Props) {
     searchParams.get('locationID')
   );
 
-  // store references to searchParams to stop re-renders.
+  // store references to searchParams to stop re-renders caused by params other than locationID changing.
   useEffect(() => {
     searchParamsRef.current = searchParams;
     setSearchParamsRef.current = setSearchParams;

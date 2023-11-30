@@ -93,14 +93,6 @@ function MyMap({
     );
   }, []);
 
-  function clearLocationID() {
-    const newSearchParams = new URLSearchParams(searchParams.toString());
-    // delete the locationID searchParam
-    newSearchParams.delete('locationID');
-    // Replace the search parameters - this will be picked up in MyMap and Home
-    setSearchParams(newSearchParams);
-  }
-
   return (
     <div className='width-full h-full' id='map-container'>
       <Wrapper
@@ -119,7 +111,6 @@ function MyMap({
           styles={mapStyle}
           onClick={() => {
             setSelectedItemDetailID(null);
-            clearLocationID();
           }}
           center={{ lat: 50.8249486, lng: -0.1270007 }}
           zoom={12}
