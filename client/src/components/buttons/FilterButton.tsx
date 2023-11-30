@@ -34,15 +34,15 @@ function FilterButton({
         isSelected ? hoverColour : regularColour
       }`}
     >
-      <div className='flex content-end items-baseline'>
-        <i className={`fa-solid mt-1 ${icon} text-xs`} data-testid='icon' />
+      <div className='flex content-end items-center'>
+        <i className={`fa-solid grow ${icon} text-base`} data-testid='icon' />
         <span
           className={` ml-1 hover:underline  ${isSelected ? 'underline ' : ''}`}
         >
           {children}
         </span>
         {/* show the isActive icon if isActive is set */}
-        {isActive !== undefined && (
+        {isActive && (
           <ButtonActiveIcon
             icon={activeFilterSVG}
             isActive={isActive}

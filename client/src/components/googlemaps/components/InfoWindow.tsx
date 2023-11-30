@@ -13,16 +13,17 @@ function InfoWindow({ content, position }: Props) {
   const clickListenerRef = useRef<google.maps.MapsEventListener | undefined>();
   const { map } = useMapContext();
   const [searchParams, setSearchParams] = useSearchParams();
-  const [locationID, setLocationID] = useState<string | undefined>();
+  const [locationID, setLocationID] = useState<string | null>();
 
   // prevent re-renders from other searchParam values (like search) changing
   // by only responding to locationID changing.
+
   useEffect(() => {
-    const id = searchParams.get('locationID');
-    if (id) {
-      setLocationID(id);
+    const newLocationID = searchParams.get('locationID');
+    if (newLocationID !== locationID) {
+      setLocationID(newLocationID);
     }
-  }, [searchParams]);
+  }, [locationID, searchParams]);
 
   const clearLocationID = useCallback(() => {
     const newSearchParams = new URLSearchParams(searchParams.toString());
