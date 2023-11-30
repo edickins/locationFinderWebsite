@@ -34,7 +34,7 @@ function FilterButton({
         isSelected ? hoverColour : regularColour
       }`}
     >
-      <div className='flex content-end items-center'>
+      <div className='flex content-end items-baseline'>
         <i className={`fa-solid mt-1 ${icon} text-xs`} data-testid='icon' />
         <span
           className={` ml-1 hover:underline  ${isSelected ? 'underline ' : ''}`}

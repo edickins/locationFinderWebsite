@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useMapContext } from 'googlemaps-react-primitives';
 import { useSearchParams } from 'react-router-dom';
 
@@ -13,17 +13,26 @@ function InfoWindow({ content, position }: Props) {
   const clickListenerRef = useRef<google.maps.MapsEventListener | undefined>();
   const { map } = useMapContext();
   const [searchParams, setSearchParams] = useSearchParams();
+  const [locationID, setLocationID] = useState<string | undefined>();
+
+  // prevent re-renders from other searchParam values (like search) changing
+  // by only responding to locationID changing.
+  useEffect(() => {
+    const id = searchParams.get('locationID');
+    if (id) {
+      setLocationID(id);
+    }
+  }, [searchParams]);
+
+  const clearLocationID = useCallback(() => {
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+    // delete the locationID searchParam
+    newSearchParams.delete('locationID');
+    // Replace the search parameters - this will be picked up in MyMap and Home
+    setSearchParams(newSearchParams);
+  }, [searchParams, setSearchParams]);
 
   useEffect(() => {
-    function clearLocationID() {
-      const newSearchParams = new URLSearchParams(searchParams.toString());
-      // delete the locationID searchParam
-      newSearchParams.delete('locationID');
-      // Replace the search parameters - this will be picked up in MyMap and Home
-      setSearchParams(newSearchParams);
-    }
-    const locationID = searchParams.get('locationID');
-
     if (!infoWindowRef.current && locationID) {
       infoWindowRef.current = new google.maps.InfoWindow({ content, position });
       const styledContent = `<div style="color:#040404;padding:4px;font-weight:700">${content}</div>`;
@@ -53,7 +62,7 @@ function InfoWindow({ content, position }: Props) {
         infoWindowRef.current = undefined;
       }
     };
-  }, [map, content, position, setSearchParams, searchParams]);
+  }, [map, content, position, locationID, clearLocationID]);
 
   return null;
 }

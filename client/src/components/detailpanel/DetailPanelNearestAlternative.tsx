@@ -29,8 +29,12 @@ function DetailPanelNearestAlternative({ item }: Props) {
         <FilterButton
           icon='fa-map-location-dot'
           onClick={onNearestAlternativeClick}
+          reverseColours
         >
-          <span className='text-xs'>{`${item.long_name} (click to see on map) `}</span>
+          <div className='ml-2'>
+            <p className='text-left text-xs '>{`${item.long_name}`}</p>
+            <p className='text-left text-xs '>(click to see on map)</p>
+          </div>
         </FilterButton>
       </h1>
     </section>
