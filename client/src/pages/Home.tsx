@@ -129,10 +129,7 @@ function Home() {
 
   return (
     <FiltersProvider>
-      <main
-        className='absolute  bottom-0 top-12 w-full md:top-16'
-        id='home-main'
-      >
+      <main className='flex flex-grow' id='home-main'>
         <MyMap
           items={locations}
           setSelectedItemDetailID={setSelectedItemDetailID}

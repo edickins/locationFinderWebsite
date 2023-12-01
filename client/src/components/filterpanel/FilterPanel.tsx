@@ -42,7 +42,7 @@ function FilterPanel() {
     >
       <div
         id='filter-panel'
-        className=' mx:bottom-8 pointer-events-none relative  left-0 right-0 top-0 md:left-4 md:top-8 md:max-w-md  '
+        className=' pointer-events-none relative mt-12 md:left-4  md:mt-24 md:max-w-md  '
       >
         <FilterPanelNav
           handleFindToiletButtonClick={handleFindToiletButtonClick}

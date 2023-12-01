@@ -95,10 +95,13 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
     <div
       id='detail-panel-container'
       ref={detailPanelRef}
-      className='absolute bottom-0 w-full  translate-y-full transform auto-rows-min gap-4  border-t border-gray-600 bg-light-panel-secondary  bg-opacity-80 px-4 pb-8 transition-transform duration-1000 ease-in-out dark:bg-dark-panel md:px-8 md:pb-0 '
+      className='absolute bottom-0 w-full  translate-y-full transform auto-rows-min gap-4  border-t border-gray-600 bg-light-panel-secondary  bg-opacity-80 pb-2 pl-4 transition-transform duration-1000 ease-in-out dark:bg-dark-panel md:px-8 md:py-8 '
     >
       {item && (
-        <div id='detail-panel' className='max-h-45vh overflow-y-scroll'>
+        <div
+          id='detail-panel'
+          className='max-h-45vh overflow-y-scroll md:overflow-visible'
+        >
           <div className='sticky top-4 flex justify-end'>
             <ClosePanelButton onClick={doHidePanel} isPanelOpen />
           </div>

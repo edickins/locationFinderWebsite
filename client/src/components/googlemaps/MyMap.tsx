@@ -94,14 +94,14 @@ function MyMap({
   }, []);
 
   return (
-    <div className='width-full h-full' id='map-container'>
+    <div className='absolute bottom-0 left-0 right-0 top-0' id='map-container'>
       <Wrapper
         libraries={['geometry']}
         apiKey={import.meta.env.VITE_API_KEY}
         render={renderLoadingStatus}
       >
         <GoogleMap
-          className='mb-4 h-full'
+          className='mb-4 h-full md:mb-0'
           fullscreenControl={false}
           mapTypeControl={false}
           streetViewControl={false}
