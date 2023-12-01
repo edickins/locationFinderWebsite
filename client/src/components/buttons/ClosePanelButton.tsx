@@ -6,7 +6,7 @@ type Props = {
 function ClosePanelButton({ onClick, isPanelOpen }: Props) {
   if (!isPanelOpen) return null;
   return (
-    <div className='mb-2'>
+    <div>
       <button type='button' onClick={onClick}>
         <i className='fa-regular hover:fa-solid fa-circle-xmark text-lg' />
       </button>

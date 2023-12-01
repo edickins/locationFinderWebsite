@@ -6,7 +6,7 @@ type Props = {
 
 function DetailPanelAddress({ item }: Props) {
   return (
-    <section id='address-section' className='mb-4'>
+    <section id='address-section' className='mb-4 md:col-span-3'>
       <h1 className='mb-4 text-xl font-bold dark:text-dark-primary-color'>
         {item?.long_name}
       </h1>

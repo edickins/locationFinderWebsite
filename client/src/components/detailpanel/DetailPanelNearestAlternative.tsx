@@ -22,7 +22,10 @@ function DetailPanelNearestAlternative({ item }: Props) {
   };
 
   return (
-    <section id='nearest-alternative-section' className='md:mb-0 md:self-end'>
+    <section
+      id='nearest-alternative-section'
+      className=' col-span-1 md:col-span-3 md:mb-0 md:self-end'
+    >
       <h1 className='mb-4 text-lg font-bold md:mb-0 '>
         <p className='font-semibold'>Nearest alternative: </p>
 

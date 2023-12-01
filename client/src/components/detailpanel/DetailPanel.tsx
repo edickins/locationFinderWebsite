@@ -25,7 +25,6 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
   const [formatedModifiedDate, setFormatedModifiedDate] = useState<string>();
   const [translateYClass, setTranslateYClass] =
     useState<string>(translateClassSmall);
-  const [searchParams, setSearchParams] = useSearchParams();
   const detailPanelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -70,7 +69,6 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
   }, [item]);
 
   const doShowPanel = useCallback(() => {
-    console.log('doShowPanel');
     detailPanelRef.current?.classList.add(translateYClass);
     detailPanelRef.current?.classList.remove('translate-y-full');
   }, [translateYClass]);
@@ -86,10 +84,8 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
 
   useEffect(() => {
     if (item && detailPanelRef.current) {
-      console.log('doShowPanel');
       doShowPanel();
     } else if (!item && detailPanelRef.current) {
-      console.log('doHidePanel');
       doHidePanel();
     }
   }, [doHidePanel, doShowPanel, item]);
@@ -98,14 +94,14 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
     <div
       id='detail-panel-container'
       ref={detailPanelRef}
-      className='fixed bottom-0  h-2/3 w-full translate-y-full transform auto-rows-min gap-4 overflow-y-scroll border-t border-gray-600 bg-light-panel-secondary  bg-opacity-80 px-4 pb-8 transition-transform duration-1000 ease-in-out dark:bg-dark-panel md:p-8 '
+      className='fixed bottom-0  w-full translate-y-full transform auto-rows-min gap-4 overflow-y-scroll border-t border-gray-600 bg-light-panel-secondary  bg-opacity-80 px-4 pb-8 transition-transform duration-1000 ease-in-out dark:bg-dark-panel md:px-8 '
     >
       {item && (
         <div id='detail-panel'>
           <div className='sticky top-4 flex justify-end'>
             <ClosePanelButton onClick={doHidePanel} isPanelOpen />
           </div>
-          <div className='mr-8 grid text-sm sm:grid-cols-1 md:grid-cols-3 md:gap-8 md:text-base'>
+          <div className='mr-8 grid grid-cols-1 text-sm md:grid-cols-7 md:gap-8 md:text-base'>
             <DetailPanelAddress item={item} />
             <DetailPanelFacilities facilities={facilities} />
             <DetailPanelOpeningTimes openingHours={openingHours} item={item} />

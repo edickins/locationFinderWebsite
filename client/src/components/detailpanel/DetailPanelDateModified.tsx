@@ -4,7 +4,7 @@ type Props = {
 
 function DetailPanelDateModified({ formatedModifiedDate }: Props) {
   return (
-    <p className='text-xs dark:text-dark-secondary-color md:self-end'>
+    <p className='col-span-1 text-xs dark:text-dark-secondary-color md:col-span-2  md:self-end'>
       This information was last modified on {formatedModifiedDate}
     </p>
   );

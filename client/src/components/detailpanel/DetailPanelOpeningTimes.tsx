@@ -8,7 +8,10 @@ type Props = {
 
 function DetailPanelOpeningTimes({ openingHours, item }: Props) {
   return (
-    <section id='opening-hours-section' className='mb-4'>
+    <section
+      id='opening-hours-section'
+      className='cols-span-1 mb-4 md:col-span-2'
+    >
       <h2 className='font-semibold  dark:text-dark-primary-color'>
         Opening hours:
       </h2>

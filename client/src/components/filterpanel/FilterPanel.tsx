@@ -37,15 +37,18 @@ function FilterPanel() {
 
   return (
     <div
-      id='filter-panel'
-      className=' pointer-events-none absolute left-0  right-0 top-0  md:left-4 md:top-4 md:max-w-md  '
+      id='filter-panel-wrapper'
+      className='pointer-events-none absolute bottom-0 left-0 right-0 top-0 mx-auto md:max-w-6xl '
     >
-      {/* <div className='md:flex md:w-full md:flex-col'> */}
-      <FilterPanelNav
-        handleFindToiletButtonClick={handleFindToiletButtonClick}
-      />
-      <FiltersContainer />
-      {/* </div> */}
+      <div
+        id='filter-panel'
+        className=' pointer-events-none absolute left-0  right-0 top-0  md:left-4 md:top-4 md:max-w-md  '
+      >
+        <FilterPanelNav
+          handleFindToiletButtonClick={handleFindToiletButtonClick}
+        />
+        <FiltersContainer />
+      </div>
     </div>
   );
 }
