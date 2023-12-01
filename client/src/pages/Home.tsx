@@ -33,7 +33,6 @@ function Home() {
   const {
     state: { locations }
   } = useLocationsContext();
-  const { dispatchFilters } = useFiltersContext();
 
   // pan to a marker location *and* offset for the available screen space
   // to accommodate the panel which will be covering the map
@@ -53,11 +52,11 @@ function Home() {
           break;
         case ScreenSizeEnum.SM:
           offsetX = 0;
-          offsetY = 175;
+          offsetY = 60;
           break;
         case ScreenSizeEnum.XS:
           offsetX = 0;
-          offsetY = 175;
+          offsetY = 20;
           break;
         default:
           offsetX = 0;
@@ -131,8 +130,8 @@ function Home() {
   return (
     <FiltersProvider>
       <main
-        className='absolute bottom-0 top-10 w-full md:top-16'
-        id='home-container'
+        className='absolute  bottom-0 top-12 w-full md:top-16'
+        id='home-main'
       >
         <MyMap
           items={locations}

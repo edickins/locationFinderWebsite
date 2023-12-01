@@ -19,11 +19,11 @@ const FiltersContainer = function FiltersContainer() {
   return (
     <section
       id='filters-container'
-      className={`pointer-events-auto fixed bottom-4 left-0 right-0 top-32 mx-4 flex  flex-col bg-light-panel-secondary bg-opacity-95 p-4 drop-shadow-lg  dark:bg-dark-panel md:relative  md:top-0 md:mx-0 md:mt-0 md:flex-grow md:scroll-auto md:pt-0 ${
+      className={`pointer-events-auto fixed bottom-4 left-0 right-0 top-32 mx-4 flex  flex-col bg-light-panel-secondary bg-opacity-95 p-4 drop-shadow-lg  dark:bg-dark-panel md:relative md:top-0  md:mx-0 md:mt-0 md:max-h-[calc(100%-104px)]  md:scroll-auto md:pt-0 ${
         isPanelOpen ? 'block' : 'hidden md:block'
       }`}
     >
-      <nav aria-label='close panel' className='flex justify-end md:hidden'>
+      <nav aria-label='close panel' className='flex justify-end '>
         <ClosePanelButton isPanelOpen={isPanelOpen} onClick={hideFilterPanel} />
       </nav>
       <div className='flex-grow overflow-auto'>

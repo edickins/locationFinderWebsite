@@ -26,7 +26,7 @@ function DetailPanelNearestAlternative({ item }: Props) {
       id='nearest-alternative-section'
       className=' col-span-1 md:col-span-3 md:mb-0 md:self-end'
     >
-      <h1 className='mb-4 text-lg font-bold md:mb-0 '>
+      <h1 className='mb-4 text-lg font-bold md:mb-0 md:mb-0'>
         <p className='font-semibold'>Nearest alternative: </p>
 
         <FilterButton

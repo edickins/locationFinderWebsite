@@ -75,7 +75,7 @@ function SearchResultsList() {
     <div>
       {searchTerms.length === 0 && <NoResults />}
       {searchTerms.length !== 0 && (
-        <ul className='mt-2 bg-white bg-opacity-80 px-4 py-2 dark:text-gray-900'>
+        <ul className='mt-2 bg-white bg-opacity-80 px-2 py-2 dark:text-gray-900'>
           {searchResults.length > 0 &&
             searchResults.map((location) => {
               return (

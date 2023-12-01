@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import { IFacility, ILocation } from '../../context/locationContext/types';
 
 import DetailPanelAddress from './DetailPanelAddress';
@@ -17,8 +16,9 @@ type Props = {
 
 function DetailPanel({ item, nearestAlternativeItem }: Props) {
   const screenSize = useGetScreensize();
-  const translateClassSmall = 'translate-y-4';
-  const translateClassLarge = 'translate-y-1/4';
+  const translateClassExtraSmall = 'translate-y-0';
+  const translateClassSmall = 'translate-y-0';
+  const translateClassLarge = 'translate-y-0';
 
   const [facilities, setFacilities] = useState<IFacility[]>([]);
   const [openingHours, setOpeningHours] = useState<string[]>([]);
@@ -31,6 +31,8 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
     if (!screenSize) return;
     switch (screenSize) {
       case ScreenSizeEnum.XS:
+        setTranslateYClass(translateClassExtraSmall);
+        break;
       case ScreenSizeEnum.SM:
         setTranslateYClass(translateClassSmall);
         break;
@@ -69,16 +71,15 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
   }, [item]);
 
   const doShowPanel = useCallback(() => {
-    detailPanelRef.current?.classList.add(translateYClass);
+    detailPanelRef.current?.classList.add(`translate-y-0`);
     detailPanelRef.current?.classList.remove('translate-y-full');
-  }, [translateYClass]);
+  }, []);
 
   const doHidePanel = useCallback(() => {
     if (detailPanelRef.current) {
       detailPanelRef.current.scrollTop = 0;
       detailPanelRef.current?.classList.add('translate-y-full');
-      detailPanelRef.current?.classList.remove(translateClassSmall);
-      detailPanelRef.current?.classList.remove(translateClassLarge);
+      detailPanelRef.current?.classList.remove('translate-y-0');
     }
   }, []);
 
@@ -94,10 +95,10 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
     <div
       id='detail-panel-container'
       ref={detailPanelRef}
-      className='fixed bottom-0  w-full translate-y-full transform auto-rows-min gap-4 overflow-y-scroll border-t border-gray-600 bg-light-panel-secondary  bg-opacity-80 px-4 pb-8 transition-transform duration-1000 ease-in-out dark:bg-dark-panel md:px-8 '
+      className='absolute bottom-0 w-full  translate-y-full transform auto-rows-min gap-4  border-t border-gray-600 bg-light-panel-secondary  bg-opacity-80 px-4 pb-8 transition-transform duration-1000 ease-in-out dark:bg-dark-panel md:px-8 md:pb-0 '
     >
       {item && (
-        <div id='detail-panel'>
+        <div id='detail-panel' className='max-h-45vh overflow-y-scroll'>
           <div className='sticky top-4 flex justify-end'>
             <ClosePanelButton onClick={doHidePanel} isPanelOpen />
           </div>

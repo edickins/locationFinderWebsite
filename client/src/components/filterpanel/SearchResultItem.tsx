@@ -10,7 +10,7 @@ function SearchResultItem({ location, onSearchResultClick }: Props) {
     onSearchResultClick(location.id);
   };
   return (
-    <li className='py-2 md:py-1'>
+    <li className='bg-white px-2 py-2 md:py-1'>
       <button type='button' onClick={() => onClick()}>
         {location && location.long_name}
       </button>

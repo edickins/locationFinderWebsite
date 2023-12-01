@@ -14,6 +14,9 @@ export default {
         'light-panel-secondary': '#CBD3C8',
         'light-secondary-color': '#de8154',
         'light-primary-color': '#686d93'
+      },
+      maxHeight: {
+        '45vh': '45vh'
       }
     }
   },

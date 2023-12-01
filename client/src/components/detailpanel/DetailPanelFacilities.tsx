@@ -6,7 +6,10 @@ type Props = {
 
 function DetailPanelFacilities({ facilities }: Props) {
   return (
-    <section id='facilties-section' className='col-span-1 mb-4 md:col-span-2'>
+    <section
+      id='facilties-section'
+      className='col-span-1 mb-4 md:col-span-2 md:mb-0'
+    >
       <h2 className=' text-lg  font-semibold dark:text-dark-primary-color'>
         Facilities at this toilet:
       </h2>

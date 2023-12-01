@@ -170,7 +170,7 @@ function SearchLocation() {
         name='search'
         id='search'
         placeholder='type your search here...'
-        className='mb-1 w-48 rounded-sm px-2 text-sm dark:text-gray-900  '
+        className='mb-1 w-48 rounded-sm px-2  dark:text-gray-900  '
         onChange={onSearchChange}
         onFocus={onSearchChange}
       />

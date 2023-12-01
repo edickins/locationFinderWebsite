@@ -38,11 +38,11 @@ function FilterPanel() {
   return (
     <div
       id='filter-panel-wrapper'
-      className='pointer-events-none absolute bottom-0 left-0 right-0 top-0 mx-auto md:max-w-6xl '
+      className='pointer-events-none absolute bottom-0 left-0 right-0 top-0 mx-auto md:flex md:max-w-6xl '
     >
       <div
         id='filter-panel'
-        className=' pointer-events-none absolute left-0  right-0 top-0  md:left-4 md:top-4 md:max-w-md  '
+        className=' mx:bottom-8 pointer-events-none relative  left-0 right-0 top-0 md:left-4 md:top-8 md:max-w-md  '
       >
         <FilterPanelNav
           handleFindToiletButtonClick={handleFindToiletButtonClick}

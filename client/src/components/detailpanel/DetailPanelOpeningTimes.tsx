@@ -10,7 +10,7 @@ function DetailPanelOpeningTimes({ openingHours, item }: Props) {
   return (
     <section
       id='opening-hours-section'
-      className='cols-span-1 mb-4 md:col-span-2'
+      className='cols-span-1 mb-4 md:col-span-2 md:mb-0'
     >
       <h2 className='font-semibold  dark:text-dark-primary-color'>
         Opening hours:
