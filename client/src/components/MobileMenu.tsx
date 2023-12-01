@@ -7,7 +7,7 @@ type Props = {
 function MobileMenu({ isMenuOpen, setIsMenuOpen }: Props) {
   return (
     <div
-      className={`fixed inset-x-0 bottom-0 top-16 transition-all
+      className={`fixed inset-x-0 bottom-0 top-12 transition-all
       duration-200 ease-out ${
         isMenuOpen ? 'visible opacity-100' : 'invisible opacity-0'
       } `}

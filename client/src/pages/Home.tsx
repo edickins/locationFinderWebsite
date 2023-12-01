@@ -144,7 +144,10 @@ function Home() {
           item={detailPanelItem}
           nearestAlternativeItem={nearestAlternativeItem}
         />
-        <div className='pointer-events-none  absolute bottom-0 left-0 right-0 top-0 mx-auto max-w-6xl'>
+        <div
+          id='filter-panel-wrapper'
+          className='pointer-events-none absolute bottom-0 left-0 right-0 top-0 mx-auto'
+        >
           <FilterPanel />
         </div>
       </main>

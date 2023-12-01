@@ -38,14 +38,14 @@ function FilterPanel() {
   return (
     <div
       id='filter-panel'
-      className=' pointer-events-none absolute left-0  right-0 top-0 md:bottom-12 md:left-4 md:top-12 md:flex md:max-w-md  '
+      className=' pointer-events-none absolute left-0  right-0 top-0  md:left-4 md:top-4 md:max-w-md  '
     >
-      <div className='md:w-full '>
-        <FilterPanelNav
-          handleFindToiletButtonClick={handleFindToiletButtonClick}
-        />
-        <FiltersContainer />
-      </div>
+      {/* <div className='md:flex md:w-full md:flex-col'> */}
+      <FilterPanelNav
+        handleFindToiletButtonClick={handleFindToiletButtonClick}
+      />
+      <FiltersContainer />
+      {/* </div> */}
     </div>
   );
 }
