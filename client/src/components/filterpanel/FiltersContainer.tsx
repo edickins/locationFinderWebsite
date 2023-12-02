@@ -19,7 +19,7 @@ const FiltersContainer = function FiltersContainer() {
   return (
     <section
       id='filters-container'
-      className={`pointer-events-auto fixed bottom-4 left-0 right-0 top-32 mx-4 flex flex-col bg-light-panel-secondary bg-opacity-95 p-4 drop-shadow-lg  dark:bg-dark-panel md:relative md:top-0  md:mx-0 md:mt-0 md:max-h-[calc(100%-340px)]  md:scroll-auto md:pt-0 ${
+      className={`pointer-events-auto fixed bottom-4 left-0 right-0 top-32 mx-4 flex flex-col bg-light-panel-secondary bg-opacity-95 p-4 drop-shadow-lg  dark:bg-dark-panel md:relative md:top-0  md:mx-0 md:mt-0 md:max-h-[calc(100%-300px)] md:scroll-auto  md:border-b-2 md:border-l-2 md:border-r-2  md:border-gray-700 md:pt-0 ${
         isPanelOpen ? 'block' : 'hidden md:block'
       }`}
     >

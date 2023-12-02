@@ -23,28 +23,8 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
   const [facilities, setFacilities] = useState<IFacility[]>([]);
   const [openingHours, setOpeningHours] = useState<string[]>([]);
   const [formatedModifiedDate, setFormatedModifiedDate] = useState<string>();
-  const [translateYClass, setTranslateYClass] =
-    useState<string>(translateClassSmall);
-  const detailPanelRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!screenSize) return;
-    switch (screenSize) {
-      case ScreenSizeEnum.XS:
-        setTranslateYClass(translateClassExtraSmall);
-        break;
-      case ScreenSizeEnum.SM:
-        setTranslateYClass(translateClassSmall);
-        break;
-      case ScreenSizeEnum.LG:
-      case ScreenSizeEnum.MD:
-      case ScreenSizeEnum.XL:
-        setTranslateYClass(translateClassLarge);
-        break;
-      default:
-        setTranslateYClass(translateClassSmall);
-    }
-  }, [screenSize]);
+  const detailPanelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (item) {
@@ -95,7 +75,7 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
     <div
       id='detail-panel-container'
       ref={detailPanelRef}
-      className='absolute bottom-0 w-full  translate-y-full transform auto-rows-min gap-4  border-t border-gray-600 bg-light-panel-secondary  bg-opacity-80 pb-2 pl-4 transition-transform duration-1000 ease-in-out dark:bg-dark-panel md:px-8 md:py-8 '
+      className='fixed bottom-0 w-full  translate-y-full transform auto-rows-min gap-4  border-t border-gray-600 bg-light-panel-secondary  bg-opacity-80 pb-2 pl-4 transition-transform duration-1000 ease-in-out dark:bg-dark-panel md:px-8 md:py-8 '
     >
       {item && (
         <div
