@@ -7,7 +7,6 @@ import DetailPanelOpeningTimes from './DetailPanelOpeningTimes';
 import DetailPanelDateModified from './DetailPanelDateModified';
 import DetailPanelNearestAlternative from './DetailPanelNearestAlternative';
 import ClosePanelButton from '../buttons/ClosePanelButton';
-import useGetScreensize, { ScreenSizeEnum } from '../../hooks/getScreensize';
 
 type Props = {
   item: ILocation | undefined;
@@ -15,16 +14,13 @@ type Props = {
 };
 
 function DetailPanel({ item, nearestAlternativeItem }: Props) {
-  const screenSize = useGetScreensize();
-  const translateClassExtraSmall = 'translate-y-0';
-  const translateClassSmall = 'translate-y-0';
-  const translateClassLarge = 'translate-y-0';
-
   const [facilities, setFacilities] = useState<IFacility[]>([]);
   const [openingHours, setOpeningHours] = useState<string[]>([]);
   const [formatedModifiedDate, setFormatedModifiedDate] = useState<string>();
 
   const detailPanelRef = useRef<HTMLDivElement>(null);
+
+  console.log(item?.long_name);
 
   useEffect(() => {
     if (item) {

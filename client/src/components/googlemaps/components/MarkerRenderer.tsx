@@ -17,7 +17,6 @@ const checkForActiveFilter = (item: ILocation, filters: string[]): boolean => {
 };
 
 function MarkerRenderer({ items, mapMarkerRefs, activeFilters }: Props) {
-  console.log('render');
   const [searchParams] = useSearchParams();
   const filtersRef = useRef<string | null | undefined>();
 
@@ -39,6 +38,7 @@ function MarkerRenderer({ items, mapMarkerRefs, activeFilters }: Props) {
 
   const arr = activeFilters?.split('+') || [];
   return items.map((item) => {
+    // TODO maybe checking for active filters earlier would reduce renders?
     const filterIsActive = checkForActiveFilter(item, arr);
     return (
       <MultiMarker

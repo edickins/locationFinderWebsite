@@ -72,6 +72,7 @@ export default function MultiMarker({
         map,
         icon: markerIcon
       });
+
       marker.current.addListener('click', onMarkerClicked);
       addMarker(marker.current);
       if (marker.current) {
@@ -82,6 +83,7 @@ export default function MultiMarker({
         ];
       }
     }
+
     return () => {
       if (marker.current) {
         google.maps.event.clearListeners(marker, 'click');

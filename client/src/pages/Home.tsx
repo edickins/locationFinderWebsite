@@ -1,8 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import FiltersProvider, {
-  useFiltersContext
-} from '../context/filtersContext/filtersContext';
+import FiltersProvider from '../context/filtersContext/filtersContext';
 import DetailPanel from '../components/detailpanel/DetailPanel';
 import FilterPanel from '../components/filterpanel/FilterPanel';
 import MyMap from '../components/googlemaps/MyMap';
@@ -28,7 +26,7 @@ function Home() {
   };
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, unused] = useSearchParams();
   const [locationID, setLocationID] = useState(searchParams.get('locationID'));
   const {
     state: { locations }
@@ -113,9 +111,12 @@ function Home() {
   }, [locationID, locations, panToWithOffset, searchParams]);
 
   const setSelectedItemDetailID = (id: string | null) => {
+    if (!id) return;
+
     const selectedItem = locations.find((location) => location.id === id);
     if (selectedItem) {
-      setDetailPanelItem(selectedItem);
+      const newItem = { ...selectedItem };
+      setDetailPanelItem(newItem);
       setNearestAlternativeItem(
         locations.find(
           (location) => location.id === selectedItem?.nearest_alternative

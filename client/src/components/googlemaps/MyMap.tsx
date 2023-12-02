@@ -32,10 +32,10 @@ function MyMap({
   mapMarkerRefs
 }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [locationID, setLocationID] = useState(searchParams.get('locationID'));
   const [activeFilters, setActiveFilters] = useState<string | null>();
-  const { state, dispatchFilters } = useFiltersContext();
+  const { dispatchFilters } = useFiltersContext();
 
   const [infoWindowData, setInfoWindowData] = useState<string>('');
   const [mapStyle, setMapStyle] = useState<google.maps.MapTypeStyle[]>([]);
