@@ -26,7 +26,7 @@ function Home() {
   };
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [searchParams, unused] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [locationID, setLocationID] = useState(searchParams.get('locationID'));
   const {
     state: { locations }
@@ -50,11 +50,11 @@ function Home() {
           break;
         case ScreenSizeEnum.SM:
           offsetX = 0;
-          offsetY = 60;
+          offsetY = 50;
           break;
         case ScreenSizeEnum.XS:
           offsetX = 0;
-          offsetY = 20;
+          offsetY = 10;
           break;
         default:
           offsetX = 0;
@@ -95,6 +95,7 @@ function Home() {
 
   useEffect(() => {
     const newLocationID = searchParams.get('locationID');
+    // TODO is this gate necessary?
     if (newLocationID !== locationID) {
       setLocationID(newLocationID);
     }
@@ -106,25 +107,25 @@ function Home() {
       const location = locations.find((loc) => loc.id === locationID);
       if (location) {
         panToWithOffset(location.geometry.location);
+        setDetailPanelItem(location);
+        setNearestAlternativeItem(
+          locations.find((item) => item.id === location?.nearest_alternative)
+        );
       }
     }
-  }, [locationID, locations, panToWithOffset, searchParams]);
+  }, [locationID, locations, panToWithOffset]);
 
-  const setSelectedItemDetailID = (id: string | null) => {
-    if (!id) return;
+  // clickHandler sent via props to MultiMarker
+  const onMarkerClicked = (id: string) => {
+    if (id) {
+      // Create a new URLSearchParams instance to clone the current parameters
+      const newSearchParams = new URLSearchParams(searchParams.toString());
 
-    const selectedItem = locations.find((location) => location.id === id);
-    if (selectedItem) {
-      const newItem = { ...selectedItem };
-      setDetailPanelItem(newItem);
-      setNearestAlternativeItem(
-        locations.find(
-          (location) => location.id === selectedItem?.nearest_alternative
-        )
-      );
-    } else {
-      setDetailPanelItem(undefined);
-      setNearestAlternativeItem(undefined);
+      // Set the new locationID parameter
+      newSearchParams.set('locationID', id);
+
+      // Replace the search parameters - this will be picked up in Home
+      setSearchParams(newSearchParams);
     }
   };
 
@@ -133,7 +134,8 @@ function Home() {
       <main className='flex flex-grow' id='home-main'>
         <MyMap
           items={locations}
-          setSelectedItemDetailID={setSelectedItemDetailID}
+          locationID={locationID}
+          onMarkerClicked={onMarkerClicked}
           mapMarkerRefs={mapMarkerRefs}
           setGoogleMapRef={setGoogleMapRef}
         />

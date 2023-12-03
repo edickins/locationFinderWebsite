@@ -20,20 +20,22 @@ function renderLoadingStatus(status: Status) {
 
 type Props = {
   items: ILocation[];
-  setSelectedItemDetailID: (id: string | null) => void;
+  locationID: string | null;
+  onMarkerClicked: (id: string) => void;
   setGoogleMapRef: (map: google.maps.Map) => void;
   mapMarkerRefs: React.MutableRefObject<IMultiMarkerRef[]>;
 };
 
 function MyMap({
   items,
-  setSelectedItemDetailID,
+  locationID,
+  onMarkerClicked,
   setGoogleMapRef,
   mapMarkerRefs
 }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams] = useSearchParams();
-  const [locationID, setLocationID] = useState(searchParams.get('locationID'));
+  // const [locationID, setLocationID] = useState(searchParams.get('locationID'));
   const [activeFilters, setActiveFilters] = useState<string | null>();
   const { dispatchFilters } = useFiltersContext();
 
@@ -44,13 +46,7 @@ function MyMap({
     useState<google.maps.LatLngLiteral>({ lat: 0, lng: 0 });
   const lastLocationIDRef = useRef<string | null>();
 
-  useEffect(() => {
-    const newLocationID = searchParams.get('locationID');
-    if (newLocationID !== locationID) {
-      setLocationID(newLocationID);
-    }
-  }, [locationID, searchParams]);
-
+  // update the Array of user selected filters that are active
   useEffect(() => {
     const newFilters = searchParams.get('filters');
     if (newFilters !== activeFilters) {
@@ -59,6 +55,7 @@ function MyMap({
   }, [activeFilters, searchParams]);
 
   useEffect(() => {
+    // TODO is this integirty check necessary?
     if (lastLocationIDRef.current !== locationID) {
       const location = items.find((loc) => loc.id === locationID);
       if (location) {
@@ -69,20 +66,11 @@ function MyMap({
 
         setInfoWindowData(infoData);
         setInfoWindowLocation(location.geometry.location);
-        setSelectedItemDetailID(location.id);
-      } else {
-        setSelectedItemDetailID(null);
       }
     }
 
     lastLocationIDRef.current = locationID;
-  }, [
-    dispatchFilters,
-    items,
-    locationID,
-    searchParams,
-    setSelectedItemDetailID
-  ]);
+  }, [dispatchFilters, items, locationID]);
 
   // TODO make this work for light theme too
   useEffect(() => {
@@ -110,7 +98,7 @@ function MyMap({
           backgroundColor='#c8c8c8'
           styles={mapStyle}
           onClick={() => {
-            setSelectedItemDetailID(null);
+            // TODO keeping this here just in case I need it later
           }}
           center={{ lat: 50.8249486, lng: -0.1270007 }}
           zoom={12}
@@ -122,6 +110,7 @@ function MyMap({
             items={items}
             mapMarkerRefs={mapMarkerRefs}
             activeFilters={activeFilters}
+            onMarkerClicked={onMarkerClicked}
           />
           <InfoWindow
             // set the key so that the InfoWindow re-renders if the same Marker is clicked

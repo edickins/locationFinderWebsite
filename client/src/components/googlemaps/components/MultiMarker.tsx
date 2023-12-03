@@ -1,4 +1,3 @@
-import { useSearchParams } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import { useMapContext, useMapEffect } from 'googlemaps-react-primitives';
 import { regularSVG, activeFilterSVG, closedSVG } from './markerSVGs';
@@ -9,6 +8,7 @@ interface Props extends google.maps.MarkerOptions {
   isFilterActive: boolean;
   open_status: string;
   mapMarkerRefs: React.MutableRefObject<IMultiMarkerRef[]>;
+  onMarkerClicked: (id: string) => void;
 }
 
 export type IMultiMarkerRef = {
@@ -30,6 +30,7 @@ export default function MultiMarker({
   isFilterActive,
   open_status,
   mapMarkerRefs,
+  onMarkerClicked,
   ...options
 }: Props) {
   const marker = useRef<google.maps.Marker>();
@@ -38,7 +39,6 @@ export default function MultiMarker({
     url: `data:image/svg+xml;base64,${window.btoa(regularSVG)}`,
     scaledSize: new google.maps.Size(markerWidth, markerHeight)
   });
-  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     // get the correct SVG for the Marker
@@ -54,18 +54,6 @@ export default function MultiMarker({
   }, [isFavourite, isFilterActive, open_status]);
 
   useEffect(() => {
-    const onMarkerClicked = () => {
-      if (id) {
-        // Create a new URLSearchParams instance to clone the current parameters
-        const newSearchParams = new URLSearchParams(searchParams.toString());
-
-        // Set the new locationID parameter
-        newSearchParams.set('locationID', id);
-
-        // Replace the search parameters - this will be picked up in Home
-        setSearchParams(newSearchParams);
-      }
-    };
     if (!marker.current) {
       marker.current = new google.maps.Marker({
         ...options,
@@ -73,8 +61,9 @@ export default function MultiMarker({
         icon: markerIcon
       });
 
-      marker.current.addListener('click', onMarkerClicked);
+      marker.current.addListener('click', () => onMarkerClicked(id));
       addMarker(marker.current);
+      // TODO can this be done without setting the useRef value directly here?
       if (marker.current) {
         // eslint-disable-next-line no-param-reassign
         mapMarkerRefs.current = [
@@ -100,8 +89,7 @@ export default function MultiMarker({
     options,
     removeMarker,
     mapMarkerRefs,
-    searchParams,
-    setSearchParams
+    onMarkerClicked
   ]);
 
   useMapEffect(() => {

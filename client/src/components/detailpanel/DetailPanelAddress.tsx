@@ -1,10 +1,11 @@
+import { PropsWithChildren } from 'react';
 import { ILocation } from '../../context/locationContext/types';
 
-type Props = {
+interface Props extends PropsWithChildren<JSX.Element> {
   item: ILocation | undefined;
-};
+}
 
-function DetailPanelAddress({ item }: Props) {
+function DetailPanelAddress({ item, children }: Props) {
   const regEx = /closed/i;
   const isClosed = item?.open_status.match(regEx);
 
@@ -13,6 +14,7 @@ function DetailPanelAddress({ item }: Props) {
       <h1 className='mb-4 text-xl font-bold dark:text-dark-primary-color'>
         {item?.long_name}
       </h1>
+      {children}
       <p className='font-semibold'>Address: </p>
       <p className='mb-2'>{item?.formatted_address}</p>
       {isClosed && <p>This toilet is currently closed and not in service.</p>}

@@ -7,6 +7,7 @@ type Props = {
   items: ILocation[];
   mapMarkerRefs: React.MutableRefObject<IMultiMarkerRef[]>;
   activeFilters: string | null | undefined;
+  onMarkerClicked: (id: string) => void;
 };
 
 const checkForActiveFilter = (item: ILocation, filters: string[]): boolean => {
@@ -16,7 +17,12 @@ const checkForActiveFilter = (item: ILocation, filters: string[]): boolean => {
   );
 };
 
-function MarkerRenderer({ items, mapMarkerRefs, activeFilters }: Props) {
+function MarkerRenderer({
+  items,
+  mapMarkerRefs,
+  activeFilters,
+  onMarkerClicked
+}: Props) {
   const [searchParams] = useSearchParams();
   const filtersRef = useRef<string | null | undefined>();
 
@@ -50,6 +56,7 @@ function MarkerRenderer({ items, mapMarkerRefs, activeFilters }: Props) {
         open_status={item.open_status}
         data-testid={`marker-${item.id}`}
         mapMarkerRefs={mapMarkerRefs}
+        onMarkerClicked={onMarkerClicked}
       />
     );
   });

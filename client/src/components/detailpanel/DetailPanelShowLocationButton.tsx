@@ -1,12 +1,13 @@
+import { PropsWithChildren } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ILocation } from '../../context/locationContext/types';
 import FilterButton from '../buttons/FilterButton';
 
-type Props = {
+interface Props extends PropsWithChildren<JSX.Element> {
   item: ILocation | undefined;
-};
+}
 
-function DetailPanelNearestAlternative({ item }: Props) {
+function DetailPanelShowLocationButton({ item, children }: Props) {
   const [searchParams, setSearchParams] = useSearchParams();
   if (!item) return null;
 
@@ -26,8 +27,8 @@ function DetailPanelNearestAlternative({ item }: Props) {
       id='nearest-alternative-section'
       className=' col-span-1 md:col-span-3 md:mb-0 md:self-end'
     >
-      <h1 className='mb-4 text-lg font-bold md:mb-0 md:mb-0'>
-        <p className='font-semibold'>Nearest alternative: </p>
+      <h1 className='mb-4 text-lg font-bold  md:mb-0'>
+        {children}
 
         <FilterButton
           icon='fa-map-location-dot'
@@ -35,8 +36,17 @@ function DetailPanelNearestAlternative({ item }: Props) {
           reverseColours
         >
           <div className='ml-2'>
-            <p className='text-left text-xs '>{`${item.long_name}`}</p>
-            <p className='text-left text-xs '>(click to see on map)</p>
+            <p className='text-left text-xs '>
+              {`${item.long_name}`}
+              <span className='hidden text-left text-xs md:inline'>
+                {' '}
+                (click to see on map)
+              </span>
+            </p>
+            <p className='text-left text-xs md:hidden'>
+              {' '}
+              (click to see on map)
+            </p>
           </div>
         </FilterButton>
       </h1>
@@ -44,4 +54,4 @@ function DetailPanelNearestAlternative({ item }: Props) {
   );
 }
 
-export default DetailPanelNearestAlternative;
+export default DetailPanelShowLocationButton;

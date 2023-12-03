@@ -5,7 +5,7 @@ import DetailPanelAddress from './DetailPanelAddress';
 import DetailPanelFacilities from './DetailPanelFacilities';
 import DetailPanelOpeningTimes from './DetailPanelOpeningTimes';
 import DetailPanelDateModified from './DetailPanelDateModified';
-import DetailPanelNearestAlternative from './DetailPanelNearestAlternative';
+import DetailPanelShowLocationButton from './DetailPanelShowLocationButton';
 import ClosePanelButton from '../buttons/ClosePanelButton';
 
 type Props = {
@@ -19,8 +19,6 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
   const [formatedModifiedDate, setFormatedModifiedDate] = useState<string>();
 
   const detailPanelRef = useRef<HTMLDivElement>(null);
-
-  console.log(item?.long_name);
 
   useEffect(() => {
     if (item) {
@@ -47,15 +45,18 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
   }, [item]);
 
   const doShowPanel = useCallback(() => {
-    detailPanelRef.current?.classList.add(`translate-y-0`);
-    detailPanelRef.current?.classList.remove('translate-y-full');
+    if (detailPanelRef.current) {
+      detailPanelRef.current.scrollTop = 0;
+      detailPanelRef.current.classList.add(`translate-y-0`);
+      detailPanelRef.current.classList.remove('translate-y-full');
+    }
   }, []);
 
   const doHidePanel = useCallback(() => {
     if (detailPanelRef.current) {
       detailPanelRef.current.scrollTop = 0;
-      detailPanelRef.current?.classList.add('translate-y-full');
-      detailPanelRef.current?.classList.remove('translate-y-0');
+      detailPanelRef.current.classList.add('translate-y-full');
+      detailPanelRef.current.classList.remove('translate-y-0');
     }
   }, []);
 
@@ -82,10 +83,29 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
             <ClosePanelButton onClick={doHidePanel} isPanelOpen />
           </div>
           <div className='mr-8 grid grid-cols-1 text-sm md:grid-cols-7 md:gap-8 md:text-base'>
-            <DetailPanelAddress item={item} />
+            <DetailPanelAddress
+              item={item}
+              key={item.formatted_address}
+              type={undefined}
+              props={undefined}
+            >
+              <DetailPanelShowLocationButton
+                item={item}
+                key={item.id}
+                type={undefined}
+                props={undefined}
+              />
+            </DetailPanelAddress>
             <DetailPanelFacilities facilities={facilities} />
             <DetailPanelOpeningTimes openingHours={openingHours} item={item} />
-            <DetailPanelNearestAlternative item={nearestAlternativeItem} />
+            <DetailPanelShowLocationButton
+              item={nearestAlternativeItem}
+              key='nearestAlternative'
+              type={undefined}
+              props={undefined}
+            >
+              <p className='font-semibold'>Nearest alternative: </p>
+            </DetailPanelShowLocationButton>
             <DetailPanelDateModified
               formatedModifiedDate={formatedModifiedDate}
             />
