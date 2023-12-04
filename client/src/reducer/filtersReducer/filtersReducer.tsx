@@ -25,7 +25,7 @@ export default function filtersReducer(
       return {
         ...state,
         isPanelOpen: true,
-        isFacilitiesSelected: true,
+        isFacilitiesSelected: !state.isFacilitiesSelected,
         isFavouritesSelected: false,
         isSearchSelected: false,
         isSearchActive: false
@@ -35,7 +35,7 @@ export default function filtersReducer(
         ...state,
         isPanelOpen: true,
         isFacilitiesSelected: false,
-        isFavouritesSelected: true,
+        isFavouritesSelected: !state.isFavouritesSelected,
         isSearchSelected: false,
         isSearchActive: false
       };
@@ -45,8 +45,8 @@ export default function filtersReducer(
         isPanelOpen: true,
         isFacilitiesSelected: false,
         isFavouritesSelected: false,
-        isSearchSelected: true,
-        isSearchActive: true
+        isSearchSelected: !state.isSearchSelected,
+        isSearchActive: !state.isSearchActive
       };
     }
     default:
