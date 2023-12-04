@@ -1,6 +1,7 @@
 import { useFiltersContext } from '../../context/filtersContext/filtersContext';
 import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
 import FilterButton from '../buttons/FilterButton';
+import FavouritesList from './FavouritesList';
 
 function FilterSectionFavourites() {
   const { state, dispatchFilters } = useFiltersContext();
@@ -14,6 +15,7 @@ function FilterSectionFavourites() {
       <FilterButton icon='fa-star' onClick={onClick} isSelected={isSelected}>
         <span className='text-xl'>Favourites</span>
       </FilterButton>
+      {isSelected && <FavouritesList />}
     </section>
   );
 }

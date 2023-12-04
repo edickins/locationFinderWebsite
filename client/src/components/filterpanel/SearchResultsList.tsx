@@ -82,7 +82,7 @@ function SearchResultsList() {
                 <SearchResultItem
                   key={location.id}
                   location={location}
-                  onSearchResultClick={onSearchResultClick}
+                  onItemClick={onSearchResultClick}
                 />
               );
             })}
