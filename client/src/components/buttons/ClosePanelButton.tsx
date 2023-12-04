@@ -1,3 +1,6 @@
+import { faCircleXmark } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 type Props = {
   onClick: () => void;
   isPanelOpen: boolean;
@@ -6,9 +9,12 @@ type Props = {
 function ClosePanelButton({ onClick, isPanelOpen }: Props) {
   if (!isPanelOpen) return null;
   return (
-    <button type='button' onClick={onClick} className='align-center flex'>
+    <button type='button' onClick={onClick} className='flex items-center'>
       close{' '}
-      <i className='fa-regular hover:fa-solid fa-circle-xmark ml-2 text-lg' />
+      <FontAwesomeIcon
+        icon={faCircleXmark}
+        className='hover:fa-solid ml-2 text-lg'
+      />
     </button>
   );
 }

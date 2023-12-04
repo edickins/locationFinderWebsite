@@ -1,11 +1,14 @@
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 function FindToiletNearMeButton() {
   return (
     <button
       type='button'
       className='mx-auto text-sm dark:text-dark-primary-color'
     >
-      <i className='fa-solid fa-magnifying-glass' />
-      <span className='ml-1 text-xs'>Find a toilet near me</span>
+      <FontAwesomeIcon icon={faMagnifyingGlass} className='ml-1 text-xs' />
+      <span>Find a toilet near me</span>
     </button>
   );
 }

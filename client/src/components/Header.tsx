@@ -1,4 +1,6 @@
 import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 type Props = {
   onMenuButtonClick: () => void;
@@ -20,7 +22,7 @@ function Header({ onMenuButtonClick }: Props) {
             id='hamburger-button'
           >
             <button type='button' onClick={onMenuButtonClick}>
-              <i className='fa-solid fa-bars h-full w-full' />
+              <FontAwesomeIcon icon={faBars} />
             </button>
           </div>
         </div>

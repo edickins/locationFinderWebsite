@@ -15,7 +15,11 @@ import UserLocationDisplay from './components/UserLocationDisplay';
 import { useFiltersContext } from '../../context/filtersContext/filtersContext';
 
 function renderLoadingStatus(status: Status) {
-  return <i className='fa-duotone fa-spinner fa-spin-pulse' />;
+  if (status === Status.LOADING || status === Status.FAILURE) {
+    return <i className='fa-duotone fa-spinner fa-spin-pulse' />;
+  }
+
+  return <></>;
 }
 
 type Props = {
