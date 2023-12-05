@@ -7,7 +7,7 @@ import { useFiltersContext } from '../../context/filtersContext/filtersContext';
 import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
 
 function NoResults() {
-  return <p>No results found.</p>;
+  return <p>No search results found.</p>;
 }
 
 function SearchResultsList() {

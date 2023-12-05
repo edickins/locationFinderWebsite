@@ -4,10 +4,15 @@ export enum FiltersActionEnum {
   HIDE_FILTER_PANEL = 'HIDE_FILTER_PANEL',
   FILTER_BUTTON_CLICK = 'FILTER_BUTTON_CLICK',
   FAVOURITES_BUTTON_CLICK = 'FAVOURITES_BUTTON_CLICK',
-  SEARCH_TERM_CHANGE = 'SEARCH_TERM_CHANGE'
+  SEARCH_TERM_CHANGE = 'SEARCH_TERM_CHANGE',
+  SEARCH_TERM_CLICK = 'SEARCH_TERM_CLICK'
 }
 interface SearchTermChange {
   type: FiltersActionEnum.SEARCH_TERM_CHANGE;
+}
+
+interface SearchTermClick {
+  type: FiltersActionEnum.SEARCH_TERM_CLICK;
 }
 
 interface ShowFilterPanel {
@@ -28,6 +33,7 @@ interface FavouritesButtonClick {
 
 export type FiltersActionType =
   | SearchTermChange
+  | SearchTermClick
   | ShowFilterPanel
   | HideFilterPanel
   | FilterButtonClick

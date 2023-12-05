@@ -45,6 +45,16 @@ export default function filtersReducer(
         isPanelOpen: true,
         isFacilitiesSelected: false,
         isFavouritesSelected: false,
+        isSearchSelected: true,
+        isSearchActive: true
+      };
+    }
+    case FiltersActionEnum.SEARCH_TERM_CLICK: {
+      return {
+        ...state,
+        isPanelOpen: true,
+        isFacilitiesSelected: false,
+        isFavouritesSelected: false,
         isSearchSelected: !state.isSearchSelected,
         isSearchActive: !state.isSearchActive
       };

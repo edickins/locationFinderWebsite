@@ -8,7 +8,7 @@ function FilterSectionSearch() {
   const isSelected = state.isSearchSelected;
 
   const onClick = () => {
-    dispatchFilters({ type: FiltersActionEnum.SEARCH_TERM_CHANGE });
+    dispatchFilters({ type: FiltersActionEnum.SEARCH_TERM_CLICK });
   };
   return (
     <section id='results-container' className='px-4 py-2'>

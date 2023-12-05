@@ -4,7 +4,7 @@ import { ILocation } from '../../context/locationContext/types';
 import { useLocationsContext } from '../../context/locationContext/locationsContext';
 
 function NoResults() {
-  return <p>No results found.</p>;
+  return <p>No favourites found.</p>;
 }
 
 function FavouritesList() {
