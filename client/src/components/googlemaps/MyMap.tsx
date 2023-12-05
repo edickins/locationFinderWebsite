@@ -29,6 +29,7 @@ type Props = {
   onMarkerClicked: (id: string) => void;
   setGoogleMapRef: (map: google.maps.Map) => void;
   mapMarkerRefs: React.MutableRefObject<IMultiMarkerRef[]>;
+  defaultMapProps: { center: { lat: number; lng: number }; zoom: number };
 };
 
 type MapProps = {
@@ -41,7 +42,8 @@ function MyMap({
   locationID,
   onMarkerClicked,
   setGoogleMapRef,
-  mapMarkerRefs
+  mapMarkerRefs,
+  defaultMapProps
 }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams] = useSearchParams();
@@ -76,8 +78,8 @@ function MyMap({
       case ScreenSizeEnum.LG: {
         setMapProps((prevMapProps) => ({
           ...prevMapProps,
-          center: { lat: 50.8249486, lng: -0.1270007 },
-          zoom: 13
+          center: defaultMapProps.center,
+          zoom: defaultMapProps.zoom
         }));
         break;
       }
@@ -92,11 +94,11 @@ function MyMap({
       default:
         setMapProps((prevMapProps) => ({
           ...prevMapProps,
-          center: { lat: 50.8249486, lng: -0.1270007 },
-          zoom: 13
+          center: defaultMapProps.center,
+          zoom: defaultMapProps.zoom
         }));
     }
-  }, [setMapProps, screenSize]);
+  }, [setMapProps, screenSize, defaultMapProps]);
 
   useEffect(() => {
     // TODO is this integirty check necessary?

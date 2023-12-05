@@ -11,9 +11,15 @@ type DialogueProps = {
 
 type Props = {
   setMessageDialogueText: ({ messageTitle, message }: DialogueProps) => void;
+  locationBounds: google.maps.LatLngBounds | undefined;
+  defaultMapProps: { center: { lat: number; lng: number }; zoom: number };
 };
 
-function FilterPanel({ setMessageDialogueText }: Props) {
+function FilterPanel({
+  setMessageDialogueText,
+  locationBounds,
+  defaultMapProps
+}: Props) {
   const [searchParams, setSearchParams] = useSearchParams();
   const { dispatchFilters } = useFiltersContext();
 
@@ -22,19 +28,27 @@ function FilterPanel({ setMessageDialogueText }: Props) {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position: GeolocationPosition) => {
-          const pos = {
+          let pos = {
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
+
+          if (locationBounds?.contains(pos) === false) {
+            // pos is outside of the bounds of all the map location Markers
+            // display message and relocate to default position
+            setMessageDialogueText({
+              messageTitle: 'Geolocation detection',
+              message:
+                'Sorry, but your location is outside of the area covered by this application.  We are going to assign you a location in the centre of the city.'
+            });
+            pos = defaultMapProps.center;
+          }
+
           const newSearchParams = new URLSearchParams(searchParams.toString());
           newSearchParams.set('userLocation', JSON.stringify(pos));
           newSearchParams.delete('locationID');
           setSearchParams(newSearchParams);
           dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
-          setMessageDialogueText({
-            messageTitle: 'dialogue title',
-            message: 'this is a message this is a message this is a message'
-          });
         },
         () => {
           // TODO handle any errors

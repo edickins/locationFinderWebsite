@@ -22,14 +22,14 @@ function Home() {
     messageTitle: '',
     message: ''
   });
+  const [googleMapRef, setGoogleMapRef] = useState<google.maps.Map | null>(
+    null
+  );
+  const [locationBounds, setLocationBounds] = useState<
+    google.maps.LatLngBounds | undefined
+  >();
 
   const mapMarkerRefs = useRef<IMultiMarkerRef[]>([]);
-
-  // google.maps.Map as useRef
-  const googleMapRef = useRef<google.maps.Map | null>(null);
-  const setGoogleMapRef = (map: google.maps.Map) => {
-    googleMapRef.current = map;
-  };
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
@@ -67,7 +67,7 @@ function Home() {
           offsetY = 0;
       }
 
-      if (googleMapRef.current && latlng) {
+      if (googleMapRef && latlng) {
         const ov = new google.maps.OverlayView();
         ov.onAdd = function onAdd() {
           // eslint-disable-next-line @typescript-eslint/no-this-alias
@@ -84,19 +84,19 @@ function Home() {
             aPoint.y += offsetY;
             const latLng = proj.fromContainerPixelToLatLng(aPoint);
             if (latLng !== null) {
-              if (googleMapRef.current) {
+              if (googleMapRef) {
                 setTimeout(() => {
-                  googleMapRef.current?.panTo(latLng);
+                  googleMapRef?.panTo(latLng);
                 }, 500);
               }
             }
           }
         };
         ov.draw = function draw() {};
-        ov.setMap(googleMapRef.current);
+        ov.setMap(googleMapRef);
       }
     },
-    [screenSize]
+    [googleMapRef, screenSize]
   );
 
   useEffect(() => {
@@ -121,6 +121,21 @@ function Home() {
     }
   }, [locationID, locations, panToWithOffset]);
 
+  // get the bounds of the area defined by all locations
+  useEffect(() => {
+    if (googleMapRef) {
+      const bounds = new google.maps.LatLngBounds();
+      locations.forEach((location) => {
+        const latLng = new google.maps.LatLng(
+          location.geometry.location.lat,
+          location.geometry.location.lng
+        );
+        bounds.extend(latLng);
+      });
+      setLocationBounds(bounds);
+    }
+  }, [setLocationBounds, locations, googleMapRef]);
+
   // clickHandler sent via props to MultiMarker
   const onMarkerClicked = (id: string) => {
     if (id) {
@@ -135,6 +150,11 @@ function Home() {
     }
   };
 
+  const defaultMapProps = {
+    center: { lat: 50.8249486, lng: -0.1270007 },
+    zoom: 13
+  };
+
   return (
     <FiltersProvider>
       <main className='flex flex-grow' id='home-main'>
@@ -144,12 +164,17 @@ function Home() {
           onMarkerClicked={onMarkerClicked}
           mapMarkerRefs={mapMarkerRefs}
           setGoogleMapRef={setGoogleMapRef}
+          defaultMapProps={defaultMapProps}
         />
         <DetailPanel
           item={detailPanelItem}
           nearestAlternativeItem={nearestAlternativeItem}
         />
-        <FilterPanel setMessageDialogueText={setMessageDialogueProps} />
+        <FilterPanel
+          setMessageDialogueText={setMessageDialogueProps}
+          locationBounds={locationBounds}
+          defaultMapProps={defaultMapProps}
+        />
         <MessagePanelContainer messageDialogueProps={messageDialogueProps} />
       </main>
     </FiltersProvider>
