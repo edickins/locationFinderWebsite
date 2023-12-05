@@ -5,9 +5,10 @@ import FilterButton from '../buttons/FilterButton';
 
 interface Props extends PropsWithChildren<JSX.Element> {
   item: ILocation | undefined;
+  scrollToTop?: () => void;
 }
 
-function DetailPanelShowLocationButton({ item, children }: Props) {
+function DetailPanelShowLocationButton({ item, scrollToTop, children }: Props) {
   const [searchParams, setSearchParams] = useSearchParams();
   if (!item) return null;
 
@@ -20,6 +21,10 @@ function DetailPanelShowLocationButton({ item, children }: Props) {
 
     // Replace the search parameters - this will be picked up in Home
     setSearchParams(newSearchParams);
+
+    if (scrollToTop) {
+      scrollToTop();
+    }
   };
 
   return (
@@ -53,5 +58,9 @@ function DetailPanelShowLocationButton({ item, children }: Props) {
     </section>
   );
 }
+
+DetailPanelShowLocationButton.defaultProps = {
+  scrollToTop: () => {}
+};
 
 export default DetailPanelShowLocationButton;

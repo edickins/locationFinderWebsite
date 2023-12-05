@@ -13,6 +13,7 @@ import { IMultiMarkerRef } from './components/MultiMarker';
 import styles from './multiMapStyles';
 import UserLocationDisplay from './components/UserLocationDisplay';
 import { useFiltersContext } from '../../context/filtersContext/filtersContext';
+import useGetScreensize, { ScreenSizeEnum } from '../../hooks/getScreensize';
 
 function renderLoadingStatus(status: Status) {
   if (status === Status.LOADING || status === Status.FAILURE) {
@@ -30,6 +31,11 @@ type Props = {
   mapMarkerRefs: React.MutableRefObject<IMultiMarkerRef[]>;
 };
 
+type MapProps = {
+  center: { lat: number; lng: number };
+  zoom: number;
+};
+
 function MyMap({
   items,
   locationID,
@@ -39,15 +45,20 @@ function MyMap({
 }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams] = useSearchParams();
-  // const [locationID, setLocationID] = useState(searchParams.get('locationID'));
-  const [activeFilters, setActiveFilters] = useState<string | null>();
   const { dispatchFilters } = useFiltersContext();
+  const screenSize = useGetScreensize();
 
+  const [activeFilters, setActiveFilters] = useState<string | null>();
   const [infoWindowData, setInfoWindowData] = useState<string>('');
   const [mapStyle, setMapStyle] = useState<google.maps.MapTypeStyle[]>([]);
   const [markerClicks, setMarkerClicks] = useState(0);
   const [infoWindowLocation, setInfoWindowLocation] =
     useState<google.maps.LatLngLiteral>({ lat: 0, lng: 0 });
+  const [mapProps, setMapProps] = useState<MapProps>({
+    center: { lat: 50.8249486, lng: -0.1270007 },
+    zoom: 12
+  });
+
   const lastLocationIDRef = useRef<string | null>();
 
   // update the Array of user selected filters that are active
@@ -57,6 +68,35 @@ function MyMap({
       setActiveFilters(newFilters);
     }
   }, [activeFilters, searchParams]);
+
+  // respond to screensize when the map loads.
+  useEffect(() => {
+    switch (screenSize) {
+      case ScreenSizeEnum.XL:
+      case ScreenSizeEnum.LG: {
+        setMapProps((prevMapProps) => ({
+          ...prevMapProps,
+          center: { lat: 50.8249486, lng: -0.1270007 },
+          zoom: 13
+        }));
+        break;
+      }
+      case ScreenSizeEnum.MD: {
+        setMapProps((prevMapProps) => ({
+          ...prevMapProps,
+          center: { lat: 50.8249486, lng: -0.1270007 },
+          zoom: 12
+        }));
+        break;
+      }
+      default:
+        setMapProps((prevMapProps) => ({
+          ...prevMapProps,
+          center: { lat: 50.8249486, lng: -0.1270007 },
+          zoom: 13
+        }));
+    }
+  }, [setMapProps, screenSize]);
 
   useEffect(() => {
     // TODO is this integirty check necessary?
@@ -104,8 +144,8 @@ function MyMap({
           onClick={() => {
             // TODO keeping this here just in case I need it later
           }}
-          center={{ lat: 50.8249486, lng: -0.1270007 }}
-          zoom={12}
+          center={mapProps.center}
+          zoom={mapProps.zoom}
           minZoom={12}
           autoFit
         >

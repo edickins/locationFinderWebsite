@@ -19,6 +19,7 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
   const [formatedModifiedDate, setFormatedModifiedDate] = useState<string>();
 
   const detailPanelRef = useRef<HTMLDivElement>(null);
+  const detailPanelScrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (item) {
@@ -68,6 +69,12 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
     }
   }, [doHidePanel, doShowPanel, item]);
 
+  const scrollToTop = () => {
+    if (detailPanelScrollContainerRef.current) {
+      detailPanelScrollContainerRef.current.scrollTop = 0;
+    }
+  };
+
   return (
     <div
       id='detail-panel-container'
@@ -77,6 +84,7 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
       {item && (
         <div
           id='detail-panel'
+          ref={detailPanelScrollContainerRef}
           className='max-h-45vh overflow-y-scroll md:overflow-visible'
         >
           <div className='sticky top-4 flex justify-end'>
@@ -103,6 +111,7 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
               key='nearestAlternative'
               type={undefined}
               props={undefined}
+              scrollToTop={scrollToTop}
             >
               <p className='font-semibold'>Nearest alternative: </p>
             </DetailPanelShowLocationButton>

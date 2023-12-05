@@ -4,7 +4,16 @@ import FiltersContainer from './FiltersContainer';
 import { useFiltersContext } from '../../context/filtersContext/filtersContext';
 import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
 
-function FilterPanel() {
+type DialogueProps = {
+  messageTitle: string;
+  message: string;
+};
+
+type Props = {
+  setMessageDialogueText: ({ messageTitle, message }: DialogueProps) => void;
+};
+
+function FilterPanel({ setMessageDialogueText }: Props) {
   const [searchParams, setSearchParams] = useSearchParams();
   const { dispatchFilters } = useFiltersContext();
 
@@ -22,6 +31,10 @@ function FilterPanel() {
           newSearchParams.delete('locationID');
           setSearchParams(newSearchParams);
           dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
+          setMessageDialogueText({
+            messageTitle: 'dialogue title',
+            message: 'this is a message this is a message this is a message'
+          });
         },
         () => {
           // TODO handle any errors

@@ -8,6 +8,7 @@ import { useLocationsContext } from '../context/locationContext/locationsContext
 import { ILocation } from '../context/locationContext/types';
 import { IMultiMarkerRef } from '../components/googlemaps/components/MultiMarker';
 import useGetScreensize, { ScreenSizeEnum } from '../hooks/getScreensize';
+import MessagePanelContainer from '../components/filterpanel/MessagePanelContainer';
 
 function Home() {
   const screenSize = useGetScreensize();
@@ -17,6 +18,11 @@ function Home() {
   const [nearestAlternativeItem, setNearestAlternativeItem] = useState<
     ILocation | undefined
   >(undefined);
+  const [messageDialogueProps, setMessageDialogueProps] = useState({
+    messageTitle: '',
+    message: ''
+  });
+
   const mapMarkerRefs = useRef<IMultiMarkerRef[]>([]);
 
   // google.maps.Map as useRef
@@ -143,7 +149,8 @@ function Home() {
           item={detailPanelItem}
           nearestAlternativeItem={nearestAlternativeItem}
         />
-        <FilterPanel />
+        <FilterPanel setMessageDialogueText={setMessageDialogueProps} />
+        <MessagePanelContainer messageDialogueProps={messageDialogueProps} />
       </main>
     </FiltersProvider>
   );

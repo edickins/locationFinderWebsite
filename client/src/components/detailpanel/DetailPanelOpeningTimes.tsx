@@ -7,6 +7,8 @@ type Props = {
 };
 
 function DetailPanelOpeningTimes({ openingHours, item }: Props) {
+  const regEx = /closed/i;
+  const isClosed = item?.open_status.match(regEx);
   return (
     <section
       id='opening-hours-section'
@@ -15,6 +17,7 @@ function DetailPanelOpeningTimes({ openingHours, item }: Props) {
       <h2 className='font-semibold  dark:text-dark-primary-color'>
         Opening hours:
       </h2>
+      {isClosed && <p>This toilet is currently closed and not in service.</p>}
       <ul>
         {openingHours.map((hours) => {
           const key = prefixHash(item.id, hours);
