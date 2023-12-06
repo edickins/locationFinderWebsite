@@ -9,7 +9,6 @@ function UserLocationDisplay() {
   const circleRef = useRef<google.maps.Circle | null>(null);
   const markerRef = useRef<google.maps.Marker | null>(null);
 
-  const userLocationRef = useRef<{ lat: number; lng: number } | undefined>();
   const [userLocation, setUserLocation] = useState<
     { lat: number; lng: number } | undefined
   >();
@@ -23,12 +22,11 @@ function UserLocationDisplay() {
       // Check if pos is a valid LatLng object
       if (pos && typeof pos.lat === 'number' && typeof pos.lng === 'number') {
         if (
-          !userLocationRef.current ||
-          userLocationRef.current.lat !== pos.lat ||
-          userLocationRef.current.lng !== pos.lng
+          !userLocation ||
+          userLocation.lat !== pos.lat ||
+          userLocation.lng !== pos.lng
         ) {
           setUserLocation(pos);
-          userLocationRef.current = pos;
         }
       } else {
         console.error('Invalid userLocation:', pos);
@@ -36,7 +34,7 @@ function UserLocationDisplay() {
         // Handle the error...
       }
     }
-  }, [searchParams, setUserLocation]);
+  }, [searchParams, setUserLocation, userLocation]);
 
   useEffect(() => {
     if (

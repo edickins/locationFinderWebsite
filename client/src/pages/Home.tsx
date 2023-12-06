@@ -9,6 +9,13 @@ import { ILocation } from '../context/locationContext/types';
 import { IMultiMarkerRef } from '../components/googlemaps/components/MultiMarker';
 import useGetScreensize, { ScreenSizeEnum } from '../hooks/getScreensize';
 import MessagePanelContainer from '../components/filterpanel/MessagePanelContainer';
+import getRoute from '../services/getGoogleMapRoute';
+
+type Route = {
+  distanceMeters: number;
+  duration: string;
+  polyline: { encodedPolyline: string };
+};
 
 function Home() {
   const screenSize = useGetScreensize();
@@ -34,6 +41,9 @@ function Home() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
   const [locationID, setLocationID] = useState(searchParams.get('locationID'));
+  const [userLocation, setUserLocation] = useState<
+    { lat: number; lng: number } | undefined
+  >();
   const {
     state: { locations }
   } = useLocationsContext();
@@ -107,6 +117,28 @@ function Home() {
     }
   }, [locationID, searchParams]);
 
+  useEffect(() => {
+    const posString = searchParams.get('userLocation');
+
+    if (posString) {
+      const pos = JSON.parse(posString);
+      // Check if pos is a valid LatLng object
+      if (pos && typeof pos.lat === 'number' && typeof pos.lng === 'number') {
+        if (
+          !userLocation ||
+          userLocation.lat !== pos.lat ||
+          userLocation.lng !== pos.lng
+        ) {
+          setUserLocation(pos);
+        }
+      } else {
+        console.error('Invalid userLocation:', pos);
+        // TODO handle this error
+        // Handle the error...
+      }
+    }
+  }, [searchParams, userLocation]);
+
   // respond to locationID being set in searchParams
   useEffect(() => {
     if (locationID) {
@@ -119,7 +151,30 @@ function Home() {
         );
       }
     }
-  }, [locationID, locations, panToWithOffset]);
+  }, [locationID, locations, panToWithOffset, userLocation]);
+
+  useEffect(() => {
+    const getRouteAsync = async (
+      origin: { lat: number; lng: number },
+      destination: string
+    ) => {
+      const route: Route | null = await getRoute(origin, destination);
+      return route;
+    };
+
+    if (userLocation && locationID) {
+      const location = locations.find((loc) => loc.id === locationID);
+      if (location) {
+        getRouteAsync(userLocation, location.place_id)
+          .then((route) => {
+            console.log(route);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      }
+    }
+  }, [locationID, locations, userLocation]);
 
   // get the bounds of the area defined by all locations
   useEffect(() => {

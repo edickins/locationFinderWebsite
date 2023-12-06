@@ -62,6 +62,7 @@ export default function makeServer() {
       });
 
       this.passthrough('https://maps.googleapis.com/**');
+      this.passthrough('https://routes.googleapis.com/**');
     }
   });
 }
