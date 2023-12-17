@@ -1,14 +1,15 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import FiltersProvider from '../context/filtersContext/filtersContext';
+import GeoCoder from 'geocoder_node';
+import MyMap from '../components/googlemaps/MyMap';
 import DetailPanel from '../components/detailpanel/DetailPanel';
 import FilterPanel from '../components/filterpanel/FilterPanel';
-import MyMap from '../components/googlemaps/MyMap';
+import FiltersProvider from '../context/filtersContext/filtersContext';
 import { useLocationsContext } from '../context/locationContext/locationsContext';
 import { ILocation } from '../context/locationContext/types';
 import { IMultiMarkerRef } from '../components/googlemaps/components/MultiMarker';
-import useGetScreensize, { ScreenSizeEnum } from '../hooks/getScreensize';
 import MessagePanelContainer from '../components/filterpanel/MessagePanelContainer';
+import useGetScreensize, { ScreenSizeEnum } from '../hooks/getScreensize';
 import getRoute from '../services/getGoogleMapRoute';
 
 type Route = {
@@ -38,6 +39,10 @@ function Home() {
   const [locationBounds, setLocationBounds] = useState<
     google.maps.LatLngBounds | undefined
   >();
+
+  const [locationsDistanceFromUser, setLocationsDistanceFromUser] = useState<
+    { locationID: string; distance: number }[] | []
+  >([]);
 
   const mapMarkerRefs = useRef<IMultiMarkerRef[]>([]);
 
@@ -112,6 +117,7 @@ function Home() {
     [googleMapRef, screenSize]
   );
 
+  // NEW locationID is set in searchParams
   useEffect(() => {
     const newLocationID = searchParams.get('locationID');
     // TODO is this gate necessary?
@@ -120,6 +126,21 @@ function Home() {
     }
   }, [locationID, searchParams]);
 
+  // respond to locationID being updated
+  useEffect(() => {
+    if (locationID) {
+      const location = locations.find((loc) => loc.id === locationID);
+      if (location) {
+        panToWithOffset(location.geometry.location);
+        setDetailPanelItem(location);
+        setNearestAlternativeItem(
+          locations.find((item) => item.id === location?.nearest_alternative)
+        );
+      }
+    }
+  }, [locationID, locations, panToWithOffset]);
+
+  // userLocation is set by user sharing geolocation
   useEffect(() => {
     const posString = searchParams.get('userLocation');
 
@@ -142,21 +163,36 @@ function Home() {
     }
   }, [searchParams, userLocation]);
 
-  // respond to locationID being set in searchParams
+  // find the nearest location when the userLocation is set to a value value
   useEffect(() => {
-    if (locationID) {
-      const location = locations.find((loc) => loc.id === locationID);
-      if (location) {
-        panToWithOffset(location.geometry.location);
-        setDetailPanelItem(location);
-        setNearestAlternativeItem(
-          locations.find((item) => item.id === location?.nearest_alternative)
-        );
-      }
-    }
-  }, [locationID, locations, panToWithOffset, userLocation]);
+    if (userLocation) {
+      const coder = new GeoCoder('K');
 
-  // map the nearest location to the user location and display on the map
+      const distanceData = locations.map((location) => {
+        const geoObj = {
+          lat1: userLocation.lat,
+          lon1: userLocation.lng,
+          lat2: location.geometry.location.lat,
+          lon2: location.geometry.location.lng
+        };
+        const distance = coder.getDistanceBetweenPoints(geoObj);
+        return { locationID: location.id, distance };
+      });
+
+      distanceData.sort(
+        (
+          a: { locationID: string; distance: number },
+          b: { locationID: string; distance: number }
+        ) => a.distance - b.distance
+      );
+
+      console.log(distanceData);
+
+      setLocationsDistanceFromUser(distanceData);
+    }
+  }, [userLocation, locations]);
+
+  // map the current location from the user location and display on the map
   useEffect(() => {
     const getRouteAsync = async (
       origin: { lat: number; lng: number },
