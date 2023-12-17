@@ -3,6 +3,7 @@ import FilterPanelNav from './FilterPanelNav';
 import FiltersContainer from './FiltersContainer';
 import { useFiltersContext } from '../../context/filtersContext/filtersContext';
 import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
+import FindNearestLocationPanel from './FindNearestLocationPanel';
 
 type DialogueProps = {
   messageTitle: string;
@@ -65,7 +66,8 @@ function FilterPanel({
   return (
     <div
       id='filter-panel-wrapper'
-      className='pointer-events-none absolute bottom-0 left-0 right-0 top-0 mx-auto md:flex md:max-w-6xl '
+      className='pointer-events-none absolute bottom-0 left-0 right-0 top-0 mx-auto justify-between md:flex md:max-w-6xl
+       '
     >
       <div
         id='filter-panel'
@@ -75,6 +77,14 @@ function FilterPanel({
           handleFindToiletButtonClick={handleFindToiletButtonClick}
         />
         <FiltersContainer />
+      </div>
+      <div
+        id='find-nearest-panel'
+        className=' pointer-events-none relative mt-10 hidden md:right-4 md:mt-24 md:block'
+      >
+        <FindNearestLocationPanel
+          handleFindToiletButtonClick={handleFindToiletButtonClick}
+        />
       </div>
     </div>
   );

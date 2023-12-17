@@ -19,6 +19,9 @@ type Route = {
 
 function Home() {
   const screenSize = useGetScreensize();
+
+  const polyLineRef = useRef<google.maps.Polyline | undefined>();
+
   const [detailPanelItem, setDetailPanelItem] = useState<ILocation | undefined>(
     undefined
   );
@@ -153,6 +156,7 @@ function Home() {
     }
   }, [locationID, locations, panToWithOffset, userLocation]);
 
+  // map the nearest location to the user location and display on the map
   useEffect(() => {
     const getRouteAsync = async (
       origin: { lat: number; lng: number },
@@ -167,14 +171,26 @@ function Home() {
       if (location) {
         getRouteAsync(userLocation, location.place_id)
           .then((route) => {
-            console.log(route);
+            const { polyline } = route;
+            if (polyLineRef.current) {
+              polyLineRef.current.setMap(null);
+            }
+            polyLineRef.current = new google.maps.Polyline({
+              path: google.maps.geometry.encoding.decodePath(
+                polyline.encodedPolyline
+              ),
+              strokeColor: '#FFff22',
+              strokeOpacity: 0.8,
+              strokeWeight: 2
+            });
+            polyLineRef.current.setMap(googleMapRef);
           })
           .catch((error) => {
             console.error(error);
           });
       }
     }
-  }, [locationID, locations, userLocation]);
+  }, [googleMapRef, locationID, locations, userLocation]);
 
   // get the bounds of the area defined by all locations
   useEffect(() => {
