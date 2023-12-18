@@ -40,6 +40,7 @@ function Home() {
     google.maps.LatLngBounds | undefined
   >();
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [locationsDistanceFromUser, setLocationsDistanceFromUser] = useState<
     { locationID: string; distance: number }[] | []
   >([]);
@@ -117,6 +118,42 @@ function Home() {
     [googleMapRef, screenSize]
   );
 
+  const findNearestLocation = useCallback(
+    (pos: { lat: number; lng: number }) => {
+      const coder = new GeoCoder('K');
+
+      const distanceData = locations.map((location) => {
+        const geoObj = {
+          lat1: pos.lat,
+          lon1: pos.lng,
+          lat2: location.geometry.location.lat,
+          lon2: location.geometry.location.lng
+        };
+        const distance = coder.getDistanceBetweenPoints(geoObj);
+        return { locationID: location.id, distance };
+      });
+
+      distanceData.sort(
+        (
+          a: { locationID: string; distance: number },
+          b: { locationID: string; distance: number }
+        ) => a.distance - b.distance
+      );
+
+      // Create a new URLSearchParams instance to clone the current parameters
+      const newSearchParams = new URLSearchParams(searchParams.toString());
+
+      // Set the new locationID parameter
+      newSearchParams.set('locationID', distanceData[0].locationID);
+
+      // Replace the search parameters - this will be picked up in Home
+      setSearchParams(newSearchParams);
+
+      setLocationsDistanceFromUser(distanceData);
+    },
+    [locations, searchParams, setSearchParams]
+  );
+
   // NEW locationID is set in searchParams
   useEffect(() => {
     const newLocationID = searchParams.get('locationID');
@@ -131,7 +168,9 @@ function Home() {
     if (locationID) {
       const location = locations.find((loc) => loc.id === locationID);
       if (location) {
-        panToWithOffset(location.geometry.location);
+        setTimeout(() => {
+          panToWithOffset(location.geometry.location);
+        }, 1000);
         setDetailPanelItem(location);
         setNearestAlternativeItem(
           locations.find((item) => item.id === location?.nearest_alternative)
@@ -154,6 +193,7 @@ function Home() {
           userLocation.lng !== pos.lng
         ) {
           setUserLocation(pos);
+          findNearestLocation(pos);
         }
       } else {
         console.error('Invalid userLocation:', pos);
@@ -161,38 +201,9 @@ function Home() {
         // Handle the error...
       }
     }
-  }, [searchParams, userLocation]);
+  }, [findNearestLocation, searchParams, userLocation]);
 
-  // find the nearest location when the userLocation is set to a value value
-  useEffect(() => {
-    if (userLocation) {
-      const coder = new GeoCoder('K');
-
-      const distanceData = locations.map((location) => {
-        const geoObj = {
-          lat1: userLocation.lat,
-          lon1: userLocation.lng,
-          lat2: location.geometry.location.lat,
-          lon2: location.geometry.location.lng
-        };
-        const distance = coder.getDistanceBetweenPoints(geoObj);
-        return { locationID: location.id, distance };
-      });
-
-      distanceData.sort(
-        (
-          a: { locationID: string; distance: number },
-          b: { locationID: string; distance: number }
-        ) => a.distance - b.distance
-      );
-
-      console.log(distanceData);
-
-      setLocationsDistanceFromUser(distanceData);
-    }
-  }, [userLocation, locations]);
-
-  // map the current location from the user location and display on the map
+  // display a polyline path from the userlocation to the currently selected location
   useEffect(() => {
     const getRouteAsync = async (
       origin: { lat: number; lng: number },

@@ -7,7 +7,8 @@ const initialState: IFiltersInitialState = {
   isPanelOpen: false,
   isFacilitiesSelected: false,
   isFavouritesSelected: false,
-  isSearchActive: false
+  isSearchActive: false,
+  isSearchSelected: false
 };
 
 describe('filtersReducer', () => {

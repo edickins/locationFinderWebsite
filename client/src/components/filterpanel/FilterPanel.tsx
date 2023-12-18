@@ -51,9 +51,10 @@ function FilterPanel({
           setSearchParams(newSearchParams);
           dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
         },
-        () => {
+        (error) => {
           // TODO handle any errors
           // handleLocationError(true, infoWindow, map.getCenter()!);
+          console.log(error);
         }
       );
     } else {

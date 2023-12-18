@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 import { userLocationSVG } from './markerSVGs';
 
 function UserLocationDisplay() {
-  const [searchParams, unused] = useSearchParams();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [searchParams] = useSearchParams();
   const infoWindowRef = useRef<google.maps.InfoWindow | null>(null);
   const circleRef = useRef<google.maps.Circle | null>(null);
   const markerRef = useRef<google.maps.Marker | null>(null);
