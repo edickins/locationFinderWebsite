@@ -140,14 +140,16 @@ function Home() {
         ) => a.distance - b.distance
       );
 
-      // Create a new URLSearchParams instance to clone the current parameters
-      const newSearchParams = new URLSearchParams(searchParams.toString());
+      if (distanceData.length > 0) {
+        // Create a new URLSearchParams instance to clone the current parameters
+        const newSearchParams = new URLSearchParams(searchParams.toString());
 
-      // Set the new locationID parameter
-      newSearchParams.set('locationID', distanceData[0].locationID);
+        // Set the new locationID parameter
+        newSearchParams.set('locationID', distanceData[0].locationID);
 
-      // Replace the search parameters - this will be picked up in Home
-      setSearchParams(newSearchParams);
+        // Replace the search parameters - this will be picked up in Home
+        setSearchParams(newSearchParams);
+      }
 
       setLocationsDistanceFromUser(distanceData);
     },
