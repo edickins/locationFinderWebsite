@@ -1,4 +1,11 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
 import { IFacility, ILocation } from '../../context/locationContext/types';
 
 import DetailPanelAddress from './DetailPanelAddress';
@@ -8,12 +15,21 @@ import DetailPanelDateModified from './DetailPanelDateModified';
 import DetailPanelShowLocationButton from './DetailPanelShowLocationButton';
 import ClosePanelButton from '../buttons/ClosePanelButton';
 
+type SetState<T> = Dispatch<SetStateAction<T>>;
+
 type Props = {
   item: ILocation | undefined;
   nearestAlternativeItem: ILocation | undefined;
+  doShowPanel: boolean;
+  setDoShowPanel: SetState<boolean>;
 };
 
-function DetailPanel({ item, nearestAlternativeItem }: Props) {
+function DetailPanel({
+  item,
+  nearestAlternativeItem,
+  doShowPanel,
+  setDoShowPanel
+}: Props) {
   const [facilities, setFacilities] = useState<IFacility[]>([]);
   const [openingHours, setOpeningHours] = useState<string[]>([]);
   const [formatedModifiedDate, setFormatedModifiedDate] = useState<string>();
@@ -45,7 +61,7 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
     }
   }, [item]);
 
-  const doShowPanel = useCallback(() => {
+  const showPanel = useCallback(() => {
     if (detailPanelRef.current) {
       detailPanelRef.current.scrollTop = 0;
       detailPanelRef.current.classList.add(`translate-y-0`);
@@ -53,21 +69,22 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
     }
   }, []);
 
-  const doHidePanel = useCallback(() => {
+  const hidePanel = useCallback(() => {
     if (detailPanelRef.current) {
       detailPanelRef.current.scrollTop = 0;
       detailPanelRef.current.classList.add('translate-y-full');
       detailPanelRef.current.classList.remove('translate-y-0');
+      setDoShowPanel(false);
     }
-  }, []);
+  }, [setDoShowPanel]);
 
   useEffect(() => {
-    if (item && detailPanelRef.current) {
-      doShowPanel();
-    } else if (!item && detailPanelRef.current) {
-      doHidePanel();
+    if (doShowPanel && detailPanelRef.current) {
+      showPanel();
+    } else if (!doShowPanel && detailPanelRef.current) {
+      hidePanel();
     }
-  }, [doHidePanel, doShowPanel, item]);
+  }, [hidePanel, showPanel, doShowPanel]);
 
   const scrollToTop = () => {
     if (detailPanelScrollContainerRef.current) {
@@ -88,7 +105,7 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
           className='scrollbar max-h-45vh overflow-y-scroll md:overflow-visible'
         >
           <div className='absolute right-4'>
-            <ClosePanelButton onClick={doHidePanel} isPanelOpen />
+            <ClosePanelButton onClick={hidePanel} isPanelOpen />
           </div>
           <div className='mr-8 grid grid-cols-1 pt-4  text-sm md:grid-cols-7 md:gap-8'>
             <DetailPanelAddress

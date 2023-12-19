@@ -45,6 +45,8 @@ function Home() {
     { locationID: string; distance: number }[] | []
   >([]);
 
+  const [doShowPanel, setDoShowPanel] = useState(false);
+
   const mapMarkerRefs = useRef<IMultiMarkerRef[]>([]);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -267,6 +269,8 @@ function Home() {
 
       // Replace the search parameters - this will be picked up in Home
       setSearchParams(newSearchParams);
+
+      setDoShowPanel(true);
     }
   };
 
@@ -289,6 +293,8 @@ function Home() {
         <DetailPanel
           item={detailPanelItem}
           nearestAlternativeItem={nearestAlternativeItem}
+          doShowPanel={doShowPanel}
+          setDoShowPanel={setDoShowPanel}
         />
         <FilterPanel
           setMessageDialogueText={setMessageDialogueProps}
