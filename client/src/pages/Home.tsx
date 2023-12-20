@@ -22,6 +22,7 @@ function Home() {
   const screenSize = useGetScreensize();
 
   const polyLineRef = useRef<google.maps.Polyline | undefined>();
+  const boundsRectRef = useRef<google.maps.Rectangle | undefined>();
 
   const [detailPanelItem, setDetailPanelItem] = useState<ILocation | undefined>(
     undefined
@@ -258,6 +259,38 @@ function Home() {
     }
   }, [setLocationBounds, locations, googleMapRef]);
 
+  // get the bounds of the userLocation and the currently selected location
+  useEffect(() => {
+    if (googleMapRef === null) return;
+    if (googleMapRef !== null && userLocation && locationID) {
+      const bounds = new google.maps.LatLngBounds();
+      let latLng = new google.maps.LatLng(userLocation.lat, userLocation.lng);
+      bounds.extend(latLng);
+      const location = locations.find((loc) => loc.id === locationID);
+      if (location) {
+        latLng = new google.maps.LatLng(
+          location.geometry.location.lat,
+          location.geometry.location.lng
+        );
+        bounds.extend(latLng);
+      }
+
+      if (boundsRectRef.current) {
+        boundsRectRef.current.setMap(null);
+      }
+
+      /* boundsRectRef.current = new google.maps.Rectangle({
+        bounds,
+        strokeColor: '#ff0000',
+        strokeOpacity: 0.8,
+        strokeWeight: 2
+      });
+      boundsRectRef.current.setMap(googleMapRef); */
+
+      googleMapRef.fitBounds(bounds, 50);
+    }
+  }, [googleMapRef, locationID, locations, userLocation]);
+
   // clickHandler sent via props to MultiMarker
   const onMarkerClicked = (id: string) => {
     if (id) {
@@ -269,6 +302,13 @@ function Home() {
 
       // Replace the search parameters - this will be picked up in Home
       setSearchParams(newSearchParams);
+
+      const location = locations.find((loc) => loc.id === id);
+      if (location) {
+        setTimeout(() => {
+          panToWithOffset(location.geometry.location);
+        }, 200);
+      }
 
       setDoShowPanel(true);
     }

@@ -61,8 +61,6 @@ function MyMap({
     zoom: 12
   });
 
-  const lastLocationIDRef = useRef<string | null>();
-
   // update the Array of user selected filters that are active
   useEffect(() => {
     const newFilters = searchParams.get('filters');
@@ -101,21 +99,17 @@ function MyMap({
   }, [setMapProps, screenSize, defaultMapProps]);
 
   useEffect(() => {
-    // TODO is this integirty check necessary?
-    if (lastLocationIDRef.current !== locationID) {
-      const location = items.find((loc) => loc.id === locationID);
-      if (location) {
-        setMarkerClicks((prev) => prev + 1);
-        const infoData = /closed/i.test(location.open_status)
-          ? `${location.long_name} \ncurrently closed`
-          : location.long_name;
+    if (!items) return;
+    const location = items.find((loc) => loc.id === locationID);
+    if (location) {
+      setMarkerClicks((prev) => prev + 1);
+      const infoData = /closed/i.test(location.open_status)
+        ? `${location.long_name} \ncurrently closed`
+        : location.long_name;
 
-        setInfoWindowData(infoData);
-        setInfoWindowLocation(location.geometry.location);
-      }
+      setInfoWindowData(infoData);
+      setInfoWindowLocation(location.geometry.location);
     }
-
-    lastLocationIDRef.current = locationID;
   }, [dispatchFilters, items, locationID]);
 
   // TODO make this work for light theme too

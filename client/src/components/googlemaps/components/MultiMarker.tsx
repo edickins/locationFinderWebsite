@@ -61,7 +61,10 @@ export default function MultiMarker({
         icon: markerIcon
       });
 
-      marker.current.addListener('click', () => onMarkerClicked(id));
+      marker.current.addListener('click', (e: google.maps.MapMouseEvent) => {
+        e.stop();
+        onMarkerClicked(id);
+      });
       addMarker(marker.current);
       // TODO can this be done without setting the useRef value directly here?
       if (marker.current) {
