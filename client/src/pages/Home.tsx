@@ -172,17 +172,18 @@ function Home() {
   useEffect(() => {
     if (locationID) {
       const location = locations.find((loc) => loc.id === locationID);
-      if (location) {
+      if (location && !userLocation) {
         setTimeout(() => {
           panToWithOffset(location.geometry.location);
-        }, 1000);
+        }, 100);
         setDetailPanelItem(location);
         setNearestAlternativeItem(
           locations.find((item) => item.id === location?.nearest_alternative)
         );
       }
+      setDoShowPanel(true);
     }
-  }, [locationID, locations, panToWithOffset]);
+  }, [locationID, locations, panToWithOffset, userLocation]);
 
   // userLocation is set by user sharing geolocation
   useEffect(() => {
@@ -287,9 +288,26 @@ function Home() {
       });
       boundsRectRef.current.setMap(googleMapRef); */
 
-      googleMapRef.fitBounds(bounds, 50);
+      const padding = { top: 0, left: 0, right: 0, bottom: 0 };
+      switch (screenSize) {
+        case ScreenSizeEnum.SM: {
+          padding.bottom = 360;
+          padding.left = 50;
+          padding.right = 50;
+          padding.top = 180;
+
+          break;
+        }
+        default:
+          padding.bottom = 350;
+          padding.left = 400;
+          padding.right = 220;
+          padding.top = 250;
+      }
+
+      googleMapRef.fitBounds(bounds, padding);
     }
-  }, [googleMapRef, locationID, locations, userLocation]);
+  }, [googleMapRef, locationID, locations, screenSize, userLocation]);
 
   // clickHandler sent via props to MultiMarker
   const onMarkerClicked = (id: string) => {
@@ -304,11 +322,11 @@ function Home() {
       setSearchParams(newSearchParams);
 
       const location = locations.find((loc) => loc.id === id);
-      if (location) {
+      /* if (location && !userLocation) {
         setTimeout(() => {
           panToWithOffset(location.geometry.location);
-        }, 200);
-      }
+        }, 100);
+      } */
 
       setDoShowPanel(true);
     }

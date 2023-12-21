@@ -96,7 +96,7 @@ function DetailPanel({
     <div
       id='detail-panel-container'
       ref={detailPanelRef}
-      className='fixed bottom-0 w-full  translate-y-full transform auto-rows-min gap-4  border-t border-gray-600 bg-light-panel-secondary bg-opacity-80 px-2 py-2 transition-transform duration-1000 ease-in-out dark:bg-dark-panel md:px-8 md:py-4 '
+      className='fixed bottom-0 w-full  translate-y-full transform auto-rows-min gap-4  border-t border-gray-600 bg-light-panel-secondary bg-opacity-80 px-4 py-2 transition-transform duration-1000 ease-in-out dark:bg-dark-panel md:px-8 md:py-4 '
     >
       {item && (
         <div
@@ -104,7 +104,7 @@ function DetailPanel({
           ref={detailPanelScrollContainerRef}
           className='scrollbar max-h-45vh overflow-y-scroll md:overflow-visible'
         >
-          <div className='absolute right-4'>
+          <div className='absolute right-8'>
             <ClosePanelButton onClick={hidePanel} isPanelOpen />
           </div>
           <div className='mr-8 grid grid-cols-1 pt-4  text-sm md:grid-cols-7 md:gap-8'>

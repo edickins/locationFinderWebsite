@@ -27,7 +27,9 @@ function UserLocationDisplay() {
           userLocation.lat !== pos.lat ||
           userLocation.lng !== pos.lng
         ) {
-          setUserLocation(pos);
+          if (userLocation?.lat !== pos.lat && userLocation?.lng !== pos.lng) {
+            setUserLocation(pos);
+          }
         }
       } else {
         console.error('Invalid userLocation:', pos);
