@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { Wrapper, Status } from '@googlemaps/react-wrapper';
@@ -9,7 +9,6 @@ import MapReporter from './components/MapReporter';
 import { ILocation } from '../../context/locationContext/types';
 import { IMultiMarkerRef } from './components/MultiMarker';
 
-// import styles from './appStyles';
 import styles from './multiMapStyles';
 import UserLocationDisplay from './components/UserLocationDisplay';
 import { useFiltersContext } from '../../context/filtersContext/filtersContext';

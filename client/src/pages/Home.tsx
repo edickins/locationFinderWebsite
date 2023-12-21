@@ -21,7 +21,7 @@ type Route = {
 function Home() {
   const screenSize = useGetScreensize();
 
-  const polyLineRef = useRef<google.maps.Polyline | undefined>();
+  const currentLocationPolyLineRef = useRef<google.maps.Polyline | undefined>();
   const boundsRectRef = useRef<google.maps.Rectangle | undefined>();
 
   const [detailPanelItem, setDetailPanelItem] = useState<ILocation | undefined>(
@@ -153,6 +153,30 @@ function Home() {
     [locations, searchParams, setSearchParams]
   );
 
+  const displayPolylineRoute = useCallback(
+    (
+      route: Route,
+      polylineRef: React.MutableRefObject<google.maps.Polyline | undefined>,
+      strokeColor: string
+    ) => {
+      const { polyline } = route;
+      const lineRef = polylineRef;
+      if (lineRef.current) {
+        lineRef.current.setMap(null);
+      }
+      lineRef.current = new google.maps.Polyline({
+        path: google.maps.geometry.encoding.decodePath(
+          polyline.encodedPolyline
+        ),
+        strokeColor,
+        strokeOpacity: 0.8,
+        strokeWeight: 2
+      });
+      lineRef.current.setMap(googleMapRef);
+    },
+    [googleMapRef]
+  );
+
   // NEW locationID is set through searchParams
   useEffect(() => {
     const newLocationID = searchParams.get('locationID');
@@ -166,6 +190,7 @@ function Home() {
   useEffect(() => {
     if (locationID) {
       const currentLocation = locations.find((loc) => loc.id === locationID);
+      // animate to location if userLocation is undefined
       if (currentLocation && !userLocation) {
         setTimeout(() => {
           panToWithOffset(currentLocation.geometry.location);
@@ -219,26 +244,14 @@ function Home() {
       if (currentLocation) {
         getRouteAsync(userLocation, currentLocation.place_id)
           .then((route) => {
-            const { polyline } = route;
-            if (polyLineRef.current) {
-              polyLineRef.current.setMap(null);
-            }
-            polyLineRef.current = new google.maps.Polyline({
-              path: google.maps.geometry.encoding.decodePath(
-                polyline.encodedPolyline
-              ),
-              strokeColor: '#FFff22',
-              strokeOpacity: 0.8,
-              strokeWeight: 2
-            });
-            polyLineRef.current.setMap(googleMapRef);
+            displayPolylineRoute(route, currentLocationPolyLineRef, '#FFff22');
           })
           .catch((error) => {
             console.error(error);
           });
       }
     }
-  }, [googleMapRef, locationID, locations, userLocation]);
+  }, [displayPolylineRoute, googleMapRef, locationID, locations, userLocation]);
 
   // get the bounds of the area defined by all locations
   useEffect(() => {
@@ -302,14 +315,6 @@ function Home() {
       const newSearchParams = new URLSearchParams(searchParams.toString());
       newSearchParams.set('locationID', id);
       setSearchParams(newSearchParams);
-
-      const currentLocation = locations.find((loc) => loc.id === id);
-      /* if (currentLocation && !userLocation) {
-        setTimeout(() => {
-          panToWithOffset(currentLocation.geometry.location);
-        }, 100);
-      } */
-
       setDoShowPanel(true);
     }
   };
