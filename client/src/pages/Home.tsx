@@ -330,6 +330,9 @@ function Home() {
         <MyMap
           items={locations}
           locationID={locationID}
+          nearestLocationID={
+            locationsDistanceFromUser[0]?.locationID || undefined
+          }
           onMarkerClicked={onMarkerClicked}
           mapMarkerRefs={mapMarkerRefs}
           setGoogleMapRef={setGoogleMapRef}

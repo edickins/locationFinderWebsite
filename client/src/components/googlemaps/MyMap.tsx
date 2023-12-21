@@ -25,6 +25,7 @@ function renderLoadingStatus(status: Status) {
 type Props = {
   items: ILocation[];
   locationID: string | null;
+  nearestLocationID: string | undefined;
   onMarkerClicked: (id: string) => void;
   setGoogleMapRef: (map: google.maps.Map) => void;
   mapMarkerRefs: React.MutableRefObject<IMultiMarkerRef[]>;
@@ -39,6 +40,7 @@ type MapProps = {
 function MyMap({
   items,
   locationID,
+  nearestLocationID,
   onMarkerClicked,
   setGoogleMapRef,
   mapMarkerRefs,
@@ -102,14 +104,18 @@ function MyMap({
     const location = items.find((loc) => loc.id === locationID);
     if (location) {
       setMarkerClicks((prev) => prev + 1);
-      const infoData = /closed/i.test(location.open_status)
+      let infoData = /closed/i.test(location.open_status)
         ? `${location.long_name} \ncurrently closed`
         : location.long_name;
+
+      if (nearestLocationID && nearestLocationID === locationID) {
+        infoData = `<div class="text-center">your nearest location<br> ${infoData}</div>`;
+      }
 
       setInfoWindowData(infoData);
       setInfoWindowLocation(location.geometry.location);
     }
-  }, [dispatchFilters, items, locationID]);
+  }, [dispatchFilters, items, locationID, nearestLocationID]);
 
   // TODO make this work for light theme too
   useEffect(() => {
