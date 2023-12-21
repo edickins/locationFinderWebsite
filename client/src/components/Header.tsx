@@ -32,7 +32,7 @@ function Header({ onMenuButtonClick }: Props) {
         >
           <NavLink to='/'>home</NavLink>
           <NavLink to='toilets'>toilets</NavLink>
-          <NavLink to='contact'>contact</NavLink>
+          <NavLink to='about'>about</NavLink>
         </nav>
       </section>
     </header>

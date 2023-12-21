@@ -3,6 +3,7 @@ import ErrorPage from '../pages/ErrorPage';
 import Root from '../pages/Root';
 import Home from '../pages/Home';
 import Locations from '../pages/Locations';
+import About from '../pages/About';
 
 const routesConfig: RouteObject[] = [
   {
@@ -16,6 +17,10 @@ const routesConfig: RouteObject[] = [
       {
         path: '/toilets',
         element: <Locations />
+      },
+      {
+        path: '/about',
+        element: <About />
       }
     ]
   },

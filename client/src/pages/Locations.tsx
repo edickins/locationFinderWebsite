@@ -34,7 +34,7 @@ function Locations() {
   const openHoveLocations = filterForOpenHoveLocations(openLocations);
 
   return (
-    <div className='mt-16 p-4' id='top s-m-12'>
+    <div className='mx-auto mt-20 max-w-6xl md:px-2'>
       <h3 className='mb-4 text-2xl  dark:text-dark-primary-color'>
         Toilets in Brighton and Hove.
       </h3>
@@ -42,6 +42,21 @@ function Locations() {
         These are the public toilets in Brighton and Hove. Some are purpose
         built public toilets and others are toilets available to the public in
         council run properties.
+      </p>
+      <p className='mb-4'>
+        The information used was copied from the Brighton and Hove County
+        Council webpage that lists the addresses and opening times for public
+        toilets in the Brighton and Hove area which can be found here (all
+        rights reserved):{' '}
+        <a
+          href='https://www.brighton-hove.gov.uk/libraries-leisure-and-arts/public-toilets/list-public-toilets-brighton-hove'
+          target='_blank'
+          rel='noopener noreferrer'
+          className='light-primary-color dark:text-dark-secondary-color'
+        >
+          https://www.brighton-hove.gov.uk/libraries-leisure-and-arts/public-toilets/list-public-toilets-brighton-hove
+        </a>
+        .
       </p>
       <p>
         Please check opening times. Some locations are currently closed - these

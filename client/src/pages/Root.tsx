@@ -11,10 +11,7 @@ function Root() {
   };
 
   return (
-    <div
-      className='flex h-full w-full flex-col bg-slate-50 dark:bg-black dark:text-white'
-      id='root-container'
-    >
+    <div className='flex w-full flex-col  dark:text-white' id='root-container'>
       <Header onMenuButtonClick={onMenuButtonClick} />
       <Outlet />
       <MobileMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />

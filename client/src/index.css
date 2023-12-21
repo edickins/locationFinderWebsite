@@ -3,6 +3,9 @@
   html {
     @apply text-gray-900;
   }
+  a:hover {
+    @apply underline;
+  }
 }
 @tailwind components;
 @tailwind utilities;
