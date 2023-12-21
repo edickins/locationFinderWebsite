@@ -125,15 +125,15 @@ function Home() {
     (pos: { lat: number; lng: number }) => {
       const coder = new GeoCoder('K');
 
-      const distanceData = locations.map((location) => {
+      const distanceData = locations.map((loc) => {
         const geoObj = {
           lat1: pos.lat,
           lon1: pos.lng,
-          lat2: location.geometry.location.lat,
-          lon2: location.geometry.location.lng
+          lat2: loc.geometry.location.lat,
+          lon2: loc.geometry.location.lng
         };
         const distance = coder.getDistanceBetweenPoints(geoObj);
-        return { locationID: location.id, distance };
+        return { locationID: loc.id, distance };
       });
 
       distanceData.sort(
@@ -144,22 +144,16 @@ function Home() {
       );
 
       if (distanceData.length > 0) {
-        // Create a new URLSearchParams instance to clone the current parameters
         const newSearchParams = new URLSearchParams(searchParams.toString());
-
-        // Set the new locationID parameter
         newSearchParams.set('locationID', distanceData[0].locationID);
-
-        // Replace the search parameters - this will be picked up in Home
         setSearchParams(newSearchParams);
       }
-
       setLocationsDistanceFromUser(distanceData);
     },
     [locations, searchParams, setSearchParams]
   );
 
-  // NEW locationID is set in searchParams
+  // NEW locationID is set through searchParams
   useEffect(() => {
     const newLocationID = searchParams.get('locationID');
     // TODO is this gate necessary?
@@ -171,16 +165,18 @@ function Home() {
   // respond to locationID being updated
   useEffect(() => {
     if (locationID) {
-      const location = locations.find((loc) => loc.id === locationID);
-      if (location && !userLocation) {
+      const currentLocation = locations.find((loc) => loc.id === locationID);
+      if (currentLocation && !userLocation) {
         setTimeout(() => {
-          panToWithOffset(location.geometry.location);
+          panToWithOffset(currentLocation.geometry.location);
         }, 100);
-        setDetailPanelItem(location);
-        setNearestAlternativeItem(
-          locations.find((item) => item.id === location?.nearest_alternative)
-        );
       }
+      setDetailPanelItem(currentLocation);
+      setNearestAlternativeItem(
+        locations.find(
+          (item) => item.id === currentLocation?.nearest_alternative
+        )
+      );
       setDoShowPanel(true);
     }
   }, [locationID, locations, panToWithOffset, userLocation]);
@@ -202,7 +198,6 @@ function Home() {
           findNearestLocation(pos);
         }
       } else {
-        console.error('Invalid userLocation:', pos);
         // TODO handle this error
         // Handle the error...
       }
@@ -220,9 +215,9 @@ function Home() {
     };
 
     if (userLocation && locationID) {
-      const location = locations.find((loc) => loc.id === locationID);
-      if (location) {
-        getRouteAsync(userLocation, location.place_id)
+      const currentLocation = locations.find((loc) => loc.id === locationID);
+      if (currentLocation) {
+        getRouteAsync(userLocation, currentLocation.place_id)
           .then((route) => {
             const { polyline } = route;
             if (polyLineRef.current) {
@@ -267,11 +262,11 @@ function Home() {
       const bounds = new google.maps.LatLngBounds();
       let latLng = new google.maps.LatLng(userLocation.lat, userLocation.lng);
       bounds.extend(latLng);
-      const location = locations.find((loc) => loc.id === locationID);
-      if (location) {
+      const currentLocation = locations.find((loc) => loc.id === locationID);
+      if (currentLocation) {
         latLng = new google.maps.LatLng(
-          location.geometry.location.lat,
-          location.geometry.location.lng
+          currentLocation.geometry.location.lat,
+          currentLocation.geometry.location.lng
         );
         bounds.extend(latLng);
       }
@@ -279,14 +274,6 @@ function Home() {
       if (boundsRectRef.current) {
         boundsRectRef.current.setMap(null);
       }
-
-      /* boundsRectRef.current = new google.maps.Rectangle({
-        bounds,
-        strokeColor: '#ff0000',
-        strokeOpacity: 0.8,
-        strokeWeight: 2
-      });
-      boundsRectRef.current.setMap(googleMapRef); */
 
       const padding = { top: 0, left: 0, right: 0, bottom: 0 };
       switch (screenSize) {
@@ -312,19 +299,14 @@ function Home() {
   // clickHandler sent via props to MultiMarker
   const onMarkerClicked = (id: string) => {
     if (id) {
-      // Create a new URLSearchParams instance to clone the current parameters
       const newSearchParams = new URLSearchParams(searchParams.toString());
-
-      // Set the new locationID parameter
       newSearchParams.set('locationID', id);
-
-      // Replace the search parameters - this will be picked up in Home
       setSearchParams(newSearchParams);
 
-      const location = locations.find((loc) => loc.id === id);
-      /* if (location && !userLocation) {
+      const currentLocation = locations.find((loc) => loc.id === id);
+      /* if (currentLocation && !userLocation) {
         setTimeout(() => {
-          panToWithOffset(location.geometry.location);
+          panToWithOffset(currentLocation.geometry.location);
         }, 100);
       } */
 
