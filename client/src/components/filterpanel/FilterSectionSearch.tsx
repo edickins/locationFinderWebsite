@@ -11,7 +11,7 @@ function FilterSectionSearch() {
     dispatchFilters({ type: FiltersActionEnum.SEARCH_TERM_CLICK });
   };
   return (
-    <section id='results-container' className='px-4 py-2'>
+    <section id='results-container' className='py-2 pl-4 pr-1'>
       <FilterButton icon='fa-star' onClick={onClick} isSelected={isSelected}>
         <span className='text-xl'>Search</span>
       </FilterButton>

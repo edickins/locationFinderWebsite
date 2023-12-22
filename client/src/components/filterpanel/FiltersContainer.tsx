@@ -23,17 +23,15 @@ const FiltersContainer = function FiltersContainer() {
         isPanelOpen ? 'block' : 'hidden md:block'
       }`}
     >
-      <nav aria-label='close panel' className='flex justify-end pr-4 md:pr-0'>
-        <ClosePanelButton isPanelOpen={isPanelOpen} onClick={hideFilterPanel}>
-          close
-        </ClosePanelButton>
+      <nav aria-label='close panel' className='flex justify-end pr-4 md:pt-4'>
+        <ClosePanelButton isPanelOpen={isPanelOpen} onClick={hideFilterPanel} />
       </nav>
       <div className='scrollbar mt-2 flex-grow overflow-auto md:mt-0'>
+        <FilterSectionSearch />
         <FilterSectionFacilities
           isActive={searchParams.getAll('filters').length > 0}
         />
         <FilterSectionFavourites />
-        <FilterSectionSearch />
         <DoneButton
           isPanelOpen={isPanelOpen}
           hideFilterPanel={hideFilterPanel}

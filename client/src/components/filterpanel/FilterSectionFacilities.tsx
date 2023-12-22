@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import FacilitiesList from './FacilitiesList';
 import FilterButton from '../buttons/FilterButton';
@@ -13,12 +14,19 @@ function FilterSectionFacilities({ isActive }: Props) {
   const { facilities } = useLocationsContext();
   const [searchParams, setSearchParams] = useSearchParams();
   let filtersParams = searchParams.get('filters') || '';
+  const [activeFilters, setActiveFilters] = useState('');
+
   const { state, dispatchFilters } = useFiltersContext();
   const isSelected = state.isFacilitiesSelected;
 
   const onClick = () => {
     dispatchFilters({ type: FiltersActionEnum.FILTER_BUTTON_CLICK });
   };
+
+  useEffect(() => {
+    const arr = filtersParams.split('+').filter(Boolean);
+    setActiveFilters(arr.length === 0 ? '' : ` (${arr.length})`);
+  }, [filtersParams]);
 
   const onFilterClicked = (facility: string, isFilterSelected: boolean) => {
     const arr = filtersParams.split('+').filter(Boolean);
@@ -42,7 +50,6 @@ function FilterSectionFacilities({ isActive }: Props) {
     } else {
       newSearchParams.set('filters', filtersParams);
     }
-
     setSearchParams(newSearchParams);
   };
 
@@ -54,7 +61,7 @@ function FilterSectionFacilities({ isActive }: Props) {
         isSelected={isSelected}
         isActive={isActive}
       >
-        <span className='text-xl'>Filter</span>
+        <span className='text-xl'>Filters{activeFilters}</span>
       </FilterButton>
       {isSelected && (
         <FacilitiesList

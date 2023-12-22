@@ -160,9 +160,12 @@ function SearchLocation() {
   }, [searchParams, searchText, setSearchParams]);
 
   return (
-    <div className='flex flex-row items-center justify-center'>
+    <div
+      id='search-input'
+      className='my-1 flex flex-row items-center justify-center'
+    >
       <span className='mx-2 text-sm md:shrink-0 md:text-base'>
-        Search
+        Search{' '}
         <span className='hidden md:inline-block'>locations or facilities</span>
       </span>
       <input
