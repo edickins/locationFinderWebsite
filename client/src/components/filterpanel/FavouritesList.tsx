@@ -1,7 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 import SearchResultItem from './SearchResultItem';
 import { ILocation } from '../../context/locationContext/types';
-import { useLocationsContext } from '../../context/locationContext/locationsContext';
 
 function NoResults() {
   return <p>No favourites found.</p>;

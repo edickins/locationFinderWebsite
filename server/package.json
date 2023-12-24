@@ -1,0 +1,31 @@
+{
+  "name": "restfulapi_express_server",
+  "version": "1.0.0",
+  "description": "restfulapi_serving_location_data_for_googlemaps_app",
+  "main": "server.js",
+  "scripts": {
+    "start": "NODE_ENV=production node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edickins/toiletFinderWebsite.git"
+  },
+  "author": "ecdickins",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edickins/toiletFinderWebsite/issues"
+  },
+  "homepage": "https://github.com/edickins/toiletFinderWebsite#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^8.0.3",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "nodemon": "^3.0.2"
+  }
+}

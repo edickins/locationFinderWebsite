@@ -1,0 +1,22 @@
+{
+  "name": "react_client_and_express_restfulapi_google_maps_location_app",
+  "version": "1.0.0",
+  "description": "a_client_server_application_to_display_locations_on_a_google_map",
+  "main": ".",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edickins/toiletFinderWebsite.git"
+  },
+  "author": "ecdickins",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edickins/toiletFinderWebsite/issues"
+  },
+  "homepage": "https://github.com/edickins/toiletFinderWebsite#readme",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
