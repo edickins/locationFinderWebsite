@@ -1,0 +1,38 @@
+[
+  { "full_name": "toilets", "short_name": "toilets", "id": "facility001" },
+  {
+    "full_name": "accessible toilets",
+    "short_name": "accessible",
+    "id": "facility002"
+  },
+  {
+    "full_name": "baby changing facilities",
+    "short_name": "baby",
+    "id": "facility003"
+  },
+  {
+    "full_name": "adult changing bench",
+    "short_name": "adult",
+    "id": "facility004"
+  },
+  {
+    "full_name": "ambulant toilets (cubicle with coat hook, a lock lever and a grab rail)",
+    "short_name": "ambulant",
+    "id": "facility005"
+  },
+  {
+    "full_name": "family rooms",
+    "short_name": "family",
+    "id": "facility006"
+  },
+  {
+    "full_name": "changing places",
+    "short_name": "changing",
+    "id": "facility007"
+  },
+  {
+    "full_name": "nursing room",
+    "short_name": "nursing",
+    "id": "facility008"
+  }
+]

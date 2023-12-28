@@ -1,4 +1,4 @@
-const Location = require('../models/Location');
+const Location = require('../models/location');
 const ErrorResponse = require('../utils/ErrorResponse');
 const asyncHandler = require('../middleware/async');
 
@@ -10,7 +10,7 @@ exports.getLocations = asyncHandler(async (req, res, next) => {
     const locations = await Location.find();
     res
       .status(200)
-      .json({ success: true, count: locations.length, data: locations });
+      .json({ success: true, count: locations.length, locations: locations });
   } catch (error) {
     next(error);
   }

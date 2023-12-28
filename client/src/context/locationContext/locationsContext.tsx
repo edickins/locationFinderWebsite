@@ -37,11 +37,20 @@ export default function LocationsProvider({ children }: PropsWithChildren) {
 
   // get location and facilities Arrays for the context provider
   useEffect(() => {
-    const fetchLocations = axios.get('api/v1/locations');
-    const fetchFacilities = axios.get('api/v1/facilities');
+    console.log(`import.meta.env.VITE_APP_ENV ${import.meta.env.VITE_APP_ENV}`);
+    const instance = axios.create({
+      baseURL:
+        import.meta.env.VITE_APP_ENV === 'local'
+          ? 'http://localhost:5001/api/v1'
+          : '/api/v1'
+    });
+
+    const fetchLocations = instance.get('/locations');
+    const fetchFacilities = instance.get('/facilities');
 
     Promise.all([fetchLocations, fetchFacilities])
       .then((responses) => {
+        console.log(responses);
         dispatchLocations({
           type: LocationActionEnum.SET_LOCATIONS,
           payload: responses[0].data.locations
@@ -49,6 +58,7 @@ export default function LocationsProvider({ children }: PropsWithChildren) {
         setFacilities(responses[1].data.facilities);
       })
       .catch((error) => {
+        console.log(error);
         dispatchLocations({
           type: LocationActionEnum.SET_ERROR,
           payload: error

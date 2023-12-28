@@ -6,6 +6,7 @@ const colors = require('colors');
 const https = require('https');
 const http = require('http');
 const fs = require('fs');
+const cors = require('cors');
 
 // load env vars
 dotenv.config({ path: './config/config.env' });
@@ -16,7 +17,14 @@ connectDB();
 
 /*routes*/
 const locations = require('./routes/locations');
+const facilities = require('./routes/facilities');
 const app = express();
+
+app.use(
+  cors({
+    origin: 'http://localhost:5174'
+  })
+);
 
 // body parser
 app.use(express.json());
@@ -26,6 +34,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.use('/api/v1/locations', locations);
+app.use('/api/v1/facilities', facilities);
 app.use(errorHandler);
 
 let server = undefined;

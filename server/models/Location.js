@@ -33,7 +33,7 @@ const IFacility = new mongoose.Schema({
 });
 
 const LocationSchema = new mongoose.Schema({
-  id: { type: String, required: true },
+  id: { type: String, required: true, unique: true },
   long_name: { type: String, required: true },
   alphabetical_name: { type: String, required: true },
   open_status: { type: String, required: true },

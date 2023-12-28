@@ -9,7 +9,8 @@ import routesConfig from './config/routerConfig';
 
 if (
   process.env.NODE_ENV === 'development' &&
-  typeof makeServer === 'function'
+  typeof makeServer === 'function' &&
+  import.meta.env.VITE_APP_ENV !== 'local'
 ) {
   makeServer(); // For people following the tutorial
 }
