@@ -1,12 +1,12 @@
 [
   {
-    "id": "toilet001",
+    "id": "location001",
     "long_name": "Bartholomew House",
     "alphabetical_name": "Bartholomew House",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet030",
+    "nearest_alternative": "location030",
     "opening_hours": [
       "The customer service centre is open Monday to Friday (excluding Bank Holidays).",
       "Monday - 9am to 4.30pm",
@@ -79,13 +79,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet002",
+    "id": "location002",
     "long_name": "Black Rock",
     "alphabetical_name": "Black Rock",
     "location": "city_centre",
     "open_status": "closed for winter",
     "isFavourite": false,
-    "nearest_alternative": "toilet032",
+    "nearest_alternative": "location032",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002"],
     "address_components": [
@@ -153,13 +153,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet003",
+    "id": "location003",
     "long_name": "Blakers Park",
     "alphabetical_name": "Blakers Park",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet018",
+    "nearest_alternative": "location018",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -232,13 +232,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet004",
+    "id": "location004",
     "long_name": "Booth Museum",
     "alphabetical_name": "Booth Museum",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet006",
+    "nearest_alternative": "location006",
     "opening_hours": [
       "Monday - closed",
       "Tuesday - 12pm-5pm",
@@ -319,13 +319,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet005",
+    "id": "location005",
     "long_name": "Brighton Museum",
     "alphabetical_name": "Brighton Museum",
     "location": "city_centre",
     "open_status": "closed",
     "isFavourite": false,
-    "nearest_alternative": "toilet026",
+    "nearest_alternative": "location026",
     "opening_hours": [
       "Monday - closed (except Bank Holidays 10am to 5pm)",
       "Tuesday - 10am to 5pm",
@@ -406,13 +406,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet006",
+    "id": "location006",
     "long_name": "Dyke Road Park",
     "alphabetical_name": "Dyke Road Park",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet004",
+    "nearest_alternative": "location004",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility003"],
     "address_components": [
@@ -485,13 +485,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet007",
+    "id": "location007",
     "long_name": "Hollingbury Library",
     "alphabetical_name": "Hollingbury Library",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet008",
+    "nearest_alternative": "location008",
     "opening_hours": [
       "Monday - 9am to 7pm",
       "Tuesday - 9am to 7pm",
@@ -572,13 +572,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet008",
+    "id": "location008",
     "long_name": "Hollingbury Park",
     "alphabetical_name": "Hollingbury Park",
     "location": "city_centre",
     "open_status": "closed for winter",
     "isFavourite": false,
-    "nearest_alternative": "toilet007",
+    "nearest_alternative": "location007",
     "opening_hours": [
       "Monday - 9am to 5pm",
       "Tuesday - 9am to 5pm",
@@ -654,13 +654,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet009",
+    "id": "location009",
     "long_name": "Kings Road Playground",
     "alphabetical_name": "Kings Road Playground",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet048",
+    "nearest_alternative": "location048",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility003"],
     "address_components": [
@@ -728,13 +728,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet010",
+    "id": "location010",
     "long_name": "Jubilee Library",
     "alphabetical_name": "Jubilee Library",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet021",
+    "nearest_alternative": "location021",
     "opening_hours": [
       "Monday - 10am to 7pm",
       "Tuesday - 10am to 7pm",
@@ -815,13 +815,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet011",
+    "id": "location011",
     "long_name": "Lawn Memorial Cemetery",
     "alphabetical_name": "Lawn Memorial Cemetery",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet027",
+    "nearest_alternative": "location027",
     "opening_hours": [
       "October to March",
       "Monday - 9am to 4pm",
@@ -912,13 +912,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet012",
+    "id": "location012",
     "long_name": "Daltons, Lower Prom, East of Brighton Pier",
     "alphabetical_name": "Daltons, Lower Prom, East of Brighton Pier",
     "location": "city_centre",
     "open_status": "closed for winter",
     "isFavourite": false,
-    "nearest_alternative": "toilet020",
+    "nearest_alternative": "location020",
     "opening_hours": ["Not listed."],
     "facilities": [
       "facility001",
@@ -973,13 +973,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet013",
+    "id": "location013",
     "long_name": "Moulsecoomb Leisure Centre",
     "alphabetical_name": "Moulsecoomb Leisure Centre",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet034",
+    "nearest_alternative": "location034",
     "opening_hours": [
       "Monday - 7am to 10pm",
       "Tuesday - 7am to 10pm",
@@ -1060,13 +1060,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet014",
+    "id": "location014",
     "long_name": "Moulsecoomb Library",
     "alphabetical_name": "Moulsecoomb Library",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet034",
+    "nearest_alternative": "location034",
     "opening_hours": [
       "Monday - 9am to 5pm",
       "Tuesday - 9am to 7pm",
@@ -1147,13 +1147,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet015",
+    "id": "location015",
     "long_name": "Ovingdean Undercliff",
     "alphabetical_name": "Ovingdean Undercliff",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet016",
+    "nearest_alternative": "location016",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -1221,13 +1221,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet016",
+    "id": "location016",
     "long_name": "Park Road",
     "alphabetical_name": "Park Road",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet025",
+    "nearest_alternative": "location025",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002"],
     "address_components": [
@@ -1305,13 +1305,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet017",
+    "id": "location017",
     "long_name": "Patcham Library",
     "alphabetical_name": "Patcham Library",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet007",
+    "nearest_alternative": "location007",
     "opening_hours": [
       "Monday - 9am to 7pm",
       "Tuesday - 9am to 5pm",
@@ -1392,13 +1392,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet018",
+    "id": "location018",
     "long_name": "Preston Park, Park Chalet",
     "alphabetical_name": "Preston Park, Park Chalet",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet019",
+    "nearest_alternative": "location019",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -1466,13 +1466,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet019",
+    "id": "location019",
     "long_name": "Preston Park Rotunda",
     "alphabetical_name": "Preston Park Rotunda",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet018",
+    "nearest_alternative": "location018",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -1546,13 +1546,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet020",
+    "id": "location020",
     "long_name": "Peter Pan's Play Area",
     "alphabetical_name": "Peter Pan's Play Area",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet032",
+    "nearest_alternative": "location032",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -1620,13 +1620,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet021",
+    "id": "location021",
     "long_name": "Prince Regent Swimming Complex",
     "alphabetical_name": "Prince Regent Swimming Complex",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet010",
+    "nearest_alternative": "location010",
     "opening_hours": [
       "Monday - 6am to 10pm",
       "Tuesday - 6.30am to 10pm",
@@ -1712,13 +1712,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet022",
+    "id": "location022",
     "long_name": "Queens Park Play Area",
     "alphabetical_name": "Queens Park Play Area",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet032",
+    "nearest_alternative": "location032",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -1791,13 +1791,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet023",
+    "id": "location023",
     "long_name": "Rottingdean Library/The Grange",
     "alphabetical_name": "Rottingdean Library/The Grange",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet011",
+    "nearest_alternative": "location011",
     "opening_hours": [
       "Monday - 9am to 5pm",
       "Tuesday - 9am to 7pm",
@@ -1888,13 +1888,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet024",
+    "id": "location024",
     "long_name": "Rottingdean Recreation Ground",
     "alphabetical_name": "Rottingdean Recreation Ground",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet016",
+    "nearest_alternative": "location016",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002"],
     "address_components": [
@@ -1957,13 +1957,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet025",
+    "id": "location025",
     "long_name": "Rottingdean Undercliff",
     "alphabetical_name": "Rottingdean Undercliff",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet016",
+    "nearest_alternative": "location016",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -2036,13 +2036,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet026",
+    "id": "location026",
     "long_name": "­Royal Pavilion Gardens",
     "alphabetical_name": "­Royal Pavilion Gardens",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet005",
+    "nearest_alternative": "location005",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -2115,13 +2115,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet027",
+    "id": "location027",
     "long_name": "Stanley Deason Leisure Centre",
     "alphabetical_name": "Stanley Deason Leisure Centre",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet036",
+    "nearest_alternative": "location036",
     "opening_hours": [
       "Monday - 8.30am to 10pm",
       "Tuesday - 8.30am to 10pm",
@@ -2202,13 +2202,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet028",
+    "id": "location028",
     "long_name": "Saltdean Oval",
     "alphabetical_name": "Saltdean Oval",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet025",
+    "nearest_alternative": "location025",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001"],
     "address_components": [
@@ -2281,13 +2281,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet029",
+    "id": "location029",
     "long_name": "Saltdean Undercliff",
     "alphabetical_name": "Saltdean Undercliff",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet025",
+    "nearest_alternative": "location025",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003", "facility007"],
     "address_components": [
@@ -2355,13 +2355,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet030",
+    "id": "location030",
     "long_name": "Shelter Hall",
     "alphabetical_name": "Shelter Hall",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet001",
+    "nearest_alternative": "location001",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -2429,13 +2429,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet031",
+    "id": "location031",
     "long_name": "Stanmer Village",
     "alphabetical_name": "Stanmer Village",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet035",
+    "nearest_alternative": "location035",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003", "facility007"],
     "address_components": [
@@ -2498,13 +2498,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet032",
+    "id": "location032",
     "long_name": "The Colonnade",
     "alphabetical_name": "The Colonnade",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet020",
+    "nearest_alternative": "location020",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003", "facility007"],
     "address_components": [
@@ -2567,7 +2567,7 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet033",
+    "id": "location033",
     "long_name": "The Level",
     "open_status": "closed",
     "isFavourite": false,
@@ -2634,13 +2634,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet034",
+    "id": "location034",
     "long_name": "Wild Park",
     "alphabetical_name": "Wild Park",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet014",
+    "nearest_alternative": "location014",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -2708,13 +2708,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet035",
+    "id": "location035",
     "long_name": "West Pier Arches",
     "alphabetical_name": "West Pier Arches",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet009",
+    "nearest_alternative": "location009",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -2788,13 +2788,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet036",
+    "id": "location036",
     "long_name": "Whitehawk Library",
     "alphabetical_name": "Whitehawk Library",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet027",
+    "nearest_alternative": "location027",
     "opening_hours": [
       "Monday - 9am to 5pm",
       "Tuesday - 9am to 5pm",
@@ -2875,13 +2875,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet037",
+    "id": "location037",
     "long_name": "Withdean Sports Centre",
     "alphabetical_name": "Withdean Sports Centre",
     "location": "city_centre",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet040",
+    "nearest_alternative": "location040",
     "opening_hours": [
       "Monday - 6am to 10pm",
       "Tuesday - 6am to 10pm",
@@ -2967,13 +2967,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet038",
+    "id": "location038",
     "long_name": "Easthill Park",
     "alphabetical_name": "Easthill Park",
     "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet051",
+    "nearest_alternative": "location051",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -3032,13 +3032,13 @@
     "types": ["route"]
   },
   {
-    "id": "toilet039",
+    "id": "location039",
     "long_name": "Goldstone Villas Junction",
     "alphabetical_name": "Goldstone Villas Junction",
     "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet047",
+    "nearest_alternative": "location047",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -3093,13 +3093,13 @@
     "types": ["route"]
   },
   {
-    "id": "toilet040",
+    "id": "location040",
     "long_name": "Greenleas Hangleton",
     "alphabetical_name": "Greenleas Hangleton",
     "location": "hove",
     "open_status": "closed for winter",
     "isFavourite": false,
-    "nearest_alternative": "toilet037",
+    "nearest_alternative": "location037",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001"],
     "address_components": [
@@ -3158,13 +3158,13 @@
     "types": ["route"]
   },
   {
-    "id": "toilet041",
+    "id": "location041",
     "long_name": "Hangleton Library",
     "alphabetical_name": "Hangleton Library",
     "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet043",
+    "nearest_alternative": "location043",
     "opening_hours": [
       "Monday - 9am to 5pm",
       "Tuesday - 9am to 5pm",
@@ -3223,8 +3223,8 @@
     "types": ["route"]
   },
   {
-    "id": "toilet042",
-    "long_name": "Hove Cemetery North",
+    "id": "location042",
+    "long_name": "Hove Cemetery South",
     "alphabetical_name": "Hove Cemetery South",
     "location": "hove",
     "open_status": "open",
@@ -3292,13 +3292,13 @@
     "types": ["route"]
   },
   {
-    "id": "toilet043",
+    "id": "location043",
     "long_name": "Hove Cemetery South",
     "alphabetical_name": "Hove Cemetery South",
     "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet041",
+    "nearest_alternative": "location041",
     "opening_hours": [
       "October to March",
       "Monday - 9am to 4pm",
@@ -3361,13 +3361,13 @@
     "types": ["route"]
   },
   {
-    "id": "toilet044",
+    "id": "location044",
     "long_name": "Hove Library",
     "alphabetical_name": "Hove Library",
     "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet045",
+    "nearest_alternative": "location045",
     "opening_hours": [
       "Monday - 10am to 5pm",
       "Tuesday - 10am to 5pm",
@@ -3430,13 +3430,13 @@
     "types": ["route"]
   },
   {
-    "id": "toilet045",
+    "id": "location045",
     "long_name": "Hove Museum",
     "alphabetical_name": "Hove Museum",
     "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet044",
+    "nearest_alternative": "location044",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002"],
     "address_components": [
@@ -3491,13 +3491,13 @@
     "types": ["route"]
   },
   {
-    "id": "toilet047",
+    "id": "location046",
     "long_name": "Hove Park",
     "alphabetical_name": "Hove Park",
     "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "Hove Household Waste Recycling Site, Leighton Road",
+    "nearest_alternative": "location042",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -3542,13 +3542,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet047",
+    "id": "location047",
     "long_name": "Hove Town Hall",
     "alphabetical_name": "Hove Town Hall",
     "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet039",
+    "nearest_alternative": "location039",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002"],
     "address_components": [
@@ -3603,13 +3603,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet048",
+    "id": "location048",
     "long_name": "King Alfred",
     "alphabetical_name": "King Alfred",
     "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet009",
+    "nearest_alternative": "location009",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -3668,13 +3668,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet049",
+    "id": "location049",
     "long_name": "Kings Esplanade",
     "alphabetical_name": "Kings Esplanade",
     "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet048",
+    "nearest_alternative": "location048",
     "opening_hours": ["Not listed."],
     "facilities": [
       "facility001",
@@ -3731,13 +3731,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet050",
+    "id": "location050",
     "long_name": "Lagoon Kingsway",
     "alphabetical_name": "Lagoon Kingsway",
     "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet055",
+    "nearest_alternative": "location055",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -3782,13 +3782,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet051",
+    "id": "location051",
     "long_name": "Portslade Library",
     "alphabetical_name": "Portslade Library",
     "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet053",
+    "nearest_alternative": "location053",
     "opening_hours": [
       "Monday - 9am to 7pm",
       "Tuesday - 9am to 5pm",
@@ -3852,13 +3852,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet052",
+    "id": "location052",
     "long_name": "St Ann's Well Gardens",
     "alphabetical_name": "St Ann's Well Gardens",
     "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet006",
+    "nearest_alternative": "location006",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003"],
     "address_components": [
@@ -3913,13 +3913,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet053",
+    "id": "location053",
     "long_name": "Station Road",
     "alphabetical_name": "Station Road",
     "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet054",
+    "nearest_alternative": "location054",
     "opening_hours": ["Not listed."],
     "facilities": [
       "facility001",
@@ -3989,13 +3989,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet054",
+    "id": "location054",
     "long_name": "Vale Park",
     "alphabetical_name": "Vale Park",
     "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet053",
+    "nearest_alternative": "location053",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001"],
     "address_components": [
@@ -4054,13 +4054,13 @@
     "date_modified": "2023-10-10T14:48:00.000Z"
   },
   {
-    "id": "toilet055",
+    "id": "location055",
     "long_name": "Western Esplanade Kingsway",
     "alphabetical_name": "Western Esplanade Kingsway",
     "location": "hove",
     "open_status": "open",
     "isFavourite": false,
-    "nearest_alternative": "toilet049",
+    "nearest_alternative": "location049",
     "opening_hours": ["Not listed."],
     "facilities": ["facility001", "facility002", "facility003", "facility008"],
     "address_components": [

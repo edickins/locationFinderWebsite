@@ -22,7 +22,7 @@ exports.getLocation = (req, res, next) => {
 exports.createLocation = async (req, res, next) => {
   try {
     const location = await Location.create(req.body);
-    res.status(201).json({ success: true, msg: 'Location created' });
+    res.status(201).json({ success: true, msg: location });
   } catch (error) {
     res.status(400).json({ success: false, msg: error });
   }
