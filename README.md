@@ -79,3 +79,6 @@ This project uses the following libraries and tools:
 - MirageJS - a tool for mocking RESTful API servers.
 
 I would like to thank Joey Beltram for his guidance throughout this project.
+
+start the sever using the pm2 process manager
+cd into the server folder and type the command pm2 start server.js --name server

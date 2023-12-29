@@ -1,4 +1,4 @@
-const Location = require('../models/location');
+const Location = require('../models/Location');
 const ErrorResponse = require('../utils/ErrorResponse');
 const asyncHandler = require('../middleware/async');
 

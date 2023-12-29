@@ -1,4 +1,4 @@
-const Facility = require('../models/facility');
+const Facility = require('../models/Facility');
 const ErrorResponse = require('../utils/ErrorResponse');
 const asyncHandler = require('../middleware/async');
 
@@ -8,13 +8,11 @@ const asyncHandler = require('../middleware/async');
 exports.getFacilities = asyncHandler(async (req, res, next) => {
   try {
     const facilities = await Facility.find();
-    res
-      .status(200)
-      .json({
-        success: true,
-        count: facilities.length,
-        facilities: facilities
-      });
+    res.status(200).json({
+      success: true,
+      count: facilities.length,
+      facilities: facilities
+    });
   } catch (error) {
     next(error);
   }
