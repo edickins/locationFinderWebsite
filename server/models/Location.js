@@ -44,10 +44,20 @@ const LocationSchema = new mongoose.Schema({
   place_id: { type: String, required: true },
   opening_hours: { type: [String], required: true },
   nearest_alternative: { type: String, required: true },
-  facilities: { type: [String], required: true },
+  facility_ids: [{ type: String, required: true }],
   date_created: { type: Date, default: Date.now },
   date_modified: { type: Date, default: Date.now },
   isFavourite: { type: Boolean, required: false, default: false }
 });
+
+LocationSchema.virtual('facilities', {
+  ref: 'Facility',
+  localField: 'facility_ids',
+  foreignField: 'id',
+  justOne: false
+});
+
+LocationSchema.set('toJSON', { virtuals: true });
+LocationSchema.set('toObject', { virtuals: true });
 
 module.exports = mongoose.model('Location', LocationSchema);

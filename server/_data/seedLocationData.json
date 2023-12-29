@@ -18,7 +18,7 @@
       "Sunday - closed"
     ],
 
-    "facilities": ["facility001", "facility002"],
+    "facility_ids": ["facility001", "facility002"],
     "address_components": [
       {
         "long_name": "Bartholomew Square",
@@ -87,7 +87,7 @@
     "isFavourite": false,
     "nearest_alternative": "location032",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility002"],
+    "facility_ids": ["facility001", "facility002"],
     "address_components": [
       {
         "long_name": "Madeira Drive",
@@ -161,7 +161,7 @@
     "isFavourite": false,
     "nearest_alternative": "location018",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facility_ids": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
         "long_name": "Cleveland Road",
@@ -248,7 +248,7 @@
       "Saturday - 10am to 5pm",
       "Sunday - 10am to 5pm"
     ],
-    "facilities": ["facility001"],
+    "facility_ids": ["facility001"],
     "address_components": [
       {
         "long_name": "Dyke Road",
@@ -335,7 +335,7 @@
       "Saturday - 10am to 5pm",
       "Sunday - 10am to 5pm"
     ],
-    "facilities": ["facility001", "facility002"],
+    "facility_ids": ["facility001", "facility002"],
     "address_components": [
       {
         "long_name": "Royal Pavilion Gardens",
@@ -414,7 +414,7 @@
     "isFavourite": false,
     "nearest_alternative": "location004",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility003"],
+    "facility_ids": ["facility001", "facility003"],
     "address_components": [
       {
         "long_name": "Dyke Road",
@@ -501,7 +501,7 @@
       "Saturday - 9.30am to 5pm",
       "Sunday - 11am to 5pm"
     ],
-    "facilities": ["facility001", "facility002"],
+    "facility_ids": ["facility001", "facility002"],
     "address_components": [
       {
         "long_name": "Carden Hill",
@@ -588,7 +588,7 @@
       "Saturday - 9am to 5pm",
       "Sunday - 9am to 5pm"
     ],
-    "facilities": ["facility001", "facility003"],
+    "facility_ids": ["facility001", "facility003"],
     "address_components": [
       {
         "long_name": "BN1 7HS",
@@ -662,7 +662,7 @@
     "isFavourite": false,
     "nearest_alternative": "location048",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility003"],
+    "facility_ids": ["facility001", "facility003"],
     "address_components": [
       {
         "long_name": "BN1 2LN",
@@ -744,7 +744,12 @@
       "Saturday - 10am to 5pm",
       "Sunday - 10am to 5pm"
     ],
-    "facilities": ["facility001", "facility002", "facility003", "facility004"],
+    "facility_ids": [
+      "facility001",
+      "facility002",
+      "facility003",
+      "facility004"
+    ],
     "address_components": [
       {
         "long_name": "Jubilee Street",
@@ -841,7 +846,7 @@
       "Saturday - 9am to 5.30pm",
       "Sunday and public holidays - 11am to 5.30pm"
     ],
-    "facilities": ["facility002"],
+    "facility_ids": ["facility002"],
     "address_components": [
       {
         "long_name": "Warren Road",
@@ -920,7 +925,7 @@
     "isFavourite": false,
     "nearest_alternative": "location020",
     "opening_hours": ["Not listed."],
-    "facilities": [
+    "facility_ids": [
       "facility001",
       "facility002",
       "facility003",
@@ -989,7 +994,7 @@
       "Saturday - 9am to 5pm",
       "Sunday - 9am to 4pm"
     ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facility_ids": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
         "long_name": "Moulsecoomb Way",
@@ -1076,7 +1081,7 @@
       "Saturday - 9.30am to 5pm",
       "Sunday - 11am to 5pm"
     ],
-    "facilities": ["facility001", "facility002"],
+    "facility_ids": ["facility001", "facility002"],
     "address_components": [
       {
         "long_name": "The Highway",
@@ -1155,7 +1160,7 @@
     "isFavourite": false,
     "nearest_alternative": "location016",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facility_ids": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
         "long_name": "Marine Drive",
@@ -1229,7 +1234,7 @@
     "isFavourite": false,
     "nearest_alternative": "location025",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility002"],
+    "facility_ids": ["facility001", "facility002"],
     "address_components": [
       {
         "long_name": "BN2 7HL",
@@ -1321,7 +1326,7 @@
       "Saturday - 9.30am to 5pm",
       "Sunday - 11am to 5pm"
     ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facility_ids": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
         "long_name": "Ladies' Mile Road",
@@ -1400,7 +1405,7 @@
     "isFavourite": false,
     "nearest_alternative": "location019",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facility_ids": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
         "long_name": "BN1 6HN",
@@ -1474,7 +1479,7 @@
     "isFavourite": false,
     "nearest_alternative": "location018",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facility_ids": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
         "long_name": "Preston Park",
@@ -1554,7 +1559,7 @@
     "isFavourite": false,
     "nearest_alternative": "location032",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facility_ids": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
         "long_name": "Madeira Drive",
@@ -1636,7 +1641,7 @@
       "Saturday - 8am to 6pm",
       "Sunday - 8am to 7.30pm"
     ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facility_ids": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
         "long_name": "Church Street",
@@ -1720,7 +1725,7 @@
     "isFavourite": false,
     "nearest_alternative": "location032",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facility_ids": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
         "long_name": "West Drive",
@@ -1807,7 +1812,7 @@
       "Saturday - 9.30am to 5pm",
       "Sunday - 11am to 5pm"
     ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facility_ids": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
         "long_name": "The Green",
@@ -1896,7 +1901,7 @@
     "isFavourite": false,
     "nearest_alternative": "location016",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility002"],
+    "facility_ids": ["facility001", "facility002"],
     "address_components": [
       {
         "long_name": "Falmer Road",
@@ -1965,7 +1970,7 @@
     "isFavourite": false,
     "nearest_alternative": "location016",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facility_ids": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
         "long_name": "Marine Drive",
@@ -2044,7 +2049,7 @@
     "isFavourite": false,
     "nearest_alternative": "location005",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facility_ids": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
         "long_name": "Prince's Place",
@@ -2131,7 +2136,7 @@
       "Saturday - 9am to 5pm",
       "Sunday - 9am to 5pm"
     ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facility_ids": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
         "long_name": "Wilson Avenue",
@@ -2210,7 +2215,7 @@
     "isFavourite": false,
     "nearest_alternative": "location025",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001"],
+    "facility_ids": ["facility001"],
     "address_components": [
       {
         "long_name": "Arundel Drive West",
@@ -2289,7 +2294,12 @@
     "isFavourite": false,
     "nearest_alternative": "location025",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility002", "facility003", "facility007"],
+    "facility_ids": [
+      "facility001",
+      "facility002",
+      "facility003",
+      "facility007"
+    ],
     "address_components": [
       {
         "long_name": "Marine Drive",
@@ -2363,7 +2373,7 @@
     "isFavourite": false,
     "nearest_alternative": "location001",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facility_ids": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
         "long_name": "BN1 1NB",
@@ -2437,7 +2447,12 @@
     "isFavourite": false,
     "nearest_alternative": "location035",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility002", "facility003", "facility007"],
+    "facility_ids": [
+      "facility001",
+      "facility002",
+      "facility003",
+      "facility007"
+    ],
     "address_components": [
       {
         "long_name": "BN1 9PZ",
@@ -2506,7 +2521,12 @@
     "isFavourite": false,
     "nearest_alternative": "location020",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility002", "facility003", "facility007"],
+    "facility_ids": [
+      "facility001",
+      "facility002",
+      "facility003",
+      "facility007"
+    ],
     "address_components": [
       {
         "long_name": "BN2 1EN",
@@ -2575,7 +2595,12 @@
     "isFavourite": false,
     "nearest_alternative": "location010",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility002", "facility003", "facility007"],
+    "facility_ids": [
+      "facility001",
+      "facility002",
+      "facility003",
+      "facility007"
+    ],
     "address_components": [
       {
         "long_name": "Ditchling Road",
@@ -2644,7 +2669,7 @@
     "isFavourite": false,
     "nearest_alternative": "location014",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facility_ids": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
         "long_name": "Lewes Road",
@@ -2718,7 +2743,7 @@
     "isFavourite": false,
     "nearest_alternative": "location009",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facility_ids": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
         "long_name": "Kings Road",
@@ -2806,7 +2831,7 @@
       "Saturday - 9.30am to 4pm",
       "Sunday - closed"
     ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facility_ids": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
         "long_name": "Whitehawk Road",
@@ -2893,7 +2918,7 @@
       "Saturday - 7am to 6pm",
       "Sunday - 7am to 6pm"
     ],
-    "facilities": ["facility001", "facility002"],
+    "facility_ids": ["facility001", "facility002"],
     "address_components": [
       {
         "long_name": "Tongdean Lane",
@@ -2977,7 +3002,7 @@
     "isFavourite": false,
     "nearest_alternative": "location051",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facility_ids": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
         "long_name": "Easthill Way",
@@ -3042,7 +3067,7 @@
     "isFavourite": false,
     "nearest_alternative": "location047",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facility_ids": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
         "long_name": "Eaton Villas",
@@ -3103,7 +3128,7 @@
     "isFavourite": false,
     "nearest_alternative": "location037",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001"],
+    "facility_ids": ["facility001"],
     "address_components": [
       {
         "long_name": "Valley Drive",
@@ -3176,7 +3201,7 @@
       "Saturday - 9.30am to 5pm",
       "Sunday - 11am to 5pm"
     ],
-    "facilities": ["facility002", "facility003"],
+    "facility_ids": ["facility002", "facility003"],
     "address_components": [
       { "long_name": "West Way", "short_name": "West Way", "types": ["route"] },
       {
@@ -3251,7 +3276,7 @@
       "Saturday - 9am to 5.30pm",
       "Sunday and public holidays - 11am to 5.30pm"
     ],
-    "facilities": ["facility002"],
+    "facility_ids": ["facility002"],
     "address_components": [
       {
         "long_name": "Old Shoreham Road",
@@ -3320,7 +3345,7 @@
       "Saturday - 9am to 5.30pm",
       "Sunday and public holidays - 11am to 5.30pm"
     ],
-    "facilities": ["facility002"],
+    "facility_ids": ["facility002"],
     "address_components": [
       {
         "long_name": "Old Shoreham Road",
@@ -3394,7 +3419,7 @@
       "Saturday - 10am to 7pm",
       "Sunday - closed"
     ],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facility_ids": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
         "long_name": "Church Road",
@@ -3455,7 +3480,7 @@
     "isFavourite": false,
     "nearest_alternative": "location044",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility002"],
+    "facility_ids": ["facility001", "facility002"],
     "address_components": [
       {
         "long_name": "New Church Road",
@@ -3516,7 +3541,7 @@
     "isFavourite": false,
     "nearest_alternative": "location042",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facility_ids": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
         "long_name": "Old Shoreham Road",
@@ -3567,7 +3592,7 @@
     "isFavourite": false,
     "nearest_alternative": "location039",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility002"],
+    "facility_ids": ["facility001", "facility002"],
     "address_components": [
       {
         "long_name": "Norton Road",
@@ -3628,7 +3653,7 @@
     "isFavourite": false,
     "nearest_alternative": "location009",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facility_ids": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
         "long_name": "Kings Road",
@@ -3693,7 +3718,7 @@
     "isFavourite": false,
     "nearest_alternative": "location048",
     "opening_hours": ["Not listed."],
-    "facilities": [
+    "facility_ids": [
       "facility001",
       "facility003",
       "facility005",
@@ -3756,7 +3781,7 @@
     "isFavourite": false,
     "nearest_alternative": "location055",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facility_ids": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
         "long_name": "BN3 4LX",
@@ -3815,7 +3840,7 @@
       "Saturday - 9.30am to 5pm",
       "Sunday - 11am to 5pm"
     ],
-    "facilities": ["facility002", "facility003"],
+    "facility_ids": ["facility002", "facility003"],
     "address_components": [
       { "long_name": "233", "short_name": "233", "types": ["street_number"] },
       {
@@ -3877,7 +3902,7 @@
     "isFavourite": false,
     "nearest_alternative": "location006",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility002", "facility003"],
+    "facility_ids": ["facility001", "facility002", "facility003"],
     "address_components": [
       {
         "long_name": "Somerhill Road",
@@ -3938,7 +3963,7 @@
     "isFavourite": false,
     "nearest_alternative": "location054",
     "opening_hours": ["Not listed."],
-    "facilities": [
+    "facility_ids": [
       "facility001",
       "facility002",
       "facility003",
@@ -4014,7 +4039,7 @@
     "isFavourite": false,
     "nearest_alternative": "location053",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001"],
+    "facility_ids": ["facility001"],
     "address_components": [
       {
         "long_name": "Denmark Road",
@@ -4079,7 +4104,12 @@
     "isFavourite": false,
     "nearest_alternative": "location049",
     "opening_hours": ["Not listed."],
-    "facilities": ["facility001", "facility002", "facility003", "facility008"],
+    "facility_ids": [
+      "facility001",
+      "facility002",
+      "facility003",
+      "facility008"
+    ],
     "address_components": [
       {
         "long_name": "BN3 4GP",

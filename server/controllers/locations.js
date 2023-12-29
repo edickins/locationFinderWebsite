@@ -7,7 +7,7 @@ const asyncHandler = require('../middleware/async');
 // @access Public
 exports.getLocations = asyncHandler(async (req, res, next) => {
   try {
-    const locations = await Location.find();
+    const locations = await Location.find().populate('facilities');
     res
       .status(200)
       .json({ success: true, count: locations.length, locations: locations });

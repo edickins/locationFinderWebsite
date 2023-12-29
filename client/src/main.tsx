@@ -8,9 +8,9 @@ import makeServer from './mock-api/server';
 import routesConfig from './config/routerConfig';
 
 if (
-  process.env.NODE_ENV === 'development' &&
+  import.meta.env.MODE === 'development' &&
   typeof makeServer === 'function' &&
-  import.meta.env.VITE_APP_ENV !== 'local'
+  import.meta.env.VITE_APP_ENV !== 'LOCAL_MONGODB'
 ) {
   makeServer(); // For people following the tutorial
 }
