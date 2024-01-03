@@ -53,5 +53,5 @@ export interface ILocationsContext {
 
 export interface IInitialLocationsState {
   locations: ILocation[];
-  error: string | Error | undefined;
+  error: { message: string; messageTitle: string } | undefined;
 }

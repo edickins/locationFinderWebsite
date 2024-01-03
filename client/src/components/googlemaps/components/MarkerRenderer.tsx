@@ -42,6 +42,8 @@ function MarkerRenderer({
 
   if (!items || items.length === 0) return null;
 
+  console.log('markerrenderer render');
+
   const arr = activeFilters?.split('+') || [];
   return items.map((item) => {
     // TODO maybe checking for active filters earlier would reduce renders?

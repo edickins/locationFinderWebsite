@@ -17,7 +17,9 @@ function MessagePanel({ title, message, hideMessagePanelContainer }: Props) {
           close
         </ClosePanelButton>
       </div>
-      <h2 className='mb-2 bg-gray-600 p-2 text-lg font-semibold'>{title}</h2>
+      <h2 className='mb-2 bg-gray-600 p-2 pr-20 text-lg font-semibold'>
+        {title}
+      </h2>
       <p className='px-2'>{message}</p>
     </div>
   );

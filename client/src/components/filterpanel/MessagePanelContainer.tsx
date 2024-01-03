@@ -1,23 +1,26 @@
 import { useRef, useEffect } from 'react';
 import MessagePanel from './MessagePanel';
+import { useLocationsContext } from '../../context/locationContext/locationsContext';
 
 type Props = {
   messageDialogueProps: { messageTitle: string; message: string };
 };
 
 function MessagePanelContainer({ messageDialogueProps }: Props) {
+  const { state } = useLocationsContext();
+
   const messagePanelContainerRef = useRef<HTMLDivElement>(null);
 
   const showMessagePanelContainer = () => {
     if (!messagePanelContainerRef.current) return;
-    messagePanelContainerRef.current.classList.toggle('hidden');
-    messagePanelContainerRef.current.classList.toggle('grid');
+    messagePanelContainerRef.current.classList.add('grid');
+    messagePanelContainerRef.current.classList.remove('hidden');
   };
 
   const hideMessagePanelContainer = () => {
     if (!messagePanelContainerRef.current) return;
-    messagePanelContainerRef.current.classList.toggle('hidden');
-    messagePanelContainerRef.current.classList.toggle('grid');
+    messagePanelContainerRef.current.classList.add('hidden');
+    messagePanelContainerRef.current.classList.remove('grid');
   };
 
   useEffect(() => {
@@ -25,13 +28,12 @@ function MessagePanelContainer({ messageDialogueProps }: Props) {
   }, []);
 
   useEffect(() => {
-    if (
-      messageDialogueProps.message !== '' &&
-      messageDialogueProps.messageTitle !== ''
-    ) {
-      showMessagePanelContainer();
+    if (state.error) {
+      if (state.error.message !== '' && state.error.messageTitle !== '') {
+        showMessagePanelContainer();
+      }
     }
-  }, [messageDialogueProps]);
+  }, [messageDialogueProps, state.error]);
 
   return (
     <div
@@ -39,11 +41,13 @@ function MessagePanelContainer({ messageDialogueProps }: Props) {
       className='absolute bottom-0 left-0 right-0 top-0 z-50 hidden h-full w-full content-center justify-items-center bg-red-500 bg-opacity-50'
       ref={messagePanelContainerRef}
     >
-      <MessagePanel
-        title={messageDialogueProps.messageTitle}
-        message={messageDialogueProps.message}
-        hideMessagePanelContainer={hideMessagePanelContainer}
-      />
+      {state.error && (
+        <MessagePanel
+          title={state.error?.messageTitle}
+          message={state.error?.message}
+          hideMessagePanelContainer={hideMessagePanelContainer}
+        />
+      )}
     </div>
   );
 }

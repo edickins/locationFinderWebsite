@@ -18,7 +18,10 @@ import {
 
 // create the context defining the types of the context members
 export const LocationsContext = createContext<ILocationsContext>({
-  state: { locations: [], error: undefined },
+  state: {
+    locations: [],
+    error: undefined
+  },
   facilities: [],
   dispatchLocations: () => {}
 });
@@ -46,7 +49,7 @@ export default function LocationsProvider({ children }: PropsWithChildren) {
 
     if (import.meta.env.PROD) {
       instance.defaults.baseURL =
-        'https://locationfinder.bleepbloop.net:5001/api/v1';
+        'https://locationfinder.bleepbloop.net/api/v1';
     }
 
     const fetchLocations = instance.get('/locations');
@@ -63,7 +66,10 @@ export default function LocationsProvider({ children }: PropsWithChildren) {
       .catch((error) => {
         dispatchLocations({
           type: LocationActionEnum.SET_ERROR,
-          payload: error
+          payload: {
+            messageTitle: error.message,
+            message: 'There was an error fetching location data.'
+          }
         });
       });
   }, []);

@@ -5,7 +5,6 @@ type Props = {
 };
 
 function DetailPanelFacilities({ facilities }: Props) {
-  console.log(facilities);
   return (
     <section
       id='facilties-section'

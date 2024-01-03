@@ -310,14 +310,17 @@ function Home() {
   }, [googleMapRef, locationID, locations, screenSize, userLocation]);
 
   // clickHandler sent via props to MultiMarker
-  const onMarkerClicked = (id: string) => {
-    if (id) {
-      const newSearchParams = new URLSearchParams(searchParams.toString());
-      newSearchParams.set('locationID', id);
-      setSearchParams(newSearchParams);
-      setDoShowPanel(true);
-    }
-  };
+  const onMarkerClicked = useCallback(
+    (id: string) => {
+      if (id) {
+        const newSearchParams = new URLSearchParams(searchParams.toString());
+        newSearchParams.set('locationID', id);
+        setSearchParams(newSearchParams);
+        setDoShowPanel(true);
+      }
+    },
+    [searchParams, setSearchParams]
+  );
 
   const defaultMapProps = {
     center: { lat: 50.8249486, lng: -0.1270007 },
