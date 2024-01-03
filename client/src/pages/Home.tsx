@@ -10,6 +10,7 @@ import { ILocation } from '../context/locationContext/types';
 import MessagePanelContainer from '../components/filterpanel/MessagePanelContainer';
 import useGetScreensize, { ScreenSizeEnum } from '../hooks/getScreensize';
 import getRoute from '../services/getGoogleMapRoute';
+import { LocationActionEnum } from '../reducer/locationReducer/types';
 
 type Route = {
   distanceMeters: number;
@@ -54,7 +55,8 @@ function Home() {
     { lat: number; lng: number } | undefined
   >();
   const {
-    state: { locations }
+    state: { locations },
+    dispatchLocations
   } = useLocationsContext();
 
   // pan to a marker location *and* offset for the available screen space
@@ -180,6 +182,7 @@ function Home() {
     // TODO is this gate necessary?
     if (newLocationID !== locationID) {
       setLocationID(newLocationID);
+      setDoShowPanel(true);
     }
   }, [locationID, searchParams]);
 
@@ -244,11 +247,24 @@ function Home() {
             displayPolylineRoute(route, currentLocationPolyLineRef, '#FFff22');
           })
           .catch((error) => {
-            console.error(error);
+            dispatchLocations({
+              type: LocationActionEnum.SET_ERROR,
+              payload: {
+                messageTitle: error.message,
+                message: 'There was an error fetching route data.'
+              }
+            });
           });
       }
     }
-  }, [displayPolylineRoute, googleMapRef, locationID, locations, userLocation]);
+  }, [
+    dispatchLocations,
+    displayPolylineRoute,
+    googleMapRef,
+    locationID,
+    locations,
+    userLocation
+  ]);
 
   // get the bounds of the area defined by all locations
   useEffect(() => {
@@ -306,19 +322,6 @@ function Home() {
     }
   }, [googleMapRef, locationID, locations, screenSize, userLocation]);
 
-  // clickHandler sent via props to MultiMarker
-  const onMarkerClicked = useCallback(
-    (id: string) => {
-      if (id) {
-        const newSearchParams = new URLSearchParams(searchParams.toString());
-        newSearchParams.set('locationID', id);
-        setSearchParams(newSearchParams);
-        setDoShowPanel(true);
-      }
-    },
-    [searchParams, setSearchParams]
-  );
-
   const defaultMapProps = {
     center: { lat: 50.8249486, lng: -0.1270007 },
     zoom: 13
@@ -333,7 +336,6 @@ function Home() {
           nearestLocationID={
             locationsDistanceFromUser[0]?.locationID || undefined
           }
-          onMarkerClicked={onMarkerClicked}
           setGoogleMapRef={setGoogleMapRef}
           defaultMapProps={defaultMapProps}
         />

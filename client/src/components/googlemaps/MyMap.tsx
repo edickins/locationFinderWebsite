@@ -25,7 +25,6 @@ type Props = {
   items: ILocation[];
   locationID: string | null;
   nearestLocationID: string | undefined;
-  onMarkerClicked: (id: string) => void;
   setGoogleMapRef: (map: google.maps.Map) => void;
   defaultMapProps: { center: { lat: number; lng: number }; zoom: number };
 };
@@ -39,7 +38,6 @@ function MyMap({
   items,
   locationID,
   nearestLocationID,
-  onMarkerClicked,
   setGoogleMapRef,
   defaultMapProps
 }: Props) {
@@ -148,11 +146,7 @@ function MyMap({
           autoFit
         >
           <MapReporter setGoogleMapRef={setGoogleMapRef} />
-          <MarkerRenderer
-            items={items}
-            activeFilters={activeFilters}
-            onMarkerClicked={onMarkerClicked}
-          />
+          <MarkerRenderer items={items} activeFilters={activeFilters} />
           <InfoWindow
             // set the key so that the InfoWindow re-renders if the same Marker is clicked
             key={markerClicks}

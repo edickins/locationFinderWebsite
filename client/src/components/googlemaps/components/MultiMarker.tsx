@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState, memo } from 'react';
+import { useEffect, useRef, useState, memo, useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { useMapContext, useMapEffect } from 'googlemaps-react-primitives';
 import { regularSVG, activeFilterSVG, closedSVG } from './markerSVGs';
 
@@ -7,7 +8,6 @@ interface Props extends google.maps.MarkerOptions {
   isFavourite: boolean;
   isFilterActive: boolean;
   open_status: string;
-  onMarkerClicked: (id: string) => void;
 }
 
 export type IMultiMarkerRef = {
@@ -28,15 +28,22 @@ function MultiMarker({
   isFavourite,
   isFilterActive,
   open_status,
-  onMarkerClicked,
   ...options
 }: Props) {
   const marker = useRef<google.maps.Marker>();
   const { map, addMarker, removeMarker } = useMapContext();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [markerIcon, setMarkerIcon] = useState<IIcon>({
     url: `data:image/svg+xml;base64,${window.btoa(regularSVG)}`,
     scaledSize: new google.maps.Size(markerWidth, markerHeight)
   });
+
+  // clickHandler sent via props to MultiMarker
+  const onMarkerClicked = useCallback(() => {
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+    newSearchParams.set('locationID', id);
+    setSearchParams(newSearchParams);
+  }, [id, searchParams, setSearchParams]);
 
   useEffect(() => {
     // get the correct SVG for the Marker
@@ -61,7 +68,7 @@ function MultiMarker({
 
       marker.current.addListener('click', (e: google.maps.MapMouseEvent) => {
         e.stop();
-        onMarkerClicked(id);
+        onMarkerClicked();
       });
       addMarker(marker.current);
     }
@@ -74,7 +81,7 @@ function MultiMarker({
       }
       return undefined;
     };
-  }, [addMarker, id, map, markerIcon, options, removeMarker, onMarkerClicked]);
+  }, [addMarker, id, map, markerIcon, onMarkerClicked, options, removeMarker]);
 
   useMapEffect(() => {
     if (marker.current) {
