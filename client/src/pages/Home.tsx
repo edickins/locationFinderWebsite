@@ -7,7 +7,6 @@ import FilterPanel from '../components/filterpanel/FilterPanel';
 import FiltersProvider from '../context/filtersContext/filtersContext';
 import { useLocationsContext } from '../context/locationContext/locationsContext';
 import { ILocation } from '../context/locationContext/types';
-import { IMultiMarkerRef } from '../components/googlemaps/components/MultiMarker';
 import MessagePanelContainer from '../components/filterpanel/MessagePanelContainer';
 import useGetScreensize, { ScreenSizeEnum } from '../hooks/getScreensize';
 import getRoute from '../services/getGoogleMapRoute';
@@ -47,8 +46,6 @@ function Home() {
   >([]);
 
   const [doShowPanel, setDoShowPanel] = useState(false);
-
-  const mapMarkerRefs = useRef<IMultiMarkerRef[]>([]);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
@@ -337,7 +334,6 @@ function Home() {
             locationsDistanceFromUser[0]?.locationID || undefined
           }
           onMarkerClicked={onMarkerClicked}
-          mapMarkerRefs={mapMarkerRefs}
           setGoogleMapRef={setGoogleMapRef}
           defaultMapProps={defaultMapProps}
         />

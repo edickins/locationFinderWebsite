@@ -1,11 +1,10 @@
 import { useEffect, memo, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ILocation } from '../../../context/locationContext/types';
-import MultiMarker, { IMultiMarkerRef } from './MultiMarker';
+import MultiMarker from './MultiMarker';
 
 type Props = {
   items: ILocation[];
-  mapMarkerRefs: React.MutableRefObject<IMultiMarkerRef[]>;
   activeFilters: string | null | undefined;
   onMarkerClicked: (id: string) => void;
 };
@@ -17,12 +16,7 @@ const checkForActiveFilter = (item: ILocation, filters: string[]): boolean => {
   );
 };
 
-function MarkerRenderer({
-  items,
-  mapMarkerRefs,
-  activeFilters,
-  onMarkerClicked
-}: Props) {
+function MarkerRenderer({ items, activeFilters, onMarkerClicked }: Props) {
   const [searchParams] = useSearchParams();
   const filtersRef = useRef<string | null | undefined>();
 
@@ -41,9 +35,6 @@ function MarkerRenderer({
   }, [searchParams]);
 
   if (!items || items.length === 0) return null;
-
-  console.log('markerrenderer render');
-
   const arr = activeFilters?.split('+') || [];
   return items.map((item) => {
     // TODO maybe checking for active filters earlier would reduce renders?
@@ -57,7 +48,6 @@ function MarkerRenderer({
         isFavourite={item.isFavourite}
         open_status={item.open_status}
         data-testid={`marker-${item.id}`}
-        mapMarkerRefs={mapMarkerRefs}
         onMarkerClicked={onMarkerClicked}
       />
     );

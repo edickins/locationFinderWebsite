@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, memo } from 'react';
 import { useMapContext, useMapEffect } from 'googlemaps-react-primitives';
 import { regularSVG, activeFilterSVG, closedSVG } from './markerSVGs';
 
@@ -7,7 +7,6 @@ interface Props extends google.maps.MarkerOptions {
   isFavourite: boolean;
   isFilterActive: boolean;
   open_status: string;
-  mapMarkerRefs: React.MutableRefObject<IMultiMarkerRef[]>;
   onMarkerClicked: (id: string) => void;
 }
 
@@ -24,12 +23,11 @@ interface IIcon {
 const markerHeight = 25;
 const markerWidth = 25;
 
-export default function MultiMarker({
+function MultiMarker({
   id,
   isFavourite,
   isFilterActive,
   open_status,
-  mapMarkerRefs,
   onMarkerClicked,
   ...options
 }: Props) {
@@ -66,14 +64,6 @@ export default function MultiMarker({
         onMarkerClicked(id);
       });
       addMarker(marker.current);
-      // TODO can this be done without setting the useRef value directly here?
-      if (marker.current) {
-        // eslint-disable-next-line no-param-reassign
-        mapMarkerRefs.current = [
-          ...mapMarkerRefs.current,
-          { id, marker: marker.current }
-        ];
-      }
     }
 
     return () => {
@@ -84,16 +74,7 @@ export default function MultiMarker({
       }
       return undefined;
     };
-  }, [
-    addMarker,
-    id,
-    map,
-    markerIcon,
-    options,
-    removeMarker,
-    mapMarkerRefs,
-    onMarkerClicked
-  ]);
+  }, [addMarker, id, map, markerIcon, options, removeMarker, onMarkerClicked]);
 
   useMapEffect(() => {
     if (marker.current) {
@@ -110,3 +91,5 @@ export default function MultiMarker({
 
   return null;
 }
+
+export default memo(MultiMarker);

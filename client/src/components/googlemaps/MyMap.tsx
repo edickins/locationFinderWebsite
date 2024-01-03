@@ -7,7 +7,6 @@ import InfoWindow from './components/InfoWindow';
 import MarkerRenderer from './components/MarkerRenderer';
 import MapReporter from './components/MapReporter';
 import { ILocation } from '../../context/locationContext/types';
-import { IMultiMarkerRef } from './components/MultiMarker';
 
 import styles from './multiMapStyles';
 import UserLocationDisplay from './components/UserLocationDisplay';
@@ -28,7 +27,6 @@ type Props = {
   nearestLocationID: string | undefined;
   onMarkerClicked: (id: string) => void;
   setGoogleMapRef: (map: google.maps.Map) => void;
-  mapMarkerRefs: React.MutableRefObject<IMultiMarkerRef[]>;
   defaultMapProps: { center: { lat: number; lng: number }; zoom: number };
 };
 
@@ -43,7 +41,6 @@ function MyMap({
   nearestLocationID,
   onMarkerClicked,
   setGoogleMapRef,
-  mapMarkerRefs,
   defaultMapProps
 }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -126,8 +123,6 @@ function MyMap({
     );
   }, []);
 
-  console.log('mymap render');
-
   return (
     <div className='absolute bottom-0 left-0 right-0 top-0' id='map-container'>
       <Wrapper
@@ -155,7 +150,6 @@ function MyMap({
           <MapReporter setGoogleMapRef={setGoogleMapRef} />
           <MarkerRenderer
             items={items}
-            mapMarkerRefs={mapMarkerRefs}
             activeFilters={activeFilters}
             onMarkerClicked={onMarkerClicked}
           />
