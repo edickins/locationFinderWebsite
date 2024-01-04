@@ -59,6 +59,18 @@ function Home() {
     dispatchLocations
   } = useLocationsContext();
 
+  const onMarkerClicked = useCallback(
+    (id: string) => {
+      if (id) {
+        const newSearchParams = new URLSearchParams(searchParams.toString());
+        newSearchParams.set('locationID', id);
+        setSearchParams(newSearchParams);
+        setDoShowPanel(true);
+      }
+    },
+    [searchParams, setSearchParams]
+  );
+
   // pan to a marker location *and* offset for the available screen space
   // to accommodate the panel which will be covering the map
   const panToWithOffset = useCallback(
@@ -180,11 +192,12 @@ function Home() {
   useEffect(() => {
     const newLocationID = searchParams.get('locationID');
     // TODO is this gate necessary?
-    if (newLocationID !== locationID) {
+    if (newLocationID) {
+      // console.log(`newLocationID ${newLocationID} locationID ${locationID}`);
       setLocationID(newLocationID);
       setDoShowPanel(true);
     }
-  }, [locationID, searchParams]);
+  }, [searchParams]);
 
   // respond to locationID being updated
   useEffect(() => {
@@ -337,6 +350,7 @@ function Home() {
             locationsDistanceFromUser[0]?.locationID || undefined
           }
           setGoogleMapRef={setGoogleMapRef}
+          onMarkerClicked={onMarkerClicked}
           defaultMapProps={defaultMapProps}
         />
         <DetailPanel

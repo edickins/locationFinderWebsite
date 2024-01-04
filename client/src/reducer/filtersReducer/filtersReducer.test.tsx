@@ -64,7 +64,8 @@ describe('filtersReducer', () => {
       isPanelOpen: true,
       isFacilitiesSelected: false,
       isFavouritesSelected: true,
-      isSearchActive: false
+      isSearchActive: false,
+      isSearchSelected: false
     };
 
     const newState = filtersReducer(initialState, action);
@@ -81,7 +82,8 @@ describe('filtersReducer', () => {
       isPanelOpen: true,
       isFacilitiesSelected: false,
       isFavouritesSelected: false,
-      isSearchActive: true
+      isSearchActive: true,
+      isSearchSelected: true
     };
 
     const newState = filtersReducer(initialState, action);

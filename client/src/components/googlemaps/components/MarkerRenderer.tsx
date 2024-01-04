@@ -6,6 +6,7 @@ import MultiMarker from './MultiMarker';
 type Props = {
   items: ILocation[];
   activeFilters: string | null | undefined;
+  onMarkerClicked: (id: string) => void;
 };
 
 const checkForActiveFilter = (item: ILocation, filters: string[]): boolean => {
@@ -15,7 +16,7 @@ const checkForActiveFilter = (item: ILocation, filters: string[]): boolean => {
   );
 };
 
-function MarkerRenderer({ items, activeFilters }: Props) {
+function MarkerRenderer({ items, activeFilters, onMarkerClicked }: Props) {
   const [searchParams] = useSearchParams();
   const filtersRef = useRef<string | null | undefined>();
 
@@ -47,6 +48,7 @@ function MarkerRenderer({ items, activeFilters }: Props) {
         isFavourite={item.isFavourite}
         open_status={item.open_status}
         data-testid={`marker-${item.id}`}
+        onMarkerClicked={onMarkerClicked}
       />
     );
   });

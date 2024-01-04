@@ -16,10 +16,28 @@ To install and run this project locally, you need to have Node.js, npm, and Mong
 
 # Installation
 
-Clone this repository: git clone https://github.com/edickins/toiletFinderWebsite toilet-finder-website
+Clone this repository: git clone https://github.com/edickins/toiletFinderWebsite location-finder-website
 The repository contains two folders - client and server.
 
-Navigate to the project folder: cd toilet-finder-website.
+Navigate to the project folder: cd location-finder-website.
+
+The client folder contains a React frontend which uses different values held in .env files.
+Look on the Vite site to understand how different levels of .env files are used by VITE when it is running or building code. https://vitejs.dev/guide/env-and-mode.html
+
+I have added .env.example which has a named var for the google api.
+Additionally I have files that declare vars used so that the React app can be run locally against the mock-api of miragejs, or against a local mongodb instance.
+
+All of these are in the code and begin with VITE\_ so you can set these as is appropriate for running in different modes.
+
+e.g. this code decides if React should start a miragejs mock-api or run against a local mongodb instance.
+
+if (
+import.meta.env.MODE === 'development' &&
+typeof makeServer === 'function' &&
+import.meta.env.VITE_APP_ENV !== 'LOCAL_MONGODB'
+) {
+makeServer(); // For people following the tutorial
+}
 
 # client
 

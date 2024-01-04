@@ -26,6 +26,7 @@ type Props = {
   locationID: string | null;
   nearestLocationID: string | undefined;
   setGoogleMapRef: (map: google.maps.Map) => void;
+  onMarkerClicked: (id: string) => void;
   defaultMapProps: { center: { lat: number; lng: number }; zoom: number };
 };
 
@@ -39,6 +40,7 @@ function MyMap({
   locationID,
   nearestLocationID,
   setGoogleMapRef,
+  onMarkerClicked,
   defaultMapProps
 }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -146,7 +148,11 @@ function MyMap({
           autoFit
         >
           <MapReporter setGoogleMapRef={setGoogleMapRef} />
-          <MarkerRenderer items={items} activeFilters={activeFilters} />
+          <MarkerRenderer
+            items={items}
+            activeFilters={activeFilters}
+            onMarkerClicked={onMarkerClicked}
+          />
           <InfoWindow
             // set the key so that the InfoWindow re-renders if the same Marker is clicked
             key={markerClicks}

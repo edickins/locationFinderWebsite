@@ -52,14 +52,14 @@ function MobileMenu({ isMenuOpen, setIsMenuOpen }: Props) {
           <li className='my-12 text-3xl'>
             <NavLink
               onClick={() => setIsMenuOpen(false)}
-              to='contact'
+              to='about'
               className={({ isActive }) =>
                 isActive
                   ? 'text-light-secondary-color dark:text-dark-secondary-color'
                   : 'text-light-primary-color dark:text-white'
               }
             >
-              Contact Page
+              About Page
             </NavLink>
           </li>
         </ul>

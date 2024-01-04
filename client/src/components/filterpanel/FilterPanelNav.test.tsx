@@ -23,7 +23,7 @@ describe('FilterPanelNav', () => {
     const filterButton = screen.getByRole('button', { name: 'Filter' });
     const favouritesButton = screen.getByRole('button', { name: 'Favourites' });
     const nearestToiletButton = screen.getByRole('button', {
-      name: 'Find a toilet near me'
+      name: 'Find nearest toilet'
     });
     expect(filterButton).toBeInTheDocument();
     expect(favouritesButton).toBeInTheDocument();
@@ -42,7 +42,7 @@ describe('FilterPanelNav', () => {
     const user = userEvent.setup();
 
     const nearestToiletButton = screen.getByRole('button', {
-      name: 'Find a toilet near me'
+      name: 'Find nearest toilet'
     });
 
     await user.click(nearestToiletButton);
