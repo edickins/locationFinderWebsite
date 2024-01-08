@@ -3,7 +3,17 @@ import SearchResultItem from './SearchResultItem';
 import { ILocation } from '../../context/locationContext/types';
 
 function NoResults() {
-  return <p>No favourites found.</p>;
+  return (
+    <p>
+      No favourites found. Click the{' '}
+      <i
+        className='fa-star far dark:text-dark-secondary-color hover:dark:text-dark-primary-color'
+        aria-hidden='true'
+      />{' '}
+      next to a location name in the bottom panel to add a favourite to this
+      list.
+    </p>
+  );
 }
 
 type Props = {

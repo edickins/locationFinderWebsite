@@ -174,11 +174,20 @@ function Home() {
   const displayPolylineRoute = useCallback(
     (
       route: Route,
-      polylineRef: React.MutableRefObject<google.maps.Polyline | undefined>,
-      strokeColor: string
+      polylineRef: React.MutableRefObject<google.maps.Polyline | undefined>
     ) => {
       const { polyline } = route;
       const lineRef = polylineRef;
+
+      let strokeColor = '#FFff22';
+
+      if (
+        window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: light)').matches
+      ) {
+        strokeColor = '#2088ff';
+      }
+
       if (lineRef.current) {
         lineRef.current.setMap(null);
       }
@@ -188,7 +197,7 @@ function Home() {
         ),
         strokeColor,
         strokeOpacity: 0.8,
-        strokeWeight: 2
+        strokeWeight: 3
       });
       lineRef.current.setMap(googleMapRef);
     },
@@ -264,7 +273,7 @@ function Home() {
       if (currentLocation) {
         getRouteAsync(userLocation, currentLocation.place_id)
           .then((route) => {
-            displayPolylineRoute(route, currentLocationPolyLineRef, '#FFff22');
+            displayPolylineRoute(route, currentLocationPolyLineRef);
           })
           .catch((error) => {
             dispatchLocations({

@@ -25,7 +25,7 @@ function FilterSectionFacilities({ isActive }: Props) {
 
   useEffect(() => {
     const arr = filtersParams.split('+').filter(Boolean);
-    setActiveFilters(arr.length === 0 ? '' : ` (${arr.length})`);
+    setActiveFilters(` ${arr.length} active`);
   }, [filtersParams]);
 
   const onFilterClicked = (facility: string, isFilterSelected: boolean) => {

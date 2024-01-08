@@ -47,7 +47,7 @@ function InfoWindow({ content, position }: Props) {
   useEffect(() => {
     if (!infoWindowRef.current && locationID && content !== '') {
       infoWindowRef.current = new google.maps.InfoWindow({ content, position });
-      const styledContent = `<div style="color:#040404;padding:0px;font-weight:700;font-size:12px;">${content}</div>`;
+      const styledContent = `<div style="color:#040404;padding:4px;font-weight:700">${content}</div>`;
       infoWindowRef.current.setOptions({
         content: styledContent,
         position,

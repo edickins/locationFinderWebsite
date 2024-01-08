@@ -10,7 +10,7 @@ function SearchTermMessage({ searchTerm }: { searchTerm: string }) {
   const msg =
     searchTerm !== ''
       ? `You searched for "${searchTerm}"`
-      : 'Please enter a term in the search field. ';
+      : 'Please enter your search in the search field above. ';
 
   return <p>{msg}</p>;
 }

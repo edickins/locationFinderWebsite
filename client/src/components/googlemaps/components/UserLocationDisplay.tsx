@@ -51,7 +51,7 @@ function UserLocationDisplay() {
       infoW.setOptions({
         pixelOffset: new google.maps.Size(0, -30)
       });
-      const styledContent = `<div style="color:#040404;padding:0px;font-weight:700;font-size:12px;">You are here</div>`;
+      const styledContent = `<div style="color:#040404;padding:4px;font-weight:700">You are here</div>`;
 
       infoW.setContent(styledContent);
       infoW.open(map);
