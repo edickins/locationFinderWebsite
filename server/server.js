@@ -18,6 +18,7 @@ connectDB();
 /*routes*/
 const locations = require('./routes/locations');
 const facilities = require('./routes/facilities');
+const auth = require('./routes/auth');
 const app = express();
 
 app.use(
@@ -25,6 +26,7 @@ app.use(
     origin: [
       'http://localhost:5173',
       'http://localhost:5174',
+      'http://192.168.1.92:5173/',
       'https://locationfinder.bleepbloop.net'
     ]
   })
@@ -39,6 +41,7 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use('/api/v1/locations', locations);
 app.use('/api/v1/facilities', facilities);
+app.use('/api/v1/auth', auth);
 app.use(errorHandler);
 
 let server = undefined;

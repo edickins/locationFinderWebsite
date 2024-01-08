@@ -25,7 +25,7 @@ function FilterPanelNav({ handleFindToiletButtonClick }: Props) {
     <nav
       id='filter-nav'
       aria-label='filter control panel'
-      className='pointer-events-auto  flex flex-col gap-2 bg-light-panel px-2 pb-2 pt-2 dark:bg-dark-panel md:relative md:flex-shrink  md:gap-2 md:border-l-2 md:border-r-2 md:border-t-2 md:border-gray-700 md:bg-light-panel-secondary md:bg-opacity-95 md:px-4 md:pb-0 md:pt-4  md:dark:bg-dark-panel'
+      className='pointer-events-auto  flex flex-col gap-1 bg-light-panel  pb-2 pt-2 dark:bg-dark-panel md:relative md:flex-shrink  md:gap-2 md:border-l-2 md:border-r-2 md:border-t-2 md:border-gray-700 md:bg-light-panel-secondary md:bg-opacity-95 md:px-4 md:pb-0 md:pt-4  md:dark:bg-dark-panel'
     >
       <div className='flex justify-between md:hidden'>
         <FilterButton

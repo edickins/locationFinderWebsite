@@ -40,6 +40,7 @@ export default function LocationsProvider({ children }: PropsWithChildren) {
 
   // get location and facilities Arrays for the context provider
   useEffect(() => {
+    // handle either using miragejs fake-api (/api/v1) or local mongodb server running on localhost:5001
     const instance = axios.create({
       baseURL:
         import.meta.env.DEV && import.meta.env.VITE_APP_ENV === 'LOCAL_MONGODB'

@@ -6,14 +6,29 @@ import { useLocationsContext } from '../../context/locationContext/locationsCont
 import { useFiltersContext } from '../../context/filtersContext/filtersContext';
 import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
 
-function NoResults() {
-  return <p>No search results found.</p>;
+function SearchTermMessage({ searchTerm }: { searchTerm: string }) {
+  const msg =
+    searchTerm !== ''
+      ? `You searched for "${searchTerm}"`
+      : 'Please enter a term in the search field. ';
+
+  return <p>{msg}</p>;
+}
+
+function NoResults({ searchTerm }: { searchTerm: string }) {
+  return (
+    <div>
+      <SearchTermMessage searchTerm={searchTerm} />
+      {searchTerm !== '' && <p>No search results found.</p>}
+    </div>
+  );
 }
 
 function SearchResultsList() {
   const [partialMatches, setPartialMatches] = useState<ILocation[]>([]);
   const [perfectMatches, setPerfectMatches] = useState<ILocation[]>([]);
   const [searchResults, setSearchResults] = useState<ILocation[]>([]);
+  const [searchTerm, setSearchTerm] = useState('');
   const {
     state: { locations }
   } = useLocationsContext();
@@ -71,22 +86,35 @@ function SearchResultsList() {
     setSearchResults(uniqueIDs);
   }, [partialMatches, perfectMatches]);
 
+  // sideEffect when the search field changes
+  useEffect(() => {
+    const enteredText = searchParams.get('search');
+    if (enteredText) {
+      setSearchTerm(enteredText);
+    } else {
+      setSearchTerm('');
+    }
+  }, [searchParams]);
+
   return (
     <div>
-      {searchTerms.length === 0 && <NoResults />}
+      {searchTerms.length === 0 && <NoResults searchTerm={searchTerm} />}
       {searchTerms.length !== 0 && (
-        <ul className='mt-2 bg-white bg-opacity-80 px-2 py-2 dark:text-gray-900'>
-          {searchResults.length > 0 &&
-            searchResults.map((location) => {
-              return (
-                <SearchResultItem
-                  key={location.id}
-                  location={location}
-                  onItemClick={onSearchResultClick}
-                />
-              );
-            })}
-        </ul>
+        <div>
+          <SearchTermMessage searchTerm={searchTerm} />
+          <ul className='mt-2 bg-white bg-opacity-80 px-2 py-2 dark:text-gray-900'>
+            {searchResults.length > 0 &&
+              searchResults.map((location) => {
+                return (
+                  <SearchResultItem
+                    key={location.id}
+                    location={location}
+                    onItemClick={onSearchResultClick}
+                  />
+                );
+              })}
+          </ul>
+        </div>
       )}
     </div>
   );

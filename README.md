@@ -100,3 +100,5 @@ I would like to thank Joey Beltram for his guidance throughout this project.
 
 start the sever using the pm2 process manager
 cd into the server folder and type the command pm2 start server.js --name server
+get logs: pm2 logs
+get envs pm2 env 0

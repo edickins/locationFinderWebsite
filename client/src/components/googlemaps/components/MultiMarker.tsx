@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState, memo, useCallback } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useEffect, useRef, useState, memo } from 'react';
 import { useMapContext, useMapEffect } from 'googlemaps-react-primitives';
 import { regularSVG, activeFilterSVG, closedSVG } from './markerSVGs';
 

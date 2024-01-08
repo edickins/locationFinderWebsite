@@ -4,6 +4,8 @@ import FiltersContainer from './FiltersContainer';
 import { useFiltersContext } from '../../context/filtersContext/filtersContext';
 import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
 import FindNearestLocationPanel from './FindNearestLocationPanel';
+import { useLocationsContext } from '../../context/locationContext/locationsContext';
+import { LocationActionEnum } from '../../reducer/locationReducer/types';
 
 type DialogueProps = {
   messageTitle: string;
@@ -23,6 +25,10 @@ function FilterPanel({
 }: Props) {
   const [searchParams, setSearchParams] = useSearchParams();
   const { dispatchFilters } = useFiltersContext();
+  const {
+    state: { locations },
+    dispatchLocations
+  } = useLocationsContext();
 
   // handler for 'Find a toilet near me' button
   const handleFindToiletButtonClick = () => {
@@ -37,11 +43,16 @@ function FilterPanel({
           if (locationBounds?.contains(pos) === false) {
             // pos is outside of the bounds of all the map location Markers
             // display message and relocate to default position
-            setMessageDialogueText({
-              messageTitle: 'Geolocation detection',
-              message:
-                'Sorry, but your location is outside of the area covered by this application.  We are going to assign you a location in the centre of the city.'
+
+            dispatchLocations({
+              type: LocationActionEnum.SET_ERROR,
+              payload: {
+                messageTitle: 'Geolocation detection',
+                message:
+                  'Sorry, but your location is outside of the area covered by this application.  We are going to assign you a location in the centre of the city.'
+              }
             });
+
             pos = defaultMapProps.center;
           }
 

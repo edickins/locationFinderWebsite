@@ -9,20 +9,24 @@ type Props = {
 function Header({ onMenuButtonClick }: Props) {
   return (
     <header
-      className='fixed top-0 z-10 w-full border-b-2 border-solid border-white bg-light-panel dark:bg-dark-panel'
+      className='fixed top-0 z-10 w-full border-b-2 border-solid border-white border-opacity-30 bg-light-panel dark:bg-dark-panel'
       id='header-container'
     >
       <section className='mx-auto  max-w-6xl p-2 md:px-4'>
-        <div className='flex items-center justify-between'>
-          <h1 className='xs:text-sm xs:font-normal text-xs  dark:text-dark-secondary-color md:text-xl md:font-semibold'>
+        <div className='flex items-center  justify-between'>
+          <h1 className='xs:text-sm xs:font-normal text-sm  dark:text-dark-secondary-color md:text-xl md:font-semibold'>
             BRIGHTON & HOVE WC WAYFINDER
           </h1>
           <div
-            className='button relative cursor-pointer text-xl dark:text-dark-primary-color md:hidden '
+            className='button relative cursor-pointer  dark:text-dark-primary-color md:hidden '
             id='hamburger-button'
           >
-            <button type='button' onClick={onMenuButtonClick}>
-              <FontAwesomeIcon icon={faBars} />
+            <button
+              type='button'
+              onClick={onMenuButtonClick}
+              className='text-sm'
+            >
+              MENU <FontAwesomeIcon icon={faBars} />
             </button>
           </div>
         </div>

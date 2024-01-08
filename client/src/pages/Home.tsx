@@ -22,8 +22,6 @@ function Home() {
   const screenSize = useGetScreensize();
 
   const currentLocationPolyLineRef = useRef<google.maps.Polyline | undefined>();
-  const boundsRectRef = useRef<google.maps.Rectangle | undefined>();
-
   const [detailPanelItem, setDetailPanelItem] = useState<ILocation | undefined>(
     undefined
   );
@@ -70,6 +68,15 @@ function Home() {
     },
     [searchParams, setSearchParams]
   );
+
+  function isValidLatLng(obj: google.maps.LatLng) {
+    return (
+      Object.prototype.hasOwnProperty.call(obj, 'lat') &&
+      Object.prototype.hasOwnProperty.call(obj, 'lng') &&
+      typeof obj.lat === 'number' &&
+      typeof obj.lng === 'number'
+    );
+  }
 
   // pan to a marker location *and* offset for the available screen space
   // to accommodate the panel which will be covering the map
@@ -297,10 +304,31 @@ function Home() {
   // get the bounds of the userLocation and the currently selected location
   useEffect(() => {
     if (googleMapRef === null) return;
-    if (googleMapRef !== null && userLocation && locationID) {
+    if (userLocation && locationID) {
       const bounds = new google.maps.LatLngBounds();
       let latLng = new google.maps.LatLng(userLocation.lat, userLocation.lng);
-      bounds.extend(latLng);
+
+      if (latLng !== null) {
+        const circle = new google.maps.Circle({
+          center: latLng,
+          radius: 500
+        });
+
+        const radius = circle.getRadius();
+        const northEast = google.maps.geometry.spherical.computeOffset(
+          latLng,
+          radius,
+          45
+        );
+        const southWest = google.maps.geometry.spherical.computeOffset(
+          latLng,
+          radius,
+          225
+        );
+        bounds.extend(northEast);
+        bounds.extend(southWest);
+      }
+
       const currentLocation = locations.find((loc) => loc.id === locationID);
       if (currentLocation) {
         latLng = new google.maps.LatLng(
@@ -310,35 +338,69 @@ function Home() {
         bounds.extend(latLng);
       }
 
-      if (boundsRectRef.current) {
-        boundsRectRef.current.setMap(null);
-      }
-
-      const padding = { top: 0, left: 0, right: 0, bottom: 0 };
+      const options = { top: 0, left: 0, right: 0, bottom: 0, maxZoom: 10 };
       switch (screenSize) {
-        case ScreenSizeEnum.SM: {
-          padding.bottom = 360;
-          padding.left = 50;
-          padding.right = 50;
-          padding.top = 180;
+        case ScreenSizeEnum.XS: {
+          options.bottom = 200;
+          options.left = 40;
+          options.right = 40;
+          options.top = 20;
 
           break;
         }
         default:
-          padding.bottom = 350;
-          padding.left = 400;
-          padding.right = 220;
-          padding.top = 250;
+          options.bottom = 350;
+          options.left = 400;
+          options.right = 220;
+          options.top = 250;
       }
-
-      googleMapRef.fitBounds(bounds, padding);
+      googleMapRef.fitBounds(bounds, options);
     }
   }, [googleMapRef, locationID, locations, screenSize, userLocation]);
 
   const defaultMapProps = {
-    center: { lat: 50.8249486, lng: -0.1270007 },
+    center: { lat: 50.8236066, lng: -0.1433492 },
     zoom: 13
   };
+
+  /* useEffect(() => {
+    if (googleMapRef === null) return;
+
+    console.log(`adding event listener`);
+
+    google.maps.event.addListener(
+      googleMapRef,
+      'zoom_changed',
+      function checkBounds() {
+        let maxZoom = 13;
+
+        switch (screenSize) {
+          case ScreenSizeEnum.XL:
+          case ScreenSizeEnum.LG:
+          case ScreenSizeEnum.MD:
+            maxZoom = 16;
+            break;
+          case ScreenSizeEnum.SM:
+            maxZoom = 15;
+            break;
+          default:
+            maxZoom = 15;
+        }
+        const zoomChangeBoundsListener = google.maps.event.addListener(
+          googleMapRef,
+          'bounds_changed',
+          function checkZoom() {
+            if (googleMapRef !== null && googleMapRef !== undefined) {
+              // Change max/min zoom here
+              googleMapRef.setZoom(maxZoom);
+            }
+
+            google.maps.event.removeListener(zoomChangeBoundsListener);
+          }
+        );
+      }
+    );
+  }, [googleMapRef, screenSize]); */
 
   return (
     <FiltersProvider>
