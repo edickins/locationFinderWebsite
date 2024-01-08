@@ -16,7 +16,7 @@ function FilterPanel({ locationBounds, defaultMapProps }: Props) {
   const [searchParams, setSearchParams] = useSearchParams();
   const { dispatchFilters } = useFiltersContext();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { state, dispatchLocations } = useLocationsContext();
+  const { dispatchLocations } = useLocationsContext();
 
   // handler for 'Find a toilet near me' button
   const handleFindToiletButtonClick = () => {
