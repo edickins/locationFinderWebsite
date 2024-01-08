@@ -2,11 +2,7 @@ import { useRef, useEffect } from 'react';
 import MessagePanel from './MessagePanel';
 import { useLocationsContext } from '../../context/locationContext/locationsContext';
 
-type Props = {
-  messageDialogueProps: { messageTitle: string; message: string };
-};
-
-function MessagePanelContainer({ messageDialogueProps }: Props) {
+function MessagePanelContainer() {
   const { state } = useLocationsContext();
 
   const messagePanelContainerRef = useRef<HTMLDivElement>(null);
@@ -33,7 +29,7 @@ function MessagePanelContainer({ messageDialogueProps }: Props) {
         showMessagePanelContainer();
       }
     }
-  }, [messageDialogueProps, state.error]);
+  }, [state.error]);
 
   return (
     <div

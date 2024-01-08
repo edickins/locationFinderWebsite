@@ -28,10 +28,7 @@ function Home() {
   const [nearestAlternativeItem, setNearestAlternativeItem] = useState<
     ILocation | undefined
   >(undefined);
-  const [messageDialogueProps, setMessageDialogueProps] = useState({
-    messageTitle: '',
-    message: ''
-  });
+
   const [googleMapRef, setGoogleMapRef] = useState<google.maps.Map | null>(
     null
   );
@@ -68,15 +65,6 @@ function Home() {
     },
     [searchParams, setSearchParams]
   );
-
-  function isValidLatLng(obj: google.maps.LatLng) {
-    return (
-      Object.prototype.hasOwnProperty.call(obj, 'lat') &&
-      Object.prototype.hasOwnProperty.call(obj, 'lng') &&
-      typeof obj.lat === 'number' &&
-      typeof obj.lng === 'number'
-    );
-  }
 
   // pan to a marker location *and* offset for the available screen space
   // to accommodate the panel which will be covering the map
@@ -431,11 +419,10 @@ function Home() {
           setDoShowPanel={setDoShowPanel}
         />
         <FilterPanel
-          setMessageDialogueText={setMessageDialogueProps}
           locationBounds={locationBounds}
           defaultMapProps={defaultMapProps}
         />
-        <MessagePanelContainer messageDialogueProps={messageDialogueProps} />
+        <MessagePanelContainer />
       </main>
     </FiltersProvider>
   );

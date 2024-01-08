@@ -7,28 +7,16 @@ import FindNearestLocationPanel from './FindNearestLocationPanel';
 import { useLocationsContext } from '../../context/locationContext/locationsContext';
 import { LocationActionEnum } from '../../reducer/locationReducer/types';
 
-type DialogueProps = {
-  messageTitle: string;
-  message: string;
-};
-
 type Props = {
-  setMessageDialogueText: ({ messageTitle, message }: DialogueProps) => void;
   locationBounds: google.maps.LatLngBounds | undefined;
   defaultMapProps: { center: { lat: number; lng: number }; zoom: number };
 };
 
-function FilterPanel({
-  setMessageDialogueText,
-  locationBounds,
-  defaultMapProps
-}: Props) {
+function FilterPanel({ locationBounds, defaultMapProps }: Props) {
   const [searchParams, setSearchParams] = useSearchParams();
   const { dispatchFilters } = useFiltersContext();
-  const {
-    state: { locations },
-    dispatchLocations
-  } = useLocationsContext();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { state, dispatchLocations } = useLocationsContext();
 
   // handler for 'Find a toilet near me' button
   const handleFindToiletButtonClick = () => {
