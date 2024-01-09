@@ -42,4 +42,8 @@
   .scrollbar::-webkit-scrollbar-thumb:hover {
     background: var(--scrollbar-thumb-hover);
   }
+
+  .detailPanelFullView {
+    transform: translateY(calc(0px + 112px));
+  }
 }

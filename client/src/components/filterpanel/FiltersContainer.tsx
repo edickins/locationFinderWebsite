@@ -24,7 +24,10 @@ const FiltersContainer = function FiltersContainer() {
       }`}
     >
       <nav aria-label='close panel' className='flex justify-end pr-4 md:pt-4'>
-        <ClosePanelButton isPanelOpen={isPanelOpen} onClick={hideFilterPanel} />
+        <ClosePanelButton
+          isPanelOpen={isPanelOpen}
+          hidePanel={hideFilterPanel}
+        />
       </nav>
       <div className='scrollbar mt-2 flex-grow overflow-auto md:mt-0'>
         <FilterSectionSearch />

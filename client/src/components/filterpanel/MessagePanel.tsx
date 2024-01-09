@@ -13,7 +13,7 @@ function MessagePanel({ title, message, hideMessagePanelContainer }: Props) {
       className='relative flex max-w-sm flex-col rounded-md border-4 bg-gray-500 py-2  pt-0 text-white'
     >
       <div className='absolute right-2 top-2'>
-        <ClosePanelButton onClick={hideMessagePanelContainer} isPanelOpen>
+        <ClosePanelButton hidePanel={hideMessagePanelContainer} isPanelOpen>
           close
         </ClosePanelButton>
       </div>

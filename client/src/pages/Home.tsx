@@ -41,8 +41,6 @@ function Home() {
     { locationID: string; distance: number }[] | []
   >([]);
 
-  const [doShowPanel, setDoShowPanel] = useState(false);
-
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
   const [locationID, setLocationID] = useState(searchParams.get('locationID'));
@@ -60,7 +58,6 @@ function Home() {
         const newSearchParams = new URLSearchParams(searchParams.toString());
         newSearchParams.set('locationID', id);
         setSearchParams(newSearchParams);
-        setDoShowPanel(true);
       }
     },
     [searchParams, setSearchParams]
@@ -199,7 +196,6 @@ function Home() {
     if (newLocationID) {
       // console.log(`newLocationID ${newLocationID} locationID ${locationID}`);
       setLocationID(newLocationID);
-      setDoShowPanel(true);
     }
   }, [searchParams]);
 
@@ -219,7 +215,6 @@ function Home() {
           (item) => item.id === currentLocation?.nearest_alternative
         )
       );
-      setDoShowPanel(true);
     }
   }, [locationID, locations, panToWithOffset, userLocation]);
 
@@ -415,8 +410,6 @@ function Home() {
         <DetailPanel
           item={detailPanelItem}
           nearestAlternativeItem={nearestAlternativeItem}
-          doShowPanel={doShowPanel}
-          setDoShowPanel={setDoShowPanel}
         />
         <FilterPanel
           locationBounds={locationBounds}
