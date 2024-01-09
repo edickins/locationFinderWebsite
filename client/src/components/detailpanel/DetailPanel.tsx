@@ -6,7 +6,7 @@ import DetailPanelFacilities from './DetailPanelFacilities';
 import DetailPanelOpeningTimes from './DetailPanelOpeningTimes';
 import DetailPanelDateModified from './DetailPanelDateModified';
 import DetailPanelShowLocationButton from './DetailPanelShowLocationButton';
-import ClosePanelButton from '../buttons/ClosePanelButton';
+import CloseDetailPanelButton from '../buttons/CloseDetailPanelButton';
 
 type Props = {
   item: ILocation | undefined;
@@ -53,29 +53,32 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
     }
   }, [item]);
 
+  const scrollToTop = () => {
+    if (detailPanelScrollContainerRef.current) {
+      detailPanelScrollContainerRef.current.scrollTop = 0;
+    }
+  };
+
   const showPanel = useCallback(() => {
     if (detailPanelRef.current) {
-      detailPanelRef.current.scrollTop = 0;
+      scrollToTop();
       detailPanelRef.current.classList.add(`detailPanelFullView`);
-      detailPanelRef.current.classList.add(`scrollbar`);
+      detailPanelScrollContainerRef.current?.classList.add(`overflow-y-scroll`);
       detailPanelRef.current.classList.remove('translate-y-full');
     }
   }, []);
 
   const hidePanel = useCallback(() => {
     if (detailPanelRef.current) {
+      scrollToTop();
       detailPanelRef.current.scrollTop = 0;
       detailPanelRef.current.classList.add('translate-y-full');
-      detailPanelRef.current.classList.remove(`scrollbar`);
+      detailPanelScrollContainerRef.current?.classList.remove(
+        `overflow-y-scroll`
+      );
       detailPanelRef.current.classList.remove('detailPanelFullView');
     }
   }, []);
-
-  const scrollToTop = () => {
-    if (detailPanelScrollContainerRef.current) {
-      detailPanelScrollContainerRef.current.scrollTop = 0;
-    }
-  };
 
   return (
     <div
@@ -87,10 +90,13 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
         <div
           id='detail-panel'
           ref={detailPanelScrollContainerRef}
-          className='max-h-45vh overflow-y-scroll md:overflow-visible'
+          className='max-h-45vh  md:overflow-visible'
         >
           <div className='absolute right-8'>
-            <ClosePanelButton hidePanel={hidePanel} showPanel={showPanel} />
+            <CloseDetailPanelButton
+              hidePanel={hidePanel}
+              showPanel={showPanel}
+            />
           </div>
           <div className='mr-8 grid grid-cols-1 pt-6  text-sm md:grid-cols-7 md:gap-8'>
             <DetailPanelAddress

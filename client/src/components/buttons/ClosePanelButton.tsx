@@ -1,51 +1,27 @@
-import { useState, useCallback, useEffect } from 'react';
-import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type Props = {
   hidePanel: () => void;
-  showPanel: () => void;
+  isPanelOpen: boolean;
+  children?: string;
 };
 
-function ClosePanelButton({ hidePanel, showPanel, children }: Props) {
-  const [isPanelOpen, setIsPanelOpen] = useState(false);
-  const [buttonIcon, setButtonIcon] = useState(faChevronUp);
-
-  useEffect(() => {
-    if (isPanelOpen) {
-      setButtonIcon(faChevronDown);
-    } else {
-      setButtonIcon(faChevronUp);
-    }
-  }, [isPanelOpen]);
-
-  const clickHandler = useCallback(() => {
-    const doShowPanel = () => {
-      showPanel();
-      setIsPanelOpen(true);
-    };
-
-    const doHidePanel = () => {
-      hidePanel();
-      setIsPanelOpen(false);
-    };
-
-    if (isPanelOpen) {
-      doHidePanel();
-    } else {
-      doShowPanel();
-    }
-  }, [isPanelOpen, hidePanel, showPanel]);
-
+function ClosePanelButton({ hidePanel, isPanelOpen, children }: Props) {
+  if (!isPanelOpen) return null;
   return (
-    <button type='button' onClick={clickHandler} className='flex items-center'>
-      {isPanelOpen ? 'hide details' : 'show details'}
+    <button type='button' onClick={hidePanel} className='flex items-center'>
+      {children}
       <FontAwesomeIcon
-        icon={buttonIcon}
+        icon={faCircleXmark}
         className='hover:fa-solid ml-2 text-lg'
       />
     </button>
   );
 }
+
+ClosePanelButton.defaultProps = {
+  children: ''
+};
 
 export default ClosePanelButton;
