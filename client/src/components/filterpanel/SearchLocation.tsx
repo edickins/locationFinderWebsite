@@ -162,7 +162,7 @@ function SearchLocation() {
   return (
     <div
       id='search-input'
-      className='my-1 flex flex-row items-center justify-center bg-white bg-opacity-40'
+      className='my-1 flex flex-row items-center justify-center '
     >
       <span className='mx-2 text-sm md:shrink-0 md:text-base'>
         Search{' '}

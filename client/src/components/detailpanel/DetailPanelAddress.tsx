@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { ILocation } from '../../context/locationContext/types';
-import FavouriesToggle from '../FavouriesToggle';
+import FavouritesToggle from '../FavouritesToggle';
 
 interface Props extends PropsWithChildren<JSX.Element> {
   item: ILocation | undefined;
@@ -12,10 +12,10 @@ function DetailPanelAddress({ item, children }: Props) {
 
   return (
     <section id='address-section' className='mb-4 md:col-span-3 md:mb-0'>
-      <h1 className='mb-4 text-xl font-bold dark:text-dark-primary-color'>
+      <h1 className='mb-2 text-xl font-bold dark:text-dark-primary-color'>
         {item?.long_name}{' '}
-        <FavouriesToggle isFavourite={item?.isFavourite} id={item?.id} />
       </h1>
+      <FavouritesToggle isFavourite={item?.isFavourite} id={item?.id} />
       {children}
       <p className='font-semibold'>Address: </p>
       <p className='mb-2'>{item?.formatted_address}</p>

@@ -298,7 +298,7 @@ function Home() {
     if (googleMapRef === null) return;
     if (userLocation && locationID) {
       const bounds = new google.maps.LatLngBounds();
-      let latLng = new google.maps.LatLng(userLocation.lat, userLocation.lng);
+      const latLng = new google.maps.LatLng(userLocation.lat, userLocation.lng);
 
       if (latLng !== null) {
         const circle = new google.maps.Circle({
@@ -321,79 +321,61 @@ function Home() {
         bounds.extend(southWest);
       }
 
-      const currentLocation = locations.find((loc) => loc.id === locationID);
-      if (currentLocation) {
-        latLng = new google.maps.LatLng(
-          currentLocation.geometry.location.lat,
-          currentLocation.geometry.location.lng
-        );
-        bounds.extend(latLng);
-      }
+      // const currentLocation = locations.find((loc) => loc.id === locationID);
+      // if (currentLocation) {
+      //   latLng = new google.maps.LatLng(
+      //     currentLocation.geometry.location.lat,
+      //     currentLocation.geometry.location.lng
+      //   );
+      //   bounds.extend(latLng);
+      // }
 
       const options = { top: 0, left: 0, right: 0, bottom: 0, maxZoom: 10 };
       switch (screenSize) {
         case ScreenSizeEnum.XS: {
-          options.bottom = 200;
-          options.left = 40;
-          options.right = 40;
+          options.bottom = 20;
+          options.left = 20;
+          options.right = 20;
           options.top = 20;
 
           break;
         }
         default:
-          options.bottom = 350;
-          options.left = 400;
-          options.right = 220;
-          options.top = 250;
+          options.bottom = 100;
+          options.left = 100;
+          options.right = 100;
+          options.top = 100;
       }
       googleMapRef.fitBounds(bounds, options);
     }
   }, [googleMapRef, locationID, locations, screenSize, userLocation]);
 
-  const defaultMapProps = {
-    center: { lat: 50.8236066, lng: -0.1433492 },
-    zoom: 13
+  const getDefaultMapProps = () => {
+    switch (screenSize) {
+      case ScreenSizeEnum.XL:
+      case ScreenSizeEnum.LG:
+      case ScreenSizeEnum.MD:
+        return {
+          center: { lat: 50.83356066, lng: -0.1593492 },
+          zoom: 14
+        };
+        break;
+      case ScreenSizeEnum.SM:
+      case ScreenSizeEnum.XS:
+        return {
+          center: { lat: 50.83356066, lng: -0.1413492 },
+          zoom: 13
+        };
+        break;
+      default:
+        return {
+          center: { lat: 50.83356066, lng: -0.1593492 },
+          zoom: 14
+        };
+    }
   };
 
-  /* useEffect(() => {
-    if (googleMapRef === null) return;
-
-    console.log(`adding event listener`);
-
-    google.maps.event.addListener(
-      googleMapRef,
-      'zoom_changed',
-      function checkBounds() {
-        let maxZoom = 13;
-
-        switch (screenSize) {
-          case ScreenSizeEnum.XL:
-          case ScreenSizeEnum.LG:
-          case ScreenSizeEnum.MD:
-            maxZoom = 16;
-            break;
-          case ScreenSizeEnum.SM:
-            maxZoom = 15;
-            break;
-          default:
-            maxZoom = 15;
-        }
-        const zoomChangeBoundsListener = google.maps.event.addListener(
-          googleMapRef,
-          'bounds_changed',
-          function checkZoom() {
-            if (googleMapRef !== null && googleMapRef !== undefined) {
-              // Change max/min zoom here
-              googleMapRef.setZoom(maxZoom);
-            }
-
-            google.maps.event.removeListener(zoomChangeBoundsListener);
-          }
-        );
-      }
-    );
-  }, [googleMapRef, screenSize]); */
-
+  const defaultMapProps = getDefaultMapProps();
   return (
     <FiltersProvider>
       <main className='flex flex-grow' id='home-main'>
@@ -413,7 +395,9 @@ function Home() {
         />
         <FilterPanel
           locationBounds={locationBounds}
-          defaultMapProps={defaultMapProps}
+          nearestLocationID={
+            locationsDistanceFromUser[0]?.locationID || undefined
+          }
         />
         <MessagePanelContainer />
       </main>

@@ -9,10 +9,10 @@ import { LocationActionEnum } from '../../reducer/locationReducer/types';
 
 type Props = {
   locationBounds: google.maps.LatLngBounds | undefined;
-  defaultMapProps: { center: { lat: number; lng: number }; zoom: number };
+  nearestLocationID: string | undefined;
 };
 
-function FilterPanel({ locationBounds, defaultMapProps }: Props) {
+function FilterPanel({ locationBounds, nearestLocationID }: Props) {
   const [searchParams, setSearchParams] = useSearchParams();
   const { dispatchFilters } = useFiltersContext();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -23,7 +23,7 @@ function FilterPanel({ locationBounds, defaultMapProps }: Props) {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position: GeolocationPosition) => {
-          let pos = {
+          const pos = {
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
@@ -37,18 +37,20 @@ function FilterPanel({ locationBounds, defaultMapProps }: Props) {
               payload: {
                 messageTitle: 'Geolocation detection',
                 message:
-                  'Sorry, but your location is outside of the area covered by this application.  We are going to assign you a location in the centre of the city.'
+                  'Sorry, but your location is outside of the area covered by this application.'
               }
             });
-
-            pos = defaultMapProps.center;
+          } else {
+            const newSearchParams = new URLSearchParams(
+              searchParams.toString()
+            );
+            newSearchParams.set('userLocation', JSON.stringify(pos));
+            if (nearestLocationID) {
+              newSearchParams.set('locationID', nearestLocationID);
+            }
+            setSearchParams(newSearchParams);
+            dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
           }
-
-          const newSearchParams = new URLSearchParams(searchParams.toString());
-          newSearchParams.set('userLocation', JSON.stringify(pos));
-          newSearchParams.delete('locationID');
-          setSearchParams(newSearchParams);
-          dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
         },
         (error) => {
           // TODO handle any errors

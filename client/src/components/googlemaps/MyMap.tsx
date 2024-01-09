@@ -71,7 +71,8 @@ function MyMap({
   useEffect(() => {
     switch (screenSize) {
       case ScreenSizeEnum.XL:
-      case ScreenSizeEnum.LG: {
+      case ScreenSizeEnum.LG:
+      case ScreenSizeEnum.MD: {
         setMapProps((prevMapProps) => ({
           ...prevMapProps,
           center: defaultMapProps.center,
@@ -79,14 +80,7 @@ function MyMap({
         }));
         break;
       }
-      case ScreenSizeEnum.MD: {
-        setMapProps((prevMapProps) => ({
-          ...prevMapProps,
-          center: { lat: 50.8249486, lng: -0.1270007 },
-          zoom: 12
-        }));
-        break;
-      }
+
       default:
         setMapProps((prevMapProps) => ({
           ...prevMapProps,

@@ -7,7 +7,7 @@ type Props = {
   id: string | undefined;
 };
 
-function FavouriesToggle({ isFavourite = false, id }: Props) {
+function FavouritesToggle({ isFavourite = false, id }: Props) {
   const { dispatchLocations } = useLocationsContext();
   const [hover, setHover] = useState(false);
 
@@ -24,18 +24,26 @@ function FavouriesToggle({ isFavourite = false, id }: Props) {
   const notFavoruiteHoverClass = isFavourite && hover ? 'fas' : 'far';
 
   const element = (
-    <button type='button' aria-label='toggle favourite' onClick={toggleState}>
+    <button
+      type='button'
+      aria-label='toggle favourite'
+      onClick={toggleState}
+      className='mb-6 text-xl'
+    >
       <i
         className={`fa-star ${
           isFavourite ? isFavouriteHoverClass : notFavoruiteHoverClass
         } dark:text-dark-secondary-color hover:dark:text-dark-primary-color`}
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
-      />
+      />{' '}
+      <span className='text-lg'>
+        {isFavourite ? `remove favourite` : `add as favourite`}
+      </span>
     </button>
   );
 
   return element;
 }
 
-export default FavouriesToggle;
+export default FavouritesToggle;
