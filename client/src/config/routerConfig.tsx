@@ -4,6 +4,7 @@ import Root from '../pages/Root';
 import Home from '../pages/Home';
 import Locations from '../pages/Locations';
 import About from '../pages/About';
+import Help from '../pages/Help';
 
 const routesConfig: RouteObject[] = [
   {
@@ -17,6 +18,10 @@ const routesConfig: RouteObject[] = [
       {
         path: '/toilets',
         element: <Locations />
+      },
+      {
+        path: '/help',
+        element: <Help />
       },
       {
         path: '/about',

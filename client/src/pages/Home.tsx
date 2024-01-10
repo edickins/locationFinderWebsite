@@ -69,8 +69,6 @@ function Home() {
     (
       latlng: google.maps.LatLng | google.maps.LatLngLiteral | null | undefined
     ) => {
-      console.log('panToWithoffset');
-
       let offsetX = 0;
       let offsetY = 150;
       let zoomLevel = 15;
@@ -200,7 +198,6 @@ function Home() {
     const newLocationID = searchParams.get('locationID');
     // TODO is this gate necessary?
     if (newLocationID) {
-      // console.log(`newLocationID ${newLocationID} locationID ${locationID}`);
       setLocationID(newLocationID);
     }
   }, [searchParams]);

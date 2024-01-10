@@ -38,6 +38,7 @@ function Header({ onMenuButtonClick }: Props) {
         >
           <NavLink to={`/${search}`}>home</NavLink>
           <NavLink to={`toilets/${search}`}>toilets</NavLink>
+          <NavLink to={`help/${search}`}>help</NavLink>
           <NavLink to={`about/${search}`}>about</NavLink>
         </nav>
       </section>

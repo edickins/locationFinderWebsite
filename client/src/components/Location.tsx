@@ -8,7 +8,7 @@ interface Props {
 
 function Location({ location, mtValue }: Props) {
   return (
-    <>
+    <div className='mx-auto mt-20 w-full max-w-6xl px-4 md:px-2'>
       <h3
         className={`mt-${mtValue} text-xl font-bold text-light-secondary-color dark:text-dark-secondary-color`}
       >
@@ -36,7 +36,7 @@ function Location({ location, mtValue }: Props) {
           return <li key={key}>{hours}</li>;
         })}
       </ul>
-    </>
+    </div>
   );
 }
 
