@@ -60,6 +60,7 @@ function MultiMarker({
       });
 
       marker.current.addListener('click', (e: google.maps.MapMouseEvent) => {
+        // stop default behaviour
         e.stop();
         onMarkerClicked(id);
       });

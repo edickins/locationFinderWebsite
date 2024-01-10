@@ -69,23 +69,28 @@ function Home() {
     (
       latlng: google.maps.LatLng | google.maps.LatLngLiteral | null | undefined
     ) => {
+      console.log('panToWithoffset');
+
       let offsetX = 0;
       let offsetY = 150;
+      let zoomLevel = 15;
 
       switch (screenSize) {
         case ScreenSizeEnum.XL:
         case ScreenSizeEnum.LG:
         case ScreenSizeEnum.MD:
           offsetX = -150;
-          offsetY = 150;
+          offsetY = -50;
           break;
         case ScreenSizeEnum.SM:
           offsetX = 0;
           offsetY = 50;
+          zoomLevel = 16;
           break;
         case ScreenSizeEnum.XS:
           offsetX = 0;
-          offsetY = 10;
+          offsetY = 20;
+          zoomLevel = 16;
           break;
         default:
           offsetX = 0;
@@ -112,6 +117,7 @@ function Home() {
               if (googleMapRef) {
                 setTimeout(() => {
                   googleMapRef?.panTo(latLng);
+                  googleMapRef?.setZoom(zoomLevel);
                 }, 500);
               }
             }
