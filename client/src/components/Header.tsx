@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
@@ -7,6 +7,8 @@ type Props = {
 };
 
 function Header({ onMenuButtonClick }: Props) {
+  const { search } = useLocation();
+
   return (
     <header
       className='fixed top-0 z-10 w-full border-b-2 border-solid border-white border-opacity-30 bg-light-panel dark:bg-dark-panel'
@@ -34,9 +36,9 @@ function Header({ onMenuButtonClick }: Props) {
           className='hidden items-center justify-between md:flex md:justify-start md:gap-4'
           aria-label='main navigation'
         >
-          <NavLink to='/'>home</NavLink>
-          <NavLink to='toilets'>toilets</NavLink>
-          <NavLink to='about'>about</NavLink>
+          <NavLink to={`/${search}`}>home</NavLink>
+          <NavLink to={`toilets/${search}`}>toilets</NavLink>
+          <NavLink to={`about/${search}`}>about</NavLink>
         </nav>
       </section>
     </header>

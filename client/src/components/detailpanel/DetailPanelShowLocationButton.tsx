@@ -43,12 +43,12 @@ function DetailPanelShowLocationButton({ item, scrollToTop, children }: Props) {
           <div className='ml-2'>
             <p className='text-left text-xs '>
               {`${item.long_name}`}
-              <span className='hidden text-left text-xs text-white md:inline'>
+              <span className='hidden text-left text-xs dark:text-white md:inline'>
                 {' '}
                 (click to see on map)
               </span>
             </p>
-            <p className='text-left text-xs text-white md:hidden'>
+            <p className='text-left text-xs dark:text-white md:hidden'>
               {' '}
               (click to see on map)
             </p>

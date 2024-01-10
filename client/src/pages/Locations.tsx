@@ -35,7 +35,7 @@ function Locations() {
 
   return (
     <div className='mx-auto mt-20 max-w-6xl px-4 md:px-2'>
-      <h3 className='mb-4 text-2xl text-light-secondary-color dark:text-dark-primary-color'>
+      <h3 className='mb-4 text-2xl text-light-primary-color dark:text-dark-primary-color'>
         Toilets in Brighton and Hove.
       </h3>
       <p className='mb-4 text-lg'>
@@ -52,7 +52,7 @@ function Locations() {
           href='https://www.brighton-hove.gov.uk/libraries-leisure-and-arts/public-toilets/list-public-toilets-brighton-hove'
           target='_blank'
           rel='noopener noreferrer'
-          className='light-primary-color dark:text-dark-secondary-color'
+          className='text-light-secondary-color dark:text-dark-secondary-color'
         >
           https://www.brighton-hove.gov.uk/libraries-leisure-and-arts/public-toilets/list-public-toilets-brighton-hove
         </a>
@@ -64,7 +64,7 @@ function Locations() {
       </p>
 
       <nav className='mt-4'>
-        <p className=' text-xl font-semibold text-light-secondary-color dark:text-dark-primary-color'>
+        <p className=' text-xl font-semibold text-light-primary-color dark:text-dark-primary-color'>
           Quick links:
         </p>
         <p className='my-2'>
@@ -109,7 +109,7 @@ function Locations() {
 
       {closedForWinterLocations.length > 0 && (
         <p
-          className='mt-8 scroll-m-20 text-xl font-semibold dark:text-dark-primary-color'
+          className='mt-8 scroll-m-20 text-xl font-semibold text-light-primary-color dark:text-dark-primary-color'
           id='closed_for_winter'
         >
           Toilets currently closed for Winter.
@@ -135,7 +135,7 @@ function Locations() {
 
       {openCityCenterLocations.length > 0 && (
         <p
-          className='mt-8 scroll-m-20 text-xl font-semibold dark:text-dark-primary-color'
+          className='mt-8 scroll-m-20 text-xl font-semibold text-light-primary-color dark:text-dark-primary-color'
           id='city_centre'
         >
           Open toilets in Brighton city centre
@@ -161,7 +161,7 @@ function Locations() {
 
       {openHoveLocations.length > 0 && (
         <p
-          className='mt-8 scroll-m-20 text-xl font-semibold dark:text-dark-primary-color'
+          className='mt-8 scroll-m-20 text-xl font-semibold text-light-primary-color dark:text-dark-primary-color'
           id='hove'
         >
           Open toilets in Hove

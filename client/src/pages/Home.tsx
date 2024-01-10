@@ -226,11 +226,7 @@ function Home() {
       const pos = JSON.parse(posString);
       // Check if pos is a valid LatLng object
       if (pos && typeof pos.lat === 'number' && typeof pos.lng === 'number') {
-        if (
-          !userLocation ||
-          userLocation.lat !== pos.lat ||
-          userLocation.lng !== pos.lng
-        ) {
+        if (userLocation?.lat !== pos.lat || userLocation?.lng !== pos.lng) {
           setUserLocation(pos);
           findNearestLocation(pos);
         }
