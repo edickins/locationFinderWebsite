@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import GeoCoder from 'geocoder_node';
 import MyMap from '../components/googlemaps/MyMap';
@@ -317,22 +317,14 @@ function Home() {
         bounds.extend(southWest);
       }
 
-      // const currentLocation = locations.find((loc) => loc.id === locationID);
-      // if (currentLocation) {
-      //   latLng = new google.maps.LatLng(
-      //     currentLocation.geometry.location.lat,
-      //     currentLocation.geometry.location.lng
-      //   );
-      //   bounds.extend(latLng);
-      // }
-
-      const options = { top: 0, left: 0, right: 0, bottom: 0, maxZoom: 10 };
+      const options = { top: 0, left: 0, right: 0, bottom: 0, maxZoom: 14 };
       switch (screenSize) {
+        case ScreenSizeEnum.SM:
         case ScreenSizeEnum.XS: {
-          options.bottom = 20;
-          options.left = 20;
-          options.right = 20;
-          options.top = 20;
+          options.bottom = 5;
+          options.left = 5;
+          options.right = 5;
+          options.top = 5;
 
           break;
         }
@@ -346,32 +338,38 @@ function Home() {
     }
   }, [googleMapRef, locationID, locations, screenSize, userLocation]);
 
-  const getDefaultMapProps = () => {
-    switch (screenSize) {
-      case ScreenSizeEnum.XL:
-      case ScreenSizeEnum.LG:
-      case ScreenSizeEnum.MD:
-        return {
-          center: { lat: 50.83356066, lng: -0.1593492 },
-          zoom: 14
-        };
-        break;
-      case ScreenSizeEnum.SM:
-      case ScreenSizeEnum.XS:
-        return {
-          center: { lat: 50.83356066, lng: -0.1413492 },
-          zoom: 13
-        };
-        break;
-      default:
-        return {
-          center: { lat: 50.83356066, lng: -0.1593492 },
-          zoom: 14
-        };
-    }
-  };
+  const defaultMapProps = useMemo(() => {
+    const getDefaultMapProps = () => {
+      switch (screenSize) {
+        case ScreenSizeEnum.XL:
+        case ScreenSizeEnum.LG:
+        case ScreenSizeEnum.MD:
+          return {
+            center: { lat: 50.83356066, lng: -0.1593492 },
+            zoom: 14
+          };
+          break;
+        case ScreenSizeEnum.SM:
+          return {
+            center: { lat: 50.83356066, lng: -0.1413492 },
+            zoom: 13
+          };
+        case ScreenSizeEnum.XS:
+          return {
+            center: { lat: 50.83356066, lng: -0.1413492 },
+            zoom: 13
+          };
+          break;
+        default:
+          return {
+            center: { lat: 50.83356066, lng: -0.1593492 },
+            zoom: 15
+          };
+      }
+    };
+    return getDefaultMapProps();
+  }, [screenSize]);
 
-  const defaultMapProps = getDefaultMapProps();
   return (
     <FiltersProvider>
       <main className='flex flex-grow' id='home-main'>
