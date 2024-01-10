@@ -35,7 +35,7 @@ function Locations() {
 
   return (
     <div className='mx-auto mt-20 max-w-6xl px-4 md:px-2'>
-      <h3 className='mb-4 text-2xl  dark:text-dark-primary-color'>
+      <h3 className='mb-4 text-2xl text-light-secondary-color dark:text-dark-primary-color'>
         Toilets in Brighton and Hove.
       </h3>
       <p className='mb-4 text-lg'>
@@ -64,7 +64,7 @@ function Locations() {
       </p>
 
       <nav className='mt-4'>
-        <p className=' text-xl font-semibold dark:text-dark-primary-color'>
+        <p className=' text-xl font-semibold text-light-secondary-color dark:text-dark-primary-color'>
           Quick links:
         </p>
         <p className='my-2'>
@@ -83,7 +83,7 @@ function Locations() {
 
       {closedLocations.length > 0 && (
         <p
-          className='mt-8 scroll-m-20 text-xl font-semibold dark:text-dark-primary-color'
+          className='mt-8 scroll-m-20 text-xl font-semibold text-light-primary-color dark:text-dark-primary-color'
           id='closed'
         >
           Toilets currently closed.
@@ -177,6 +177,12 @@ function Locations() {
             />
           );
         })}
+      <p className='mb-8 text-center'>
+        <a href='#top'>
+          <i className='fa-solid fa-arrow-up-from-bracket mr-4 mt-4' />
+          back to top
+        </a>
+      </p>
     </div>
   );
 }

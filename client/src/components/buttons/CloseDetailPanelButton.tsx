@@ -1,33 +1,49 @@
-import { useState, useCallback, useEffect } from 'react';
-import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import {
+  useState,
+  useCallback,
+  useEffect,
+  PropsWithChildren,
+  SetStateAction,
+  Dispatch
+} from 'react';
+import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-type Props = {
+interface Props extends PropsWithChildren {
   hidePanel: () => void;
   showPanel: () => void;
-};
+  upIcon?: IconDefinition;
+  downIcon?: IconDefinition;
+  isPanelOpen: boolean;
+}
 
-function CloseDetailPanelButton({ hidePanel, showPanel }: Props) {
-  const [isPanelOpen, setIsPanelOpen] = useState(false);
-  const [buttonIcon, setButtonIcon] = useState(faChevronUp);
+function CloseDetailPanelButton({
+  hidePanel,
+  showPanel,
+  upIcon,
+  downIcon,
+  isPanelOpen,
+  children
+}: Props) {
+  const [buttonIcon, setButtonIcon] = useState<IconDefinition>();
 
   useEffect(() => {
-    if (isPanelOpen) {
-      setButtonIcon(faChevronDown);
-    } else {
-      setButtonIcon(faChevronUp);
+    if (upIcon && downIcon) {
+      if (isPanelOpen) {
+        setButtonIcon(downIcon);
+      } else {
+        setButtonIcon(upIcon);
+      }
     }
-  }, [isPanelOpen]);
+  }, [downIcon, isPanelOpen, upIcon]);
 
   const clickHandler = useCallback(() => {
     const doShowPanel = () => {
       showPanel();
-      setIsPanelOpen(true);
     };
 
     const doHidePanel = () => {
       hidePanel();
-      setIsPanelOpen(false);
     };
 
     if (isPanelOpen) {
@@ -39,12 +55,20 @@ function CloseDetailPanelButton({ hidePanel, showPanel }: Props) {
 
   return (
     <button type='button' onClick={clickHandler} className='flex items-center'>
-      <FontAwesomeIcon
-        icon={buttonIcon}
-        className='hover:fa-solid ml-2 text-lg'
-      />
+      {buttonIcon && (
+        <FontAwesomeIcon
+          icon={buttonIcon}
+          className='hover:fa-solid ml-2 text-lg'
+        />
+      )}
+      {children}
     </button>
   );
 }
+
+CloseDetailPanelButton.defaultProps = {
+  upIcon: undefined,
+  downIcon: undefined
+};
 
 export default CloseDetailPanelButton;

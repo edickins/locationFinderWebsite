@@ -10,8 +10,8 @@ function DetailPanelFacilities({ facilities }: Props) {
       id='facilties-section'
       className='col-span-1 mb-4 md:col-span-2 md:mb-0'
     >
-      <h2 className=' text-lg  font-semibold dark:text-dark-primary-color'>
-        Facilities at this toilet:
+      <h2 className=' text-lg  font-semibold text-light-primary-color dark:text-dark-primary-color'>
+        Facilities at this location:
       </h2>
       <ul className='list-none'>
         {facilities.map((facility) => (

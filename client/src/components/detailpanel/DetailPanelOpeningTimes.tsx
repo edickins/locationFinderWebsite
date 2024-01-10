@@ -14,7 +14,7 @@ function DetailPanelOpeningTimes({ openingHours, item }: Props) {
       id='opening-hours-section'
       className='cols-span-1 mb-4 md:col-span-2 md:mb-0'
     >
-      <h2 className='font-semibold  dark:text-dark-primary-color'>
+      <h2 className='font-semibold text-light-primary-color dark:text-dark-primary-color'>
         Opening hours:
       </h2>
       {isClosed && <p>This toilet is currently closed and not in service.</p>}
