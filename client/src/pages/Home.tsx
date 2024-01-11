@@ -11,6 +11,8 @@ import MessagePanelContainer from '../components/filterpanel/MessagePanelContain
 import useGetScreensize, { ScreenSizeEnum } from '../hooks/getScreensize';
 import getRoute from '../services/getGoogleMapRoute';
 import { LocationActionEnum } from '../reducer/locationReducer/types';
+import findUserLocation from '../services/findUserLocation';
+import LoadingLayer from '../components/LoadingLayer';
 
 type Route = {
   distanceMeters: number;
@@ -35,11 +37,17 @@ function Home() {
   const [locationBounds, setLocationBounds] = useState<
     google.maps.LatLngBounds | undefined
   >();
+  const [findLocationError, setFindLocationError] = useState<{
+    messageTitle: string;
+    message: string;
+  }>();
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [locationsDistanceFromUser, setLocationsDistanceFromUser] = useState<
     { locationID: string; distance: number }[] | []
   >([]);
+
+  const [showLoadingLayer, setShowLoadingLayer] = useState(false);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
@@ -62,6 +70,30 @@ function Home() {
     },
     [searchParams, setSearchParams]
   );
+
+  const doAskForUserLocationOnPageLoad = useCallback(() => {
+    if (!locationBounds || !searchParams) return;
+    setShowLoadingLayer(true);
+    findUserLocation(
+      locationBounds,
+      searchParams,
+      setSearchParams,
+      setFindLocationError
+    );
+  }, [locationBounds, searchParams, setSearchParams]);
+
+  // ask for user location when the locations are added.
+  useEffect(() => {
+    if (!locationBounds) return;
+    doAskForUserLocationOnPageLoad();
+  }, [doAskForUserLocationOnPageLoad, locationBounds]);
+
+  // there was a findLocation error
+  useEffect(() => {
+    if (findLocationError) {
+      setShowLoadingLayer(false);
+    }
+  }, [findLocationError]);
 
   // pan to a marker location *and* offset for the available screen space
   // to accommodate the panel which will be covering the map
@@ -160,6 +192,16 @@ function Home() {
     [locations, searchParams, setSearchParams]
   );
 
+  const handleFindToiletButtonClick = () => {
+    setShowLoadingLayer(true);
+    findUserLocation(
+      locationBounds,
+      searchParams,
+      setSearchParams,
+      setFindLocationError
+    );
+  };
+
   const displayPolylineRoute = useCallback(
     (
       route: Route,
@@ -226,12 +268,14 @@ function Home() {
     const posString = searchParams.get('userLocation');
 
     if (posString) {
+      setShowLoadingLayer(false);
       const pos = JSON.parse(posString);
       // Check if pos is a valid LatLng object
       if (pos && typeof pos.lat === 'number' && typeof pos.lng === 'number') {
         if (userLocation?.lat !== pos.lat || userLocation?.lng !== pos.lng) {
           setUserLocation(pos);
           findNearestLocation(pos);
+          setShowLoadingLayer(false);
         }
       } else {
         // TODO handle this error
@@ -341,6 +385,7 @@ function Home() {
     }
   }, [googleMapRef, locationID, locations, screenSize, userLocation]);
 
+  // set the default values for the map when it loads on different devices
   const defaultMapProps = useMemo(() => {
     const getDefaultMapProps = () => {
       switch (screenSize) {
@@ -391,13 +436,14 @@ function Home() {
           nearestAlternativeItem={nearestAlternativeItem}
         />
         <FilterPanel
-          locationBounds={locationBounds}
-          nearestLocationID={
-            locationsDistanceFromUser[0]?.locationID || undefined
-          }
+          handleFindToiletButtonClick={handleFindToiletButtonClick}
         />
         <MessagePanelContainer />
       </main>
+      <LoadingLayer
+        showLoadingLayer={showLoadingLayer}
+        findLocationError={findLocationError}
+      />
     </FiltersProvider>
   );
 }

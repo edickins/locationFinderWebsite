@@ -16,7 +16,7 @@ const routesConfig: RouteObject[] = [
         element: <Home />
       },
       {
-        path: '/toilets',
+        path: '/locations',
         element: <Locations />
       },
       {

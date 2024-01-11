@@ -37,7 +37,7 @@ function Header({ onMenuButtonClick }: Props) {
           aria-label='main navigation'
         >
           <NavLink to={`/${search}`}>home</NavLink>
-          <NavLink to={`toilets/${search}`}>toilets</NavLink>
+          <NavLink to={`locations/${search}`}>toilets</NavLink>
           <NavLink to={`help/${search}`}>help</NavLink>
           <NavLink to={`about/${search}`}>about</NavLink>
         </nav>

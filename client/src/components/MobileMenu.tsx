@@ -1,10 +1,11 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 type Props = {
   isMenuOpen: boolean;
   setIsMenuOpen: (isOpen: boolean) => void;
 };
 function MobileMenu({ isMenuOpen, setIsMenuOpen }: Props) {
+  const { search } = useLocation();
   return (
     <div
       className={`fixed inset-x-0 bottom-0 top-12 transition-all
@@ -26,7 +27,7 @@ function MobileMenu({ isMenuOpen, setIsMenuOpen }: Props) {
           <li className='my-12 text-3xl'>
             <NavLink
               onClick={() => setIsMenuOpen(false)}
-              to='/'
+              to={`/${search}`}
               className={({ isActive }) =>
                 isActive
                   ? 'text-light-secondary-color dark:text-dark-secondary-color'
@@ -39,7 +40,7 @@ function MobileMenu({ isMenuOpen, setIsMenuOpen }: Props) {
           <li className='my-12 text-3xl'>
             <NavLink
               onClick={() => setIsMenuOpen(false)}
-              to='toilets'
+              to={`/locations${search}`}
               className={({ isActive }) =>
                 isActive
                   ? 'text-light-secondary-color dark:text-dark-secondary-color'
@@ -52,7 +53,7 @@ function MobileMenu({ isMenuOpen, setIsMenuOpen }: Props) {
           <li className='my-12 text-3xl'>
             <NavLink
               onClick={() => setIsMenuOpen(false)}
-              to='help'
+              to={`/help${search}`}
               className={({ isActive }) =>
                 isActive
                   ? 'text-light-secondary-color dark:text-dark-secondary-color'
@@ -65,7 +66,7 @@ function MobileMenu({ isMenuOpen, setIsMenuOpen }: Props) {
           <li className='my-12 text-3xl'>
             <NavLink
               onClick={() => setIsMenuOpen(false)}
-              to='about'
+              to={`/about${search}`}
               className={({ isActive }) =>
                 isActive
                   ? 'text-light-secondary-color dark:text-dark-secondary-color'

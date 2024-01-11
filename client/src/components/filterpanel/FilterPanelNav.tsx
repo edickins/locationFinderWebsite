@@ -21,6 +21,11 @@ function FilterPanelNav({ handleFindToiletButtonClick }: Props) {
     dispatchFilters({ type: FiltersActionEnum.FAVOURITES_BUTTON_CLICK });
   };
 
+  const onFindNearestToiletButtonClick = () => {
+    dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
+    handleFindToiletButtonClick();
+  };
+
   return (
     <nav
       id='filter-nav'
@@ -48,7 +53,7 @@ function FilterPanelNav({ handleFindToiletButtonClick }: Props) {
         <FilterButton
           icon='fa-magnifying-glass'
           reverseColours
-          onClick={handleFindToiletButtonClick}
+          onClick={onFindNearestToiletButtonClick}
         >
           <span className='text-xs'>Find nearest toilet</span>
         </FilterButton>
