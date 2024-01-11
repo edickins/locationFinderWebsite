@@ -47,11 +47,19 @@ function CloseDetailPanelButton({
   }, [isPanelOpen, hidePanel, showPanel]);
 
   return (
-    <button type='button' onClick={clickHandler} className='flex items-center'>
+    <button
+      type='button'
+      onClick={clickHandler}
+      className={`flex items-center rounded-md border-2 ${
+        children
+          ? `border-none`
+          : `hover:slate-100 border-light-secondary-color bg-slate-100 text-light-secondary-color hover:border-white hover:bg-light-secondary-color hover:text-white dark:border-white dark:bg-light-secondary-color dark:text-white  dark:hover:border-light-secondary-color dark:hover:bg-white  dark:hover:text-light-secondary-color`
+      }`}
+    >
       {buttonIcon && (
         <FontAwesomeIcon
           icon={buttonIcon}
-          className='hover:fa-solid ml-2 text-lg'
+          className='hover:fa-solid m-2 text-lg'
         />
       )}
       {children}

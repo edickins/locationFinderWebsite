@@ -8,6 +8,7 @@ function Help() {
       <h3 className='mb-4 text-2xl text-light-primary-color dark:text-dark-primary-color'>
         How to use this website.
       </h3>
+      {/* intro */}
       <p className='mb-4'>
         The Brighton and Hove WC Wayfinder website was built to help users find
         a public toilet close to their current location. Because this website
@@ -19,9 +20,16 @@ function Help() {
         if you decline to allow permissions on your device to use your current
         location this will mean your location is not displayed on the map.
       </p>
+      {/* Finding your nearest public toilet. */}
       <h3 className='mb-4 text-2xl text-light-primary-color dark:text-dark-primary-color'>
         Finding your nearest public toilet.
       </h3>
+      <p className='mb-4'>
+        So that we can find your nearest public toilet we need you to share your
+        location with us. When the map first loads we ask if you will allow us
+        to detect your location on your device. When we have identified your
+        location this will be displayed on the map.
+      </p>
       <p className='mb-4'>
         The map has a button labelled{' '}
         <span className='font-bold'>&quot;find my nearest toilet&quot;</span>.
@@ -29,6 +37,7 @@ function Help() {
         will be displayed, along with a route so that you can get to this
         location.
       </p>
+      {/* Adding your location to the map */}
       <h3 className='mb-4 text-2xl text-light-primary-color dark:text-dark-primary-color'>
         Adding your location to the map.
       </h3>
@@ -53,6 +62,7 @@ function Help() {
         it will not be possible to calculate the location of your nearest public
         toilet.
       </p>
+      {/* img showing location on the map */}
       <figure>
         <img
           src={yourLocationImage}
