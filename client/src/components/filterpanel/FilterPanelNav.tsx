@@ -5,10 +5,10 @@ import { useFiltersContext } from '../../context/filtersContext/filtersContext';
 import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
 
 type Props = {
-  handleFindToiletButtonClick: () => void;
+  handleFindLocationButtonClick: () => void;
 };
 
-function FilterPanelNav({ handleFindToiletButtonClick }: Props) {
+function FilterPanelNav({ handleFindLocationButtonClick }: Props) {
   const [searchParams] = useSearchParams();
   const { state, dispatchFilters } = useFiltersContext();
   const { isFavouritesSelected, isFacilitiesSelected } = state;
@@ -23,7 +23,7 @@ function FilterPanelNav({ handleFindToiletButtonClick }: Props) {
 
   const onFindNearestToiletButtonClick = () => {
     dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
-    handleFindToiletButtonClick();
+    handleFindLocationButtonClick();
   };
 
   return (

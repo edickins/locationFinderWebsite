@@ -2,13 +2,19 @@ import { useSearchParams } from 'react-router-dom';
 import { useMapContext } from 'googlemaps-react-primitives';
 import { useEffect, useRef, useState } from 'react';
 import { userLocationSVG } from './markerSVGs';
+import useGetScreensize, { ScreenSizeEnum } from '../../../hooks/getScreensize';
 
-function UserLocationDisplay() {
+type Props = {
+  findNearestLocation: (loc: { lat: number; lng: number }) => void;
+};
+
+function UserLocationDisplay({ findNearestLocation }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams] = useSearchParams();
   const infoWindowRef = useRef<google.maps.InfoWindow | null>(null);
   const circleRef = useRef<google.maps.Circle | null>(null);
   const markerRef = useRef<google.maps.Marker | null>(null);
+  const screenSize = useGetScreensize();
 
   const [userLocation, setUserLocation] = useState<
     { lat: number; lng: number } | undefined
@@ -37,7 +43,7 @@ function UserLocationDisplay() {
         // Handle the error...
       }
     }
-  }, [searchParams, setUserLocation, userLocation]);
+  }, [findNearestLocation, searchParams, userLocation]);
 
   useEffect(() => {
     if (
@@ -46,6 +52,16 @@ function UserLocationDisplay() {
       !circleRef.current &&
       !markerRef.current
     ) {
+      let zoomLevel = 16;
+      switch (screenSize) {
+        case ScreenSizeEnum.XS: {
+          zoomLevel = 15;
+          break;
+        }
+        default:
+          zoomLevel = 16;
+      }
+
       const infoW = new google.maps.InfoWindow();
       infoW.setPosition(userLocation);
       infoW.setOptions({
@@ -57,7 +73,7 @@ function UserLocationDisplay() {
       infoW.open(map);
       const latLng = new google.maps.LatLng(userLocation.lat, userLocation.lng);
       map?.panTo(latLng);
-      map?.setZoom(15);
+      map?.setZoom(zoomLevel);
       map?.setCenter(userLocation);
 
       const c = new google.maps.Circle({
@@ -87,6 +103,8 @@ function UserLocationDisplay() {
       infoWindowRef.current = infoW;
       circleRef.current = c;
       markerRef.current = m;
+
+      findNearestLocation(userLocation);
     }
 
     // cleanup function
@@ -104,7 +122,7 @@ function UserLocationDisplay() {
         markerRef.current = null;
       }
     };
-  }, [addMarker, map, userLocation]);
+  }, [addMarker, findNearestLocation, map, screenSize, userLocation]);
   return null;
 }
 

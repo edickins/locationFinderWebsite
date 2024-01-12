@@ -13,6 +13,7 @@ import getRoute from '../services/getGoogleMapRoute';
 import { LocationActionEnum } from '../reducer/locationReducer/types';
 import findUserLocation from '../services/findUserLocation';
 import LoadingLayer from '../components/LoadingLayer';
+import getUserAndLocationBounds from '../utils/map/getLocationBounds';
 
 type Route = {
   distanceMeters: number;
@@ -24,13 +25,14 @@ function Home() {
   const screenSize = useGetScreensize();
 
   const currentLocationPolyLineRef = useRef<google.maps.Polyline | undefined>();
+  const prevUserLocationRef = useRef<string | null>(null);
+
   const [detailPanelItem, setDetailPanelItem] = useState<ILocation | undefined>(
     undefined
   );
   const [nearestAlternativeItem, setNearestAlternativeItem] = useState<
     ILocation | undefined
   >(undefined);
-
   const [googleMapRef, setGoogleMapRef] = useState<google.maps.Map | null>(
     null
   );
@@ -53,10 +55,6 @@ function Home() {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
-  const [locationID, setLocationID] = useState(searchParams.get('locationID'));
-  const [userLocation, setUserLocation] = useState<
-    { lat: number; lng: number } | undefined
-  >();
   const {
     state: { locations },
     dispatchLocations
@@ -171,18 +169,25 @@ function Home() {
           b: { locationID: string; distance: number }
         ) => a.distance - b.distance
       );
-
-      if (distanceData.length > 0) {
-        const newSearchParams = new URLSearchParams(searchParams.toString());
-        newSearchParams.set('locationID', distanceData[0].locationID);
-        setSearchParams(newSearchParams);
-      }
       setLocationsDistanceFromUser(distanceData);
     },
-    [locations, searchParams, setSearchParams]
+    [locations]
   );
 
-  const handleFindToiletButtonClick = () => {
+  const handleFindLocationButtonClick = () => {
+    const userLocationString = searchParams.get('userLocation');
+    const userLocation = userLocationString
+      ? JSON.parse(userLocationString)
+      : null;
+    if (userLocation) {
+      const newSearchParams = new URLSearchParams(searchParams.toString());
+      newSearchParams.set(
+        'locationID',
+        locationsDistanceFromUser[0].locationID
+      );
+      setSearchParams(newSearchParams);
+      return;
+    }
     setShowLoadingLayer(true);
     findUserLocation(locationBounds, setSearchParams, setFindLocationError);
   };
@@ -220,17 +225,14 @@ function Home() {
     [googleMapRef]
   );
 
-  // NEW locationID is set through searchParams
+  // respond to locationID being updated in searchParams
   useEffect(() => {
-    const newLocationID = searchParams.get('locationID');
-    // TODO is this gate necessary?
-    if (newLocationID) {
-      setLocationID(newLocationID);
-    }
-  }, [searchParams]);
-
-  // respond to locationID being updated
-  useEffect(() => {
+    const locationID = searchParams.get('locationID');
+    if (!locationID) return;
+    const userLocationString = searchParams.get('userLocation');
+    const userLocation = userLocationString
+      ? JSON.parse(userLocationString)
+      : null;
     if (locationID) {
       const currentLocation = locations.find((loc) => loc.id === locationID);
       // animate to location if userLocation is undefined
@@ -246,21 +248,27 @@ function Home() {
         )
       );
     }
-  }, [locationID, locations, panToWithOffset, userLocation]);
+  }, [locations, panToWithOffset, searchParams]);
 
-  // userLocation is set by user sharing geolocation
+  // respond to userLocation being updated in searchParams
   useEffect(() => {
     const posString = searchParams.get('userLocation');
+    // do nothing if the userLocation has not changed.
+    if (
+      prevUserLocationRef.current &&
+      prevUserLocationRef.current === posString
+    ) {
+      setShowLoadingLayer(false);
+      return;
+    }
 
     if (posString) {
       const pos = JSON.parse(posString);
       // Check if pos is a valid LatLng object
       if (pos && typeof pos.lat === 'number' && typeof pos.lng === 'number') {
-        if (userLocation?.lat !== pos.lat || userLocation?.lng !== pos.lng) {
-          setUserLocation(pos);
-          findNearestLocation(pos);
-          setShowLoadingLayer(false);
-        }
+        findNearestLocation(pos);
+        setShowLoadingLayer(false);
+        prevUserLocationRef.current = posString;
       } else {
         // TODO handle this error
         setFindLocationError({
@@ -269,7 +277,18 @@ function Home() {
         });
       }
     }
-  }, [findNearestLocation, searchParams, userLocation]);
+  }, [findNearestLocation, searchParams]);
+
+  // respond to the page loading with userLocation in the searchParams of the url
+  useEffect(() => {
+    const posString = searchParams.get('userLocation');
+    if (posString) {
+      const pos = JSON.parse(posString);
+      if (pos && prevUserLocationRef.current === null) {
+        findNearestLocation(pos);
+      }
+    }
+  }, [findNearestLocation, searchParams]);
 
   // display a polyline path from the userlocation to the currently selected location
   useEffect(() => {
@@ -280,6 +299,12 @@ function Home() {
       const route: Route | null = await getRoute(origin, destination);
       return route;
     };
+
+    const locationID = searchParams.get('locationID');
+    const userLocationString = searchParams.get('userLocation');
+    const userLocation = userLocationString
+      ? JSON.parse(userLocationString)
+      : null;
 
     if (userLocation && locationID) {
       const currentLocation = locations.find((loc) => loc.id === locationID);
@@ -303,9 +328,8 @@ function Home() {
     dispatchLocations,
     displayPolylineRoute,
     googleMapRef,
-    locationID,
     locations,
-    userLocation
+    searchParams
   ]);
 
   // get the bounds of the area defined by all locations
@@ -332,54 +356,27 @@ function Home() {
     hasRequestedUserLocation
   ]);
 
-  // get the bounds of the userLocation and the currently selected location
+  // get the bounds of the userLocation and locationID
   useEffect(() => {
     if (googleMapRef === null) return;
+    const locationID = searchParams.get('locationID');
+    const userLocationString = searchParams.get('userLocation');
+    const userLocation = userLocationString
+      ? JSON.parse(userLocationString)
+      : null;
     if (userLocation && locationID) {
-      const bounds = new google.maps.LatLngBounds();
-      const latLng = new google.maps.LatLng(userLocation.lat, userLocation.lng);
+      const result = getUserAndLocationBounds(
+        userLocation,
+        locationID,
+        screenSize
+      );
 
-      if (latLng !== null) {
-        const circle = new google.maps.Circle({
-          center: latLng,
-          radius: 500
-        });
-
-        const radius = circle.getRadius();
-        const northEast = google.maps.geometry.spherical.computeOffset(
-          latLng,
-          radius,
-          45
-        );
-        const southWest = google.maps.geometry.spherical.computeOffset(
-          latLng,
-          radius,
-          225
-        );
-        bounds.extend(northEast);
-        bounds.extend(southWest);
+      if (result) {
+        const { bounds, options } = result;
+        googleMapRef.fitBounds(bounds, options);
       }
-
-      const options = { top: 0, left: 0, right: 0, bottom: 0, maxZoom: 14 };
-      switch (screenSize) {
-        case ScreenSizeEnum.SM:
-        case ScreenSizeEnum.XS: {
-          options.bottom = 5;
-          options.left = 5;
-          options.right = 5;
-          options.top = 5;
-
-          break;
-        }
-        default:
-          options.bottom = 100;
-          options.left = 100;
-          options.right = 100;
-          options.top = 100;
-      }
-      googleMapRef.fitBounds(bounds, options);
     }
-  }, [googleMapRef, locationID, locations, screenSize, userLocation]);
+  }, [googleMapRef, locations, screenSize, searchParams]);
 
   // set the default values for the map when it loads on different devices
   const defaultMapProps = useMemo(() => {
@@ -419,20 +416,20 @@ function Home() {
       <main className='flex flex-grow' id='home-main'>
         <MyMap
           items={locations}
-          locationID={locationID}
           nearestLocationID={
             locationsDistanceFromUser[0]?.locationID || undefined
           }
           setGoogleMapRef={setGoogleMapRef}
           onMarkerClicked={onMarkerClicked}
           defaultMapProps={defaultMapProps}
+          findNearestLocation={findNearestLocation}
         />
         <DetailPanel
           item={detailPanelItem}
           nearestAlternativeItem={nearestAlternativeItem}
         />
         <FilterPanel
-          handleFindToiletButtonClick={handleFindToiletButtonClick}
+          handleFindLocationButtonClick={handleFindLocationButtonClick}
         />
         <MessagePanelContainer />
       </main>

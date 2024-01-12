@@ -11,7 +11,6 @@ const findUserLocation = (
   setSearchParams: SetURLSearchParams,
   setFindLocationError: SetFindLocationError
 ) => {
-  console.log('findUserLocation');
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       (position: GeolocationPosition) => {
@@ -21,8 +20,6 @@ const findUserLocation = (
         };
         if (locationBounds?.contains(pos) === false) {
           // pos is outside of the bounds of all the map location Markers
-          // display message and relocate to default position
-
           setFindLocationError({
             messageTitle: 'Geolocation detection',
             message:

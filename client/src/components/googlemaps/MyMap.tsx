@@ -27,19 +27,19 @@ type MapProps = {
 
 type Props = {
   items: ILocation[];
-  locationID: string | null;
   nearestLocationID: string | undefined;
   setGoogleMapRef: (map: google.maps.Map) => void;
   onMarkerClicked: (id: string) => void;
+  findNearestLocation: (loc: { lat: number; lng: number }) => void;
   defaultMapProps: MapProps;
 };
 
 function MyMap({
   items,
-  locationID,
   nearestLocationID,
   setGoogleMapRef,
   onMarkerClicked,
+  findNearestLocation,
   defaultMapProps
 }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -62,6 +62,7 @@ function MyMap({
   }, [activeFilters, searchParams]);
 
   useEffect(() => {
+    const locationID = searchParams.get('locationID');
     if (!items) return;
     const location = items.find((loc) => loc.id === locationID);
     if (location) {
@@ -77,7 +78,7 @@ function MyMap({
       setInfoWindowData(infoData);
       setInfoWindowLocation(location.geometry.location);
     }
-  }, [dispatchFilters, items, locationID, nearestLocationID]);
+  }, [dispatchFilters, items, nearestLocationID, searchParams]);
 
   // TODO make this work for light theme too
   useEffect(() => {
@@ -125,7 +126,7 @@ function MyMap({
             position={infoWindowLocation}
           />
 
-          <UserLocationDisplay />
+          <UserLocationDisplay findNearestLocation={findNearestLocation} />
         </GoogleMap>
       </Wrapper>
     </div>
