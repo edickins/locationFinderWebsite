@@ -48,6 +48,8 @@ function Home() {
   >([]);
 
   const [showLoadingLayer, setShowLoadingLayer] = useState(false);
+  const [hasRequestedUserLocation, setHasRequestedUserLocation] =
+    useState(false);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
@@ -72,21 +74,9 @@ function Home() {
   );
 
   const doAskForUserLocationOnPageLoad = useCallback(() => {
-    if (!locationBounds || !searchParams) return;
     setShowLoadingLayer(true);
-    findUserLocation(
-      locationBounds,
-      searchParams,
-      setSearchParams,
-      setFindLocationError
-    );
-  }, [locationBounds, searchParams, setSearchParams]);
-
-  // ask for user location when the locations are added.
-  useEffect(() => {
-    if (!locationBounds) return;
-    doAskForUserLocationOnPageLoad();
-  }, [doAskForUserLocationOnPageLoad, locationBounds]);
+    findUserLocation(locationBounds, setSearchParams, setFindLocationError);
+  }, [locationBounds, setSearchParams]);
 
   // there was a findLocation error
   useEffect(() => {
@@ -194,12 +184,7 @@ function Home() {
 
   const handleFindToiletButtonClick = () => {
     setShowLoadingLayer(true);
-    findUserLocation(
-      locationBounds,
-      searchParams,
-      setSearchParams,
-      setFindLocationError
-    );
+    findUserLocation(locationBounds, setSearchParams, setFindLocationError);
   };
 
   const displayPolylineRoute = useCallback(
@@ -268,7 +253,6 @@ function Home() {
     const posString = searchParams.get('userLocation');
 
     if (posString) {
-      setShowLoadingLayer(false);
       const pos = JSON.parse(posString);
       // Check if pos is a valid LatLng object
       if (pos && typeof pos.lat === 'number' && typeof pos.lng === 'number') {
@@ -279,7 +263,10 @@ function Home() {
         }
       } else {
         // TODO handle this error
-        // Handle the error...
+        setFindLocationError({
+          messageTitle: 'Geolocation error',
+          message: 'There is an error with your location.'
+        });
       }
     }
   }, [findNearestLocation, searchParams, userLocation]);
@@ -323,7 +310,7 @@ function Home() {
 
   // get the bounds of the area defined by all locations
   useEffect(() => {
-    if (googleMapRef) {
+    if (googleMapRef && !hasRequestedUserLocation) {
       const bounds = new google.maps.LatLngBounds();
       locations.forEach((location) => {
         const latLng = new google.maps.LatLng(
@@ -333,8 +320,17 @@ function Home() {
         bounds.extend(latLng);
       });
       setLocationBounds(bounds);
+      // ask for user location when the locations are added.
+      doAskForUserLocationOnPageLoad();
+      setHasRequestedUserLocation(true);
     }
-  }, [setLocationBounds, locations, googleMapRef]);
+  }, [
+    setLocationBounds,
+    locations,
+    googleMapRef,
+    doAskForUserLocationOnPageLoad,
+    hasRequestedUserLocation
+  ]);
 
   // get the bounds of the userLocation and the currently selected location
   useEffect(() => {

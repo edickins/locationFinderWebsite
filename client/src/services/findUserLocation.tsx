@@ -8,10 +8,10 @@ type SetFindLocationError = Dispatch<SetStateAction<FindLocationError>>;
 // handler for 'Find a toilet near me' button
 const findUserLocation = (
   locationBounds: google.maps.LatLngBounds | undefined,
-  searchParams: URLSearchParams,
   setSearchParams: SetURLSearchParams,
   setFindLocationError: SetFindLocationError
 ) => {
+  console.log('findUserLocation');
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       (position: GeolocationPosition) => {
@@ -19,10 +19,6 @@ const findUserLocation = (
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-
-        console.log(
-          `locationBounds.contains(pos) ${locationBounds?.contains(pos)}`
-        );
         if (locationBounds?.contains(pos) === false) {
           // pos is outside of the bounds of all the map location Markers
           // display message and relocate to default position
@@ -33,6 +29,7 @@ const findUserLocation = (
               'Sorry, but your location is outside of the area covered by this application.  This means we cannot use your location on the map.'
           });
         } else {
+          const searchParams = new URLSearchParams(window.location.search);
           const newSearchParams = new URLSearchParams(searchParams.toString());
           newSearchParams.set('userLocation', JSON.stringify(pos));
           setSearchParams(newSearchParams);

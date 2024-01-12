@@ -61,9 +61,10 @@ function LoadingLayer({ showLoadingLayer, findLocationError }: Props) {
       <div
         id='loading_layer'
         ref={loadingLayerRef}
-        className='absolute bottom-0 left-0 right-0 top-0 grid content-center justify-center bg-gray-400 bg-opacity-40 text-9xl'
+        className='absolute bottom-0 left-0 right-0 top-0 grid content-center justify-center bg-gray-800 bg-opacity-80'
       >
-        <div className='rotateDiv'>
+        <p className=' mb-8 text-4xl'>...loading your location...</p>
+        <div className='rotateDiv  text-center  text-6xl'>
           <FontAwesomeIcon icon={faSpinner} />
         </div>
       </div>
