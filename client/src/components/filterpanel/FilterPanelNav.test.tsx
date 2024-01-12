@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import FilterPanelNav from './FilterPanelNav';
 
-const handleFindToiletButtonClick = vi.fn();
+const handleFindLocationButtonClick = vi.fn();
 
 vi.doMock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'), // use actual for all non-hook parts
@@ -16,7 +16,7 @@ describe('FilterPanelNav', () => {
     render(
       <MemoryRouter>
         <FilterPanelNav
-          handleFindToiletButtonClick={handleFindToiletButtonClick}
+          handleFindLocationButtonClick={handleFindLocationButtonClick}
         />
       </MemoryRouter>
     );
@@ -34,7 +34,7 @@ describe('FilterPanelNav', () => {
     render(
       <MemoryRouter>
         <FilterPanelNav
-          handleFindToiletButtonClick={handleFindToiletButtonClick}
+          handleFindLocationButtonClick={handleFindLocationButtonClick}
         />
       </MemoryRouter>
     );
@@ -47,6 +47,6 @@ describe('FilterPanelNav', () => {
 
     await user.click(nearestToiletButton);
 
-    expect(handleFindToiletButtonClick).toHaveBeenCalledOnce();
+    expect(handleFindLocationButtonClick).toHaveBeenCalledOnce();
   });
 });
