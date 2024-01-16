@@ -72,8 +72,6 @@ function Home() {
   );
 
   const doAskForUserLocationOnPageLoad = useCallback(() => {
-    console.log('doAskForUserLocationOnPageLoad ');
-    console.dir(locationBounds);
     setShowLoadingLayer(true);
     getUserGeoLocation(locationBounds, setSearchParams, setFindLocationError);
   }, [locationBounds, setSearchParams]);
@@ -172,13 +170,11 @@ function Home() {
         ) => a.distance - b.distance
       );
       setLocationsOrderedByDistanceFromUser(distanceData);
-      console.dir(distanceData);
     },
     [locations]
   );
 
   const handleFindLocationButtonClick = () => {
-    console.log('handleFindLocationButtonClick;');
     const userLocationString = searchParams.get('userLocation');
     const userLocation = userLocationString
       ? JSON.parse(userLocationString)
