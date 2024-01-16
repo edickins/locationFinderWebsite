@@ -60,6 +60,7 @@ function FilterSectionFacilities({ isActive }: Props) {
         onClick={onClick}
         isSelected={isSelected}
         isActive={isActive}
+        title='Click me to filter toilets by facilities offered at that location.'
       >
         <span className='text-xl'>Filters{activeFilters}</span>
       </FilterButton>

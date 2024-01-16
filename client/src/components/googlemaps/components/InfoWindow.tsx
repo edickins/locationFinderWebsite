@@ -51,7 +51,8 @@ function InfoWindow({ content, position }: Props) {
       infoWindowRef.current.setOptions({
         content: styledContent,
         position,
-        pixelOffset: new google.maps.Size(0, -30)
+        pixelOffset: new google.maps.Size(0, -30),
+        disableAutoPan: true
       });
       infoWindowRef.current.open(map);
 

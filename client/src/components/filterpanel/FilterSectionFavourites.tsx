@@ -23,7 +23,12 @@ function FilterSectionFavourites() {
   favourites = favourites.filter(Boolean);
   return (
     <section id='favourites-container' className='px-4 py-2'>
-      <FilterButton icon='fa-star' onClick={onClick} isSelected={isSelected}>
+      <FilterButton
+        icon='fa-star'
+        onClick={onClick}
+        isSelected={isSelected}
+        title='Add favourites by clicking the star on the details panel at the bottom of the page.'
+      >
         <span className='text-xl'>
           Favourites{' '}
           {favourites && favourites.length > 0 ? ` (${favourites.length})` : ''}

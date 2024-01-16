@@ -8,6 +8,7 @@ interface Props extends PropsWithChildren {
   upIcon?: IconDefinition;
   downIcon?: IconDefinition;
   isPanelOpen: boolean;
+  title: string;
 }
 
 function CloseDetailPanelButton({
@@ -16,7 +17,8 @@ function CloseDetailPanelButton({
   upIcon,
   downIcon,
   isPanelOpen,
-  children
+  children,
+  title
 }: Props) {
   const [buttonIcon, setButtonIcon] = useState<IconDefinition>();
 
@@ -50,6 +52,7 @@ function CloseDetailPanelButton({
     <button
       type='button'
       onClick={clickHandler}
+      title={title}
       className={`flex items-center rounded-md border-2 ${
         children
           ? `border-none`
@@ -59,7 +62,7 @@ function CloseDetailPanelButton({
       {buttonIcon && (
         <FontAwesomeIcon
           icon={buttonIcon}
-          className='hover:fa-solid m-2 text-lg'
+          className='hover:fa-solid m-2 text-xs md:text-xl'
         />
       )}
       {children}

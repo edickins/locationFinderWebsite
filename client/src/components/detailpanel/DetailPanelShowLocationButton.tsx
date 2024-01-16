@@ -37,6 +37,7 @@ function DetailPanelShowLocationButton({ item, scrollToTop, children }: Props) {
 
         <FilterButton
           icon='fa-map-location-dot'
+          title='Click me to see this location on the map.'
           onClick={onNearestAlternativeClick}
           reverseColours
         >

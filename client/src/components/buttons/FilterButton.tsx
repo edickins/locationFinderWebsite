@@ -9,6 +9,7 @@ type Props = {
   reverseColours?: boolean;
   children: ReactElement;
   icon: string;
+  title?: string;
 };
 
 function FilterButton({
@@ -17,7 +18,8 @@ function FilterButton({
   isActive,
   reverseColours,
   children,
-  icon
+  icon,
+  title
 }: Props) {
   const regularColour = reverseColours
     ? 'text-light-secondary-color dark:text-dark-secondary-color'
@@ -30,6 +32,7 @@ function FilterButton({
     <button
       type='button'
       onClick={onClick}
+      title={title !== '' ? title : undefined}
       className={`mx-auto underline-offset-4 md:mx-0 ${regularColour} hover:${hoverColour} ${
         isSelected ? hoverColour : regularColour
       }`}
@@ -57,7 +60,8 @@ function FilterButton({
 FilterButton.defaultProps = {
   isSelected: false,
   isActive: false,
-  reverseColours: false
+  reverseColours: false,
+  title: ''
 };
 
 export default FilterButton;

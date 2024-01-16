@@ -103,6 +103,7 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
               upIcon={faChevronUp}
               downIcon={faChevronDown}
               isPanelOpen={isPanelOpen}
+              title='Click me to show/hide the details for this location.'
             />
           </div>
           <div className='mr-8 grid grid-cols-1 pt-6  text-sm md:grid-cols-7 md:gap-8'>

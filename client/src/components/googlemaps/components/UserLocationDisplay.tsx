@@ -16,9 +16,6 @@ function UserLocationDisplay({ findNearestLocation }: Props) {
   const markerRef = useRef<google.maps.Marker | null>(null);
   const screenSize = useGetScreensize();
 
-  const [userLocation, setUserLocation] = useState<
-    { lat: number; lng: number } | undefined
-  >();
   const { map, addMarker } = useMapContext();
 
   useEffect(() => {
@@ -28,85 +25,82 @@ function UserLocationDisplay({ findNearestLocation }: Props) {
 
       // Check if pos is a valid LatLng object
       if (pos && typeof pos.lat === 'number' && typeof pos.lng === 'number') {
-        if (
-          !userLocation ||
-          userLocation.lat !== pos.lat ||
-          userLocation.lng !== pos.lng
-        ) {
-          if (userLocation?.lat !== pos.lat && userLocation?.lng !== pos.lng) {
-            setUserLocation(pos);
-          }
-        }
+        findNearestLocation(pos);
       } else {
         console.error('Invalid userLocation:', pos);
         // TODO handle this error
         // Handle the error...
       }
     }
-  }, [findNearestLocation, searchParams, userLocation]);
+  }, [findNearestLocation, searchParams]);
 
   useEffect(() => {
-    if (
-      userLocation &&
-      !infoWindowRef.current &&
-      !circleRef.current &&
-      !markerRef.current
-    ) {
-      let zoomLevel = 16;
-      switch (screenSize) {
-        case ScreenSizeEnum.XS: {
-          zoomLevel = 15;
-          break;
+    const posString = searchParams.get('userLocation');
+    if (posString) {
+      const userLocation = JSON.parse(posString);
+      if (
+        userLocation &&
+        !infoWindowRef.current &&
+        !circleRef.current &&
+        !markerRef.current
+      ) {
+        let zoomLevel = 17;
+        switch (screenSize) {
+          case ScreenSizeEnum.SM:
+          case ScreenSizeEnum.XS: {
+            zoomLevel = 16;
+            break;
+          }
+          default:
+            zoomLevel = 17;
         }
-        default:
-          zoomLevel = 16;
+
+        const infoW = new google.maps.InfoWindow();
+        infoW.setPosition(userLocation);
+        infoW.setOptions({
+          pixelOffset: new google.maps.Size(0, -30)
+        });
+        const styledContent = `<div style="color:#040404;padding:4px;font-weight:700">You are here</div>`;
+
+        infoW.setContent(styledContent);
+        infoW.open(map);
+        const latLng = new google.maps.LatLng(
+          userLocation.lat,
+          userLocation.lng
+        );
+        map?.panTo(latLng);
+        map?.setZoom(zoomLevel);
+        map?.setCenter(userLocation);
+
+        const c = new google.maps.Circle({
+          strokeColor: '#FF0000',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#FF0000',
+          fillOpacity: 0.1,
+          map,
+          center: userLocation,
+          radius: 150
+        });
+
+        const markerOptions = {
+          url: `data:image/svg+xml;base64,${window.btoa(userLocationSVG)}`,
+          scaledSize: new google.maps.Size(25, 25)
+        };
+
+        const m = new google.maps.Marker({
+          ...{ position: latLng },
+          map,
+          icon: markerOptions
+        });
+
+        addMarker(m);
+
+        infoWindowRef.current = infoW;
+        circleRef.current = c;
+        markerRef.current = m;
       }
-
-      const infoW = new google.maps.InfoWindow();
-      infoW.setPosition(userLocation);
-      infoW.setOptions({
-        pixelOffset: new google.maps.Size(0, -30)
-      });
-      const styledContent = `<div style="color:#040404;padding:4px;font-weight:700">You are here</div>`;
-
-      infoW.setContent(styledContent);
-      infoW.open(map);
-      const latLng = new google.maps.LatLng(userLocation.lat, userLocation.lng);
-      map?.panTo(latLng);
-      map?.setZoom(zoomLevel);
-      map?.setCenter(userLocation);
-
-      const c = new google.maps.Circle({
-        strokeColor: '#FF0000',
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: '#FF0000',
-        fillOpacity: 0.1,
-        map,
-        center: userLocation,
-        radius: 400
-      });
-
-      const markerOptions = {
-        url: `data:image/svg+xml;base64,${window.btoa(userLocationSVG)}`,
-        scaledSize: new google.maps.Size(25, 25)
-      };
-
-      const m = new google.maps.Marker({
-        ...{ position: latLng },
-        map,
-        icon: markerOptions
-      });
-
-      addMarker(m);
-
-      infoWindowRef.current = infoW;
-      circleRef.current = c;
-      markerRef.current = m;
-
-      findNearestLocation(userLocation);
     }
-
     // cleanup function
     return () => {
       if (infoWindowRef.current) {
@@ -122,7 +116,7 @@ function UserLocationDisplay({ findNearestLocation }: Props) {
         markerRef.current = null;
       }
     };
-  }, [addMarker, findNearestLocation, map, screenSize, userLocation]);
+  }, [addMarker, findNearestLocation, map, screenSize, searchParams]);
   return null;
 }
 

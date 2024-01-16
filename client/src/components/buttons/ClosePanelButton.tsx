@@ -10,7 +10,12 @@ type Props = {
 function ClosePanelButton({ hidePanel, isPanelOpen, children }: Props) {
   if (!isPanelOpen) return null;
   return (
-    <button type='button' onClick={hidePanel} className='flex items-center'>
+    <button
+      type='button'
+      onClick={hidePanel}
+      className='flex items-center'
+      title='Click me to close this panel'
+    >
       {children}
       <FontAwesomeIcon
         icon={faCircleXmark}

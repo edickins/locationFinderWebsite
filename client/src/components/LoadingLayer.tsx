@@ -46,7 +46,7 @@ function LoadingLayer({ showLoadingLayer, findLocationError }: Props) {
     } else {
       doHideLoadingLayer();
     }
-  });
+  }, [doHideLoadingLayer, doShowLoadingLayer, showLoadingLayer]);
 
   useEffect(() => {
     if (!messagePanelContainerRef.current || findLocationError === undefined)

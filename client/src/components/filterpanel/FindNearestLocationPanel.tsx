@@ -10,6 +10,7 @@ function FindNearestLocationPanel({ handleFindLocationButtonClick }: Props) {
       <FilterButton
         icon='fa-magnifying-glass'
         onClick={handleFindLocationButtonClick}
+        title='Click me to find the nearest toilet to your current location'
       >
         <span className='text-xs'>Find nearest toilet</span>
       </FilterButton>

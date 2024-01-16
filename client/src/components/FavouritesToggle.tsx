@@ -28,6 +28,7 @@ function FavouritesToggle({ isFavourite = false, id }: Props) {
       type='button'
       aria-label='toggle favourite'
       onClick={toggleState}
+      title='Add/remove this toilet to your list of favourites.'
       className='mb-6 text-xl'
     >
       <i

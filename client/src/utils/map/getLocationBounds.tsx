@@ -2,27 +2,25 @@ import { ScreenSizeEnum } from '../../hooks/getScreensize';
 
 const getUserAndLocationBounds = (
   userLocation: { lat: number; lng: number },
-  locationID: string,
+  location: { lat: number; lng: number } | undefined,
   screenSize: string | undefined
 ) => {
-  if (userLocation && locationID && screenSize) {
+  if (userLocation && screenSize) {
     const bounds = new google.maps.LatLngBounds();
-    const latLng = new google.maps.LatLng(userLocation.lat, userLocation.lng);
+    const userLocationLatLng = new google.maps.LatLng(
+      userLocation.lat,
+      userLocation.lng
+    );
 
-    if (latLng !== null) {
-      const circle = new google.maps.Circle({
-        center: latLng,
-        radius: 500
-      });
-
-      const radius = circle.getRadius();
+    if (userLocationLatLng !== null) {
+      const radius = 150;
       const northEast = google.maps.geometry.spherical.computeOffset(
-        latLng,
+        userLocationLatLng,
         radius,
         45
       );
       const southWest = google.maps.geometry.spherical.computeOffset(
-        latLng,
+        userLocationLatLng,
         radius,
         225
       );
@@ -30,22 +28,24 @@ const getUserAndLocationBounds = (
       bounds.extend(southWest);
     }
 
-    const options = { top: 0, left: 0, right: 0, bottom: 0, maxZoom: 14 };
+    if (location) bounds.extend(location);
+
+    const options = { top: 0, left: 0, right: 0, bottom: 0, maxZoom: 10 };
     switch (screenSize) {
       case ScreenSizeEnum.SM:
       case ScreenSizeEnum.XS: {
-        options.bottom = 5;
-        options.left = 5;
-        options.right = 5;
-        options.top = 5;
+        options.bottom = 50;
+        options.left = 20;
+        options.right = 20;
+        options.top = 20;
 
         break;
       }
       default:
-        options.bottom = 100;
-        options.left = 100;
-        options.right = 100;
-        options.top = 100;
+        options.bottom = 250;
+        options.left = 300;
+        options.right = 200;
+        options.top = 200;
     }
     return { bounds, options };
   }
