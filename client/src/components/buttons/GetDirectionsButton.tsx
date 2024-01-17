@@ -28,23 +28,23 @@ function GetDirectionsButton({ destination, originString }: Props) {
   };
 
   return (
-    <div>
+    <div className='mb-4'>
       <FilterButton
         icon='fa-map-location-dot'
         title='Click me to see this location on the map.'
         onClick={openGoogleMapsDirectionsURL}
-        reverseColours
+        reverseColours={false}
       >
         <div className='ml-2'>
-          <p className='text-left text-xs '>
-            <span className='hidden text-left text-xs dark:text-white md:inline'>
+          <p className='text-left text-lg '>
+            <span className='hidden text-left dark:text-white md:inline'>
               {' '}
-              (click to get directions on google maps)
+              (click for directions on google maps)
             </span>
           </p>
-          <p className='text-left text-xs dark:text-white md:hidden'>
+          <p className='text-left text-lg dark:text-white md:hidden'>
             {' '}
-            (click to get directions on google maps)
+            (click for directions on google maps)
           </p>
         </div>
       </FilterButton>

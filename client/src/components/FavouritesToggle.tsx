@@ -21,7 +21,7 @@ function FavouritesToggle({ isFavourite = false, id }: Props) {
   };
 
   const isFavouriteHoverClass = !isFavourite && hover ? 'far' : 'fas';
-  const notFavoruiteHoverClass = isFavourite && hover ? 'fas' : 'far';
+  const notFavouriteHoverClass = isFavourite && hover ? 'fas' : 'far';
 
   const element = (
     <button
@@ -29,12 +29,12 @@ function FavouritesToggle({ isFavourite = false, id }: Props) {
       aria-label='toggle favourite'
       onClick={toggleState}
       title='Add/remove this toilet to your list of favourites.'
-      className='mb-6 text-xl'
+      className='mb-6 text-xl  text-light-secondary-color hover:text-light-secondary-color dark:text-dark-secondary-color hover:dark:text-dark-primary-color'
     >
       <i
         className={`fa-star ${
-          isFavourite ? isFavouriteHoverClass : notFavoruiteHoverClass
-        } dark:text-dark-secondary-color hover:dark:text-dark-primary-color`}
+          isFavourite ? isFavouriteHoverClass : notFavouriteHoverClass
+        }`}
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       />{' '}
