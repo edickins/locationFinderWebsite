@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 import { useMapContext } from 'googlemaps-react-primitives';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { userLocationSVG } from './markerSVGs';
 import useGetScreensize, { ScreenSizeEnum } from '../../../hooks/getScreensize';
 

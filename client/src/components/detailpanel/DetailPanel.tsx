@@ -101,7 +101,7 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
           className='max-h-45vh  md:overflow-visible'
         >
           <ClickToSeeDetailsPrompt showMessage={showMessage} />
-          <div className='absolute right-8'>
+          <div className='absolute right-8' id='close-detail-panel-container'>
             <CloseDetailPanelButton
               hidePanel={hidePanel}
               showPanel={showPanel}

@@ -87,35 +87,39 @@ function Home() {
   // to accommodate the panel which will be covering the map
   const panToWithOffset = useCallback(
     (
-      latlng: google.maps.LatLng | google.maps.LatLngLiteral | null | undefined
+      markerLatLng:
+        | google.maps.LatLng
+        | google.maps.LatLngLiteral
+        | null
+        | undefined
     ) => {
       let offsetX = 0;
       let offsetY = 150;
-      let zoomLevel = 15;
+      const zoomLevel = 15;
 
       switch (screenSize) {
         case ScreenSizeEnum.XL:
         case ScreenSizeEnum.LG:
         case ScreenSizeEnum.MD:
-          offsetX = -150;
+          offsetX = -100;
           offsetY = -50;
           break;
         case ScreenSizeEnum.SM:
           offsetX = 0;
           offsetY = 50;
-          zoomLevel = 16;
+
           break;
         case ScreenSizeEnum.XS:
           offsetX = 0;
           offsetY = 20;
-          zoomLevel = 16;
+
           break;
         default:
           offsetX = 0;
           offsetY = 0;
       }
 
-      if (googleMapRef && latlng) {
+      if (googleMapRef && markerLatLng) {
         const ov = new google.maps.OverlayView();
         ov.onAdd = function onAdd() {
           // eslint-disable-next-line @typescript-eslint/no-this-alias
@@ -123,21 +127,20 @@ function Home() {
           const proj = overlay.getProjection();
           const aPoint: google.maps.Point | null =
             proj.fromLatLngToContainerPixel(
-              latlng instanceof google.maps.LatLng
-                ? { lat: latlng.lat(), lng: latlng.lng() }
-                : latlng
+              markerLatLng instanceof google.maps.LatLng
+                ? { lat: markerLatLng.lat(), lng: markerLatLng.lng() }
+                : markerLatLng
             );
           if (aPoint !== null) {
             aPoint.x += offsetX;
             aPoint.y += offsetY;
-            const latLng = proj.fromContainerPixelToLatLng(aPoint);
-            if (latLng !== null) {
-              if (googleMapRef) {
-                setTimeout(() => {
-                  googleMapRef?.panTo(latLng);
-                  googleMapRef?.setZoom(zoomLevel);
-                }, 500);
-              }
+            const markerOffsetLatLng = proj.fromContainerPixelToLatLng(aPoint);
+            if (markerOffsetLatLng !== null) {
+              googleMapRef.panTo(markerLatLng); // newLocation is the LatLng of the new location
+              google.maps.event.addListenerOnce(googleMapRef, 'idle', () => {
+                // the map has finished panning
+                googleMapRef.setZoom(zoomLevel); // newZoomLevel is the desired zoom level
+              });
             }
           }
         };
