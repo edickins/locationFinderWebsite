@@ -10,57 +10,74 @@ function Help() {
       </h3>
       {/* intro */}
       <p className='mb-4'>
-        The Brighton and Hove WC Wayfinder website was built to help users find
-        a public toilet close to their current location. Because this website
-        only provides information on public toilets in the Brighton and Hove
-        area, we do not support users who&apos;s location is outisde of this
-        area.
+        This website does not use cookies and your location is not saved between
+        visits.
       </p>
       <p className='mb-4'>
-        if you decline to allow permissions on your device to use your current
-        location this will mean your location is not displayed on the map.
+        Welcome to the website of the Brighton and Hove Public Toilet Finder, a
+        handy app that helps you locate the nearest public toilet in Brighton
+        and Hove. This app is designed for use on mobile devices, but you can
+        also access it on a desktop. Here&apos;s how to use it:
+      </p>
+      <p className='mb-4'>
+        When you open the website, you will see a map with the locations of
+        public toilets displayed using markers. You will also see a button
+        labelled &quot;Find my nearest toilet&quot; at the top of the screen.
+      </p>
+      {/* Adding your location to the map. */}
+      <h3 className='mb-4 text-2xl text-light-primary-color dark:text-dark-primary-color'>
+        Adding your location to the map.
+      </h3>
+      <p className='mb-4'>
+        The website will ask you to share your location - we need this so we can
+        find your nearest toilet. If you agree (and you are within the area
+        covered by the map), the map will show your location with a marker
+        saying &quot;You are here&quot;. If you don&apos;t agree or you are
+        outside the area, you can still explore each of the toilets on the map,
+        and use the app by entering a postcode, street name or toilet amenity in
+        the search panel at the top of the screen.
       </p>
       {/* Finding your nearest public toilet. */}
       <h3 className='mb-4 text-2xl text-light-primary-color dark:text-dark-primary-color'>
         Finding your nearest public toilet.
       </h3>
       <p className='mb-4'>
-        So that we can find your nearest public toilet we need you to share your
-        location with us. When the map first loads we ask if you will allow us
-        to detect your location on your device. When we have identified your
-        location this will be displayed on the map.
-      </p>
-      <p className='mb-4'>
         The map has a button labelled{' '}
         <span className='font-bold'>&quot;find my nearest toilet&quot;</span>.
         If you click on this button the nearest public toilet to your location
-        will be displayed, along with a route so that you can get to this
-        location.
+        will be displayed. You can also see other toilets nearby by zooming in
+        or out on the map.
       </p>
-      {/* Adding your location to the map */}
+      {/* get directions to your nearest public toilet. */}
       <h3 className='mb-4 text-2xl text-light-primary-color dark:text-dark-primary-color'>
-        Adding your location to the map.
+        Get directions to your nearest public toilet.
       </h3>
       <p className='mb-4'>
-        When you are on the map page, you will be asked if you wish to share
-        your current location. If your device allows this, your location will be
-        displayed on the map with a label showing you your location.
+        If your location has been provided, you can get directions to any
+        selected toilet by clicking on the{' '}
+        <span className='font-bold'>
+          &quot;click to get directions on google maps&quot;
+        </span>{' '}
+        button in the details panel at the bottom of the screen.
       </p>
+      {/* the details panel */}
+      <h3 className='mb-4 text-2xl text-light-primary-color dark:text-dark-primary-color'>
+        Get details about any toilet.
+      </h3>
       <p className='mb-4'>
-        If you wish you can close this label - your location will still be
-        displayed.
-      </p>
-      <p className='mb-4'>
-        This website does not use cookies and your location is not saved between
-        visits.
+        To view more details about a toilet, tap on its marker on the map and
+        then open panel at the bottom of the screen to find out more about this
+        location. The panel will expand and show you the name, address, opening
+        times and facilities of that toilet, as well as providing a link to the
+        nearest alternative toilet. If the toilet is currently closed this will
+        be shown on the panel above the opening hours.
       </p>
 
       <p className='mb-4'>
-        If you previously declined to share your location when the map loaded,
-        clicking the &quot;find my nearest toilet&quot; button will prompt you
-        again and ask if you wish to share your location. If you decline again,
-        it will not be possible to calculate the location of your nearest public
-        toilet.
+        To filter the toilets by facilities, such as baby changing, disabled
+        access or family rooms, tap on the &quot;Filter&quot; button. You will
+        see a list of facilities that you can check or uncheck to highlight the
+        toilets that match your preferences on the map.
       </p>
       {/* img showing location on the map */}
       <figure>
@@ -74,6 +91,13 @@ function Help() {
           nearest public toilet, with the route displayed.
         </figcaption>
       </figure>
+      <p className='mb-4'>
+        To save a toilet as a favourite, tap on its marker on the map. Open the
+        panel at the bottom of the screen, you will also see a star icon next to
+        the name. Tap on the star to add that toilet to your favourites list.
+        You can access your favourites list by tapping on the
+        &quot;Favourites&quot; panel at the bottom right of the screen.
+      </p>
     </div>
   );
 }

@@ -49,7 +49,7 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
 
       // make the panel visible at the bottom of the screen
       if (detailPanelRef.current) {
-        detailPanelRef.current.classList.add('bottom-28');
+        detailPanelRef.current.classList.add('bottom-24');
       }
     } else {
       // hide the panel
