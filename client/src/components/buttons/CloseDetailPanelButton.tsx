@@ -21,13 +21,16 @@ function CloseDetailPanelButton({
   title
 }: Props) {
   const [buttonIcon, setButtonIcon] = useState<IconDefinition>();
+  const [buttonText, setButtonText] = useState('');
 
   useEffect(() => {
     if (upIcon && downIcon) {
       if (isPanelOpen) {
         setButtonIcon(downIcon);
+        setButtonText('click to see less');
       } else {
         setButtonIcon(upIcon);
+        setButtonText('click to see more');
       }
     }
   }, [downIcon, isPanelOpen, upIcon]);
@@ -49,24 +52,27 @@ function CloseDetailPanelButton({
   }, [isPanelOpen, hidePanel, showPanel]);
 
   return (
-    <button
-      type='button'
-      onClick={clickHandler}
-      title={title}
-      className={`flex items-center rounded-md border-2 ${
-        children
-          ? `border-none`
-          : `hover:slate-100 border-white bg-light-secondary-color text-white hover:border-light-secondary-color hover:bg-slate-100 hover:text-light-secondary-color dark:border-white dark:bg-light-secondary-color dark:text-white  dark:hover:border-light-secondary-color dark:hover:bg-white  dark:hover:text-light-secondary-color`
-      }`}
-    >
-      {buttonIcon && (
-        <FontAwesomeIcon
-          icon={buttonIcon}
-          className='hover:fa-solid m-2 text-xs md:text-xl'
-        />
-      )}
-      {children}
-    </button>
+    <>
+      <button
+        type='button'
+        onClick={clickHandler}
+        title={title}
+        className={`flex items-center rounded-md border-2 ${
+          children
+            ? `border-none`
+            : `hover:slate-100 border-white bg-light-secondary-color text-white hover:border-light-secondary-color hover:bg-slate-100 hover:text-light-secondary-color dark:border-white dark:bg-light-secondary-color dark:text-white  dark:hover:border-light-secondary-color dark:hover:bg-white  dark:hover:text-light-secondary-color`
+        }`}
+      >
+        <span className='mx-2 text-sm'>{buttonText}</span>
+        {buttonIcon && (
+          <FontAwesomeIcon
+            icon={buttonIcon}
+            className='hover:fa-solid m-1 text-xs md:m-2 md:text-xl'
+          />
+        )}
+        {children}
+      </button>
+    </>
   );
 }
 

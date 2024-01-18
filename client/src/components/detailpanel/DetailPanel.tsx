@@ -8,7 +8,6 @@ import DetailPanelOpeningTimes from './DetailPanelOpeningTimes';
 import DetailPanelDateModified from './DetailPanelDateModified';
 import DetailPanelShowLocationButton from './DetailPanelShowLocationButton';
 import CloseDetailPanelButton from '../buttons/CloseDetailPanelButton';
-import ClickToSeeDetailsPrompt from './ClickToSeeDetailsPrompt';
 
 type Props = {
   item: ILocation | undefined;
@@ -20,7 +19,6 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
   const [openingHours, setOpeningHours] = useState<string[]>([]);
   const [formatedModifiedDate, setFormatedModifiedDate] = useState<string>();
   const [isPanelOpen, setIsPanelOpen] = useState(false);
-  const [showMessage, setShowMessage] = useState(true);
 
   const detailPanelRef = useRef<HTMLDivElement>(null);
   const detailPanelScrollContainerRef = useRef<HTMLDivElement>(null);
@@ -65,7 +63,6 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
 
   const showPanel = useCallback(() => {
     if (detailPanelRef.current) {
-      setShowMessage(false);
       scrollToTop();
       detailPanelRef.current.classList.add(`detailPanelFullView`);
       detailPanelScrollContainerRef.current?.classList.add(`overflow-y-scroll`);
@@ -76,7 +73,6 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
 
   const hidePanel = useCallback(() => {
     if (detailPanelRef.current) {
-      setShowMessage(false);
       scrollToTop();
       detailPanelRef.current.scrollTop = 0;
       detailPanelRef.current.classList.add('translate-y-full');
@@ -92,26 +88,28 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
     <div
       id='detail-panel-container'
       ref={detailPanelRef}
-      className='fixed bottom-0 w-full  translate-y-full transform auto-rows-min gap-4  border-t border-gray-600 bg-light-panel-secondary bg-opacity-95 px-4 py-2 transition-transform duration-1000 ease-in-out dark:bg-dark-panel md:px-8 md:py-4 '
+      className='fixed bottom-0 w-full  translate-y-full transform auto-rows-min gap-4  border-t border-gray-600 bg-light-panel-secondary px-4 py-2 transition-transform duration-1000 ease-in-out dark:bg-dark-panel md:px-8 md:py-4 '
     >
+      <div
+        className='absolute right-2 flex items-center'
+        id='close-detail-panel-container'
+      >
+        <CloseDetailPanelButton
+          hidePanel={hidePanel}
+          showPanel={showPanel}
+          upIcon={faChevronUp}
+          downIcon={faChevronDown}
+          isPanelOpen={isPanelOpen}
+          title='Click me to show/hide the details for this location.'
+        />
+      </div>
       {item && (
-        <div
-          id='detail-panel'
-          ref={detailPanelScrollContainerRef}
-          className='max-h-45vh  md:overflow-visible'
-        >
-          <ClickToSeeDetailsPrompt showMessage={showMessage} />
-          <div className='absolute right-8' id='close-detail-panel-container'>
-            <CloseDetailPanelButton
-              hidePanel={hidePanel}
-              showPanel={showPanel}
-              upIcon={faChevronUp}
-              downIcon={faChevronDown}
-              isPanelOpen={isPanelOpen}
-              title='Click me to show/hide the details for this location.'
-            />
-          </div>
-          <div className='mr-8 grid grid-cols-1 pt-6  text-sm md:grid-cols-7 md:gap-8'>
+        <div id='detail-panel' className='max-h-45vh pt-8 '>
+          <div
+            id='detail-panel-details'
+            ref={detailPanelScrollContainerRef}
+            className=' grid max-h-45vh grid-cols-1   text-sm md:grid-cols-7 md:gap-8 md:overflow-visible  '
+          >
             <DetailPanelAddress
               item={item}
               key={item.formatted_address}
