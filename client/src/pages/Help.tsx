@@ -67,7 +67,7 @@ function Help() {
             panel at the top of the screen.
           </p>
         </div>
-        <figure className='md:w-1/2'>
+        <figure className='hidden md:block md:w-1/2'>
           <img
             src={
               window.matchMedia('(prefers-color-scheme:light').matches
