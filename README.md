@@ -53,7 +53,7 @@ Create a .env file in both the client and server folders and copy the contents o
 
 Start the server: npm run start:server
 Start the client: npm run start:client
-Open your browser and go to http://localhost:3000
+Open your browser and go to http://localhost:5001
 
 # Usage
 
