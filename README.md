@@ -60,11 +60,14 @@ Open your browser and go to http://localhost:5001
 Once the project is running, you can use it as follows:
 
 The app will load the homepage which shows a map of Brighton and Hove, showing all the public toilets.
-To use your current location as the center of the map, click on the Locate Me button.
-To get directions to a toilet, click on its marker on the map and then click on the Directions button.
+You will be asked if the app can use your current location. If you approve and you are within the area defined by the markers on the map your location will be displayed on the map.
+If you decline then this will not happen.
+To find your nearest location click on the "Find my nearest toilet" button.
 To favourite a toilet, click on its marker on the map and then click on the favourite button in the details panel or do the same from the list of toilets on the toilets page. You do not need to sign in or sign up to do this.
 
 Here are some screenshots of the project:
+![your location on the map](/client/src/assets/images/mobile_user_location.png?raw=true "Your location")
+
 
 # License
 
