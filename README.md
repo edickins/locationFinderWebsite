@@ -66,7 +66,9 @@ To find your nearest location click on the "Find my nearest toilet" button.
 To favourite a toilet, click on its marker on the map and then click on the favourite button in the details panel or do the same from the list of toilets on the toilets page. You do not need to sign in or sign up to do this.
 
 Here are some screenshots of the project:
+
 ![your location on the map](/client/src/assets/images/mobile_user_location.png?raw=true "Your location")
+![details panel](/client/src/assets/images/mobile_details_panel.png?raw=true "Details panel")
 
 
 # License
