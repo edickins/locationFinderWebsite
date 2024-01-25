@@ -5,13 +5,15 @@ function About() {
         About.
       </h3>
       <h2 className='mb-4 text-lg'>
-        This website was built as a bit of fun by me.
+        This website was built as a bit of fun by me, Ed Dickins. I am a
+        frontend developer and I wanted to showcase the learning I have recently
+        done by building an app that used a bit of everything I have learned.
       </h2>
       <p className='mt-4'>
-        The information used was copied from the Brighton and Hove County
-        Council webpage that lists the addresses and opening times for public
-        toilets in the Brighton and Hove area which can be found here (all
-        rights reserved):{' '}
+        The information about public toilet opening times has been copied from
+        the Brighton and Hove County Council webpage that lists the addresses
+        and opening times for public toilets in the Brighton and Hove area which
+        can be found here (all rights reserved):{' '}
         <a
           href='https://www.brighton-hove.gov.uk/libraries-leisure-and-arts/public-toilets/list-public-toilets-brighton-hove'
           target='_blank'
@@ -65,15 +67,15 @@ function About() {
         >
           here
         </a>{' '}
-        and you are welcome to use it howerver you wish. .{' '}
+        and you are welcome to use it however you wish.{' '}
       </p>
       <p className='mt-4'>
         If you have any questions or wish to know more please get in contact at{' '}
         <a
-          href='mailto:ed.dickins@bleepbloop.net'
+          href='mailto:locationfinder@bleepbloop.net'
           className='light-primary-color text-light-secondary-color dark:text-dark-secondary-color'
         >
-          ed.dickins@bleepbloop.net
+          locationfinder@bleepbloop.net
         </a>
       </p>
     </div>
