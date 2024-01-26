@@ -42,7 +42,7 @@ const getUserAndLocationBounds = (
         break;
       }
       default:
-        options.bottom = 250;
+        options.bottom = 100;
         options.left = 300;
         options.right = 200;
         options.top = 200;

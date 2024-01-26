@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import GeoCoder from 'geocoder_node';
 import MyMap from '../components/googlemaps/MyMap';
@@ -52,6 +52,8 @@ function Home() {
   const [showLoadingLayer, setShowLoadingLayer] = useState(false);
   const [hasRequestedUserLocation, setHasRequestedUserLocation] =
     useState(false);
+
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
@@ -266,17 +268,27 @@ function Home() {
   // respond to locationID being updated in searchParams
   useEffect(() => {
     const locationID = searchParams.get('locationID');
+    const userLocationString = searchParams.get('userLocation');
 
-    if (!locationID) return;
+    if (!locationID) return undefined;
     setShowLoadingLayer(false);
     if (locationID) {
       const currentLocation = locations.find((loc) => loc.id === locationID);
       const currentLocationIsNearestLocation =
         locationsOrderedByDistanceFromUser.length > 0 &&
         locationID === locationsOrderedByDistanceFromUser[0].locationID;
-      // animate to location if userLocation is undefined
-      if (currentLocation && !currentLocationIsNearestLocation) {
-        setTimeout(() => {
+
+      // animate to location if locationID is not the nearest location
+      if (
+        currentLocation &&
+        userLocationString &&
+        !currentLocationIsNearestLocation
+      ) {
+        timeoutRef.current = setTimeout(() => {
+          panToWithOffset(currentLocation.geometry.location);
+        }, 100);
+      } else if (currentLocation && !userLocationString) {
+        timeoutRef.current = setTimeout(() => {
           panToWithOffset(currentLocation.geometry.location);
         }, 100);
       }
@@ -287,6 +299,13 @@ function Home() {
         )
       );
     }
+
+    // Return the cleanup function
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
   }, [
     locations,
     locationsOrderedByDistanceFromUser,
