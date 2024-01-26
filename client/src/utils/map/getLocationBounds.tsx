@@ -13,7 +13,7 @@ const getUserAndLocationBounds = (
     );
 
     if (userLocationLatLng !== null) {
-      const radius = 150;
+      const radius = 300;
       const northEast = google.maps.geometry.spherical.computeOffset(
         userLocationLatLng,
         radius,
@@ -35,8 +35,8 @@ const getUserAndLocationBounds = (
       case ScreenSizeEnum.SM:
       case ScreenSizeEnum.XS: {
         options.bottom = 50;
-        options.left = 20;
-        options.right = 20;
+        options.left = 25;
+        options.right = 25;
         options.top = 20;
 
         break;

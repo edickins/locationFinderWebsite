@@ -14,6 +14,7 @@ function UserLocationDisplay({ findNearestLocation }: Props) {
   const infoWindowRef = useRef<google.maps.InfoWindow | null>(null);
   const circleRef = useRef<google.maps.Circle | null>(null);
   const markerRef = useRef<google.maps.Marker | null>(null);
+
   const screenSize = useGetScreensize();
 
   const { map, addMarker } = useMapContext();
@@ -36,6 +37,8 @@ function UserLocationDisplay({ findNearestLocation }: Props) {
 
   useEffect(() => {
     const posString = searchParams.get('userLocation');
+    const locationID = searchParams.get('locationID');
+
     if (posString) {
       const userLocation = JSON.parse(posString);
       if (
@@ -55,7 +58,7 @@ function UserLocationDisplay({ findNearestLocation }: Props) {
             zoomLevel = 17;
         }
 
-        const infoW = new google.maps.InfoWindow();
+        const infoW = new google.maps.InfoWindow({ disableAutoPan: true });
         infoW.setPosition(userLocation);
         infoW.setOptions({
           pixelOffset: new google.maps.Size(0, -30)
@@ -68,9 +71,13 @@ function UserLocationDisplay({ findNearestLocation }: Props) {
           userLocation.lat,
           userLocation.lng
         );
-        map?.panTo(latLng);
-        map?.setZoom(zoomLevel);
-        map?.setCenter(userLocation);
+
+        // only zoom to location if user location has not been displayed
+        if (map && !locationID) {
+          map.panTo(latLng);
+          map.setZoom(zoomLevel);
+          map.setCenter(userLocation);
+        }
 
         const c = new google.maps.Circle({
           strokeColor: '#FF0000',
@@ -94,7 +101,7 @@ function UserLocationDisplay({ findNearestLocation }: Props) {
           icon: markerOptions
         });
 
-        addMarker(m);
+        // addMarker(m);
 
         infoWindowRef.current = infoW;
         circleRef.current = c;

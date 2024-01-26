@@ -266,16 +266,16 @@ function Home() {
   // respond to locationID being updated in searchParams
   useEffect(() => {
     const locationID = searchParams.get('locationID');
+
     if (!locationID) return;
     setShowLoadingLayer(false);
-    const userLocationString = searchParams.get('userLocation');
-    const userLocation = userLocationString
-      ? JSON.parse(userLocationString)
-      : null;
     if (locationID) {
       const currentLocation = locations.find((loc) => loc.id === locationID);
+      const currentLocationIsNearestLocation =
+        locationsOrderedByDistanceFromUser.length > 0 &&
+        locationID === locationsOrderedByDistanceFromUser[0].locationID;
       // animate to location if userLocation is undefined
-      if (currentLocation && !userLocation) {
+      if (currentLocation && !currentLocationIsNearestLocation) {
         setTimeout(() => {
           panToWithOffset(currentLocation.geometry.location);
         }, 100);
@@ -287,7 +287,12 @@ function Home() {
         )
       );
     }
-  }, [locations, panToWithOffset, searchParams]);
+  }, [
+    locations,
+    locationsOrderedByDistanceFromUser,
+    panToWithOffset,
+    searchParams
+  ]);
 
   // respond to userLocation being updated in searchParams
   useEffect(() => {
@@ -368,7 +373,11 @@ function Home() {
     const userLocation = userLocationString
       ? JSON.parse(userLocationString)
       : null;
-    if (userLocation && locationID) {
+    if (
+      userLocation &&
+      locationID &&
+      locationID === locationsOrderedByDistanceFromUser[0]?.locationID
+    ) {
       const result = getUserAndLocationBounds(
         userLocation,
         location?.geometry.location,
@@ -380,7 +389,13 @@ function Home() {
         googleMapRef.fitBounds(bounds, options);
       }
     }
-  }, [googleMapRef, locations, screenSize, searchParams]);
+  }, [
+    googleMapRef,
+    locations,
+    locationsOrderedByDistanceFromUser,
+    screenSize,
+    searchParams
+  ]);
 
   // set the default values for the map when it loads on different devices
   const defaultMapProps = useMemo(() => {

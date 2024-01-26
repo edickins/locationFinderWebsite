@@ -16,7 +16,6 @@ if (process.env.NODE_ENV === 'development') {
 } else {
   MONGO_URL = process.env.PRODUCTION_URI;
 }
-console.log(`MONGO_URL ${MONGO_URL}`);
 
 // connect to DB
 mongoose.connect(MONGO_URL);

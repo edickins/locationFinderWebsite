@@ -46,7 +46,11 @@ function InfoWindow({ content, position }: Props) {
   // listen to click events on the infoWindow displayed when a user clicks on it
   useEffect(() => {
     if (!infoWindowRef.current && locationID && content !== '') {
-      infoWindowRef.current = new google.maps.InfoWindow({ content, position });
+      infoWindowRef.current = new google.maps.InfoWindow({
+        content,
+        position,
+        disableAutoPan: true
+      });
       const styledContent = `<div style="color:#040404;padding:4px;font-weight:700">${content}</div>`;
       infoWindowRef.current.setOptions({
         content: styledContent,

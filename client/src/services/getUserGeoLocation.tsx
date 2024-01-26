@@ -18,7 +18,6 @@ const getUserGeoLocation = (
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-        if (!locationBounds) console.log('no location bounds');
         if (locationBounds?.contains(pos) === false) {
           // pos is outside of the bounds of all the map location Markers
           setFindLocationError({
@@ -27,7 +26,7 @@ const getUserGeoLocation = (
               'Sorry, but your location is outside of the area covered by this application.  This means we cannot use your location on the map.'
           });
         } else {
-          console.log('you are in brighton');
+          // userLocation is in the bounds defined by all map markers
           const searchParams = new URLSearchParams(window.location.search);
           const newSearchParams = new URLSearchParams(searchParams.toString());
           newSearchParams.set('userLocation', JSON.stringify(pos));

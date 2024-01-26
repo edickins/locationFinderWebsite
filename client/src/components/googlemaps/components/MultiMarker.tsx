@@ -59,7 +59,7 @@ function MultiMarker({
         icon: markerIcon
       });
 
-      marker.current.setAnimation(google.maps.Animation.DROP);
+      // marker.current.setAnimation(google.maps.Animation.DROP);
 
       marker.current.addListener('click', (e: google.maps.MapMouseEvent) => {
         // stop default behaviour
