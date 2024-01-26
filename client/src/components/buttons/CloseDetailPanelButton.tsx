@@ -27,10 +27,10 @@ function CloseDetailPanelButton({
     if (upIcon && downIcon) {
       if (isPanelOpen) {
         setButtonIcon(downIcon);
-        setButtonText('click to see less');
+        setButtonText('  see less  ');
       } else {
         setButtonIcon(upIcon);
-        setButtonText('click to see more');
+        setButtonText('  see more  ');
       }
     }
   }, [downIcon, isPanelOpen, upIcon]);
@@ -63,7 +63,7 @@ function CloseDetailPanelButton({
             : `hover:slate-100 border-white bg-light-secondary-color text-white hover:border-light-secondary-color hover:bg-slate-100 hover:text-light-secondary-color dark:border-white dark:bg-light-secondary-color dark:text-white  dark:hover:border-light-secondary-color dark:hover:bg-white  dark:hover:text-light-secondary-color`
         }`}
       >
-        <span className='mx-2 text-sm'>{buttonText}</span>
+        {buttonText && <span className='mx-2 text-sm'>{buttonText}</span>}
         {buttonIcon && (
           <FontAwesomeIcon
             icon={buttonIcon}

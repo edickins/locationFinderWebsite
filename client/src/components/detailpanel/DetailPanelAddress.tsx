@@ -46,7 +46,7 @@ function DetailPanelAddress({
         isPanelOpen={isPanelOpen}
         title='Click me to show/hide the details for this location.'
       >
-        <h1 className='mb-2 text-left text-xl font-bold text-light-secondary-color hover:text-light-primary-color hover:underline dark:text-dark-primary-color hover:dark:text-dark-secondary-color'>
+        <h1 className='text-left text-xl font-bold text-light-secondary-color hover:text-light-primary-color hover:underline dark:text-dark-primary-color hover:dark:text-dark-secondary-color'>
           {item?.long_name}
         </h1>
       </CloseDetailPanelButton>

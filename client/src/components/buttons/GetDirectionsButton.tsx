@@ -39,12 +39,12 @@ function GetDirectionsButton({ destination, originString }: Props) {
           <p className='text-left text-lg '>
             <span className='hidden text-left dark:text-white md:inline'>
               {' '}
-              (click for directions on google maps)
+              (get directions)
             </span>
           </p>
           <p className='text-left text-lg dark:text-white md:hidden'>
             {' '}
-            (click for directions on google maps)
+            (get directions)
           </p>
         </div>
       </FilterButton>
