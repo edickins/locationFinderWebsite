@@ -24,6 +24,13 @@ const getUserAndLocationBounds = (
         radius,
         225
       );
+      if (location) {
+        const locationLatLng = new google.maps.LatLng(
+          location.lat,
+          location.lng
+        );
+        bounds.extend(locationLatLng);
+      }
       bounds.extend(northEast);
       bounds.extend(southWest);
     }
@@ -34,10 +41,10 @@ const getUserAndLocationBounds = (
     switch (screenSize) {
       case ScreenSizeEnum.SM:
       case ScreenSizeEnum.XS: {
-        options.bottom = 50;
-        options.left = 25;
-        options.right = 25;
-        options.top = 20;
+        options.bottom = 10;
+        options.left = 100;
+        options.right = 100;
+        options.top = 60;
 
         break;
       }
