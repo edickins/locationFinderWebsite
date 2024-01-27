@@ -41,10 +41,10 @@ const getUserAndLocationBounds = (
     switch (screenSize) {
       case ScreenSizeEnum.SM:
       case ScreenSizeEnum.XS: {
-        options.bottom = 10;
-        options.left = 100;
-        options.right = 100;
-        options.top = 60;
+        options.bottom = 0;
+        options.left = 50;
+        options.right = 50;
+        options.top = 15;
 
         break;
       }
