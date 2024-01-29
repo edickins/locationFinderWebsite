@@ -1,6 +1,8 @@
 const Location = require('../models/Location');
 const ErrorResponse = require('../utils/ErrorResponse');
 const asyncHandler = require('../middleware/async');
+const axios = require('axios');
+const { getNextLocationId } = require('../utils/getNextLocationId');
 
 // @desc Get all locations
 // @route GET /api/v1/locations
@@ -44,11 +46,35 @@ exports.getLocation = asyncHandler(async (req, res, next) => {
 // @access Private Admin
 exports.createLocation = asyncHandler(async (req, res, next) => {
   try {
-    const location = await Location.create(req.body);
-    res.status(201).json({ success: true, msg: location });
+    // create a new document using fields from the req.body
+    const location = new Location({
+      long_name: req.long_name,
+      alphabetical_name: req.alphabetical_name,
+      location: req.location
+    });
+
+    const address = encodeURIComponent(req.body.postal_address);
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.GEOCDER_KEY}`;
+    try {
+      const result = await axios.get(url);
+      const apiResponse = result.data;
+
+      const location = new Location({
+        ...req.body,
+        ...apiResponse.results[0]
+      });
+
+      const newLocationDocument = await location.save();
+
+      res.status(201).json({ success: true, data: newLocationDocument });
+    } catch (error) {
+      res.status(500).json({ success: false, msg: error });
+    }
   } catch (error) {
     res.status(400).json({ success: false, msg: error });
   }
+
+  next();
 });
 
 // @desc Update a location

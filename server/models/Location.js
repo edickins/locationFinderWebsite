@@ -33,7 +33,7 @@ const IFacility = new mongoose.Schema({
 });
 
 const LocationSchema = new mongoose.Schema({
-  id: { type: String, required: true, unique: true },
+  id: { type: String, unique: true },
   long_name: { type: String, required: true },
   alphabetical_name: { type: String, required: true },
   open_status: { type: String, required: true },
@@ -43,7 +43,7 @@ const LocationSchema = new mongoose.Schema({
   geometry: IGeometrySchema,
   place_id: { type: String, required: true },
   opening_hours: { type: [String], required: true },
-  nearest_alternative: { type: String, required: true },
+  nearest_alternative: { type: String },
   facility_ids: [{ type: String, required: true }],
   date_created: { type: Date, default: Date.now },
   date_modified: { type: Date, default: Date.now },
