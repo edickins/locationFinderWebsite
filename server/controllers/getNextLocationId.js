@@ -6,5 +6,5 @@ const getNextLocationId = require('../utils/getNextLocationId');
 
 exports.getNextLocationId = asyncHandler(async (req, res, next) => {
   const nextId = await getNextLocationId();
-  res.status(201).json({ success: true, nextId });
+  res.status(201).json({ success: true, data: { nextId } });
 });
