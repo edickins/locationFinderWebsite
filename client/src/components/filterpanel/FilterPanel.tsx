@@ -16,7 +16,7 @@ function FilterPanel({ handleFindLocationButtonClick }: Props) {
     >
       <div
         id='filter-panel'
-        className='pointer-events-none relative mt-10 shadow-lg md:left-4  md:mt-24 md:max-w-md  '
+        className='pointer-events-none relative mt-10  md:left-4  md:mt-24 md:max-w-md  '
       >
         <FilterPanelNav
           handleFindLocationButtonClick={handleFindLocationButtonClick}
