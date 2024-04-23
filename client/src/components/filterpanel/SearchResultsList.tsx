@@ -28,13 +28,12 @@ function SearchResultsList() {
   const [partialMatches, setPartialMatches] = useState<ILocation[]>([]);
   const [perfectMatches, setPerfectMatches] = useState<ILocation[]>([]);
   const [searchResults, setSearchResults] = useState<ILocation[]>([]);
-  const [searchTerm, setSearchTerm] = useState('');
   const {
     state: { locations }
   } = useLocationsContext();
 
-  const { matchingLocationIds, dispatchFilters } = useFiltersContext();
-  const { searchTerms, searchTermsPerfectMatch } = matchingLocationIds;
+  const { searchData, dispatchFilters } = useFiltersContext();
+  const { searchTermsMatch, searchTermsPerfectMatch, searchTerm } = searchData;
   const [searchParams, setSearchParams] = useSearchParams();
 
   const onSearchResultClick = (locationID: string): void => {
@@ -56,7 +55,7 @@ function SearchResultsList() {
   // sideEffect when search terms are updated
   useEffect(() => {
     setPartialMatches([]);
-    let matches: ILocation[] = searchTerms.reduce(
+    let matches: ILocation[] = searchTermsMatch.reduce(
       (acc: ILocation[], locationID) => {
         const foundLocation = locations.find(
           (location) => location.id === locationID
@@ -75,7 +74,7 @@ function SearchResultsList() {
       return foundLocation ? [...acc, foundLocation] : acc;
     }, []);
     setPerfectMatches(matches);
-  }, [locations, searchTerms, searchTermsPerfectMatch]);
+  }, [locations, searchTermsMatch, searchTermsPerfectMatch]);
 
   // sideEffect when partial and perfect match Arrays are updated
   useEffect(() => {
@@ -86,20 +85,10 @@ function SearchResultsList() {
     setSearchResults(uniqueIDs);
   }, [partialMatches, perfectMatches]);
 
-  // sideEffect when the search field changes
-  useEffect(() => {
-    const enteredText = searchParams.get('search');
-    if (enteredText) {
-      setSearchTerm(enteredText);
-    } else {
-      setSearchTerm('');
-    }
-  }, [searchParams]);
-
   return (
     <div>
-      {searchTerms.length === 0 && <NoResults searchTerm={searchTerm} />}
-      {searchTerms.length !== 0 && (
+      {searchTermsMatch.length === 0 && <NoResults searchTerm={searchTerm} />}
+      {searchTermsMatch.length !== 0 && (
         <div>
           <SearchTermMessage searchTerm={searchTerm} />
           <ul className='mt-2 bg-white bg-opacity-80 px-2 py-2 dark:text-gray-900'>

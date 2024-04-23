@@ -1,3 +1,4 @@
+import { useSearchParams } from 'react-router-dom';
 import FilterPanelNav from './FilterPanelNav';
 import FiltersContainer from './FiltersContainer';
 
@@ -8,6 +9,22 @@ type Props = {
 };
 
 function FilterPanel({ handleFindLocationButtonClick }: Props) {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const filtersParam = searchParams.get('filters');
+
+  const updateSearchParams = (key: string, value: string) => {
+    if (!key) return;
+    // update the URL with new filters or delete that key if there are no values
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+    if (!value) {
+      newSearchParams.delete(key);
+    } else {
+      newSearchParams.set(key, value);
+    }
+
+    setSearchParams(newSearchParams);
+  };
+
   return (
     <div
       id='filter-panel-wrapper'
@@ -20,8 +37,12 @@ function FilterPanel({ handleFindLocationButtonClick }: Props) {
       >
         <FilterPanelNav
           handleFindLocationButtonClick={handleFindLocationButtonClick}
+          filtersParam={filtersParam}
         />
-        <FiltersContainer />
+        <FiltersContainer
+          filtersParam={filtersParam}
+          updateSearchParams={updateSearchParams}
+        />
       </div>
       <div
         id='find-nearest-panel'

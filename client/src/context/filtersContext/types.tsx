@@ -17,15 +17,17 @@ export interface IFiltersContext {
     isSearchSelected: boolean;
     isSearchActive: boolean;
   };
-  matchingLocationIds: {
-    searchTerms: string[];
+  searchData: {
+    searchTermsMatch: string[];
     searchTermsPerfectMatch: string[];
+    searchTerm: string;
   };
   dispatchFilters: React.Dispatch<FiltersActionType>;
   dispatchSearchResults: React.Dispatch<SearchActionType>;
 }
 
 export interface ISearchResultsInitialState {
-  searchTerms: string[];
+  searchTermsMatch: string[];
   searchTermsPerfectMatch: string[];
+  searchTerm: string;
 }

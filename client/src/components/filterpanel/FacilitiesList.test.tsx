@@ -56,7 +56,7 @@ describe('FacilitiesList', () => {
     render(
       <FacilitiesList
         facilities={facilities}
-        filteredFacilities={filteredFacilities}
+        filtersParam={filteredFacilities}
         onFilterClicked={onFilterClicked}
       />
     );
@@ -70,7 +70,7 @@ describe('FacilitiesList', () => {
     render(
       <FacilitiesList
         facilities={facilities}
-        filteredFacilities={filteredFacilities}
+        filtersParam={filteredFacilities}
         onFilterClicked={onFilterClicked}
       />
     );

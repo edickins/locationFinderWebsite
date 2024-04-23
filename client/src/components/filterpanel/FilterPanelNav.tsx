@@ -1,4 +1,3 @@
-import { useSearchParams } from 'react-router-dom';
 import FilterButton from '../buttons/FilterButton';
 import SearchLocation from './SearchLocation';
 import { useFiltersContext } from '../../context/filtersContext/filtersContext';
@@ -6,10 +5,13 @@ import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
 
 type Props = {
   handleFindLocationButtonClick: () => void;
+  filtersParam: string | null;
 };
 
-function FilterPanelNav({ handleFindLocationButtonClick }: Props) {
-  const [searchParams] = useSearchParams();
+function FilterPanelNav({
+  handleFindLocationButtonClick,
+  filtersParam
+}: Props) {
   const { state, dispatchFilters } = useFiltersContext();
   const { isFavouritesSelected, isFacilitiesSelected } = state;
 
@@ -37,7 +39,7 @@ function FilterPanelNav({ handleFindLocationButtonClick }: Props) {
           icon='fa-filter'
           onClick={onFilterButtonClick}
           isSelected={isFacilitiesSelected}
-          isActive={searchParams.getAll('filters').length > 0}
+          isActive={!!filtersParam}
         >
           <span className='text-xs'>Filter</span>
         </FilterButton>

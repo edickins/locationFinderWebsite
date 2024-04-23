@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import FacilitiesList from './FacilitiesList';
 import FilterButton from '../buttons/FilterButton';
 import { useLocationsContext } from '../../context/locationContext/locationsContext';
@@ -8,12 +7,17 @@ import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
 
 interface Props {
   isActive: boolean;
+  updateSearchParams: (key: string, value: string) => void;
+  filtersParam: string | null;
 }
 
-function FilterSectionFacilities({ isActive }: Props) {
+function FilterSectionFacilities({
+  isActive,
+  updateSearchParams,
+  filtersParam
+}: Props) {
   const { facilities } = useLocationsContext();
-  const [searchParams, setSearchParams] = useSearchParams();
-  let filtersParams = searchParams.get('filters') || '';
+
   const [activeFilters, setActiveFilters] = useState('');
 
   const { state, dispatchFilters } = useFiltersContext();
@@ -24,12 +28,12 @@ function FilterSectionFacilities({ isActive }: Props) {
   };
 
   useEffect(() => {
-    const arr = filtersParams.split('+').filter(Boolean);
+    const arr = filtersParam ? filtersParam.split('+') : [];
     setActiveFilters(` ${arr.length} active`);
-  }, [filtersParams]);
+  }, [filtersParam]);
 
   const onFilterClicked = (facility: string, isFilterSelected: boolean) => {
-    const arr = filtersParams.split('+').filter(Boolean);
+    const arr = filtersParam ? filtersParam.split('+') : [].filter(Boolean);
     const index = arr.indexOf(facility);
 
     // add or remove facilities
@@ -37,20 +41,8 @@ function FilterSectionFacilities({ isActive }: Props) {
       arr.push(facility);
     } else if (!isFilterSelected && index > -1) {
       arr.splice(index, 1);
-    } else {
-      return;
     }
-
-    filtersParams = arr.join('+');
-
-    // update the URL with new filters or delete that key if there are no values
-    const newSearchParams = new URLSearchParams(searchParams.toString());
-    if (filtersParams === '') {
-      newSearchParams.delete('filters');
-    } else {
-      newSearchParams.set('filters', filtersParams);
-    }
-    setSearchParams(newSearchParams);
+    updateSearchParams('filters', arr.join('+'));
   };
 
   return (
@@ -67,7 +59,7 @@ function FilterSectionFacilities({ isActive }: Props) {
       {isSelected && (
         <FacilitiesList
           facilities={facilities}
-          filteredFacilities={filtersParams.split('+')}
+          filtersParam={filtersParam}
           onFilterClicked={onFilterClicked}
           data-testid='facilities-list'
         />

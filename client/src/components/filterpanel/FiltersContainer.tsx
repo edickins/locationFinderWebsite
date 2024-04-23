@@ -1,4 +1,3 @@
-import { useSearchParams } from 'react-router-dom';
 import FilterSectionFacilities from './FilterSectionFacilities';
 import FilterSectionFavourites from './FilterSectionFavourites';
 import FilterSectionSearch from './FilterSectionSearch';
@@ -7,8 +6,15 @@ import ClosePanelButton from '../buttons/ClosePanelButton';
 import { useFiltersContext } from '../../context/filtersContext/filtersContext';
 import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
 
-const FiltersContainer = function FiltersContainer() {
-  const [searchParams] = useSearchParams();
+type Props = {
+  filtersParam: string | null;
+  updateSearchParams: (key: string, value: string) => void;
+};
+
+const FiltersContainer = function FiltersContainer({
+  filtersParam,
+  updateSearchParams
+}: Props) {
   const { state, dispatchFilters } = useFiltersContext();
   const { isPanelOpen } = state;
 
@@ -19,7 +25,7 @@ const FiltersContainer = function FiltersContainer() {
   return (
     <section
       id='filters-container'
-      className={`pointer-events-auto fixed bottom-4 left-0 right-0 top-32 mx-4 flex flex-col bg-light-panel-secondary bg-opacity-95 p-4  drop-shadow-lg dark:bg-dark-panel md:relative md:top-0  md:mx-0 md:mt-0 md:max-h-[calc(100%-300px)] md:scroll-auto  md:border-b-2 md:border-l-2 md:border-r-2  md:border-light-secondary-color md:pt-0 ${
+      className={`pointer-events-auto fixed bottom-4 left-0 right-0 top-32 mx-4 flex flex-col bg-light-panel-secondary bg-opacity-95 p-2  drop-shadow-lg dark:bg-dark-panel md:relative md:top-0  md:mx-0 md:mt-0 md:max-h-[calc(100%-300px)] md:scroll-auto  md:border-b-2 md:border-l-2 md:border-r-2  md:border-light-secondary-color md:pt-0 ${
         isPanelOpen ? 'block' : 'hidden md:block'
       }`}
     >
@@ -32,7 +38,9 @@ const FiltersContainer = function FiltersContainer() {
       <div className='scrollbar mt-2 flex-grow overflow-auto md:mt-0'>
         <FilterSectionSearch />
         <FilterSectionFacilities
-          isActive={searchParams.getAll('filters').length > 0}
+          isActive={!!filtersParam}
+          updateSearchParams={updateSearchParams}
+          filtersParam={filtersParam}
         />
         <FilterSectionFavourites />
         <DoneButton

@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useRef } from 'react';
 import { useLocationsContext } from '../../context/locationContext/locationsContext';
 import { useFiltersContext } from '../../context/filtersContext/filtersContext';
 import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
@@ -9,9 +8,8 @@ function SearchLocation() {
   // store regEx matches in useRef() state
   const matchesRef = useRef<Set<string>>(new Set());
   const perfectMatchesRef = useRef<Set<string>>(new Set());
+  const textInputRef = useRef<HTMLInputElement | null>(null);
   const { dispatchFilters, dispatchSearchResults } = useFiltersContext();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [searchText, setSearchText] = useState('');
 
   const onSearchPanelChange = () => {
     dispatchFilters({ type: FiltersActionEnum.SEARCH_TERM_CHANGE });
@@ -122,7 +120,6 @@ function SearchLocation() {
     const { value } = e.target;
     // set the useRef values to empty strings
     clearAllSearches();
-    setSearchText(value);
     if (value === '') {
       dispatchSearchResults({
         type: SearchActionEnum.ADD_SEARCH_MATCH_IDS,
@@ -138,26 +135,12 @@ function SearchLocation() {
     // look for the entered text in the address_component fields
     findTermInAddressFields(value);
     findTermInFacilitiesList(value);
+    dispatchSearchResults({
+      type: SearchActionEnum.SET_SEARCH_TERM,
+      payload: value
+    });
     onSearchPanelChange();
   };
-
-  useEffect(() => {
-    // Create a new URLSearchParams instance to clone the current parameters
-    const newSearchParams = new URLSearchParams(searchParams.toString());
-
-    // delete the searchParam for search if there is no search term
-    if (searchText === '') {
-      newSearchParams.delete('search');
-    }
-
-    // Set the new locationID parameter
-    if (searchText !== '') {
-      newSearchParams.set('search', searchText);
-    }
-
-    // Replace the search parameters - this will be picked up in Home
-    setSearchParams(newSearchParams);
-  }, [searchParams, searchText, setSearchParams]);
 
   return (
     <div
@@ -176,6 +159,7 @@ function SearchLocation() {
         className='mb-1 w-48 rounded-sm px-2 dark:text-gray-900 md:mb-0'
         onChange={onSearchChange}
         onFocus={onSearchChange}
+        ref={textInputRef}
       />
     </div>
   );

@@ -11,12 +11,17 @@ export default function searchReducer(
     case SearchActionEnum.ADD_SEARCH_MATCH_IDS:
       return {
         ...state,
-        searchTerms: [...payload]
+        searchTermsMatch: [...payload]
       };
     case SearchActionEnum.ADD_SEARCH_PERFECT_MATCH_IDS:
       return {
         ...state,
         searchTermsPerfectMatch: [...payload]
+      };
+    case SearchActionEnum.SET_SEARCH_TERM:
+      return {
+        ...state,
+        searchTerm: payload
       };
     default:
       return state;

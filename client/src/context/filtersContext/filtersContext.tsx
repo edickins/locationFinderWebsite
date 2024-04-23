@@ -17,7 +17,11 @@ const FiltersContext = createContext<IFiltersContext>({
     isSearchSelected: false,
     isSearchActive: false
   },
-  matchingLocationIds: { searchTerms: [], searchTermsPerfectMatch: [] },
+  searchData: {
+    searchTermsMatch: [],
+    searchTermsPerfectMatch: [],
+    searchTerm: ''
+  },
   dispatchFilters: () => {},
   dispatchSearchResults: () => {}
 });
@@ -31,20 +35,21 @@ export default function FiltersProvider({ children }: PropsWithChildren) {
     isSearchActive: false
   });
 
-  const [matchingLocationIds, dispatchSearchResults] = useReducer(
-    searchReducer,
-    { searchTerms: [], searchTermsPerfectMatch: [] }
-  );
+  const [searchData, dispatchSearchResults] = useReducer(searchReducer, {
+    searchTermsMatch: [],
+    searchTermsPerfectMatch: [],
+    searchTerm: ''
+  });
 
   // create context initialValue
   const initialValue: IFiltersContext = useMemo(
     () => ({
       state,
-      matchingLocationIds,
+      searchData,
       dispatchFilters,
       dispatchSearchResults
     }),
-    [state, matchingLocationIds]
+    [state, searchData]
   );
 
   return (
