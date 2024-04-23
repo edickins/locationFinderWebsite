@@ -24,7 +24,9 @@ exports.getLocations = asyncHandler(async (req, res, next) => {
 exports.getLocation = asyncHandler(async (req, res, next) => {
   console.log(req.params.id);
   try {
-    const location = await Location.findOne({ id: req.params.id });
+    const location = await Location.findOne({ id: req.params.id }).populate(
+      'facilities'
+    );
 
     if (!location) {
       return next(
@@ -46,19 +48,14 @@ exports.getLocation = asyncHandler(async (req, res, next) => {
 // @access Private Admin
 exports.createLocation = asyncHandler(async (req, res, next) => {
   try {
-    // create a new document using fields from the req.body
-    const location = new Location({
-      long_name: req.long_name,
-      alphabetical_name: req.alphabetical_name,
-      location: req.location
-    });
-
     const address = encodeURIComponent(req.body.postal_address);
     const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.GEOCDER_KEY}`;
     try {
       const result = await axios.get(url);
       const apiResponse = result.data;
 
+      // create a new document destructuring fields from the req.body
+      // add all other fields from the map api response
       const location = new Location({
         ...req.body,
         ...apiResponse.results[0]
