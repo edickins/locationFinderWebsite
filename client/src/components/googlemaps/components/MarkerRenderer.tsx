@@ -1,5 +1,5 @@
-import { useEffect, memo, useRef } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { memo } from 'react';
+
 import { ILocation } from '../../../context/locationContext/types';
 import MultiMarker from './MultiMarker';
 
@@ -17,23 +17,6 @@ const checkForActiveFilter = (item: ILocation, filters: string[]): boolean => {
 };
 
 function MarkerRenderer({ items, activeFilters, onMarkerClicked }: Props) {
-  const [searchParams] = useSearchParams();
-  const filtersRef = useRef<string | null | undefined>();
-
-  // udpate the list of active filters based on searchParams
-  useEffect(() => {
-    const searchParamsFilters = searchParams.get('filters') || '';
-
-    // Only call setFilters if searchParamsFilters and filters are different
-    if (searchParamsFilters !== filtersRef.current) {
-      // Decode the filters from the URL
-      const decodedSearchParamsFilters =
-        decodeURIComponent(searchParamsFilters);
-
-      filtersRef.current = decodedSearchParamsFilters;
-    }
-  }, [searchParams]);
-
   if (!items || items.length === 0) return null;
   const arr = activeFilters?.split('+') || [];
   return items.map((item) => {

@@ -36,12 +36,12 @@ const FiltersContainer = function FiltersContainer({
         />
       </nav>
       <div className='scrollbar mt-2 flex-grow overflow-auto md:mt-0'>
-        <FilterSectionSearch />
+        <FilterSectionSearch updateSearchParams={updateSearchParams} />
         <FilterSectionFacilities
           updateSearchParams={updateSearchParams}
           filtersParam={filtersParam}
         />
-        <FilterSectionFavourites />
+        <FilterSectionFavourites updateSearchParams={updateSearchParams} />
         <DoneButton
           isPanelOpen={isPanelOpen}
           hideFilterPanel={hideFilterPanel}

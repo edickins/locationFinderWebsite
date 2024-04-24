@@ -3,7 +3,11 @@ import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
 import FilterButton from '../buttons/FilterButton';
 import SearchResultsList from './SearchResultsList';
 
-function FilterSectionSearch() {
+type Props = {
+  updateSearchParams: (key: string, value: string) => void;
+};
+
+function FilterSectionSearch({ updateSearchParams }: Props) {
   const { state, dispatchFilters } = useFiltersContext();
   const isSelected = state.isSearchSelected;
 
@@ -20,7 +24,9 @@ function FilterSectionSearch() {
       >
         <span className='text-xl'>Search</span>
       </FilterButton>
-      {isSelected && <SearchResultsList />}
+      {isSelected && (
+        <SearchResultsList updateSearchParams={updateSearchParams} />
+      )}
     </section>
   );
 }

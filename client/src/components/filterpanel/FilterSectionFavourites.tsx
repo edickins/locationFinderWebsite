@@ -5,7 +5,11 @@ import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
 import FilterButton from '../buttons/FilterButton';
 import FavouritesList from './FavouritesList';
 
-function FilterSectionFavourites() {
+type Props = {
+  updateSearchParams: (key: string, value: string) => void;
+};
+
+function FilterSectionFavourites({ updateSearchParams }: Props) {
   const { state, dispatchFilters } = useFiltersContext();
   const {
     state: { locations }
@@ -34,7 +38,12 @@ function FilterSectionFavourites() {
           {favourites && favourites.length > 0 ? ` (${favourites.length})` : ''}
         </span>
       </FilterButton>
-      {isSelected && <FavouritesList favourites={favourites} />}
+      {isSelected && (
+        <FavouritesList
+          favourites={favourites}
+          updateSearchParams={updateSearchParams}
+        />
+      )}
     </section>
   );
 }

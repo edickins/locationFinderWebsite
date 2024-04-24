@@ -1,4 +1,3 @@
-import { useSearchParams } from 'react-router-dom';
 import { useMapContext } from 'googlemaps-react-primitives';
 import { useEffect, useRef } from 'react';
 import { userLocationSVG } from './markerSVGs';
@@ -6,11 +5,21 @@ import useGetScreensize, { ScreenSizeEnum } from '../../../hooks/getScreensize';
 
 type Props = {
   findNearestLocation: (loc: { lat: number; lng: number }) => void;
+  userLocation: string | null;
+  locationID: string | null;
 };
 
-function UserLocationDisplay({ findNearestLocation }: Props) {
+type LatLng = {
+  lat: number;
+  lng: number;
+};
+
+function UserLocationDisplay({
+  findNearestLocation,
+  userLocation,
+  locationID
+}: Props) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [searchParams] = useSearchParams();
   const infoWindowRef = useRef<google.maps.InfoWindow | null>(null);
   const circleRef = useRef<google.maps.Circle | null>(null);
   const markerRef = useRef<google.maps.Marker | null>(null);
@@ -20,9 +29,8 @@ function UserLocationDisplay({ findNearestLocation }: Props) {
   const { map, addMarker } = useMapContext();
 
   useEffect(() => {
-    const posString = searchParams.get('userLocation');
-    if (posString) {
-      const pos = JSON.parse(posString);
+    if (userLocation) {
+      const pos: LatLng = JSON.parse(userLocation);
 
       // Check if pos is a valid LatLng object
       if (pos && typeof pos.lat === 'number' && typeof pos.lng === 'number') {
@@ -33,16 +41,13 @@ function UserLocationDisplay({ findNearestLocation }: Props) {
         // Handle the error...
       }
     }
-  }, [findNearestLocation, searchParams]);
+  }, [findNearestLocation, userLocation]);
 
   useEffect(() => {
-    const posString = searchParams.get('userLocation');
-    const locationID = searchParams.get('locationID');
-
-    if (posString) {
-      const userLocation = JSON.parse(posString);
+    if (userLocation) {
+      const userLocationObj = JSON.parse(userLocation);
       if (
-        userLocation &&
+        userLocationObj &&
         !infoWindowRef.current &&
         !circleRef.current &&
         !markerRef.current
@@ -59,7 +64,7 @@ function UserLocationDisplay({ findNearestLocation }: Props) {
         }
 
         const infoW = new google.maps.InfoWindow({ disableAutoPan: true });
-        infoW.setPosition(userLocation);
+        infoW.setPosition(userLocationObj);
         infoW.setOptions({
           pixelOffset: new google.maps.Size(0, -30)
         });
@@ -68,15 +73,15 @@ function UserLocationDisplay({ findNearestLocation }: Props) {
         infoW.setContent(styledContent);
         infoW.open(map);
         const latLng = new google.maps.LatLng(
-          userLocation.lat,
-          userLocation.lng
+          userLocationObj.lat,
+          userLocationObj.lng
         );
 
         // only zoom to location if user location has not been displayed
         if (map && !locationID) {
           map.panTo(latLng);
           map.setZoom(zoomLevel);
-          map.setCenter(userLocation);
+          map.setCenter(userLocationObj);
         }
 
         const c = new google.maps.Circle({
@@ -86,7 +91,7 @@ function UserLocationDisplay({ findNearestLocation }: Props) {
           fillColor: '#FF0000',
           fillOpacity: 0.1,
           map,
-          center: userLocation,
+          center: userLocationObj,
           radius: 150
         });
 
@@ -123,7 +128,14 @@ function UserLocationDisplay({ findNearestLocation }: Props) {
         markerRef.current = null;
       }
     };
-  }, [addMarker, findNearestLocation, map, screenSize, searchParams]);
+  }, [
+    addMarker,
+    findNearestLocation,
+    locationID,
+    map,
+    screenSize,
+    userLocation
+  ]);
   return null;
 }
 

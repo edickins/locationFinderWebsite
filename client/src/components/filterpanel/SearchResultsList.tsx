@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import SearchResultItem from './SearchResultItem';
 import { ILocation } from '../../context/locationContext/types';
 import { useLocationsContext } from '../../context/locationContext/locationsContext';
@@ -24,7 +23,11 @@ function NoResults({ searchTerm }: { searchTerm: string }) {
   );
 }
 
-function SearchResultsList() {
+type Props = {
+  updateSearchParams: (key: string, value: string) => void;
+};
+
+function SearchResultsList({ updateSearchParams }: Props) {
   const [partialMatches, setPartialMatches] = useState<ILocation[]>([]);
   const [perfectMatches, setPerfectMatches] = useState<ILocation[]>([]);
   const [searchResults, setSearchResults] = useState<ILocation[]>([]);
@@ -34,17 +37,9 @@ function SearchResultsList() {
 
   const { searchData, dispatchFilters } = useFiltersContext();
   const { searchTermsMatch, searchTermsPerfectMatch, searchTerm } = searchData;
-  const [searchParams, setSearchParams] = useSearchParams();
 
   const onSearchResultClick = (locationID: string): void => {
-    // Create a new URLSearchParams instance to clone the current parameters
-    const newSearchParams = new URLSearchParams(searchParams.toString());
-
-    // Set the new locationID parameter
-    newSearchParams.set('locationID', locationID);
-
-    // Replace the search parameters - this will be picked up in MyMap
-    setSearchParams(newSearchParams);
+    updateSearchParams('locationID', locationID);
 
     // close the filter panel
     setTimeout(() => {

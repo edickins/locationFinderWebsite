@@ -1,47 +1,26 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useMapContext } from 'googlemaps-react-primitives';
-import { useSearchParams } from 'react-router-dom';
 
 interface Props extends google.maps.InfoWindowOptions {
   content: string;
   position: google.maps.LatLngLiteral;
-  // setShowPanel: (show: boolean) => void;
+  updateSearchParams: (key: string, value: string) => void;
+  locationID: string | null;
 }
 
-function InfoWindow({ content, position }: Props) {
+function InfoWindow({
+  content,
+  position,
+  updateSearchParams,
+  locationID
+}: Props) {
   const infoWindowRef = useRef<google.maps.InfoWindow>();
   const clickListenerRef = useRef<google.maps.MapsEventListener | undefined>();
   const { map } = useMapContext();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const searchParamsRef = useRef(searchParams);
-  const setSearchParamsRef = useRef(setSearchParams);
-  const [locationID, setLocationID] = useState<string | null>(
-    searchParams.get('locationID')
-  );
-
-  // store references to searchParams to stop re-renders caused by params other than locationID changing.
-  useEffect(() => {
-    searchParamsRef.current = searchParams;
-    setSearchParamsRef.current = setSearchParams;
-  }, [searchParams, setSearchParams]);
-
-  // prevent re-renders from other searchParam values (like search) changing
-  // by only responding to locationID changing.
-
-  useEffect(() => {
-    const newLocationID = searchParams.get('locationID');
-    if (newLocationID !== locationID) {
-      setLocationID(newLocationID);
-    }
-  }, [locationID, searchParams]);
 
   const clearLocationID = useCallback(() => {
-    const newSearchParams = new URLSearchParams(
-      searchParamsRef.current.toString()
-    );
-    newSearchParams.delete('locationID');
-    setSearchParamsRef.current(newSearchParams);
-  }, []);
+    updateSearchParams('locationID', '');
+  }, [updateSearchParams]);
 
   // listen to click events on the infoWindow displayed when a user clicks on it
   useEffect(() => {

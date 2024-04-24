@@ -43,7 +43,7 @@ function MyMap({
   defaultMapProps
 }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const { dispatchFilters } = useFiltersContext();
 
   const [activeFilters, setActiveFilters] = useState<string | null>();
@@ -52,6 +52,18 @@ function MyMap({
   const [markerClicks, setMarkerClicks] = useState(0);
   const [infoWindowLocation, setInfoWindowLocation] =
     useState<google.maps.LatLngLiteral>({ lat: 0, lng: 0 });
+
+  const updateSearchParams = (key: string, value: string) => {
+    if (!key) return;
+    // update the URL with new filters or delete that key if there are no values
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+    if (!value) {
+      newSearchParams.delete(key);
+    } else {
+      newSearchParams.set(key, value);
+    }
+    setSearchParams(newSearchParams);
+  };
 
   // update the Array of user selected filters that are active
   useEffect(() => {
@@ -124,9 +136,15 @@ function MyMap({
             key={markerClicks}
             content={infoWindowData}
             position={infoWindowLocation}
+            updateSearchParams={updateSearchParams}
+            locationID={searchParams.get('locationID')}
           />
 
-          <UserLocationDisplay findNearestLocation={findNearestLocation} />
+          <UserLocationDisplay
+            findNearestLocation={findNearestLocation}
+            userLocation={searchParams.get('userLocation')}
+            locationID={searchParams.get('locationID')}
+          />
         </GoogleMap>
       </Wrapper>
     </div>
