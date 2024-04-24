@@ -120,6 +120,12 @@ function SearchLocation() {
     const { value } = e.target;
     // set the useRef values to empty strings
     clearAllSearches();
+
+    dispatchSearchResults({
+      type: SearchActionEnum.SET_SEARCH_TERM,
+      payload: value
+    });
+
     if (value === '') {
       dispatchSearchResults({
         type: SearchActionEnum.ADD_SEARCH_MATCH_IDS,
@@ -135,10 +141,7 @@ function SearchLocation() {
     // look for the entered text in the address_component fields
     findTermInAddressFields(value);
     findTermInFacilitiesList(value);
-    dispatchSearchResults({
-      type: SearchActionEnum.SET_SEARCH_TERM,
-      payload: value
-    });
+
     onSearchPanelChange();
   };
 

@@ -38,7 +38,6 @@ const FiltersContainer = function FiltersContainer({
       <div className='scrollbar mt-2 flex-grow overflow-auto md:mt-0'>
         <FilterSectionSearch />
         <FilterSectionFacilities
-          isActive={!!filtersParam}
           updateSearchParams={updateSearchParams}
           filtersParam={filtersParam}
         />

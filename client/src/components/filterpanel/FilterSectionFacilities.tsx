@@ -6,22 +6,18 @@ import { useFiltersContext } from '../../context/filtersContext/filtersContext';
 import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
 
 interface Props {
-  isActive: boolean;
   updateSearchParams: (key: string, value: string) => void;
   filtersParam: string | null;
 }
 
-function FilterSectionFacilities({
-  isActive,
-  updateSearchParams,
-  filtersParam
-}: Props) {
+function FilterSectionFacilities({ updateSearchParams, filtersParam }: Props) {
   const { facilities } = useLocationsContext();
 
   const [activeFilters, setActiveFilters] = useState('');
 
   const { state, dispatchFilters } = useFiltersContext();
   const isSelected = state.isFacilitiesSelected;
+  const isActive = !!filtersParam;
 
   const onClick = () => {
     dispatchFilters({ type: FiltersActionEnum.FILTER_BUTTON_CLICK });
