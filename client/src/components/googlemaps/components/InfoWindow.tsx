@@ -37,7 +37,7 @@ function InfoWindow({
         pixelOffset: new google.maps.Size(0, -30),
         disableAutoPan: true
       });
-      infoWindowRef.current.open(map);
+      infoWindowRef.current.open({ shouldFocus: false, map });
 
       clickListenerRef.current = google.maps.event.addListener(
         infoWindowRef.current,
