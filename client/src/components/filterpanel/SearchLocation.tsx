@@ -162,7 +162,6 @@ function SearchLocation() {
         className='mb-1 w-48 rounded-sm px-2 dark:text-gray-900 md:mb-0'
         onChange={onSearchChange}
         onFocus={() => dispatchOnSearchPanelChange()}
-        onBlur={() => textInputRef.current?.focus()}
         ref={textInputRef}
       />
     </div>
