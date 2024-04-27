@@ -103,7 +103,7 @@ function Home() {
         case ScreenSizeEnum.XL:
         case ScreenSizeEnum.LG:
         case ScreenSizeEnum.MD:
-          offsetX = -100;
+          offsetX = -200;
           offsetY = -50;
           break;
         case ScreenSizeEnum.SM:
@@ -138,7 +138,7 @@ function Home() {
             aPoint.y += offsetY;
             const markerOffsetLatLng = proj.fromContainerPixelToLatLng(aPoint);
             if (markerOffsetLatLng !== null) {
-              googleMapRef.panTo(markerLatLng); // newLocation is the LatLng of the new location
+              googleMapRef.panTo(markerOffsetLatLng); // newLocation is the LatLng of the new location
               google.maps.event.addListenerOnce(googleMapRef, 'idle', () => {
                 // the map has finished panning
                 googleMapRef.setZoom(zoomLevel); // newZoomLevel is the desired zoom level
