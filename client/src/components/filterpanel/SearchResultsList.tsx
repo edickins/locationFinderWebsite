@@ -4,6 +4,7 @@ import { ILocation } from '../../context/locationContext/types';
 import { useLocationsContext } from '../../context/locationContext/locationsContext';
 import { useFiltersContext } from '../../context/filtersContext/filtersContext';
 import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
+import useGetScreensize, { ScreenSizeEnum } from '../../hooks/getScreensize';
 
 function SearchTermMessage({ searchTerm }: { searchTerm: string }) {
   const msg =
@@ -34,6 +35,7 @@ function SearchResultsList({ updateSearchParams }: Props) {
   const {
     state: { locations }
   } = useLocationsContext();
+  const screenSize = useGetScreensize();
 
   const { searchData, dispatchFilters } = useFiltersContext();
   const { searchTermsMatch, searchTermsPerfectMatch, searchTerm } = searchData;
@@ -41,10 +43,12 @@ function SearchResultsList({ updateSearchParams }: Props) {
   const onSearchResultClick = (locationID: string): void => {
     updateSearchParams('locationID', locationID);
 
-    // close the filter panel
-    setTimeout(() => {
-      dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
-    }, 300);
+    // close the filter panel on small devices
+    if (screenSize === ScreenSizeEnum.SM || screenSize === ScreenSizeEnum.MD) {
+      setTimeout(() => {
+        dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
+      }, 300);
+    }
   };
 
   // sideEffect when search terms are updated
