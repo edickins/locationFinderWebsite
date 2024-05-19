@@ -2,21 +2,26 @@ import { useState, useEffect } from 'react';
 import FacilitiesList from './FacilitiesList';
 import FilterButton from '../buttons/FilterButton';
 import { useLocationsContext } from '../../context/locationContext/locationsContext';
-import { useFiltersContext } from '../../context/filtersContext/filtersContext';
-import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
+import {
+  FiltersActionEnum,
+  FiltersActionType
+} from '../../reducer/filtersReducer/types';
 
 interface Props {
   updateSearchParams: (key: string, value: string) => void;
   filtersParam: string | null;
+  isSelected: boolean;
+  dispatchFilters: React.Dispatch<FiltersActionType>;
 }
 
-function FilterSectionFacilities({ updateSearchParams, filtersParam }: Props) {
+function FilterSectionFacilities({
+  updateSearchParams,
+  filtersParam,
+  isSelected,
+  dispatchFilters
+}: Props) {
   const { facilities } = useLocationsContext();
-
   const [activeFilters, setActiveFilters] = useState('');
-
-  const { state, dispatchFilters } = useFiltersContext();
-  const isSelected = state.isFacilitiesSelected;
   const isActive = !!filtersParam;
 
   const onClick = () => {

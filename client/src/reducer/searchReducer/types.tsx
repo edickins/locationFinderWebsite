@@ -4,17 +4,17 @@ export enum SearchActionEnum {
   SET_SEARCH_TERM = 'SET_SEARCH_TERM'
 }
 
-interface AddSearchMatchIDs {
+export interface AddSearchMatchIDs {
   type: SearchActionEnum.ADD_SEARCH_MATCH_IDS;
   payload: string[];
 }
 
-interface AddSearchPerfectMatchIDs {
+export interface AddSearchPerfectMatchIDs {
   type: SearchActionEnum.ADD_SEARCH_PERFECT_MATCH_IDS;
   payload: string[];
 }
 
-interface SetSearchTerm {
+export interface SetSearchTerm {
   type: SearchActionEnum.SET_SEARCH_TERM;
   payload: string;
 }

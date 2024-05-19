@@ -14,6 +14,7 @@ function ButtonActiveIcon({ icon, isActive }: Props) {
             src={base64Svg}
             alt='active button indicator'
             className='inline-block h-4 w-4 '
+            data-testid='active-icon'
           />
         </>
       ) : (

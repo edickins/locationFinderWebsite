@@ -40,6 +40,8 @@ const FiltersContainer = function FiltersContainer({
         <FilterSectionFacilities
           updateSearchParams={updateSearchParams}
           filtersParam={filtersParam}
+          isSelected={state.isFacilitiesSelected}
+          dispatchFilters={dispatchFilters}
         />
         <FilterSectionFavourites updateSearchParams={updateSearchParams} />
         <DoneButton

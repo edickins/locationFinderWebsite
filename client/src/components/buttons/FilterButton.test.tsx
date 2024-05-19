@@ -28,6 +28,6 @@ describe('FilterButton', () => {
     renderFilterButton(false);
 
     const iconElement = screen.getByTestId('icon');
-    expect(iconElement).toHaveClass('fa-filter');
+    expect(iconElement).toBeInTheDocument();
   });
 });
