@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { useMapContext } from 'googlemaps-react-primitives';
 
 interface Props extends google.maps.InfoWindowOptions {
