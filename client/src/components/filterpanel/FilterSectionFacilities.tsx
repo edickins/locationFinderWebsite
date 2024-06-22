@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import FacilitiesList from './FacilitiesList';
-import FilterButton from '../buttons/FilterButton';
+import FilterButton from '../buttons/IconButton';
 import { useLocationsContext } from '../../context/locationContext/locationsContext';
 import {
   FiltersActionEnum,
@@ -62,7 +62,6 @@ function FilterSectionFacilities({
           facilities={facilities}
           filtersParam={filtersParam}
           onFilterClicked={onFilterClicked}
-          data-testid='facilities-list'
         />
       )}
     </section>

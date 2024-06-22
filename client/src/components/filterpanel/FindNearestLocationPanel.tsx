@@ -1,4 +1,4 @@
-import FilterButton from '../buttons/FilterButton';
+import FilterButton from '../buttons/IconButton';
 
 type Props = {
   handleFindLocationButtonClick: () => void;

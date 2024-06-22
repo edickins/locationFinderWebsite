@@ -2,8 +2,8 @@ import UserEvent from '@testing-library/user-event';
 import { describe, it, vi, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
-import { IFacility } from '../../context/locationContext/types';
-import FacilitiesList from './FacilitiesList';
+import { IFacility } from '../../../context/locationContext/types';
+import FacilitiesList from '../FacilitiesList';
 
 const facilities: IFacility[] = [
   { full_name: 'facility001', short_name: 'facility001', id: 'facility001' },
@@ -58,8 +58,7 @@ describe('FacilitiesList', () => {
       />
     );
 
-    const formItems = screen.getAllByTestId('facility-form-item');
-
+    const formItems = screen.getAllByRole('checkbox');
     expect(formItems).toHaveLength(8);
   });
 
@@ -73,16 +72,16 @@ describe('FacilitiesList', () => {
     );
 
     // find in document the correct number of facilities that have a true value on the checkbox (2)
-    const filteredFacilities = filtersParam ? filtersParam.split('+') : [];
-    const filteredCheckboxes = filteredFacilities.map((filteredFacility) => {
-      return screen.getByTestId(filteredFacility);
-    });
+    const allCheckboxes = screen.getAllByRole('checkbox');
+    expect(allCheckboxes).toHaveLength(8);
 
-    expect(filteredCheckboxes).toHaveLength(2);
+    const checkedCheckboxes = allCheckboxes.filter(
+      (checkbox: HTMLElement): checkbox is HTMLInputElement => {
+        return (checkbox as HTMLInputElement).checked;
+      }
+    );
 
-    filteredCheckboxes.forEach((checkbox) => {
-      expect(checkbox).toHaveProperty('checked', true);
-    });
+    expect(checkedCheckboxes).toHaveLength(2);
   });
 
   it('calls onFilterClicked with the correct arguments', async () => {
@@ -93,10 +92,9 @@ describe('FacilitiesList', () => {
         onFilterClicked={mockOnFilterClicked}
       />
     );
-
     const user = UserEvent.setup();
-    const checkboxInput = screen.getByTestId('facility003');
 
+    const checkboxInput = screen.getByRole('checkbox', { name: 'facility003' });
     await user.click(checkboxInput);
 
     expect(mockOnFilterClicked).toHaveBeenCalledOnce();

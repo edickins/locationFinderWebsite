@@ -1,6 +1,6 @@
 import { useFiltersContext } from '../../context/filtersContext/filtersContext';
 import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
-import FilterButton from '../buttons/FilterButton';
+import FilterButton from '../buttons/IconButton';
 import SearchResultsList from './SearchResultsList';
 
 type Props = {

@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ILocation } from '../../context/locationContext/types';
-import FilterButton from '../buttons/FilterButton';
+import FilterButton from '../buttons/IconButton';
 
 interface Props extends PropsWithChildren<JSX.Element> {
   item: ILocation | undefined;

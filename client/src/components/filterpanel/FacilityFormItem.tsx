@@ -16,21 +16,15 @@ function FacilityFormItem({
   };
 
   return (
-    <li
-      className='flex justify-between gap-4 bg-white px-2 py-2 hover:bg-gray-100 dark:text-gray-900 md:mb-1 md:py-1'
-      aria-label='available facility'
-      data-testid='facility-form-item'
-    >
+    <li className='flex justify-between gap-4 bg-white px-2 py-2 hover:bg-gray-100 dark:text-gray-900 md:mb-1 md:py-1'>
       <label htmlFor={facility.short_name}>{facility.full_name}</label>
       <input
-        data-testid={facility.short_name}
         type='checkbox'
         name={facility.short_name}
         id={facility.short_name}
         className='self-center'
         onChange={(e) => handleOnClick(e)}
         checked={checked}
-        aria-label={`Select ${facility.full_name}`}
       />
     </li>
   );

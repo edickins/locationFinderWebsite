@@ -1,5 +1,5 @@
 import { ILocation } from '../../context/locationContext/types';
-import FilterButton from './FilterButton';
+import FilterButton from './IconButton';
 
 type Props = {
   destination: ILocation | undefined;

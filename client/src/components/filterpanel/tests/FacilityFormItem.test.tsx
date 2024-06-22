@@ -1,7 +1,7 @@
 import UserEvent from '@testing-library/user-event';
 import { describe, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import FacilityFormItem from './FacilityFormItem';
+import FacilityFormItem from '../FacilityFormItem';
 
 const mockOnFilterClicked = vi.fn();
 const mockFacility = {
@@ -23,7 +23,9 @@ describe('FacilityFormItem', () => {
 
     const user = UserEvent.setup();
 
-    const checkboxInput = screen.getByTestId(mockFacility.short_name);
+    const checkboxInput = screen.getByRole('checkbox', {
+      name: mockFacility.short_name
+    });
 
     await user.click(checkboxInput);
 
@@ -40,7 +42,9 @@ describe('FacilityFormItem', () => {
       />
     );
 
-    const checkboxInput = screen.getByTestId(mockFacility.short_name);
+    const checkboxInput = screen.getByRole('checkbox', {
+      name: mockFacility.short_name
+    });
 
     expect(checkboxInput).toHaveProperty('checked', true);
   });

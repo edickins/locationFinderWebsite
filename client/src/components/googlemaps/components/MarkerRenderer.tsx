@@ -30,7 +30,6 @@ function MarkerRenderer({ items, activeFilters, onMarkerClicked }: Props) {
         isFilterActive={filterIsActive}
         isFavourite={item.isFavourite}
         open_status={item.open_status}
-        data-testid={`marker-${item.id}`}
         onMarkerClicked={onMarkerClicked}
       />
     );

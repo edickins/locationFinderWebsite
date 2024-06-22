@@ -1,7 +1,7 @@
 import { describe, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import ButtonActiveIcon from './ButtonActiveIcon';
-import { activeFilterSVG } from '../googlemaps/components/markerSVGs';
+import ButtonActiveIcon from '../ButtonActiveIcon';
+import { activeFilterSVG } from '../../googlemaps/components/markerSVGs';
 
 describe('Render icon which accepts boolean isActive prop', () => {
   it('Should render an image when the isActive props is true', () => {

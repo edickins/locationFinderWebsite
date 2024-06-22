@@ -16,7 +16,7 @@ function NoResults() {
 }
 
 type Props = {
-  favourites: (ILocation | null)[];
+  favourites: ILocation[];
   updateSearchParams: (key: string, value: string) => void;
 };
 

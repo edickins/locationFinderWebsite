@@ -1,6 +1,6 @@
 import { vi, expect, describe, test } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import FilterButton from './FilterButton';
+import FilterButton from '../IconButton';
 
 const handleFilterButtonClick = vi.fn();
 const searchParams = new URLSearchParams('?filters=foo+bar');
