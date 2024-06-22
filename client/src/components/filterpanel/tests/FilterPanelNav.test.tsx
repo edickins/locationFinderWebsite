@@ -3,7 +3,9 @@ import { MemoryRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import FilterPanelNav from '../FilterPanelNav';
-import { useFiltersContext } from '../../../context/filtersContext/filtersContext';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
+import { FiltersActionEnum } from '../../../reducer/filtersReducer/types';
 
 const filtersParam = '';
 
@@ -11,7 +13,7 @@ const filtersParam = '';
 const mockAction = vi.fn();
 
 // Mock your custom hook
-vi.mock('./customHook', () => ({
+vi.mock('../../../context/filtersContext/filtersContext', () => ({
   useFiltersContext: () => ({
     state: {
       isPanelOpen: false,
@@ -20,7 +22,7 @@ vi.mock('./customHook', () => ({
       isSearchSelected: false,
       isSearchActive: false
     },
-    action: mockAction
+    dispatchFilters: mockAction
   })
 }));
 
@@ -46,9 +48,11 @@ describe('FilterPanelNav', () => {
     await user.click(nearestToiletButton);
 
     expect(handleFindLocationButtonClick).toHaveBeenCalledOnce();
+
+    vi.resetAllMocks(); // all mock.calls[][] array values are reset.
   });
 
-  test('should call the action function', async () => {
+  test('should call the reducer action function when a filter button is clicked', async () => {
     // Render your component
     render(
       <MemoryRouter>
@@ -66,6 +70,8 @@ describe('FilterPanelNav', () => {
 
     // Assert that the action function was called
     expect(mockAction).toHaveBeenCalledOnce();
-    // You can also assert other expectations on the action function
+    expect(mockAction).toHaveBeenCalledWith({
+      type: FiltersActionEnum.FILTER_BUTTON_CLICK
+    });
   });
 });
