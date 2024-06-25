@@ -8,15 +8,17 @@ describe('Render icon which accepts boolean isActive prop', () => {
     const isActive = true;
     render(<ButtonActiveIcon isActive={isActive} icon={activeFilterSVG} />);
 
-    const renderedIcon = screen.getByTestId('active-icon');
+    const renderedIcon = screen.getByRole('img', { name: 'active icon' });
     expect(renderedIcon).toBeInTheDocument();
   });
 
-  it('Should not render an image when the isActive props is false', () => {
+  it('Should not render an image when the isActive props is false', async () => {
     const isActive = false;
     render(<ButtonActiveIcon isActive={isActive} icon={activeFilterSVG} />);
 
-    const renderedIcon = screen.queryByTestId('active-icon');
+    const renderedIcon = await screen.queryByRole('img', {
+      name: 'active icon'
+    });
     expect(renderedIcon).not.toBeInTheDocument();
   });
 });

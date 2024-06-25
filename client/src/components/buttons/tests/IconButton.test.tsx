@@ -27,7 +27,8 @@ describe('FilterButton', () => {
   test('should render button with correct icon', () => {
     renderFilterButton(false);
 
-    const iconElement = screen.getByTestId('icon');
-    expect(iconElement).toBeInTheDocument();
+    const iconWrapper = screen.getByRole('img', { name: 'button icon' });
+    expect(iconWrapper).toBeInTheDocument();
+    expect(iconWrapper.firstChild).toHaveClass('fa-filter');
   });
 });

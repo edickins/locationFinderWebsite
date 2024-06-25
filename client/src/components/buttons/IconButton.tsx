@@ -38,7 +38,9 @@ function FilterButton({
       }`}
     >
       <div className='flex content-end items-center'>
-        <i className={`fa-solid grow ${icon} text-base`} data-testid='icon' />
+        <span role='img' aria-label='button icon'>
+          <i className={`fa-solid grow ${icon} text-base`} />
+        </span>
         <span
           className={` ml-1 hover:underline  ${isSelected ? 'underline ' : ''}`}
         >

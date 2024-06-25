@@ -73,5 +73,42 @@ describe('FilterPanelNav', () => {
     expect(mockAction).toHaveBeenCalledWith({
       type: FiltersActionEnum.FILTER_BUTTON_CLICK
     });
+
+    vi.resetAllMocks(); // all mock.calls[][] array values are reset.
+  });
+
+  test('correctly calls the reducer action function when multiple filters button are clicked', async () => {
+    // Render your component
+    render(
+      <MemoryRouter>
+        <FilterPanelNav
+          handleFindLocationButtonClick={handleFindLocationButtonClick}
+          filtersParam={filtersParam}
+        />
+      </MemoryRouter>
+    );
+
+    const user = userEvent.setup();
+
+    const filterButton = screen.getByRole('button', { name: /Filter/i });
+    await user.click(filterButton);
+
+    // Assert that the action function was called
+    expect(mockAction).toHaveBeenCalledOnce();
+    expect(mockAction).toHaveBeenCalledWith({
+      type: FiltersActionEnum.FILTER_BUTTON_CLICK
+    });
+
+    const favouritesButton = screen.getByRole('button', {
+      name: /Favourites/i
+    });
+    await user.click(favouritesButton);
+
+    expect(mockAction).toHaveBeenCalledTimes(2);
+    expect(mockAction).toHaveBeenCalledWith({
+      type: FiltersActionEnum.FAVOURITES_BUTTON_CLICK
+    });
+
+    vi.resetAllMocks(); // all mock.calls[][] array values are reset.
   });
 });
