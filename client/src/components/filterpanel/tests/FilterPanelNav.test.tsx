@@ -10,7 +10,7 @@ import { FiltersActionEnum } from '../../../reducer/filtersReducer/types';
 const filtersParam = '';
 
 // Create a mock for the action function
-const mockAction = vi.fn();
+const mockDispatch = vi.fn();
 
 // Mock your custom hook
 vi.mock('../../../context/filtersContext/filtersContext', () => ({
@@ -22,7 +22,7 @@ vi.mock('../../../context/filtersContext/filtersContext', () => ({
       isSearchSelected: false,
       isSearchActive: false
     },
-    dispatchFilters: mockAction
+    dispatchFilters: mockDispatch
   })
 }));
 
@@ -69,8 +69,8 @@ describe('FilterPanelNav', () => {
     await user.click(filterButton);
 
     // Assert that the action function was called
-    expect(mockAction).toHaveBeenCalledOnce();
-    expect(mockAction).toHaveBeenCalledWith({
+    expect(mockDispatch).toHaveBeenCalledOnce();
+    expect(mockDispatch).toHaveBeenCalledWith({
       type: FiltersActionEnum.FILTER_BUTTON_CLICK
     });
 
@@ -94,8 +94,8 @@ describe('FilterPanelNav', () => {
     await user.click(filterButton);
 
     // Assert that the action function was called
-    expect(mockAction).toHaveBeenCalledOnce();
-    expect(mockAction).toHaveBeenCalledWith({
+    expect(mockDispatch).toHaveBeenCalledOnce();
+    expect(mockDispatch).toHaveBeenCalledWith({
       type: FiltersActionEnum.FILTER_BUTTON_CLICK
     });
 
@@ -104,8 +104,8 @@ describe('FilterPanelNav', () => {
     });
     await user.click(favouritesButton);
 
-    expect(mockAction).toHaveBeenCalledTimes(2);
-    expect(mockAction).toHaveBeenCalledWith({
+    expect(mockDispatch).toHaveBeenCalledTimes(2);
+    expect(mockDispatch).toHaveBeenCalledWith({
       type: FiltersActionEnum.FAVOURITES_BUTTON_CLICK
     });
 

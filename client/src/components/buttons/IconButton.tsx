@@ -12,7 +12,7 @@ type Props = {
   title?: string;
 };
 
-function FilterButton({
+function IconButton({
   onClick,
   isSelected,
   isActive,
@@ -38,7 +38,7 @@ function FilterButton({
       }`}
     >
       <div className='flex content-end items-center'>
-        <span role='img' aria-label='button icon'>
+        <span role='img'>
           <i className={`fa-solid grow ${icon} text-base`} />
         </span>
         <span
@@ -55,11 +55,11 @@ function FilterButton({
   );
 }
 
-FilterButton.defaultProps = {
+IconButton.defaultProps = {
   isSelected: false,
   isActive: false,
   reverseColours: false,
   title: ''
 };
 
-export default FilterButton;
+export default IconButton;

@@ -18,7 +18,7 @@ function DetailPanelAddress({
   hidePanel,
   showPanel,
   isPanelOpen
-}: Props) {
+}: Props): JSX.Element {
   const regEx = /closed/i;
   const isClosed = item?.open_status.match(regEx);
   const [searchParams] = useSearchParams();

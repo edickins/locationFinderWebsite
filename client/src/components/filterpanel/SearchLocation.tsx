@@ -150,10 +150,10 @@ function SearchLocation() {
       id='search-input'
       className='my-1 flex flex-row items-center justify-center '
     >
-      <span className='mx-2 text-sm md:shrink-0 md:text-base'>
+      <label htmlFor='search' className='mx-2 text-sm md:shrink-0 md:text-base'>
         Search{' '}
         <span className='hidden md:inline-block'>locations or facilities</span>
-      </span>
+      </label>
       <input
         type='text'
         name='search'
