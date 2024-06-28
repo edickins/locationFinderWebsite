@@ -6,6 +6,10 @@ import DoneButton from '../DoneButton';
 describe('DoneButton', () => {
   const mockHidePanel = vi.fn();
 
+  afterEach(() => {
+    mockHidePanel.mockReset();
+  });
+
   test('Does not render if the panel is not open', () => {
     render(<DoneButton hideFilterPanel={mockHidePanel} isPanelOpen={false} />);
 

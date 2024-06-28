@@ -20,6 +20,11 @@ const renderDetailPanelButton = (isOpen: boolean) => {
 };
 
 describe('CloseDetailPanelButton', () => {
+  afterEach(() => {
+    mockHidePanel.mockReset();
+    mockShowPanel.mockReset();
+  });
+
   test('Correct button text is displayed when panel is open', () => {
     renderDetailPanelButton(true);
 
