@@ -8,7 +8,7 @@ import { FiltersActionEnum } from '../../../reducer/filtersReducer/types';
 const mockDispatchFilters = vi.fn();
 const mockDispatchSearchResults = vi.fn();
 
-// Mock your custom hook
+// Mock the custom hook
 vi.mock('../../../context/filtersContext/filtersContext', () => ({
   useFiltersContext: () => ({
     state: {

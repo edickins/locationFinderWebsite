@@ -12,7 +12,7 @@ const filtersParam = '';
 // Create a mock for the action function
 const mockDispatch = vi.fn();
 
-// Mock your custom hook
+// Mock the custom hook
 vi.mock('../../../context/filtersContext/filtersContext', () => ({
   useFiltersContext: () => ({
     state: {
