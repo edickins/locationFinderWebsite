@@ -20,11 +20,7 @@ function FilterSectionFavourites({ updateSearchParams }: Props) {
     dispatchFilters({ type: FiltersActionEnum.FAVOURITES_BUTTON_CLICK });
   };
 
-  let favourites = locations.map((location: ILocation) => {
-    return location.isFavourite ? location : null;
-  });
-
-  favourites = favourites.filter(Boolean);
+  const favourites = locations.filter((location) => location.isFavourite);
   return (
     <section id='favourites-container' className='px-4 py-2'>
       <FilterButton
