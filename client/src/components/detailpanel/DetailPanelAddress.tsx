@@ -28,7 +28,6 @@ function DetailPanelAddress({
     const posString = searchParams.get('userLocation');
     if (posString) {
       const pos = JSON.parse(posString);
-
       // Check if pos is a valid LatLng object
       if (pos && typeof pos.lat === 'number' && typeof pos.lng === 'number') {
         setUserLocation(posString);
@@ -51,7 +50,9 @@ function DetailPanelAddress({
         </h1>
       </CloseDetailPanelButton>
       {userLocation && item && (
-        <GetDirectionsButton destination={item} originString={userLocation} />
+        <div>
+          <GetDirectionsButton destination={item} originString={userLocation} />
+        </div>
       )}
       <FavouritesToggle isFavourite={item?.isFavourite} id={item?.id} />
       {children}

@@ -31,7 +31,7 @@ function GetDirectionsButton({ destination, originString }: Props) {
     <div className='mb-4'>
       <FilterButton
         icon='fa-map-location-dot'
-        title='Click me to see this location on the map.'
+        title='Click to get directions from your current location to this address.'
         onClick={openGoogleMapsDirectionsURL}
         reverseColours={false}
       >

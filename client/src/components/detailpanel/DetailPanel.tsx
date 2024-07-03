@@ -16,7 +16,7 @@ type Props = {
 
 function DetailPanel({ item, nearestAlternativeItem }: Props) {
   const [facilities, setFacilities] = useState<IFacility[]>([]);
-  const [openingHours, setOpeningHours] = useState<string[]>([]);
+  // const [openingHours, setOpeningHours] = useState<string[]>([]);
   const [formatedModifiedDate, setFormatedModifiedDate] = useState<string>();
   const [isPanelOpen, setIsPanelOpen] = useState(false);
 
@@ -26,7 +26,7 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
   useEffect(() => {
     if (item) {
       setFacilities(item.facilities);
-      setOpeningHours(item.opening_hours);
+      // setOpeningHours(item.opening_hours);
       const modifiedDate = item.date_modified
         ? new Date(item.date_modified)
         : new Date();
@@ -119,20 +119,13 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
               showPanel={showPanel}
               isPanelOpen={isPanelOpen}
             >
-              <DetailPanelShowLocationButton
-                item={item}
-                key={item.id}
-                type={undefined}
-                props={undefined}
-              />
+              <DetailPanelShowLocationButton item={item} key={item.id} />
             </DetailPanelAddress>
             <DetailPanelFacilities facilities={facilities} />
-            <DetailPanelOpeningTimes openingHours={openingHours} item={item} />
+            <DetailPanelOpeningTimes item={item} />
             <DetailPanelShowLocationButton
               item={nearestAlternativeItem}
               key='nearestAlternative'
-              type={undefined}
-              props={undefined}
               scrollToTop={scrollToTop}
             >
               <p className='font-semibold'>Nearest alternative: </p>

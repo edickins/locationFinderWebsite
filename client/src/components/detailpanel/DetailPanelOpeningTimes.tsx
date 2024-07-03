@@ -2,11 +2,12 @@ import { ILocation } from '../../context/locationContext/types';
 import { prefixHash } from '../../utils/simpleHash';
 
 type Props = {
-  openingHours: string[];
   item: ILocation;
 };
 
-function DetailPanelOpeningTimes({ openingHours, item }: Props) {
+function DetailPanelOpeningTimes({ item }: Props) {
+  const { opening_hours: openingHours } = item;
+
   const regEx = /closed/i;
   const isClosed = item?.open_status.match(regEx);
   return (

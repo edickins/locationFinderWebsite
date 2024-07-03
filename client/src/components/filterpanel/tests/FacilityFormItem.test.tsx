@@ -9,7 +9,7 @@ const mockFacility = {
   short_name: 'facility001',
   id: 'facility001'
 };
-const mockChecked = true;
+let mockChecked = true;
 
 describe('FacilityFormItem', () => {
   it('should call the onFilterClicked method the correct number of times with the correct arguments.', async () => {
@@ -29,11 +29,14 @@ describe('FacilityFormItem', () => {
 
     await user.click(checkboxInput);
 
-    expect(mockOnFilterClicked).toBeCalledTimes(1);
-    expect(mockOnFilterClicked).toBeCalledWith(mockFacility.short_name, false);
+    expect(mockOnFilterClicked).toHaveBeenCalledTimes(1);
+    expect(mockOnFilterClicked).toHaveBeenCalledWith(
+      mockFacility.short_name,
+      false
+    );
   });
 
-  it('should check the component checkbox according to the argument provided.', () => {
+  it('should check the component checkbox', () => {
     render(
       <FacilityFormItem
         onFilterClicked={mockOnFilterClicked}
@@ -47,5 +50,22 @@ describe('FacilityFormItem', () => {
     });
 
     expect(checkboxInput).toHaveProperty('checked', true);
+  });
+
+  it('should not check the component checkbox', () => {
+    mockChecked = false;
+    render(
+      <FacilityFormItem
+        onFilterClicked={mockOnFilterClicked}
+        facility={mockFacility}
+        checked={mockChecked}
+      />
+    );
+
+    const checkboxInput = screen.getByRole('checkbox', {
+      name: mockFacility.short_name
+    });
+
+    expect(checkboxInput).toHaveProperty('checked', false);
   });
 });

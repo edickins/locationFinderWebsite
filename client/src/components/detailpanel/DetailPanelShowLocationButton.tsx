@@ -1,18 +1,18 @@
-import { PropsWithChildren } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ILocation } from '../../context/locationContext/types';
 import FilterButton from '../buttons/IconButton';
 
-interface Props extends PropsWithChildren<JSX.Element> {
+interface Props {
   item: ILocation | undefined;
   scrollToTop?: () => void;
+  children?: JSX.Element;
 }
 
 function DetailPanelShowLocationButton({ item, scrollToTop, children }: Props) {
   const [searchParams, setSearchParams] = useSearchParams();
   if (!item) return null;
 
-  const onNearestAlternativeClick = () => {
+  const onDirectionsButtonClick = () => {
     // Create a new URLSearchParams instance to clone the current parameters
     const newSearchParams = new URLSearchParams(searchParams.toString());
 
@@ -38,7 +38,7 @@ function DetailPanelShowLocationButton({ item, scrollToTop, children }: Props) {
         <FilterButton
           icon='fa-map-location-dot'
           title='Click me to see this location on the map.'
-          onClick={onNearestAlternativeClick}
+          onClick={onDirectionsButtonClick}
           reverseColours
         >
           <div className='ml-2'>
@@ -61,7 +61,8 @@ function DetailPanelShowLocationButton({ item, scrollToTop, children }: Props) {
 }
 
 DetailPanelShowLocationButton.defaultProps = {
-  scrollToTop: () => {}
+  scrollToTop: () => {},
+  children: null
 };
 
 export default DetailPanelShowLocationButton;

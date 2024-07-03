@@ -15,6 +15,7 @@ let mockSearchParam =
 
 // Replace the original hook with the mock
 vi.mock('react-router-dom', async () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const actual = (await vi.importActual('react-router-dom')) as any;
   return {
     ...actual,
@@ -33,7 +34,7 @@ vi.mock('react-router-dom', async () => {
   };
 });
 
-const location: ILocation = testLocation as ILocation;
+const mockLocation: ILocation = testLocation as ILocation;
 
 type Props = {
   item: ILocation | undefined;
@@ -66,14 +67,14 @@ const renderDetailPanelAddress = ({
 describe('DetailPanelAddress', () => {
   test('Initial display state is correct', () => {
     const initObj: Props = {
-      item: location,
+      item: mockLocation,
       isPanelOpen: false,
       hidePanel: mockHidePanel,
       showPanel: mockShowPanel
     };
     renderDetailPanelAddress(initObj);
     // confirm default initial text is displayed
-    const openCloseButton = screen.getByText(location.long_name, {
+    const openCloseButton = screen.getByText(mockLocation.long_name, {
       exact: true
     });
     const directionsButton = screen.getByRole('button', {
@@ -82,7 +83,7 @@ describe('DetailPanelAddress', () => {
     const favouriteButton = screen.getByRole('button', {
       name: /toggle favourite/i
     });
-    const formattedAddress = screen.getByText(location.formatted_address);
+    const formattedAddress = screen.getByText(mockLocation.formatted_address);
     expect(openCloseButton).toBeInTheDocument();
     expect(directionsButton).toBeInTheDocument();
     expect(favouriteButton).toBeInTheDocument();
@@ -92,14 +93,14 @@ describe('DetailPanelAddress', () => {
   test('Clicking the location title opens the panel if it was closed', async () => {
     const user = userEvent.setup();
     const initObj: Props = {
-      item: location,
+      item: mockLocation,
       isPanelOpen: false,
       hidePanel: mockHidePanel,
       showPanel: mockShowPanel
     };
     renderDetailPanelAddress(initObj);
     // click the button to open the panel
-    const openCloseButton = screen.getByText(location.long_name, {
+    const openCloseButton = screen.getByText(mockLocation.long_name, {
       exact: true
     });
     await user.click(openCloseButton);
@@ -112,14 +113,14 @@ describe('DetailPanelAddress', () => {
   test('Clicking the location title closes the panel if it was open', async () => {
     const user = userEvent.setup();
     const initObj: Props = {
-      item: location,
+      item: mockLocation,
       isPanelOpen: true,
       hidePanel: mockHidePanel,
       showPanel: mockShowPanel
     };
     renderDetailPanelAddress(initObj);
     // click the button to open the panel
-    const openCloseButton = screen.getByText(location.long_name, {
+    const openCloseButton = screen.getByText(mockLocation.long_name, {
       exact: true
     });
     await user.click(openCloseButton);
@@ -132,7 +133,7 @@ describe('DetailPanelAddress', () => {
   test('Displays CLOSED message if a toilet is currently closed', async () => {
     // change values of the location object
     const newLocation: ILocation = {
-      ...location,
+      ...mockLocation,
       open_status: 'closed'
     };
     const initObj: Props = {
