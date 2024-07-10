@@ -1,6 +1,5 @@
 import { useFiltersContext } from '../../context/filtersContext/filtersContext';
 import { useLocationsContext } from '../../context/locationContext/locationsContext';
-import { ILocation } from '../../context/locationContext/types';
 import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
 import FilterButton from '../buttons/IconButton';
 import FavouritesList from './FavouritesList';
