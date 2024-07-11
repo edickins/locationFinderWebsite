@@ -20,7 +20,7 @@ function FilterSectionSearch({ updateSearchParams }: Props) {
         icon='fa-star'
         onClick={onClick}
         isSelected={isSelected}
-        title='Click me to view toilets that match the search term you entered above.'
+        title='Click to view toilets that match the search term you entered above.'
       >
         <span className='text-xl'>Search</span>
       </FilterButton>

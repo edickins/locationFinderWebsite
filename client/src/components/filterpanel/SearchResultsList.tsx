@@ -87,6 +87,7 @@ function SearchResultsList({ updateSearchParams }: Props) {
   return (
     <div>
       {searchTermsMatch.length === 0 && <NoResults searchTerm={searchTerm} />}
+
       {searchTermsMatch.length !== 0 && (
         <div>
           <SearchTermMessage searchTerm={searchTerm} />

@@ -21,8 +21,7 @@ vi.mock('react-router-dom', async () => {
   return {
     ...actual,
     useSearchParams: () => {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const [params, setParams] = useState(new URLSearchParams());
+      const [params] = useState(new URLSearchParams());
       return [params, mockSetSearchParams];
     }
   };

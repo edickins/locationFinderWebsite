@@ -12,7 +12,6 @@ function FacilityFormItem({
   onFilterClicked
 }: FacilityFormProp) {
   const handleOnClick = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('handleOnClick');
     onFilterClicked(facility.short_name, e.target.checked);
   };
 

@@ -1,11 +1,18 @@
 import { render, screen } from '@testing-library/react';
 import { vi } from 'vitest';
+import userEvent from '@testing-library/user-event';
 import mockLocations from './data/locations';
 import FilterSectionSearch from '../FilterSectionSearch';
-import { ILocation } from '../../../context/locationContext/types';
 
 // vars to be overridden on a per test basis as required
-const state = {
+type State = {
+  isPanelOpen: boolean;
+  isFacilitiesSelected: boolean;
+  isFavouritesSelected: boolean;
+  isSearchSelected: boolean;
+  isSearchActive: boolean;
+};
+const state: State = {
   isPanelOpen: false,
   isFacilitiesSelected: false,
   isFavouritesSelected: false,
@@ -13,9 +20,15 @@ const state = {
   isSearchActive: false
 };
 
-const searchData = {
-  searchTermsMatch: [] as ILocation[],
-  searchTermsPerfectMatch: [] as ILocation[],
+type SearchData = {
+  searchTermsMatch: string[];
+  searchTermsPerfectMatch: string[];
+  searchTerm: string;
+};
+
+const searchData: SearchData = {
+  searchTermsMatch: [],
+  searchTermsPerfectMatch: [],
   searchTerm: ''
 };
 
@@ -72,15 +85,34 @@ describe('FilterSectionSearch', () => {
     expect(noResultsText).toBeInTheDocument();
   });
 
-  test('Initial render is correct when panel is open and there are results', () => {
+  test('Initial render is correct when panel is open and there are results', async () => {
+    state.isPanelOpen = true;
     state.isSearchSelected = true;
 
-    searchData.searchTermsMatch.push(mockLocations[0]);
+    const user = userEvent.setup();
+
+    searchData.searchTermsMatch.push(mockLocations[0].id);
+    searchData.searchTermsPerfectMatch.push(mockLocations[0].id);
+    searchData.searchTerm = 'Location 1';
     render(<FilterSectionSearch updateSearchParams={mockUpdateSearchParams} />);
 
-    const noResultsText = screen.getByText(
+    const noResultsText = screen.queryByText(
       'Please enter your search in the search field above.'
     );
-    expect(noResultsText).toBeInTheDocument();
+    expect(noResultsText).not.toBeInTheDocument();
+
+    const searchTermText = screen.getByText('You searched for', {
+      exact: false
+    });
+    expect(searchTermText).toHaveTextContent('1');
+
+    const locationButton = screen.getByRole('button', {
+      name: /location 1/i
+    });
+
+    await user.click(locationButton);
+
+    expect(mockUpdateSearchParams).toHaveBeenCalledTimes(1);
+    expect(mockUpdateSearchParams).toHaveBeenCalledWith('locationID', '1');
   });
 });
