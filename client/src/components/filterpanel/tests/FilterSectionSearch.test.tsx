@@ -2,9 +2,10 @@ import { render, screen } from '@testing-library/react';
 import { vi } from 'vitest';
 import mockLocations from './data/locations';
 import FilterSectionSearch from '../FilterSectionSearch';
+import { ILocation } from '../../../context/locationContext/types';
 
 // vars to be overridden on a per test basis as required
-let state = {
+const state = {
   isPanelOpen: false,
   isFacilitiesSelected: false,
   isFavouritesSelected: false,
@@ -13,12 +14,11 @@ let state = {
 };
 
 const searchData = {
-  searchTermsMatch: [],
-  searchTermsPerfectMatch: [],
+  searchTermsMatch: [] as ILocation[],
+  searchTermsPerfectMatch: [] as ILocation[],
   searchTerm: ''
 };
 
-const mockDispatchSearchResults = vi.fn();
 const mockDispatchFilters = vi.fn();
 const mockUpdateSearchParams = vi.fn();
 
@@ -29,8 +29,7 @@ vi.mock('../../../context/filtersContext/filtersContext', () => {
       return {
         state,
         searchData,
-        dispatchFilters: mockDispatchFilters,
-        dispatchSearchFilters: mockDispatchSearchResults
+        dispatchFilters: mockDispatchFilters
       };
     }
   };
@@ -48,4 +47,40 @@ vi.mock('../../../context/locationContext/locationsContext', () => {
       };
     }
   };
+});
+
+describe('FilterSectionSearch', () => {
+  test('Initial render is correct', () => {
+    render(<FilterSectionSearch updateSearchParams={mockUpdateSearchParams} />);
+
+    const searchButton = screen.getByRole('button', { name: /Search/i });
+    expect(searchButton).toBeInTheDocument();
+
+    const noResultsText = screen.queryByText(
+      'Please enter your search in the search field above.'
+    );
+    expect(noResultsText).not.toBeInTheDocument();
+  });
+
+  test('Initial render is correct when panel is open and there are no results', () => {
+    state.isSearchSelected = true;
+    render(<FilterSectionSearch updateSearchParams={mockUpdateSearchParams} />);
+
+    const noResultsText = screen.getByText(
+      'Please enter your search in the search field above.'
+    );
+    expect(noResultsText).toBeInTheDocument();
+  });
+
+  test('Initial render is correct when panel is open and there are results', () => {
+    state.isSearchSelected = true;
+
+    searchData.searchTermsMatch.push(mockLocations[0]);
+    render(<FilterSectionSearch updateSearchParams={mockUpdateSearchParams} />);
+
+    const noResultsText = screen.getByText(
+      'Please enter your search in the search field above.'
+    );
+    expect(noResultsText).toBeInTheDocument();
+  });
 });
