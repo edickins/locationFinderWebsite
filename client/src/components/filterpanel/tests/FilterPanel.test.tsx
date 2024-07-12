@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { screen, render } from '@testing-library/react';
 import { vi } from 'vitest';
 import FilterPanel from '../FilterPanel';
+import mockFacilities from './data/facilities';
+import mockLocations from './data/locations';
 
 const mockHandleFindNearestLocationClick = vi.fn();
 const mockSearchParams = new URLSearchParams();
@@ -33,6 +35,20 @@ const searchData = {
   searchTermsPerfectMatch: [],
   searchTerm: ''
 };
+
+vi.mock('../../../context/locationContext/locationsContext', () => {
+  return {
+    useLocationsContext: () => {
+      return {
+        facilities: mockFacilities,
+        state: {
+          locations: mockLocations,
+          error: undefined
+        }
+      };
+    }
+  };
+});
 
 vi.mock('../../../context/filtersContext/filtersContext', () => ({
   useFiltersContext: () => ({
