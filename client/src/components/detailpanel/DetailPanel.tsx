@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { SetURLSearchParams } from 'react-router-dom';
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { IFacility, ILocation } from '../../context/locationContext/types';
 
@@ -12,9 +13,16 @@ import CloseDetailPanelButton from '../buttons/CloseDetailPanelButton';
 type Props = {
   item: ILocation | undefined;
   nearestAlternativeItem: ILocation | undefined;
+  searchParams: URLSearchParams;
+  setSearchParams: SetURLSearchParams;
 };
 
-function DetailPanel({ item, nearestAlternativeItem }: Props) {
+function DetailPanel({
+  item,
+  nearestAlternativeItem,
+  searchParams,
+  setSearchParams
+}: Props) {
   const [facilities, setFacilities] = useState<IFacility[]>([]);
   // const [openingHours, setOpeningHours] = useState<string[]>([]);
   const [formatedModifiedDate, setFormatedModifiedDate] = useState<string>();
@@ -119,7 +127,12 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
               showPanel={showPanel}
               isPanelOpen={isPanelOpen}
             >
-              <DetailPanelShowLocationButton item={item} key={item.id} />
+              <DetailPanelShowLocationButton
+                item={item}
+                key={item.id}
+                searchParams={searchParams}
+                setSearchParams={setSearchParams}
+              />
             </DetailPanelAddress>
             <DetailPanelFacilities facilities={facilities} />
             <DetailPanelOpeningTimes item={item} />
@@ -127,6 +140,8 @@ function DetailPanel({ item, nearestAlternativeItem }: Props) {
               item={nearestAlternativeItem}
               key='nearestAlternative'
               scrollToTop={scrollToTop}
+              searchParams={searchParams}
+              setSearchParams={setSearchParams}
             >
               <p className='font-semibold'>Nearest alternative: </p>
             </DetailPanelShowLocationButton>

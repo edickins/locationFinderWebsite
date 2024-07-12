@@ -1,20 +1,28 @@
-import { useSearchParams } from 'react-router-dom';
+import { SetURLSearchParams } from 'react-router-dom';
 import { ILocation } from '../../context/locationContext/types';
 import FilterButton from '../buttons/IconButton';
 
 interface Props {
   item: ILocation | undefined;
   scrollToTop?: () => void;
+  searchParams: URLSearchParams;
+  setSearchParams: SetURLSearchParams;
   children?: JSX.Element;
 }
 
-function DetailPanelShowLocationButton({ item, scrollToTop, children }: Props) {
-  const [searchParams, setSearchParams] = useSearchParams();
+function DetailPanelShowLocationButton({
+  item,
+  scrollToTop,
+  searchParams,
+  setSearchParams,
+  children
+}: Props) {
   if (!item) return null;
 
   const onDirectionsButtonClick = () => {
     // Create a new URLSearchParams instance to clone the current parameters
     const newSearchParams = new URLSearchParams(searchParams.toString());
+    console.log('newSearchParams', newSearchParams.get('locationID'));
 
     // Set the new locationID parameter
     newSearchParams.set('locationID', item.id);

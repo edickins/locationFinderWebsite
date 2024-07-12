@@ -465,6 +465,8 @@ function Home() {
         <DetailPanel
           item={detailPanelItem}
           nearestAlternativeItem={nearestAlternativeItem}
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
         />
         <FilterPanel
           handleFindLocationButtonClick={handleFindLocationButtonClick}
