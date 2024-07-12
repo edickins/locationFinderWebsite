@@ -89,4 +89,16 @@ describe('FilterPanel', () => {
     const favouritesButton = screen.getByTestId('main-favourites-button');
     expect(favouritesButton).toBeInTheDocument();
   });
+
+  test('Facilities are shown when the facilities are selected', async () => {
+    state.isFacilitiesSelected = true;
+    render(
+      <FilterPanel
+        handleFindLocationButtonClick={mockHandleFindNearestLocationClick}
+      />
+    );
+
+    const facilitiesButtons = screen.getAllByRole('listitem');
+    expect(facilitiesButtons).toHaveLength(3);
+  });
 });
