@@ -49,7 +49,9 @@ function FilterPanelNav({
           onClick={onFavouriteButtonClick}
           isSelected={isFavouritesSelected}
         >
-          <span className='text-xs'>Favourites</span>
+          <span className='text-xs' data-testid='nav-favourites-button'>
+            Favourites
+          </span>
         </IconButton>
 
         <IconButton

@@ -4,20 +4,53 @@ import { vi } from 'vitest';
 import FilterPanel from '../FilterPanel';
 
 const mockHandleFindNearestLocationClick = vi.fn();
-
 const mockSearchParams = new URLSearchParams();
-const mockSetSearchParams = vi.fn();
-const mockUseSearchParams = vi.fn().mockImplementation(() => {
-  return [mockSearchParams, mockSetSearchParams];
-});
+
+// vars to be overridden on a per test basis as required
+type State = {
+  isPanelOpen: boolean;
+  isFacilitiesSelected: boolean;
+  isFavouritesSelected: boolean;
+  isSearchSelected: boolean;
+  isSearchActive: boolean;
+};
+const state: State = {
+  isPanelOpen: false,
+  isFacilitiesSelected: false,
+  isFavouritesSelected: false,
+  isSearchSelected: false,
+  isSearchActive: false
+};
+
+type SearchData = {
+  searchTermsMatch: [];
+  searchTermsPerfectMatch: [];
+  searchTerm: string;
+};
+
+const searchData = {
+  searchTermsMatch: [],
+  searchTermsPerfectMatch: [],
+  searchTerm: ''
+};
+
+vi.mock('../../../context/filtersContext/filtersContext', () => ({
+  useFiltersContext: () => ({
+    state,
+    searchData,
+    dispatchFilters: vi.fn(),
+    dispatchSearchResults: vi.fn()
+  })
+}));
 
 vi.mock('react-router-dom', async () => {
   const actual = (await vi.importActual('react-router-dom')) as any;
+
   return {
     ...actual,
     useSearchParams: () => {
-      const [params] = useState(new URLSearchParams());
-      return [params, mockSetSearchParams];
+      const [searchParams, setSearchParams] = useState(mockSearchParams);
+      return [searchParams, setSearchParams];
     }
   };
 });
@@ -29,5 +62,15 @@ describe('FilterPanel', () => {
         handleFindLocationButtonClick={mockHandleFindNearestLocationClick}
       />
     );
+
+    const searchButton = screen.getByRole('button', { name: /search/i });
+    expect(searchButton).toBeInTheDocument();
+
+    const filtersButton = screen.getByRole('button', { name: /filters/i });
+    expect(filtersButton).toBeInTheDocument();
+    expect(filtersButton).toHaveTextContent('0 active');
+
+    const favouritesButton = screen.getByTestId('main-favourites-button');
+    expect(favouritesButton).toBeInTheDocument();
   });
 });

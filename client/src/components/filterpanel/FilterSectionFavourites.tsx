@@ -28,7 +28,7 @@ function FilterSectionFavourites({ updateSearchParams }: Props) {
         isSelected={isSelected}
         title='Add favourites by clicking the star on the details panel at the bottom of the page.'
       >
-        <span className='text-xl'>
+        <span className='text-xl' data-testid='main-favourites-button'>
           Favourites{' '}
           {favourites && favourites.length > 0 ? ` (${favourites.length})` : ''}
         </span>
