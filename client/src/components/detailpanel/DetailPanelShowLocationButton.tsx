@@ -22,7 +22,6 @@ function DetailPanelShowLocationButton({
   const onDirectionsButtonClick = () => {
     // Create a new URLSearchParams instance to clone the current parameters
     const newSearchParams = new URLSearchParams(searchParams.toString());
-    console.log('newSearchParams', newSearchParams.get('locationID'));
 
     // Set the new locationID parameter
     newSearchParams.set('locationID', item.id);
