@@ -4,6 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 import FiltersContainer from '../FiltersContainer';
 import mockLocations from './data/locations';
 import mockFacilities from './data/facilities';
+import { useFacilitiesContext } from '../../../context/facilitiesContext/facilitiesContext';
 
 // vars to be overridden on a per test basis as required
 const initialSearchParams = new URLSearchParams();
@@ -29,11 +30,20 @@ vi.mock('../../../context/locationContext/locationsContext', () => {
   return {
     useLocationsContext: () => {
       return {
-        facilities: mockFacilities,
-        state: {
+        locationsState: {
           locations: mockLocations,
           error: undefined
         }
+      };
+    }
+  };
+});
+
+vi.mock('../../../context/facilitiesContext/facilitiesContext', () => {
+  return {
+    useFacilitiesContext: () => {
+      return {
+        facilities: mockFacilities
       };
     }
   };

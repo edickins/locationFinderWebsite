@@ -31,7 +31,7 @@ type SearchData = {
   searchTerm: string;
 };
 
-const searchData = {
+const searchData: SearchData = {
   searchTermsMatch: [],
   searchTermsPerfectMatch: [],
   searchTerm: ''
@@ -41,11 +41,20 @@ vi.mock('../../../context/locationContext/locationsContext', () => {
   return {
     useLocationsContext: () => {
       return {
-        facilities: mockFacilities,
-        state: {
+        locationsState: {
           locations: mockLocations,
           error: undefined
         }
+      };
+    }
+  };
+});
+
+vi.mock('../../../context/facilitiesContext/facilitiesContext', () => {
+  return {
+    useFacilitiesContext: () => {
+      return {
+        facilities: mockFacilities
       };
     }
   };
@@ -55,8 +64,7 @@ vi.mock('../../../context/filtersContext/filtersContext', () => ({
   useFiltersContext: () => ({
     state,
     searchData,
-    dispatchFilters: vi.fn(),
-    dispatchSearchResults: vi.fn()
+    dispatchFilters: vi.fn()
   })
 }));
 

@@ -41,7 +41,6 @@ vi.mock('../../../context/filtersContext/filtersContext', () => {
     useFiltersContext: () => {
       return {
         state,
-        searchData,
         dispatchFilters: mockDispatchFilters
       };
     }
@@ -53,12 +52,20 @@ vi.mock('../../../context/locationContext/locationsContext', () => {
   return {
     useLocationsContext: () => {
       return {
-        state: {
+        locationsState: {
           locations: mockLocations,
           error: undefined
         }
       };
     }
+  };
+});
+
+vi.mock('../../../context/searchContext/searchContext', () => {
+  return {
+    useSearchContext: () => ({
+      searchData
+    })
   };
 });
 
