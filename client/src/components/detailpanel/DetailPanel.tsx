@@ -126,6 +126,7 @@ function DetailPanel({
               hidePanel={hidePanel}
               showPanel={showPanel}
               isPanelOpen={isPanelOpen}
+              searchParams={searchParams}
             >
               <DetailPanelShowLocationButton
                 item={item}

@@ -10,29 +10,8 @@ import { ILocation } from '../../../context/locationContext/types';
 const mockHidePanel = vi.fn();
 const mockShowPanel = vi.fn();
 
-let mockSearchParam =
+const mockSearchParam =
   'userLocation=%7B"lat"%3A50.83182%2C"lng"%3A-0.12044000000000002%7D';
-
-// Replace the original hook with the mock
-vi.mock('react-router-dom', async () => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const actual = (await vi.importActual('react-router-dom')) as any;
-  return {
-    ...actual,
-    useSearchParams: () => {
-      const [params, setParams] = useState(
-        new URLSearchParams(mockSearchParam)
-      );
-      return [
-        params,
-        (newParams: string) => {
-          mockSearchParam = newParams;
-          setParams(new URLSearchParams(newParams));
-        }
-      ];
-    }
-  };
-});
 
 const mockLocation: ILocation = testLocation as ILocation;
 
@@ -41,13 +20,15 @@ type Props = {
   isPanelOpen: boolean;
   hidePanel: () => void;
   showPanel: () => void;
+  searchParams: URLSearchParams;
 };
 
 const renderDetailPanelAddress = ({
   item,
   isPanelOpen,
   hidePanel,
-  showPanel
+  showPanel,
+  searchParams
 }: Props) => {
   render(
     <MemoryRouter>
@@ -59,6 +40,7 @@ const renderDetailPanelAddress = ({
         key={null}
         type={undefined}
         props={undefined}
+        searchParams={searchParams}
       />
     </MemoryRouter>
   );
@@ -70,7 +52,8 @@ describe('DetailPanelAddress', () => {
       item: mockLocation,
       isPanelOpen: false,
       hidePanel: mockHidePanel,
-      showPanel: mockShowPanel
+      showPanel: mockShowPanel,
+      searchParams: new URLSearchParams(mockSearchParam)
     };
     renderDetailPanelAddress(initObj);
     // confirm default initial text is displayed
@@ -96,7 +79,8 @@ describe('DetailPanelAddress', () => {
       item: mockLocation,
       isPanelOpen: false,
       hidePanel: mockHidePanel,
-      showPanel: mockShowPanel
+      showPanel: mockShowPanel,
+      searchParams: new URLSearchParams(mockSearchParam)
     };
     renderDetailPanelAddress(initObj);
     // click the button to open the panel
@@ -116,7 +100,8 @@ describe('DetailPanelAddress', () => {
       item: mockLocation,
       isPanelOpen: true,
       hidePanel: mockHidePanel,
-      showPanel: mockShowPanel
+      showPanel: mockShowPanel,
+      searchParams: new URLSearchParams(mockSearchParam)
     };
     renderDetailPanelAddress(initObj);
     // click the button to open the panel
@@ -140,7 +125,8 @@ describe('DetailPanelAddress', () => {
       item: newLocation,
       isPanelOpen: true,
       hidePanel: mockHidePanel,
-      showPanel: mockShowPanel
+      showPanel: mockShowPanel,
+      searchParams: new URLSearchParams(mockSearchParam)
     };
     renderDetailPanelAddress(initObj);
 

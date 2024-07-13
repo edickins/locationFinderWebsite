@@ -1,28 +1,31 @@
 import { useState } from 'react';
 import { screen, render } from '@testing-library/react';
+
 import { vi } from 'vitest';
 import FilterPanel from '../FilterPanel';
 
 const mockHandleFindNearestLocationClick = vi.fn();
-
 const mockSearchParams = new URLSearchParams();
-const mockSetSearchParams = vi.fn();
-const mockUseSearchParams = vi.fn().mockImplementation(() => {
-  return [mockSearchParams, mockSetSearchParams];
-});
 
 vi.mock('react-router-dom', async () => {
   const actual = (await vi.importActual('react-router-dom')) as any;
   return {
     ...actual,
     useSearchParams: () => {
-      const [params] = useState(new URLSearchParams());
-      return [params, mockSetSearchParams];
+      const [params, setParams] = useState(
+        new URLSearchParams(mockSearchParams)
+      );
+      return [
+        params,
+        (newParams: string) => {
+          setParams(new URLSearchParams(newParams));
+        }
+      ];
     }
   };
 });
 
-describe('FilterPanel', () => {
+describe('FilterPanel - a test suite with params stored in state to test multiple clicks', () => {
   test('Initial render is correct', () => {
     render(
       <FilterPanel

@@ -1,5 +1,4 @@
 import { PropsWithChildren, useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import { ILocation } from '../../context/locationContext/types';
 import FavouritesToggle from '../FavouritesToggle';
 import CloseDetailPanelButton from '../buttons/CloseDetailPanelButton';
@@ -10,6 +9,7 @@ interface Props extends PropsWithChildren<JSX.Element> {
   hidePanel: () => void;
   showPanel: () => void;
   isPanelOpen: boolean;
+  searchParams: URLSearchParams;
 }
 
 function DetailPanelAddress({
@@ -17,11 +17,12 @@ function DetailPanelAddress({
   children,
   hidePanel,
   showPanel,
-  isPanelOpen
+  isPanelOpen,
+  searchParams
 }: Props): JSX.Element {
   const regEx = /closed/i;
   const isClosed = item?.open_status.match(regEx);
-  const [searchParams] = useSearchParams();
+
   const [userLocation, setUserLocation] = useState('');
 
   useEffect(() => {
