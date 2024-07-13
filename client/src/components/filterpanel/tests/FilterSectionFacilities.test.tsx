@@ -3,10 +3,10 @@ import { vi } from 'vitest';
 import FilterSectionFacilities from '../FilterSectionFacilities';
 import mockFacilities from './data/facilities';
 
-// mock the locationsContext - this is a partial mock. see locationsContext for full spec
-vi.mock('../../../context/locationContext/locationsContext', async () => {
+// mock the locationsContext - this is a partial mock. see facilitiesContext for full spec
+vi.mock('../../../context/facilitiesContext/facilitiesContext', async () => {
   return {
-    useLocationsContext: () => {
+    useFacilitiesContext: () => {
       return { facilities: mockFacilities };
     }
   };

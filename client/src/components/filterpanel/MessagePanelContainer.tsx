@@ -3,7 +3,7 @@ import MessagePanel from './MessagePanel';
 import { useLocationsContext } from '../../context/locationContext/locationsContext';
 
 function MessagePanelContainer() {
-  const { state } = useLocationsContext();
+  const { locationsState } = useLocationsContext();
 
   const messagePanelContainerRef = useRef<HTMLDivElement>(null);
 
@@ -24,12 +24,15 @@ function MessagePanelContainer() {
   }, []);
 
   useEffect(() => {
-    if (state.error) {
-      if (state.error.message !== '' && state.error.messageTitle !== '') {
+    if (locationsState.error) {
+      if (
+        locationsState.error.message !== '' &&
+        locationsState.error.messageTitle !== ''
+      ) {
         showMessagePanelContainer();
       }
     }
-  }, [state.error]);
+  }, [locationsState.error]);
 
   return (
     <div
@@ -37,10 +40,10 @@ function MessagePanelContainer() {
       className='absolute bottom-0 left-0 right-0 top-0 z-50 hidden h-full w-full content-center justify-items-center bg-red-500 bg-opacity-50'
       ref={messagePanelContainerRef}
     >
-      {state.error && (
+      {locationsState.error && (
         <MessagePanel
-          title={state.error?.messageTitle}
-          message={state.error?.message}
+          title={locationsState.error?.messageTitle}
+          message={locationsState.error?.message}
           hideMessagePanelContainer={hideMessagePanelContainer}
         />
       )}

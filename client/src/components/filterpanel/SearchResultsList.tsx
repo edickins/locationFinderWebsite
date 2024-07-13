@@ -5,6 +5,7 @@ import { useLocationsContext } from '../../context/locationContext/locationsCont
 import { useFiltersContext } from '../../context/filtersContext/filtersContext';
 import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
 import useGetScreensize, { ScreenSizeEnum } from '../../hooks/getScreensize';
+import { useSearchContext } from '../../context/searchContext/searchContext';
 
 function SearchTermMessage({ searchTerm }: { searchTerm: string }) {
   const msg =
@@ -33,11 +34,12 @@ function SearchResultsList({ updateSearchParams }: Props) {
   const [perfectMatches, setPerfectMatches] = useState<ILocation[]>([]);
   const [searchResults, setSearchResults] = useState<ILocation[]>([]);
   const {
-    state: { locations }
+    locationsState: { locations }
   } = useLocationsContext();
   const screenSize = useGetScreensize();
 
-  const { searchData, dispatchFilters } = useFiltersContext();
+  const { dispatchFilters } = useFiltersContext();
+  const { searchData } = useSearchContext();
   const { searchTermsMatch, searchTermsPerfectMatch, searchTerm } = searchData;
 
   const onSearchResultClick = (locationID: string): void => {

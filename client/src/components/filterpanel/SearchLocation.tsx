@@ -3,13 +3,15 @@ import { useLocationsContext } from '../../context/locationContext/locationsCont
 import { useFiltersContext } from '../../context/filtersContext/filtersContext';
 import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
 import { SearchActionEnum } from '../../reducer/searchReducer/types';
+import { useSearchContext } from '../../context/searchContext/searchContext';
 
 function SearchLocation() {
   // store regEx matches in useRef() state
   const matchesRef = useRef<Set<string>>(new Set());
   const perfectMatchesRef = useRef<Set<string>>(new Set());
   const textInputRef = useRef<HTMLInputElement | null>(null);
-  const { dispatchFilters, dispatchSearchResults } = useFiltersContext();
+  const { dispatchFilters } = useFiltersContext();
+  const { dispatchSearchResults } = useSearchContext();
 
   const dispatchOnSearchPanelChange = () => {
     dispatchFilters({ type: FiltersActionEnum.SEARCH_TERM_CHANGE });
@@ -37,7 +39,7 @@ function SearchLocation() {
   };
 
   const {
-    state: { locations }
+    locationsState: { locations }
   } = useLocationsContext();
 
   const findTermInAddressFields = (term: string) => {
@@ -118,6 +120,7 @@ function SearchLocation() {
 
   const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
+
     // set the useRef values to empty strings
     clearAllSearches();
 

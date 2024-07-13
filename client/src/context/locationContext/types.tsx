@@ -1,4 +1,5 @@
 import { LocationActionType } from '../../reducer/locationReducer/types';
+import { IFacility } from '../facilitiesContext/types';
 
 interface IGeometry {
   bounds?: IViewport;
@@ -13,12 +14,6 @@ interface IGeometry {
 interface IViewport {
   northeast: { lat: number; lng: number };
   southwest: { lat: number; lng: number };
-}
-
-export interface IFacility {
-  full_name: string;
-  short_name: string;
-  id: string;
 }
 
 interface IAddressComponent {
@@ -46,9 +41,8 @@ export interface ILocation {
 }
 
 export interface ILocationsContext {
-  state: IInitialLocationsState;
+  locationsState: IInitialLocationsState;
   dispatchLocations: React.Dispatch<LocationActionType>;
-  facilities: IFacility[];
 }
 
 export interface IInitialLocationsState {

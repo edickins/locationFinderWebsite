@@ -11,7 +11,7 @@ type Props = {
 function FilterSectionFavourites({ updateSearchParams }: Props) {
   const { state, dispatchFilters } = useFiltersContext();
   const {
-    state: { locations }
+    locationsState: { locations }
   } = useLocationsContext();
   const isSelected = state.isFavouritesSelected;
 

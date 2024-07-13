@@ -1,4 +1,4 @@
-import { ISearchResultsInitialState } from '../../context/filtersContext/types';
+import { ISearchResultsInitialState } from '../../context/searchContext/types';
 import { SearchActionType, SearchActionEnum } from './types';
 
 export default function searchReducer(
@@ -6,7 +6,6 @@ export default function searchReducer(
   action: SearchActionType
 ) {
   const { type, payload } = action;
-
   switch (type) {
     case SearchActionEnum.ADD_SEARCH_MATCH_IDS:
       return {

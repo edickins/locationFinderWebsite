@@ -4,28 +4,26 @@ import {
   useEffect,
   useContext,
   useReducer,
-  useMemo
+  useMemo,
+  useState
 } from 'react';
 import axios from 'axios';
 
-import { ILocationsContext } from './types';
+import { IFacilitiesContext, IFacility } from './types';
 import locationReducer from '../../reducer/locationReducer/locationReducer';
 import {
   LocationActionEnum,
   LocationActionType
 } from '../../reducer/locationReducer/types';
 
-// create the context defining the types of the context members
-export const LocationsContext = createContext<ILocationsContext>({
-  locationsState: {
-    locations: [],
-    error: undefined
-  },
-  dispatchLocations: () => {}
+// create the Context
+const FacilitiesContext = createContext<IFacilitiesContext>({
+  facilities: []
 });
 
-export default function LocationsProvider({ children }: PropsWithChildren) {
-  const [locationsState, dispatch] = useReducer(locationReducer, {
+export default function FacilitiesProvider({ children }: PropsWithChildren) {
+  const [facilities, setFacilities] = useState<IFacility[]>([]);
+  const [, dispatch] = useReducer(locationReducer, {
     locations: [],
     error: undefined
   });
@@ -51,12 +49,9 @@ export default function LocationsProvider({ children }: PropsWithChildren) {
     }
 
     instance
-      .get('/locations')
+      .get('/facilities')
       .then((response) => {
-        dispatchLocations({
-          type: LocationActionEnum.SET_LOCATIONS,
-          payload: response.data.locations
-        });
+        setFacilities(response.data.facilities);
       })
       .catch((error) => {
         dispatchLocations({
@@ -70,23 +65,22 @@ export default function LocationsProvider({ children }: PropsWithChildren) {
   }, []);
 
   // create context initialValue
-  const initialValue: ILocationsContext = useMemo(
+  const initialValue: IFacilitiesContext = useMemo(
     () => ({
-      locationsState,
-      dispatchLocations
+      facilities
     }),
-    [locationsState]
+    [facilities]
   );
 
   return (
-    <LocationsContext.Provider value={initialValue}>
+    <FacilitiesContext.Provider value={initialValue}>
       {children}
-    </LocationsContext.Provider>
+    </FacilitiesContext.Provider>
   );
 }
 
 // hook
-export const useLocationsContext = () => {
-  const context = useContext(LocationsContext);
+export const useFacilitiesContext = () => {
+  const context = useContext(FacilitiesContext);
   return context;
 };

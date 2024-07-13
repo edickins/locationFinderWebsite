@@ -7,7 +7,7 @@ import {
 } from 'react';
 import filtersReducer from '../../reducer/filtersReducer/filtersReducer';
 import { IFiltersContext } from './types';
-import searchReducer from '../../reducer/searchReducer/searchReducer';
+// import searchReducer from '../../reducer/searchReducer/searchReducer';
 
 const FiltersContext = createContext<IFiltersContext>({
   state: {
@@ -17,13 +17,7 @@ const FiltersContext = createContext<IFiltersContext>({
     isSearchSelected: false,
     isSearchActive: false
   },
-  searchData: {
-    searchTermsMatch: [],
-    searchTermsPerfectMatch: [],
-    searchTerm: ''
-  },
-  dispatchFilters: () => {},
-  dispatchSearchResults: () => {}
+  dispatchFilters: () => {}
 });
 
 export default function FiltersProvider({ children }: PropsWithChildren) {
@@ -35,21 +29,13 @@ export default function FiltersProvider({ children }: PropsWithChildren) {
     isSearchActive: false
   });
 
-  const [searchData, dispatchSearchResults] = useReducer(searchReducer, {
-    searchTermsMatch: [],
-    searchTermsPerfectMatch: [],
-    searchTerm: ''
-  });
-
   // create context initialValue
   const initialValue: IFiltersContext = useMemo(
     () => ({
       state,
-      searchData,
-      dispatchFilters,
-      dispatchSearchResults
+      dispatchFilters
     }),
-    [state, searchData]
+    [state]
   );
 
   return (

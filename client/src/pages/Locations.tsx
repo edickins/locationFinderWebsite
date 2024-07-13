@@ -5,7 +5,7 @@ import createFilter from '../services/createFilter';
 
 function Locations() {
   const {
-    state: { locations }
+    locationsState: { locations }
   } = useLocationsContext();
 
   let filterFn = (item: ILocation) =>

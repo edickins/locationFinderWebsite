@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import FacilitiesList from './FacilitiesList';
 import FilterButton from '../buttons/IconButton';
-import { useLocationsContext } from '../../context/locationContext/locationsContext';
+import { useFacilitiesContext } from '../../context/facilitiesContext/facilitiesContext';
 import {
   FiltersActionEnum,
   FiltersActionType
@@ -20,7 +20,7 @@ function FilterSectionFacilities({
   isSelected,
   dispatchFilters
 }: Props) {
-  const { facilities } = useLocationsContext();
+  const { facilities } = useFacilitiesContext();
   const [activeFilters, setActiveFilters] = useState('');
   const isActive = !!filtersParam;
 

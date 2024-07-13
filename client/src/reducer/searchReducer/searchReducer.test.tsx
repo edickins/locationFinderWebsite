@@ -1,6 +1,6 @@
 import { describe, test } from 'vitest';
 import searchReducer from './searchReducer';
-import { ISearchResultsInitialState } from '../../context/filtersContext/types';
+import { ISearchResultsInitialState } from '../../context/searchContext/types';
 import {
   AddSearchMatchIDs,
   AddSearchPerfectMatchIDs,

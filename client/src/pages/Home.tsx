@@ -58,7 +58,7 @@ function Home() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
   const {
-    state: { locations },
+    locationsState: { locations },
     dispatchLocations
   } = useLocationsContext();
 
