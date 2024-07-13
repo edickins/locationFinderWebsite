@@ -10,18 +10,17 @@ import { IFiltersContext } from './types';
 // import searchReducer from '../../reducer/searchReducer/searchReducer';
 
 const FiltersContext = createContext<IFiltersContext>({
-  state: {
+  panelsState: {
     isPanelOpen: false,
     isFacilitiesSelected: false,
     isFavouritesSelected: false,
-    isSearchSelected: false,
-    isSearchActive: false
+    isSearchSelected: false
   },
   dispatchFilters: () => {}
 });
 
 export default function FiltersProvider({ children }: PropsWithChildren) {
-  const [state, dispatchFilters] = useReducer(filtersReducer, {
+  const [panelsState, dispatchFilters] = useReducer(filtersReducer, {
     isPanelOpen: false,
     isFacilitiesSelected: false,
     isFavouritesSelected: false,
@@ -32,10 +31,10 @@ export default function FiltersProvider({ children }: PropsWithChildren) {
   // create context initialValue
   const initialValue: IFiltersContext = useMemo(
     () => ({
-      state,
+      panelsState,
       dispatchFilters
     }),
-    [state]
+    [panelsState]
   );
 
   return (

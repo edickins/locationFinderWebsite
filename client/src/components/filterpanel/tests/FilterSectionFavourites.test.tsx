@@ -5,7 +5,7 @@ import mockLocations from './data/locations';
 import FilterSectionFavourites from '../FilterSectionFavourites';
 
 // vars to be overridden on a per test basis as required
-let mockFiltersState = {
+let mockPanelsState = {
   isPanelOpen: false,
   isFacilitiesSelected: false,
   isFavouritesSelected: false,
@@ -21,7 +21,7 @@ vi.mock('../../../context/filtersContext/filtersContext', () => {
   return {
     useFiltersContext: () => {
       return {
-        state: mockFiltersState,
+        panelsState: mockPanelsState,
         dispatchFilters: mockDispatchFilters
       };
     }
@@ -55,7 +55,7 @@ describe('FilterSectionFavourites', () => {
   });
 
   test('renders correctly on initial render with panel open and no favourite selected', () => {
-    mockFiltersState = {
+    mockPanelsState = {
       isPanelOpen: true,
       isFacilitiesSelected: false,
       isFavouritesSelected: true,
@@ -86,7 +86,7 @@ describe('FilterSectionFavourites', () => {
   });
 
   test('renders correctly on initial render with panel open and one favourite selected', () => {
-    mockFiltersState = {
+    mockPanelsState = {
       isPanelOpen: true,
       isFacilitiesSelected: false,
       isFavouritesSelected: true,
@@ -113,7 +113,7 @@ describe('FilterSectionFavourites', () => {
 
   test('correctly dispatches a location ID when a favourite is clicked', async () => {
     const user = userEvent.setup();
-    mockFiltersState = {
+    mockPanelsState = {
       isPanelOpen: true,
       isFacilitiesSelected: false,
       isFavouritesSelected: true,

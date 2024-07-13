@@ -15,8 +15,8 @@ const FiltersContainer = function FiltersContainer({
   filtersParam,
   updateSearchParams
 }: Props) {
-  const { state, dispatchFilters } = useFiltersContext();
-  const { isPanelOpen } = state;
+  const { panelsState, dispatchFilters } = useFiltersContext();
+  const { isPanelOpen } = panelsState;
 
   const hideFilterPanel = () => {
     dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
@@ -40,7 +40,7 @@ const FiltersContainer = function FiltersContainer({
         <FilterSectionFacilities
           updateSearchParams={updateSearchParams}
           filtersParam={filtersParam}
-          isSelected={state.isFacilitiesSelected}
+          isSelected={panelsState.isFacilitiesSelected}
           dispatchFilters={dispatchFilters}
         />
         <FilterSectionFavourites updateSearchParams={updateSearchParams} />

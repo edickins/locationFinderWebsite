@@ -12,8 +12,8 @@ function FilterPanelNav({
   handleFindLocationButtonClick,
   filtersParam
 }: Props) {
-  const { state, dispatchFilters } = useFiltersContext();
-  const { isFavouritesSelected, isFacilitiesSelected } = state;
+  const { panelsState, dispatchFilters } = useFiltersContext();
+  const { isFavouritesSelected, isFacilitiesSelected } = panelsState;
 
   const onFilterButtonClick = () => {
     dispatchFilters({ type: FiltersActionEnum.FILTER_BUTTON_CLICK });

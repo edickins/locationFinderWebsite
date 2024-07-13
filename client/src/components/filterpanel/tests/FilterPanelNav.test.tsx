@@ -15,7 +15,7 @@ const mockDispatch = vi.fn();
 // Mock the custom hook
 vi.mock('../../../context/filtersContext/filtersContext', () => ({
   useFiltersContext: () => ({
-    state: {
+    panelsState: {
       isPanelOpen: false,
       isFacilitiesSelected: false,
       isFavouritesSelected: false,

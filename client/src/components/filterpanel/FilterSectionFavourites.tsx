@@ -9,11 +9,11 @@ type Props = {
 };
 
 function FilterSectionFavourites({ updateSearchParams }: Props) {
-  const { state, dispatchFilters } = useFiltersContext();
+  const { panelsState, dispatchFilters } = useFiltersContext();
   const {
     locationsState: { locations }
   } = useLocationsContext();
-  const isSelected = state.isFavouritesSelected;
+  const isSelected = panelsState.isFavouritesSelected;
 
   const onClick = () => {
     dispatchFilters({ type: FiltersActionEnum.FAVOURITES_BUTTON_CLICK });

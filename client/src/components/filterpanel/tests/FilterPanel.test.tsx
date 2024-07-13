@@ -10,14 +10,14 @@ const mockHandleFindNearestLocationClick = vi.fn();
 const mockSearchParams = new URLSearchParams();
 
 // vars to be overridden on a per test basis as required
-type State = {
+type PanelsState = {
   isPanelOpen: boolean;
   isFacilitiesSelected: boolean;
   isFavouritesSelected: boolean;
   isSearchSelected: boolean;
   isSearchActive: boolean;
 };
-const state: State = {
+const panelsState: PanelsState = {
   isPanelOpen: false,
   isFacilitiesSelected: false,
   isFavouritesSelected: false,
@@ -62,8 +62,7 @@ vi.mock('../../../context/facilitiesContext/facilitiesContext', () => {
 
 vi.mock('../../../context/filtersContext/filtersContext', () => ({
   useFiltersContext: () => ({
-    state,
-    searchData,
+    panelsState,
     dispatchFilters: vi.fn()
   })
 }));
@@ -100,7 +99,7 @@ describe('FilterPanel - a test suite with params stored in state to test multipl
   });
 
   test('Facilities are shown when the facilities are selected', async () => {
-    state.isFacilitiesSelected = true;
+    panelsState.isFacilitiesSelected = true;
     render(
       <FilterPanel
         handleFindLocationButtonClick={mockHandleFindNearestLocationClick}

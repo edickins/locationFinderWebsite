@@ -5,14 +5,14 @@ import mockLocations from './data/locations';
 import FilterSectionSearch from '../FilterSectionSearch';
 
 // vars to be overridden on a per test basis as required
-type State = {
+type PanelsState = {
   isPanelOpen: boolean;
   isFacilitiesSelected: boolean;
   isFavouritesSelected: boolean;
   isSearchSelected: boolean;
   isSearchActive: boolean;
 };
-const state: State = {
+const mockPanelsState: PanelsState = {
   isPanelOpen: false,
   isFacilitiesSelected: false,
   isFavouritesSelected: false,
@@ -40,7 +40,7 @@ vi.mock('../../../context/filtersContext/filtersContext', () => {
   return {
     useFiltersContext: () => {
       return {
-        state,
+        panelsState: mockPanelsState,
         dispatchFilters: mockDispatchFilters
       };
     }
@@ -83,7 +83,7 @@ describe('FilterSectionSearch', () => {
   });
 
   test('Initial render is correct when panel is open and there are no results', () => {
-    state.isSearchSelected = true;
+    mockPanelsState.isSearchSelected = true;
     render(<FilterSectionSearch updateSearchParams={mockUpdateSearchParams} />);
 
     const noResultsText = screen.getByText(
@@ -93,8 +93,8 @@ describe('FilterSectionSearch', () => {
   });
 
   test('Initial render is correct when panel is open and there are results', async () => {
-    state.isPanelOpen = true;
-    state.isSearchSelected = true;
+    mockPanelsState.isPanelOpen = true;
+    mockPanelsState.isSearchSelected = true;
 
     const user = userEvent.setup();
 

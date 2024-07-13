@@ -5,16 +5,14 @@ export type IFiltersInitialState = {
   isFacilitiesSelected: boolean;
   isFavouritesSelected: boolean;
   isSearchSelected: boolean;
-  isSearchActive: boolean;
 };
 
 export interface IFiltersContext {
-  state: {
+  panelsState: {
     isPanelOpen: boolean;
     isFacilitiesSelected: boolean;
     isFavouritesSelected: boolean;
     isSearchSelected: boolean;
-    isSearchActive: boolean;
   };
 
   dispatchFilters: React.Dispatch<FiltersActionType>;

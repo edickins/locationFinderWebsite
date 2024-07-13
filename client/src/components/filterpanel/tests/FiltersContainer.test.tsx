@@ -8,7 +8,7 @@ import { useFacilitiesContext } from '../../../context/facilitiesContext/facilit
 
 // vars to be overridden on a per test basis as required
 const initialSearchParams = new URLSearchParams();
-const state = {
+const panelsState = {
   isPanelOpen: false,
   isFacilitiesSelected: false,
   isFavouritesSelected: false,
@@ -20,7 +20,7 @@ const state = {
 vi.mock('../../../context/filtersContext/filtersContext', () => {
   return {
     useFiltersContext: () => {
-      return { state, dispatchFilters: vi.fn() };
+      return { panelsState, dispatchFilters: vi.fn() };
     }
   };
 });

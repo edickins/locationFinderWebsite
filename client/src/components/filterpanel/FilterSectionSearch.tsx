@@ -8,8 +8,8 @@ type Props = {
 };
 
 function FilterSectionSearch({ updateSearchParams }: Props) {
-  const { state, dispatchFilters } = useFiltersContext();
-  const isSelected = state.isSearchSelected;
+  const { panelsState, dispatchFilters } = useFiltersContext();
+  const isSelected = panelsState.isSearchSelected;
 
   const onClick = () => {
     dispatchFilters({ type: FiltersActionEnum.SEARCH_TERM_CLICK });
