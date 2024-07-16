@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { useLocationsContext } from '../../context/locationContext/locationsContext';
-import { useFiltersContext } from '../../context/filtersContext/filtersContext';
-import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
+import { usePanelStateContext } from '../../context/panelStateContext/panelStateContext';
+import { PanelsActionEnum } from '../../reducer/filtersReducer/types';
 import { SearchActionEnum } from '../../reducer/searchReducer/types';
 import { useSearchContext } from '../../context/searchContext/searchContext';
 
@@ -10,11 +10,11 @@ function SearchLocation() {
   const matchesRef = useRef<Set<string>>(new Set());
   const perfectMatchesRef = useRef<Set<string>>(new Set());
   const textInputRef = useRef<HTMLInputElement | null>(null);
-  const { dispatchFilters } = useFiltersContext();
+  const { dispatchFilters } = usePanelStateContext();
   const { dispatchSearchResults } = useSearchContext();
 
   const dispatchOnSearchPanelChange = () => {
-    dispatchFilters({ type: FiltersActionEnum.SEARCH_TERM_CHANGE });
+    dispatchFilters({ type: PanelsActionEnum.SEARCH_TERM_CHANGE });
   };
 
   const addLocationToResults = (

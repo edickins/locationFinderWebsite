@@ -1,13 +1,13 @@
-import { FiltersActionType } from '../../reducer/filtersReducer/types';
+import { PanelsActionType } from '../../reducer/filtersReducer/types';
 
-export type IFiltersInitialState = {
+export type IPanelsInitialState = {
   isPanelOpen: boolean;
   isFacilitiesSelected: boolean;
   isFavouritesSelected: boolean;
   isSearchSelected: boolean;
 };
 
-export interface IFiltersContext {
+export interface IPanelStateContext {
   panelsState: {
     isPanelOpen: boolean;
     isFacilitiesSelected: boolean;
@@ -15,5 +15,5 @@ export interface IFiltersContext {
     isSearchSelected: boolean;
   };
 
-  dispatchFilters: React.Dispatch<FiltersActionType>;
+  dispatchFilters: React.Dispatch<PanelsActionType>;
 }

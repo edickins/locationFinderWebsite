@@ -60,8 +60,8 @@ vi.mock('../../../context/facilitiesContext/facilitiesContext', () => {
   };
 });
 
-vi.mock('../../../context/filtersContext/filtersContext', () => ({
-  useFiltersContext: () => ({
+vi.mock('../../../context/panelStateContext/panelStateContext', () => ({
+  usePanelStateContext: () => ({
     panelsState,
     dispatchFilters: vi.fn()
   })

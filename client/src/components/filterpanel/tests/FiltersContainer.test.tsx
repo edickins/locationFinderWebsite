@@ -4,7 +4,6 @@ import { MemoryRouter } from 'react-router-dom';
 import FiltersContainer from '../FiltersContainer';
 import mockLocations from './data/locations';
 import mockFacilities from './data/facilities';
-import { useFacilitiesContext } from '../../../context/facilitiesContext/facilitiesContext';
 
 // vars to be overridden on a per test basis as required
 const initialSearchParams = new URLSearchParams();
@@ -16,10 +15,10 @@ const panelsState = {
   isSearchActive: false
 };
 
-// mock filters context useFiltersContext hook
-vi.mock('../../../context/filtersContext/filtersContext', () => {
+// mock filters context usePanelStateContext hook
+vi.mock('../../../context/panelStateContext/panelStateContext', () => {
   return {
-    useFiltersContext: () => {
+    usePanelStateContext: () => {
       return { panelsState, dispatchFilters: vi.fn() };
     }
   };

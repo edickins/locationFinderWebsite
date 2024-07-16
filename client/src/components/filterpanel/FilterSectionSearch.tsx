@@ -1,5 +1,5 @@
-import { useFiltersContext } from '../../context/filtersContext/filtersContext';
-import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
+import { usePanelStateContext } from '../../context/panelStateContext/panelStateContext';
+import { PanelsActionEnum } from '../../reducer/filtersReducer/types';
 import FilterButton from '../buttons/IconButton';
 import SearchResultsList from './SearchResultsList';
 
@@ -8,11 +8,11 @@ type Props = {
 };
 
 function FilterSectionSearch({ updateSearchParams }: Props) {
-  const { panelsState, dispatchFilters } = useFiltersContext();
+  const { panelsState, dispatchFilters } = usePanelStateContext();
   const isSelected = panelsState.isSearchSelected;
 
   const onClick = () => {
-    dispatchFilters({ type: FiltersActionEnum.SEARCH_TERM_CLICK });
+    dispatchFilters({ type: PanelsActionEnum.SEARCH_TERM_CLICK });
   };
   return (
     <section id='results-container' className='py-2 pl-4 pr-1'>

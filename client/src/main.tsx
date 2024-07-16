@@ -6,8 +6,6 @@ import './index.css';
 import LocationsProvider from './context/locationContext/locationsContext';
 import makeServer from './mock-api/server';
 import routesConfig from './config/routerConfig';
-import FacilitiesProvider from './context/facilitiesContext/facilitiesContext';
-import SearchResultsProvider from './context/searchContext/searchContext';
 
 if (
   import.meta.env.MODE === 'development' &&
@@ -22,11 +20,7 @@ const router = createBrowserRouter(routesConfig);
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <LocationsProvider>
-      <FacilitiesProvider>
-        <SearchResultsProvider>
-          <RouterProvider router={router} />
-        </SearchResultsProvider>
-      </FacilitiesProvider>
+      <RouterProvider router={router} />
     </LocationsProvider>
   </React.StrictMode>
 );

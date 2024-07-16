@@ -2,15 +2,15 @@ import { screen, render } from '@testing-library/react';
 import { vi } from 'vitest';
 import userEvent from '@testing-library/user-event';
 import SearchLocation from '../SearchLocation';
-import { FiltersActionEnum } from '../../../reducer/filtersReducer/types';
+import { PanelsActionEnum } from '../../../reducer/filtersReducer/types';
 
 // Create a mock for the action function
 const mockDispatchFilters = vi.fn();
 const mockDispatchSearchResults = vi.fn();
 
 // Mock the custom hook
-vi.mock('../../../context/filtersContext/filtersContext', () => ({
-  useFiltersContext: () => ({
+vi.mock('../../../context/panelStateContext/panelStateContext', () => ({
+  usePanelStateContext: () => ({
     state: {
       isPanelOpen: false,
       isFacilitiesSelected: false,
@@ -41,7 +41,7 @@ describe('SearchLocation', () => {
     await user.click(searchInput);
     expect(mockDispatchFilters).toHaveBeenCalledTimes(1);
     expect(mockDispatchFilters).toHaveBeenCalledWith({
-      type: FiltersActionEnum.SEARCH_TERM_CHANGE
+      type: PanelsActionEnum.SEARCH_TERM_CHANGE
     });
   });
 });

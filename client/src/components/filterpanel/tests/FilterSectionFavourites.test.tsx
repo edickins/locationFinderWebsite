@@ -16,10 +16,10 @@ let mockPanelsState = {
 const mockDispatchFilters = vi.fn();
 const mockUpdateSearchParams = vi.fn();
 
-// mock filters context useFiltersContext hook
-vi.mock('../../../context/filtersContext/filtersContext', () => {
+// mock filters context usePanelStateContext hook
+vi.mock('../../../context/panelStateContext/panelStateContext', () => {
   return {
-    useFiltersContext: () => {
+    usePanelStateContext: () => {
       return {
         panelsState: mockPanelsState,
         dispatchFilters: mockDispatchFilters
@@ -56,7 +56,7 @@ describe('FilterSectionFavourites', () => {
 
   test('renders correctly on initial render with panel open and no favourite selected', () => {
     mockPanelsState = {
-      isPanelOpen: true,
+      isPanelOpen: false,
       isFacilitiesSelected: false,
       isFavouritesSelected: true,
       isSearchSelected: false,
@@ -87,7 +87,7 @@ describe('FilterSectionFavourites', () => {
 
   test('renders correctly on initial render with panel open and one favourite selected', () => {
     mockPanelsState = {
-      isPanelOpen: true,
+      isPanelOpen: false,
       isFacilitiesSelected: false,
       isFavouritesSelected: true,
       isSearchSelected: false,
@@ -114,7 +114,7 @@ describe('FilterSectionFavourites', () => {
   test('correctly dispatches a location ID when a favourite is clicked', async () => {
     const user = userEvent.setup();
     mockPanelsState = {
-      isPanelOpen: true,
+      isPanelOpen: false,
       isFacilitiesSelected: false,
       isFavouritesSelected: true,
       isSearchSelected: false,

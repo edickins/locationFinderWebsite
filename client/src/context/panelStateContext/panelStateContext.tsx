@@ -6,10 +6,9 @@ import {
   useContext
 } from 'react';
 import filtersReducer from '../../reducer/filtersReducer/filtersReducer';
-import { IFiltersContext } from './types';
-// import searchReducer from '../../reducer/searchReducer/searchReducer';
+import { IPanelStateContext } from './types';
 
-const FiltersContext = createContext<IFiltersContext>({
+const PanelsContext = createContext<IPanelStateContext>({
   panelsState: {
     isPanelOpen: false,
     isFacilitiesSelected: false,
@@ -19,8 +18,8 @@ const FiltersContext = createContext<IFiltersContext>({
   dispatchFilters: () => {}
 });
 
-export default function FiltersProvider({ children }: PropsWithChildren) {
-  const [panelsState, dispatchFilters] = useReducer(filtersReducer, {
+export default function PanelStateProvider({ children }: PropsWithChildren) {
+  const [panelsState, dispatchPanelState] = useReducer(filtersReducer, {
     isPanelOpen: false,
     isFacilitiesSelected: false,
     isFavouritesSelected: false,
@@ -29,26 +28,28 @@ export default function FiltersProvider({ children }: PropsWithChildren) {
   });
 
   // create context initialValue
-  const initialValue: IFiltersContext = useMemo(
+  const initialValue: IPanelStateContext = useMemo(
     () => ({
       panelsState,
-      dispatchFilters
+      dispatchFilters: dispatchPanelState
     }),
     [panelsState]
   );
 
   return (
-    <FiltersContext.Provider value={initialValue}>
+    <PanelsContext.Provider value={initialValue}>
       {children}
-    </FiltersContext.Provider>
+    </PanelsContext.Provider>
   );
 }
 
 // hooks
-export const useFiltersContext = () => {
-  const context = useContext(FiltersContext);
+export const usePanelStateContext = () => {
+  const context = useContext(PanelsContext);
   if (context === undefined) {
-    throw new Error('useFiltersContext must be used within a FiltersProvider');
+    throw new Error(
+      'usePanelStateContext must be used within a PanelStateProvider'
+    );
   }
   return context;
 };

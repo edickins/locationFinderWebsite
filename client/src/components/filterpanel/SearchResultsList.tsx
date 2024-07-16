@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import SearchResultItem from './SearchResultItem';
 import { ILocation } from '../../context/locationContext/types';
 import { useLocationsContext } from '../../context/locationContext/locationsContext';
-import { useFiltersContext } from '../../context/filtersContext/filtersContext';
-import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
+import { usePanelStateContext } from '../../context/panelStateContext/panelStateContext';
+import { PanelsActionEnum } from '../../reducer/filtersReducer/types';
 import useGetScreensize, { ScreenSizeEnum } from '../../hooks/getScreensize';
 import { useSearchContext } from '../../context/searchContext/searchContext';
 
@@ -38,7 +38,7 @@ function SearchResultsList({ updateSearchParams }: Props) {
   } = useLocationsContext();
   const screenSize = useGetScreensize();
 
-  const { dispatchFilters } = useFiltersContext();
+  const { dispatchFilters } = usePanelStateContext();
   const { searchData } = useSearchContext();
   const { searchTermsMatch, searchTermsPerfectMatch, searchTerm } = searchData;
 
@@ -48,7 +48,7 @@ function SearchResultsList({ updateSearchParams }: Props) {
     // close the filter panel on small devices
     if (screenSize === ScreenSizeEnum.SM || screenSize === ScreenSizeEnum.MD) {
       setTimeout(() => {
-        dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
+        dispatchFilters({ type: PanelsActionEnum.HIDE_FILTER_PANEL });
       }, 300);
     }
   };

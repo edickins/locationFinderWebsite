@@ -10,7 +10,7 @@ import { ILocation } from '../../context/locationContext/types';
 
 import styles from './multiMapStyles';
 import UserLocationDisplay from './components/UserLocationDisplay';
-import { useFiltersContext } from '../../context/filtersContext/filtersContext';
+import { usePanelStateContext } from '../../context/panelStateContext/panelStateContext';
 
 function renderLoadingStatus(status: Status) {
   if (status === Status.LOADING || status === Status.FAILURE) {
@@ -44,7 +44,7 @@ function MyMap({
 }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
-  const { dispatchFilters } = useFiltersContext();
+  const { dispatchFilters } = usePanelStateContext();
 
   const [activeFilters, setActiveFilters] = useState<string | null>();
   const [infoWindowData, setInfoWindowData] = useState<string>('');

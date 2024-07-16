@@ -3,8 +3,8 @@ import FilterSectionFavourites from './FilterSectionFavourites';
 import FilterSectionSearch from './FilterSectionSearch';
 import DoneButton from '../buttons/DoneButton';
 import ClosePanelButton from '../buttons/ClosePanelButton';
-import { useFiltersContext } from '../../context/filtersContext/filtersContext';
-import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
+import { usePanelStateContext } from '../../context/panelStateContext/panelStateContext';
+import { PanelsActionEnum } from '../../reducer/filtersReducer/types';
 
 type Props = {
   filtersParam: string | null;
@@ -15,11 +15,11 @@ const FiltersContainer = function FiltersContainer({
   filtersParam,
   updateSearchParams
 }: Props) {
-  const { panelsState, dispatchFilters } = useFiltersContext();
+  const { panelsState, dispatchFilters } = usePanelStateContext();
   const { isPanelOpen } = panelsState;
 
   const hideFilterPanel = () => {
-    dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
+    dispatchFilters({ type: PanelsActionEnum.HIDE_FILTER_PANEL });
   };
 
   return (

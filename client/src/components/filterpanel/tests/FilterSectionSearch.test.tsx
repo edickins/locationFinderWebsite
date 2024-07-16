@@ -35,10 +35,10 @@ const searchData: SearchData = {
 const mockDispatchFilters = vi.fn();
 const mockUpdateSearchParams = vi.fn();
 
-// mock filters context useFiltersContext hook
-vi.mock('../../../context/filtersContext/filtersContext', () => {
+// mock filters context usePanelStateContext hook
+vi.mock('../../../context/panelStateContext/panelStateContext', () => {
   return {
-    useFiltersContext: () => {
+    usePanelStateContext: () => {
       return {
         panelsState: mockPanelsState,
         dispatchFilters: mockDispatchFilters

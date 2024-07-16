@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 import FilterPanelNav from '../FilterPanelNav';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
-import { FiltersActionEnum } from '../../../reducer/filtersReducer/types';
+import { PanelsActionEnum } from '../../../reducer/filtersReducer/types';
 
 const filtersParam = '';
 
@@ -13,8 +13,8 @@ const filtersParam = '';
 const mockDispatch = vi.fn();
 
 // Mock the custom hook
-vi.mock('../../../context/filtersContext/filtersContext', () => ({
-  useFiltersContext: () => ({
+vi.mock('../../../context/panelStateContext/panelStateContext', () => ({
+  usePanelStateContext: () => ({
     panelsState: {
       isPanelOpen: false,
       isFacilitiesSelected: false,
@@ -71,7 +71,7 @@ describe('FilterPanelNav', () => {
     // Assert that the action function was called
     expect(mockDispatch).toHaveBeenCalledOnce();
     expect(mockDispatch).toHaveBeenCalledWith({
-      type: FiltersActionEnum.FILTER_BUTTON_CLICK
+      type: PanelsActionEnum.FILTER_BUTTON_CLICK
     });
 
     vi.resetAllMocks(); // all mock.calls[][] array values are reset.
@@ -96,7 +96,7 @@ describe('FilterPanelNav', () => {
     // Assert that the action function was called
     expect(mockDispatch).toHaveBeenCalledOnce();
     expect(mockDispatch).toHaveBeenCalledWith({
-      type: FiltersActionEnum.FILTER_BUTTON_CLICK
+      type: PanelsActionEnum.FILTER_BUTTON_CLICK
     });
 
     const favouritesButton = screen.getByRole('button', {
@@ -106,7 +106,7 @@ describe('FilterPanelNav', () => {
 
     expect(mockDispatch).toHaveBeenCalledTimes(2);
     expect(mockDispatch).toHaveBeenCalledWith({
-      type: FiltersActionEnum.FAVOURITES_BUTTON_CLICK
+      type: PanelsActionEnum.FAVOURITES_BUTTON_CLICK
     });
 
     vi.resetAllMocks(); // all mock.calls[][] array values are reset.

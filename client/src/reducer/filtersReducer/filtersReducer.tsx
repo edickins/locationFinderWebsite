@@ -1,18 +1,18 @@
-import { FiltersActionEnum, FiltersActionType } from './types';
-import { IFiltersInitialState } from '../../context/filtersContext/types';
+import { PanelsActionEnum, PanelsActionType } from './types';
+import { IPanelsInitialState } from '../../context/panelStateContext/types';
 
 export default function filtersReducer(
-  state: IFiltersInitialState,
-  action: FiltersActionType
+  state: IPanelsInitialState,
+  action: PanelsActionType
 ) {
   const { type } = action;
   switch (type) {
-    case FiltersActionEnum.SHOW_FILTER_PANEL:
+    case PanelsActionEnum.SHOW_FILTER_PANEL:
       return {
         ...state,
         isPanelOpen: true
       };
-    case FiltersActionEnum.HIDE_FILTER_PANEL:
+    case PanelsActionEnum.HIDE_FILTER_PANEL:
       return {
         ...state,
         isPanelOpen: false,
@@ -21,7 +21,7 @@ export default function filtersReducer(
         isSearchSelected: false,
         isSearchActive: false
       };
-    case FiltersActionEnum.FILTER_BUTTON_CLICK:
+    case PanelsActionEnum.FILTER_BUTTON_CLICK:
       return {
         ...state,
         isPanelOpen: true,
@@ -30,7 +30,7 @@ export default function filtersReducer(
         isSearchSelected: false,
         isSearchActive: false
       };
-    case FiltersActionEnum.FAVOURITES_BUTTON_CLICK:
+    case PanelsActionEnum.FAVOURITES_BUTTON_CLICK:
       return {
         ...state,
         isPanelOpen: true,
@@ -39,7 +39,7 @@ export default function filtersReducer(
         isSearchSelected: false,
         isSearchActive: false
       };
-    case FiltersActionEnum.SEARCH_TERM_CHANGE: {
+    case PanelsActionEnum.SEARCH_TERM_CHANGE: {
       return {
         ...state,
         isPanelOpen: true,
@@ -49,7 +49,7 @@ export default function filtersReducer(
         isSearchActive: true
       };
     }
-    case FiltersActionEnum.SEARCH_TERM_CLICK: {
+    case PanelsActionEnum.SEARCH_TERM_CLICK: {
       return {
         ...state,
         isPanelOpen: true,

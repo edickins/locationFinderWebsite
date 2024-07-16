@@ -4,7 +4,7 @@ import GeoCoder from 'geocoder_node';
 import MyMap from '../components/googlemaps/MyMap';
 import DetailPanel from '../components/detailpanel/DetailPanel';
 import FilterPanel from '../components/filterpanel/FilterPanel';
-import FiltersProvider from '../context/filtersContext/filtersContext';
+import PanelStateProvider from '../context/panelStateContext/panelStateContext';
 import { useLocationsContext } from '../context/locationContext/locationsContext';
 import { ILocation } from '../context/locationContext/types';
 import MessagePanelContainer from '../components/filterpanel/MessagePanelContainer';
@@ -14,6 +14,8 @@ import useGetScreensize, { ScreenSizeEnum } from '../hooks/getScreensize';
 import getUserGeoLocation from '../services/getUserGeoLocation';
 import LoadingLayer from '../components/LoadingLayer';
 import getUserAndLocationBounds from '../utils/map/getLocationBounds';
+import FacilitiesProvider from '../context/facilitiesContext/facilitiesContext';
+import SearchResultsProvider from '../context/searchContext/searchContext';
 
 type Route = {
   distanceMeters: number;
@@ -450,34 +452,38 @@ function Home() {
   }, [screenSize]);
 
   return (
-    <FiltersProvider>
-      <main className='flex flex-grow' id='home-main'>
-        <MyMap
-          items={locations}
-          nearestLocationID={
-            locationsOrderedByDistanceFromUser[0]?.locationID || undefined
-          }
-          setGoogleMapRef={setGoogleMapRef}
-          onMarkerClicked={onMarkerClicked}
-          defaultMapProps={defaultMapProps}
-          findNearestLocation={findNearestLocationToUserLocation}
-        />
-        <DetailPanel
-          item={detailPanelItem}
-          nearestAlternativeItem={nearestAlternativeItem}
-          searchParams={searchParams}
-          setSearchParams={setSearchParams}
-        />
-        <FilterPanel
-          handleFindLocationButtonClick={handleFindLocationButtonClick}
-        />
-        <MessagePanelContainer />
-      </main>
-      <LoadingLayer
-        showLoadingLayer={showLoadingLayer}
-        findLocationError={findLocationError}
-      />
-    </FiltersProvider>
+    <SearchResultsProvider>
+      <FacilitiesProvider>
+        <PanelStateProvider>
+          <main className='flex flex-grow' id='home-main'>
+            <MyMap
+              items={locations}
+              nearestLocationID={
+                locationsOrderedByDistanceFromUser[0]?.locationID || undefined
+              }
+              setGoogleMapRef={setGoogleMapRef}
+              onMarkerClicked={onMarkerClicked}
+              defaultMapProps={defaultMapProps}
+              findNearestLocation={findNearestLocationToUserLocation}
+            />
+            <DetailPanel
+              item={detailPanelItem}
+              nearestAlternativeItem={nearestAlternativeItem}
+              searchParams={searchParams}
+              setSearchParams={setSearchParams}
+            />
+            <FilterPanel
+              handleFindLocationButtonClick={handleFindLocationButtonClick}
+            />
+            <MessagePanelContainer />
+          </main>
+          <LoadingLayer
+            showLoadingLayer={showLoadingLayer}
+            findLocationError={findLocationError}
+          />
+        </PanelStateProvider>
+      </FacilitiesProvider>
+    </SearchResultsProvider>
   );
 }
 

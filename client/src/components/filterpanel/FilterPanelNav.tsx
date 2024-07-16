@@ -1,7 +1,7 @@
 import IconButton from '../buttons/IconButton';
 import SearchLocation from './SearchLocation';
-import { useFiltersContext } from '../../context/filtersContext/filtersContext';
-import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
+import { usePanelStateContext } from '../../context/panelStateContext/panelStateContext';
+import { PanelsActionEnum } from '../../reducer/filtersReducer/types';
 
 type Props = {
   handleFindLocationButtonClick: () => void;
@@ -12,19 +12,19 @@ function FilterPanelNav({
   handleFindLocationButtonClick,
   filtersParam
 }: Props) {
-  const { panelsState, dispatchFilters } = useFiltersContext();
+  const { panelsState, dispatchFilters } = usePanelStateContext();
   const { isFavouritesSelected, isFacilitiesSelected } = panelsState;
 
   const onFilterButtonClick = () => {
-    dispatchFilters({ type: FiltersActionEnum.FILTER_BUTTON_CLICK });
+    dispatchFilters({ type: PanelsActionEnum.FILTER_BUTTON_CLICK });
   };
 
   const onFavouriteButtonClick = () => {
-    dispatchFilters({ type: FiltersActionEnum.FAVOURITES_BUTTON_CLICK });
+    dispatchFilters({ type: PanelsActionEnum.FAVOURITES_BUTTON_CLICK });
   };
 
   const onFindNearestToiletButtonClick = () => {
-    dispatchFilters({ type: FiltersActionEnum.HIDE_FILTER_PANEL });
+    dispatchFilters({ type: PanelsActionEnum.HIDE_FILTER_PANEL });
     handleFindLocationButtonClick();
   };
 

@@ -3,15 +3,15 @@ import FacilitiesList from './FacilitiesList';
 import FilterButton from '../buttons/IconButton';
 import { useFacilitiesContext } from '../../context/facilitiesContext/facilitiesContext';
 import {
-  FiltersActionEnum,
-  FiltersActionType
+  PanelsActionEnum,
+  PanelsActionType
 } from '../../reducer/filtersReducer/types';
 
 interface Props {
   updateSearchParams: (key: string, value: string) => void;
   filtersParam: string | null;
   isSelected: boolean;
-  dispatchFilters: React.Dispatch<FiltersActionType>;
+  dispatchFilters: React.Dispatch<PanelsActionType>;
 }
 
 function FilterSectionFacilities({
@@ -25,7 +25,7 @@ function FilterSectionFacilities({
   const isActive = !!filtersParam;
 
   const onClick = () => {
-    dispatchFilters({ type: FiltersActionEnum.FILTER_BUTTON_CLICK });
+    dispatchFilters({ type: PanelsActionEnum.FILTER_BUTTON_CLICK });
   };
 
   useEffect(() => {

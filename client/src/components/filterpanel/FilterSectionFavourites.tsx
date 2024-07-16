@@ -1,6 +1,6 @@
-import { useFiltersContext } from '../../context/filtersContext/filtersContext';
+import { usePanelStateContext } from '../../context/panelStateContext/panelStateContext';
 import { useLocationsContext } from '../../context/locationContext/locationsContext';
-import { FiltersActionEnum } from '../../reducer/filtersReducer/types';
+import { PanelsActionEnum } from '../../reducer/filtersReducer/types';
 import FilterButton from '../buttons/IconButton';
 import FavouritesList from './FavouritesList';
 
@@ -9,14 +9,14 @@ type Props = {
 };
 
 function FilterSectionFavourites({ updateSearchParams }: Props) {
-  const { panelsState, dispatchFilters } = useFiltersContext();
+  const { panelsState, dispatchFilters } = usePanelStateContext();
   const {
     locationsState: { locations }
   } = useLocationsContext();
   const isSelected = panelsState.isFavouritesSelected;
 
   const onClick = () => {
-    dispatchFilters({ type: FiltersActionEnum.FAVOURITES_BUTTON_CLICK });
+    dispatchFilters({ type: PanelsActionEnum.FAVOURITES_BUTTON_CLICK });
   };
 
   const favourites = locations.filter((location) => location.isFavourite);

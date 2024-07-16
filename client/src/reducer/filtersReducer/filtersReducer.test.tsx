@@ -1,9 +1,9 @@
 import { describe, test } from 'vitest';
 import filtersReducer from './filtersReducer';
-import { FiltersActionType, FiltersActionEnum } from './types';
-import { IFiltersInitialState } from '../../context/filtersContext/types';
+import { PanelsActionType, PanelsActionEnum } from './types';
+import { IPanelsInitialState } from '../../context/panelStateContext/types';
 
-const initialState: IFiltersInitialState = {
+const initialState: IPanelsInitialState = {
   isPanelOpen: false,
   isFacilitiesSelected: false,
   isFavouritesSelected: false,
@@ -13,10 +13,10 @@ const initialState: IFiltersInitialState = {
 
 describe('filtersReducer', () => {
   test('should handle SHOW_FILTER_PANEL action', () => {
-    const action: FiltersActionType = {
-      type: FiltersActionEnum.SHOW_FILTER_PANEL
+    const action: PanelsActionType = {
+      type: PanelsActionEnum.SHOW_FILTER_PANEL
     };
-    const expectedState: IFiltersInitialState = {
+    const expectedState: IPanelsInitialState = {
       ...initialState,
       isPanelOpen: true
     };
@@ -25,10 +25,10 @@ describe('filtersReducer', () => {
   });
 
   test('should handle HIDE_FILTER_PANEL action', () => {
-    const action: FiltersActionType = {
-      type: FiltersActionEnum.HIDE_FILTER_PANEL
+    const action: PanelsActionType = {
+      type: PanelsActionEnum.HIDE_FILTER_PANEL
     };
-    const expectedState: IFiltersInitialState = {
+    const expectedState: IPanelsInitialState = {
       ...initialState,
       isPanelOpen: false
     };
@@ -40,10 +40,10 @@ describe('filtersReducer', () => {
   });
 
   test('should handle FILTER_BUTTON_CLICK', () => {
-    const action: FiltersActionType = {
-      type: FiltersActionEnum.FILTER_BUTTON_CLICK
+    const action: PanelsActionType = {
+      type: PanelsActionEnum.FILTER_BUTTON_CLICK
     };
-    const expectedState: IFiltersInitialState = {
+    const expectedState: IPanelsInitialState = {
       ...initialState,
       isPanelOpen: true,
       isFacilitiesSelected: true,
@@ -56,10 +56,10 @@ describe('filtersReducer', () => {
   });
 
   test('should handle FAVOURITES_BUTTON_CLICK', () => {
-    const action: FiltersActionType = {
-      type: FiltersActionEnum.FAVOURITES_BUTTON_CLICK
+    const action: PanelsActionType = {
+      type: PanelsActionEnum.FAVOURITES_BUTTON_CLICK
     };
-    const expectedState: IFiltersInitialState = {
+    const expectedState: IPanelsInitialState = {
       ...initialState,
       isPanelOpen: true,
       isFacilitiesSelected: false,
@@ -73,11 +73,11 @@ describe('filtersReducer', () => {
   });
 
   test('should handle SEARCH_TERM_CHANGE', () => {
-    const action: FiltersActionType = {
-      type: FiltersActionEnum.SEARCH_TERM_CHANGE
+    const action: PanelsActionType = {
+      type: PanelsActionEnum.SEARCH_TERM_CHANGE
     };
 
-    const expectedState: IFiltersInitialState = {
+    const expectedState: IPanelsInitialState = {
       ...initialState,
       isPanelOpen: true,
       isFacilitiesSelected: false,
