@@ -1,4 +1,4 @@
-import { IFacility } from '../../../../context/locationContext/types';
+import { IFacility } from '../../../../context/facilitiesContext/types';
 
 const mockFacilities: IFacility[] = [
   { full_name: 'facility001', short_name: 'facility001', id: 'facility001' },
