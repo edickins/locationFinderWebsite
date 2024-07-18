@@ -23,8 +23,7 @@ export default function PanelStateProvider({ children }: PropsWithChildren) {
     isPanelOpen: false,
     isFacilitiesSelected: false,
     isFavouritesSelected: false,
-    isSearchSelected: false,
-    isSearchActive: false
+    isSearchSelected: false
   });
 
   // create context initialValue

@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { SetURLSearchParams } from 'react-router-dom';
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import { IFacility, ILocation } from '../../context/locationContext/types';
+import { ILocation } from '../../context/locationContext/types';
+import { IFacility } from '../../context/facilitiesContext/types';
 
 import DetailPanelAddress from './DetailPanelAddress';
 import DetailPanelFacilities from './DetailPanelFacilities';

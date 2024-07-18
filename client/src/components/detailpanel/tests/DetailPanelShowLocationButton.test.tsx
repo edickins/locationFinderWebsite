@@ -1,5 +1,5 @@
 import { vi } from 'vitest';
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import * as testLocation from './data/index.json';
 import { ILocation } from '../../../context/locationContext/types';

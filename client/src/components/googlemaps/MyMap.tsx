@@ -92,7 +92,6 @@ function MyMap({
     }
   }, [dispatchFilters, items, nearestLocationID, searchParams]);
 
-  // TODO make this work for light theme too
   useEffect(() => {
     setMapStyle(
       window.matchMedia('(prefers-color-scheme:dark').matches

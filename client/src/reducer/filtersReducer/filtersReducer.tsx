@@ -18,8 +18,7 @@ export default function filtersReducer(
         isPanelOpen: false,
         isFacilitiesSelected: false,
         isFavouritesSelected: false,
-        isSearchSelected: false,
-        isSearchActive: false
+        isSearchSelected: false
       };
     case PanelsActionEnum.FILTER_BUTTON_CLICK:
       return {
@@ -27,8 +26,7 @@ export default function filtersReducer(
         isPanelOpen: true,
         isFacilitiesSelected: !state.isFacilitiesSelected,
         isFavouritesSelected: false,
-        isSearchSelected: false,
-        isSearchActive: false
+        isSearchSelected: false
       };
     case PanelsActionEnum.FAVOURITES_BUTTON_CLICK:
       return {
@@ -36,8 +34,7 @@ export default function filtersReducer(
         isPanelOpen: true,
         isFacilitiesSelected: false,
         isFavouritesSelected: !state.isFavouritesSelected,
-        isSearchSelected: false,
-        isSearchActive: false
+        isSearchSelected: false
       };
     case PanelsActionEnum.SEARCH_TERM_CHANGE: {
       return {
@@ -45,8 +42,7 @@ export default function filtersReducer(
         isPanelOpen: true,
         isFacilitiesSelected: false,
         isFavouritesSelected: false,
-        isSearchSelected: true,
-        isSearchActive: true
+        isSearchSelected: true
       };
     }
     case PanelsActionEnum.SEARCH_TERM_CLICK: {
@@ -55,8 +51,7 @@ export default function filtersReducer(
         isPanelOpen: true,
         isFacilitiesSelected: false,
         isFavouritesSelected: false,
-        isSearchSelected: !state.isSearchSelected,
-        isSearchActive: !state.isSearchActive
+        isSearchSelected: !state.isSearchSelected
       };
     }
     default:

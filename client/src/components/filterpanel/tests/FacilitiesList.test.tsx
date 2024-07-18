@@ -2,7 +2,7 @@ import UserEvent from '@testing-library/user-event';
 import { describe, it, vi, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
-import { IFacility } from '../../../context/locationContext/types';
+import { IFacility } from '../../../context/facilitiesContext/types';
 import FacilitiesList from '../FacilitiesList';
 
 const facilities: IFacility[] = [

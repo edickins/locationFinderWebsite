@@ -25,18 +25,6 @@ const panelsState: PanelsState = {
   isSearchActive: false
 };
 
-type SearchData = {
-  searchTermsMatch: [];
-  searchTermsPerfectMatch: [];
-  searchTerm: string;
-};
-
-const searchData: SearchData = {
-  searchTermsMatch: [],
-  searchTermsPerfectMatch: [],
-  searchTerm: ''
-};
-
 vi.mock('../../../context/locationContext/locationsContext', () => {
   return {
     useLocationsContext: () => {

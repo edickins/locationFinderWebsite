@@ -26,7 +26,7 @@ type SearchData = {
   searchTerm: string;
 };
 
-const searchData: SearchData = {
+const mockSearchData: SearchData = {
   searchTermsMatch: [],
   searchTermsPerfectMatch: [],
   searchTerm: ''
@@ -64,12 +64,17 @@ vi.mock('../../../context/locationContext/locationsContext', () => {
 vi.mock('../../../context/searchContext/searchContext', () => {
   return {
     useSearchContext: () => ({
-      searchData
+      searchData: mockSearchData
     })
   };
 });
 
 describe('FilterSectionSearch', () => {
+  afterEach(() => {
+    mockDispatchFilters.mockReset();
+    mockUpdateSearchParams.mockReset();
+  });
+
   test('Initial render is correct', () => {
     render(<FilterSectionSearch updateSearchParams={mockUpdateSearchParams} />);
 
@@ -98,9 +103,9 @@ describe('FilterSectionSearch', () => {
 
     const user = userEvent.setup();
 
-    searchData.searchTermsMatch.push(mockLocations[0].id);
-    searchData.searchTermsPerfectMatch.push(mockLocations[0].id);
-    searchData.searchTerm = 'Location 1';
+    mockSearchData.searchTermsMatch.push(mockLocations[0].id);
+    mockSearchData.searchTermsPerfectMatch.push(mockLocations[0].id);
+    mockSearchData.searchTerm = 'Location 1';
     render(<FilterSectionSearch updateSearchParams={mockUpdateSearchParams} />);
 
     const noResultsText = screen.queryByText(
@@ -112,6 +117,27 @@ describe('FilterSectionSearch', () => {
       exact: false
     });
     expect(searchTermText).toHaveTextContent('1');
+
+    const locationButton = screen.getByRole('button', {
+      name: /location 1/i
+    });
+
+    await user.click(locationButton);
+
+    expect(mockUpdateSearchParams).toHaveBeenCalledTimes(1);
+    expect(mockUpdateSearchParams).toHaveBeenCalledWith('locationID', '1');
+  });
+
+  test('Entering a search term updates the searchParams correctly', async () => {
+    mockPanelsState.isPanelOpen = true;
+    mockPanelsState.isSearchSelected = true;
+
+    const user = userEvent.setup();
+
+    mockSearchData.searchTermsMatch.push(mockLocations[0].id);
+    mockSearchData.searchTermsPerfectMatch.push(mockLocations[0].id);
+    mockSearchData.searchTerm = 'Location 1';
+    render(<FilterSectionSearch updateSearchParams={mockUpdateSearchParams} />);
 
     const locationButton = screen.getByRole('button', {
       name: /location 1/i
