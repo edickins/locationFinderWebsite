@@ -108,8 +108,6 @@ describe('SearchResultsList', () => {
     });
     expect(searchText).toBeInTheDocument();
 
-    screen.logTestingPlaygroundURL();
-
     const noResultsText = screen.getByText('No search results found.');
     expect(noResultsText).toBeInTheDocument();
   });
