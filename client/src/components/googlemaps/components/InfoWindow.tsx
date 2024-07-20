@@ -30,7 +30,20 @@ function InfoWindow({
         position,
         disableAutoPan: true
       });
-      const styledContent = `<div style="color:#040404;padding:4px;font-weight:700">${content}</div>`;
+      const styledContent = `<style>
+        .gm-style-iw button[aria-label='Close'] {
+          height: 20px !important;
+          width: 20px !important;
+          margin-right: -10px !important;
+          margin-top: 5px !important;
+        }
+        .gm-style-iw button[aria-label='Close'] span {
+          margin: 0 !important;
+          width: 20px !important;
+          height: 20px !important;
+
+        }
+      </style><div style="color:#040404;padding:2px;font-weight:700">${content}</div>`;
       infoWindowRef.current.setOptions({
         content: styledContent,
         position,
