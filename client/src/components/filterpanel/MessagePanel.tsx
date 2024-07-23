@@ -20,7 +20,7 @@ function MessagePanel({ title, message, hideMessagePanelContainer }: Props) {
       <h2 className='mb-2 bg-gray-600 p-2 pr-24 text-lg font-semibold'>
         {title}
       </h2>
-      <p className='px-2'>{message}</p>
+      <p className='whitespace-pre-wrap px-2'>{message}</p>
     </div>
   );
 }

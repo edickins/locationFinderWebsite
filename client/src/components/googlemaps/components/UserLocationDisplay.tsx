@@ -4,21 +4,11 @@ import { userLocationSVG } from './markerSVGs';
 import useGetScreensize, { ScreenSizeEnum } from '../../../hooks/getScreensize';
 
 type Props = {
-  findNearestLocation: (loc: { lat: number; lng: number }) => void;
   userLocation: string | null;
   locationID: string | null;
 };
 
-type LatLng = {
-  lat: number;
-  lng: number;
-};
-
-function UserLocationDisplay({
-  findNearestLocation,
-  userLocation,
-  locationID
-}: Props) {
+function UserLocationDisplay({ userLocation, locationID }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const infoWindowRef = useRef<google.maps.InfoWindow | null>(null);
   const circleRef = useRef<google.maps.Circle | null>(null);
@@ -27,21 +17,6 @@ function UserLocationDisplay({
   const screenSize = useGetScreensize();
 
   const { map, addMarker } = useMapContext();
-
-  useEffect(() => {
-    if (userLocation) {
-      const pos: LatLng = JSON.parse(userLocation);
-
-      // Check if pos is a valid LatLng object
-      if (pos && typeof pos.lat === 'number' && typeof pos.lng === 'number') {
-        findNearestLocation(pos);
-      } else {
-        console.error('Invalid userLocation:', pos);
-        // TODO handle this error
-        // Handle the error...
-      }
-    }
-  }, [findNearestLocation, userLocation]);
 
   useEffect(() => {
     if (userLocation) {
@@ -128,14 +103,7 @@ function UserLocationDisplay({
         markerRef.current = null;
       }
     };
-  }, [
-    addMarker,
-    findNearestLocation,
-    locationID,
-    map,
-    screenSize,
-    userLocation
-  ]);
+  }, [addMarker, locationID, map, screenSize, userLocation]);
   return null;
 }
 

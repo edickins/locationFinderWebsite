@@ -30,7 +30,7 @@ type Props = {
   nearestLocationID: string | undefined;
   setGoogleMapRef: (map: google.maps.Map) => void;
   onMarkerClicked: (id: string) => void;
-  findNearestLocation: (loc: { lat: number; lng: number }) => void;
+
   defaultMapProps: MapProps;
 };
 
@@ -39,7 +39,7 @@ function MyMap({
   nearestLocationID,
   setGoogleMapRef,
   onMarkerClicked,
-  findNearestLocation,
+
   defaultMapProps
 }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -140,7 +140,6 @@ function MyMap({
           />
 
           <UserLocationDisplay
-            findNearestLocation={findNearestLocation}
             userLocation={searchParams.get('userLocation')}
             locationID={searchParams.get('locationID')}
           />

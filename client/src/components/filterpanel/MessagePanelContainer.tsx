@@ -37,7 +37,7 @@ function MessagePanelContainer() {
   return (
     <div
       id='message-panel-container'
-      className='absolute bottom-0 left-0 right-0 top-0 z-50 hidden h-full w-full content-center justify-items-center bg-red-500 bg-opacity-50'
+      className='absolute bottom-0 left-0 right-0 top-0 z-50 hidden h-full w-full content-center justify-items-center bg-white bg-opacity-50'
       ref={messagePanelContainerRef}
     >
       {locationsState.error && (
