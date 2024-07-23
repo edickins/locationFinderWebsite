@@ -181,7 +181,7 @@ function Home() {
     [locations]
   );
 
-  const handleFindLocationButtonClick = () => {
+  const handleFindNearestLocationClick = () => {
     const userLocationString = searchParams.get('userLocation');
     const userLocation = userLocationString
       ? JSON.parse(userLocationString)
@@ -473,7 +473,7 @@ function Home() {
               setSearchParams={setSearchParams}
             />
             <FilterPanel
-              handleFindLocationButtonClick={handleFindLocationButtonClick}
+              handleFindNearestLocationClick={handleFindNearestLocationClick}
             />
             <MessagePanelContainer />
           </main>

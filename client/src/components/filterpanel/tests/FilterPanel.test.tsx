@@ -71,7 +71,7 @@ describe('FilterPanel - a test suite with params stored in state to test multipl
   test('Initial render is correct', () => {
     render(
       <FilterPanel
-        handleFindLocationButtonClick={mockHandleFindNearestLocationClick}
+        handleFindNearestLocationClick={mockHandleFindNearestLocationClick}
       />
     );
 
@@ -90,7 +90,7 @@ describe('FilterPanel - a test suite with params stored in state to test multipl
     panelsState.isFacilitiesSelected = true;
     render(
       <FilterPanel
-        handleFindLocationButtonClick={mockHandleFindNearestLocationClick}
+        handleFindNearestLocationClick={mockHandleFindNearestLocationClick}
       />
     );
 

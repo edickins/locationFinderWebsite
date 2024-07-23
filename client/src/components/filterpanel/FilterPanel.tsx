@@ -5,10 +5,10 @@ import FiltersContainer from './FiltersContainer';
 import FindNearestLocationPanel from './FindNearestLocationPanel';
 
 type Props = {
-  handleFindLocationButtonClick: () => void;
+  handleFindNearestLocationClick: () => void;
 };
 
-function FilterPanel({ handleFindLocationButtonClick }: Props) {
+function FilterPanel({ handleFindNearestLocationClick }: Props) {
   const [searchParams, setSearchParams] = useSearchParams();
   const filtersParam = searchParams.get('filters');
 
@@ -36,7 +36,7 @@ function FilterPanel({ handleFindLocationButtonClick }: Props) {
         className='pointer-events-none relative mt-10  md:left-4  md:mt-24 md:max-w-md  '
       >
         <FilterPanelNav
-          handleFindLocationButtonClick={handleFindLocationButtonClick}
+          handleFindNearestLocationClick={handleFindNearestLocationClick}
           filtersParam={filtersParam}
         />
         <FiltersContainer
@@ -49,7 +49,7 @@ function FilterPanel({ handleFindLocationButtonClick }: Props) {
         className=' pointer-events-none relative mt-10 hidden md:right-4 md:mt-24 md:block'
       >
         <FindNearestLocationPanel
-          handleFindLocationButtonClick={handleFindLocationButtonClick}
+          handleFindNearestLocationClick={handleFindNearestLocationClick}
         />
       </div>
     </div>

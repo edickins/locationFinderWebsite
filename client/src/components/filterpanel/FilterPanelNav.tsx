@@ -4,12 +4,12 @@ import { usePanelStateContext } from '../../context/panelStateContext/panelState
 import { PanelsActionEnum } from '../../reducer/filtersReducer/types';
 
 type Props = {
-  handleFindLocationButtonClick: () => void;
+  handleFindNearestLocationClick: () => void;
   filtersParam: string | null;
 };
 
 function FilterPanelNav({
-  handleFindLocationButtonClick,
+  handleFindNearestLocationClick,
   filtersParam
 }: Props) {
   const { panelsState, dispatchFilters } = usePanelStateContext();
@@ -25,7 +25,7 @@ function FilterPanelNav({
 
   const onFindNearestToiletButtonClick = () => {
     dispatchFilters({ type: PanelsActionEnum.HIDE_FILTER_PANEL });
-    handleFindLocationButtonClick();
+    handleFindNearestLocationClick();
   };
 
   return (
