@@ -27,13 +27,13 @@ vi.mock('../../../context/panelStateContext/panelStateContext', () => ({
 }));
 
 describe('FilterPanelNav', () => {
-  const handleFindLocationButtonClick = vi.fn();
+  const mockHandleFindNearestLocationClick = vi.fn();
 
   test('should call eventhandlers when buttons are clicked', async () => {
     render(
       <MemoryRouter>
         <FilterPanelNav
-          handleFindLocationButtonClick={handleFindLocationButtonClick}
+          handleFindNearestLocationClick={mockHandleFindNearestLocationClick}
           filtersParam={filtersParam}
         />
       </MemoryRouter>
@@ -47,7 +47,7 @@ describe('FilterPanelNav', () => {
 
     await user.click(nearestToiletButton);
 
-    expect(handleFindLocationButtonClick).toHaveBeenCalledOnce();
+    expect(mockHandleFindNearestLocationClick).toHaveBeenCalledOnce();
 
     vi.resetAllMocks(); // all mock.calls[][] array values are reset.
   });
@@ -57,7 +57,7 @@ describe('FilterPanelNav', () => {
     render(
       <MemoryRouter>
         <FilterPanelNav
-          handleFindLocationButtonClick={handleFindLocationButtonClick}
+          handleFindNearestLocationClick={mockHandleFindNearestLocationClick}
           filtersParam={filtersParam}
         />
       </MemoryRouter>
@@ -82,7 +82,7 @@ describe('FilterPanelNav', () => {
     render(
       <MemoryRouter>
         <FilterPanelNav
-          handleFindLocationButtonClick={handleFindLocationButtonClick}
+          handleFindNearestLocationClick={mockHandleFindNearestLocationClick}
           filtersParam={filtersParam}
         />
       </MemoryRouter>
