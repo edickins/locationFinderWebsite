@@ -51,7 +51,7 @@ const getUserAndLocationBounds = (
       default:
         options.bottom = 100;
         options.left = 300;
-        options.right = 200;
+        options.right = 0;
         options.top = 200;
     }
     return { bounds, options };

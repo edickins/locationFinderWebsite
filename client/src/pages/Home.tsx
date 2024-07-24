@@ -107,7 +107,11 @@ function Home() {
 
   const doAskForUserLocationOnPageLoad = useCallback(async () => {
     setShowLoadingLayer(true);
-    const pos = await getUserGeoLocation(locationBounds, setFindLocationError);
+    const pos = await getUserGeoLocation(
+      locationBounds,
+      setFindLocationError,
+      searchParams
+    );
 
     if (pos) {
       const newSearchParams = new URLSearchParams(searchParams.toString());
@@ -191,9 +195,14 @@ function Home() {
     [googleMapRef, screenSize]
   );
 
+  // click handler for any button that can
   const handleFindNearestLocationClick = async () => {
     setShowLoadingLayer(true);
-    const pos = await getUserGeoLocation(locationBounds, setFindLocationError);
+    const pos = await getUserGeoLocation(
+      locationBounds,
+      setFindLocationError,
+      searchParams
+    );
 
     if (pos) {
       const { locationID } = findNearestLocationToUserLocation(pos);
@@ -419,22 +428,51 @@ function Home() {
 
   // set the default values for the map when it loads on different devices
   const defaultMapProps = useMemo(() => {
+    // zoom to user location if it exists in URLSearchParams
+    const posString = searchParams.get('userLocation');
+    let userLocation: { lat: number; lng: number };
+    if (posString) {
+      const pos = JSON.parse(posString);
+      // Check if pos is a valid LatLng object
+      if (pos && typeof pos.lat === 'number' && typeof pos.lng === 'number') {
+        userLocation = pos;
+      }
+    }
     const getDefaultMapProps = () => {
       switch (screenSize) {
         case ScreenSizeEnum.XL:
         case ScreenSizeEnum.LG:
         case ScreenSizeEnum.MD:
+          if (userLocation) {
+            return {
+              center: { lat: userLocation.lat, lng: userLocation.lng },
+              zoom: 17
+            };
+          }
+
           return {
             center: { lat: 50.83356066, lng: -0.1593492 },
             zoom: 14
           };
           break;
         case ScreenSizeEnum.SM:
+          if (userLocation) {
+            return {
+              center: { lat: userLocation.lat, lng: userLocation.lng },
+              zoom: 17
+            };
+          }
           return {
             center: { lat: 50.83356066, lng: -0.1413492 },
-            zoom: 13
+            zoom: 14
           };
         case ScreenSizeEnum.XS:
+          if (userLocation) {
+            return {
+              center: { lat: userLocation.lat, lng: userLocation.lng },
+              zoom: 14
+            };
+          }
           return {
             center: { lat: 50.83356066, lng: -0.1413492 },
             zoom: 13
@@ -443,12 +481,12 @@ function Home() {
         default:
           return {
             center: { lat: 50.83356066, lng: -0.1593492 },
-            zoom: 15
+            zoom: 17
           };
       }
     };
     return getDefaultMapProps();
-  }, [screenSize]);
+  }, [screenSize, searchParams]);
 
   return (
     <SearchResultsProvider>

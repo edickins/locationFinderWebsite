@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
+import { isLatLngLiteral } from '@googlemaps/typescript-guards';
 
 type FindLocationError = { messageTitle: string; message: string } | undefined;
 type SetFindLocationError = Dispatch<SetStateAction<FindLocationError>>;
@@ -6,16 +7,26 @@ type SetFindLocationError = Dispatch<SetStateAction<FindLocationError>>;
 // handler for 'Find a toilet near me' button
 const getUserGeoLocation = (
   locationBounds: google.maps.LatLngBounds | undefined,
-  setFindLocationError: SetFindLocationError
+  setFindLocationError: SetFindLocationError,
+  searchParams: URLSearchParams
 ): Promise<{ lat: number; lng: number } | undefined> => {
   return new Promise((resolve) => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position: GeolocationPosition) => {
-          const pos = {
+          let pos = {
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
+
+          const fakeLocation = searchParams.get('fakeLocation');
+          if (fakeLocation) {
+            const fakeLocationObj = JSON.parse(fakeLocation);
+            if (isLatLngLiteral(fakeLocationObj)) {
+              pos = fakeLocationObj;
+            }
+          }
+
           if (locationBounds?.contains(pos) === false) {
             setFindLocationError({
               messageTitle: 'Geolocation detection',
