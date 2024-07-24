@@ -287,17 +287,13 @@ function Home() {
       // animate to location if locationID is not the nearest location
       if (
         currentLocation &&
-        userLocationString &&
-        !currentLocationIsNearestLocation
+        (!userLocationString || !currentLocationIsNearestLocation)
       ) {
         timeoutRef.current = setTimeout(() => {
           panToWithOffset(currentLocation.geometry.location);
         }, 100);
-      } else if (currentLocation && !userLocationString) {
-        timeoutRef.current = setTimeout(() => {
-          panToWithOffset(currentLocation.geometry.location);
-        }, 100);
       }
+
       setDetailPanelItem(currentLocation);
       setNearestAlternativeItem(
         locations.find(

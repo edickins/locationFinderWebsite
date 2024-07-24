@@ -1,7 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 
 type FindLocationError = { messageTitle: string; message: string } | undefined;
-
 type SetFindLocationError = Dispatch<SetStateAction<FindLocationError>>;
 
 // handler for 'Find a toilet near me' button
