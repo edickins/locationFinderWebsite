@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import GeoCoder from 'geocoder_node';
+import { isLatLngLiteral } from '@googlemaps/typescript-guards';
 import MyMap from '../components/googlemaps/MyMap';
 import DetailPanel from '../components/detailpanel/DetailPanel';
 import FilterPanel from '../components/filterpanel/FilterPanel';
@@ -25,7 +26,11 @@ type Route = {
 
 function Home() {
   const screenSize = useGetScreensize();
-
+  const [searchParams, setSearchParams] = useSearchParams();
+  const {
+    locationsState: { locations },
+    dispatchLocations
+  } = useLocationsContext();
   // const currentLocationPolyLineRef = useRef<google.maps.Polyline | undefined>();
 
   const [detailPanelItem, setDetailPanelItem] = useState<ILocation | undefined>(
@@ -45,7 +50,6 @@ function Home() {
     message: string;
   }>();
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [
     locationsOrderedByDistanceFromUser,
     setLocationsOrderedByDistanceFromUser
@@ -54,15 +58,7 @@ function Home() {
   const [showLoadingLayer, setShowLoadingLayer] = useState(false);
   const [hasRequestedUserLocation, setHasRequestedUserLocation] =
     useState(false);
-
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [searchParams, setSearchParams] = useSearchParams();
-  const {
-    locationsState: { locations },
-    dispatchLocations
-  } = useLocationsContext();
 
   const onMarkerClicked = useCallback(
     (id: string) => {
@@ -284,7 +280,6 @@ function Home() {
   useEffect(() => {
     const locationID = searchParams.get('locationID');
     const userLocationString = searchParams.get('userLocation');
-
     if (!locationID) return undefined;
     setShowLoadingLayer(false);
     if (locationID) {
@@ -330,8 +325,9 @@ function Home() {
     if (posString) {
       const pos = JSON.parse(posString);
       // Check if pos is a valid LatLng object
-      if (pos && typeof pos.lat === 'number' && typeof pos.lng === 'number') {
+      if (isLatLngLiteral(pos)) {
         setShowLoadingLayer(false);
+        findNearestLocationToUserLocation(pos);
       } else {
         // TODO handle this error
         setFindLocationError({
@@ -339,15 +335,6 @@ function Home() {
           message: 'There is an error with your location.'
         });
       }
-    }
-  }, [searchParams]);
-
-  // respond to the page loading with userLocation in the searchParams of the url
-  useEffect(() => {
-    const posString = searchParams.get('userLocation');
-    if (posString) {
-      const pos = JSON.parse(posString);
-      findNearestLocationToUserLocation(pos);
     }
   }, [findNearestLocationToUserLocation, searchParams]);
 

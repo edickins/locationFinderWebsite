@@ -18,7 +18,7 @@ const getUserGeoLocation = (
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
-
+          // use a fakelocation if it appears in the URLSearchParams
           const fakeLocation = searchParams.get('fakeLocation');
           if (fakeLocation) {
             const fakeLocationObj = JSON.parse(fakeLocation);
