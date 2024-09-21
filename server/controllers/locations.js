@@ -8,11 +8,30 @@ const { getNextLocationId } = require('../utils/getNextLocationId');
 // @route GET /api/v1/locations
 // @access Public
 exports.getLocations = asyncHandler(async (req, res, next) => {
+  const params = new URLSearchParams(req.url);
+
+  const offset = parseInt(params.get('offset')) || 0;
+  const limit = parseInt(params.get('limit'));
+
+  console.log('offset', offset);
+  console.log('limit', limit);
   try {
-    const locations = await Location.find().populate('facilities');
-    res
-      .status(200)
-      .json({ success: true, count: locations.length, locations: locations });
+    const query = await Location.find().populate('facilities').skip(offset); // Skip the specified number of documents
+
+    // Conditionally apply limit if it is defined
+    if (limit) {
+      query.limit(limit); // Apply limit only if it is set
+    }
+
+    const locations = await query;
+
+    const totalCount = await Location.countDocuments();
+    res.status(200).json({
+      success: true,
+      count: locations.length,
+      totalCount,
+      locations
+    });
   } catch (error) {
     next(error);
   }
@@ -23,6 +42,7 @@ exports.getLocations = asyncHandler(async (req, res, next) => {
 // @access Public
 exports.getLocation = asyncHandler(async (req, res, next) => {
   console.log(req.params.id);
+
   try {
     const location = await Location.findOne({ id: req.params.id }).populate(
       'facilities'
