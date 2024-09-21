@@ -8,19 +8,16 @@ const { getNextLocationId } = require('../utils/getNextLocationId');
 // @route GET /api/v1/locations
 // @access Public
 exports.getLocations = asyncHandler(async (req, res, next) => {
-  const params = new URLSearchParams(req.url);
+  const params = new URLSearchParams(req.query);
 
   const offset = parseInt(params.get('offset')) || 0;
   const limit = parseInt(params.get('limit'));
-
-  console.log('offset', offset);
-  console.log('limit', limit);
   try {
-    const query = await Location.find().populate('facilities').skip(offset); // Skip the specified number of documents
+    const query = Location.find().populate('facilities').skip(offset);
 
     // Conditionally apply limit if it is defined
     if (limit) {
-      query.limit(limit); // Apply limit only if it is set
+      query.limit(limit);
     }
 
     const locations = await query;
