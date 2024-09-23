@@ -34,6 +34,21 @@ exports.getLocations = asyncHandler(async (req, res, next) => {
   }
 });
 
+async function getLocationNames() {
+  try {
+    const allLocations = await Location.find({}, 'id long_name');
+    const locationsList = {};
+
+    allLocations.forEach(location => {
+      locationsList[location.id] = location.long_name; // Construct key-value pairs
+    });
+
+    return locationsList;
+  } catch (error) {
+    next(error);
+  }
+}
+
 // @desc Get a single location
 // @route GET /api/v1/locations/:id
 // @access Public
@@ -54,7 +69,9 @@ exports.getLocation = asyncHandler(async (req, res, next) => {
       );
     }
 
-    res.status(200).json({ success: true, data: location });
+    const locationNames = await getLocationNames();
+
+    res.status(200).json({ success: true, data: location, locationNames });
   } catch (error) {
     next(error);
   }
