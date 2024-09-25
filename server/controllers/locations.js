@@ -41,22 +41,29 @@ exports.getLocation = asyncHandler(async (req, res, next) => {
   console.log(req.params.id);
 
   try {
-    const location = await Location.findOne({ id: req.params.id }).populate(
+    const locationPromise = Location.findOne({ id: req.params.id }).populate(
       'facilities'
     );
+    const allLocationsPromise = Location.find();
+
+    const [location, allLocations] = await Promise.all([
+      locationPromise,
+      allLocationsPromise
+    ]);
 
     if (!location) {
       return next(
         new ErrorResponse(
           `Location not found with an id of ${req.params.id}`,
-          400
+          404
         )
       );
     }
 
-    res.status(200).json({ success: true, data: location });
+    res.status(200).json({ success: true, data: location, allLocations });
   } catch (error) {
-    next(error);
+    console.error(error);
+    next(new ErrorResponse('An error occurred while fetching locations', 500));
   }
 });
 
