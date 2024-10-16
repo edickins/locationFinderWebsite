@@ -37,15 +37,15 @@ exports.getLocations = asyncHandler(async (req, res, next) => {
 async function getLocationNames() {
   try {
     const allLocations = await Location.find({}, 'id long_name');
-    const locationsList = {};
+    const locationsList = [];
 
     allLocations.forEach(location => {
-      locationsList[location.id] = location.long_name; // Construct key-value pairs
+      locationsList.push({ id: location.id, long_name: location.long_name }); // Construct key-value pairs
     });
 
-    return locationsList;
+    return locationsList; // This will return a Promise that resolves to locationsList
   } catch (error) {
-    next(error);
+    throw error; // Rethrow the error to be handled by the calling function
   }
 }
 
@@ -59,14 +59,14 @@ exports.getLocation = asyncHandler(async (req, res, next) => {
     const locationPromise = Location.findOne({ id: req.params.id }).populate(
       'facilities'
     );
-    const allLocationsPromise = Location.find();
+    const allLocationsPromise = getLocationNames();
 
-    const [location, allLocations] = await Promise.all([
+    const [location, locationNames] = await Promise.all([
       locationPromise,
       allLocationsPromise
     ]);
 
-    if (!location) {
+    if (!location || !locationNames) {
       return next(
         new ErrorResponse(
           `Location not found with an id of ${req.params.id}`,
@@ -75,7 +75,7 @@ exports.getLocation = asyncHandler(async (req, res, next) => {
       );
     }
 
-    res.status(200).json({ success: true, data: location, allLocations });
+    res.status(200).json({ success: true, data: location, locationNames });
   } catch (error) {
     console.error(error);
     next(new ErrorResponse('An error occurred while fetching locations', 500));
