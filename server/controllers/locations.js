@@ -86,31 +86,67 @@ exports.getLocation = asyncHandler(async (req, res, next) => {
 // @route POST /api/v1/locations
 // @access Private Admin
 exports.createLocation = asyncHandler(async (req, res, next) => {
+  const axiosInstance = axios.create({
+    baseURL: 'http://localhost:5001' // Set your base URL here
+  });
+  const address = encodeURIComponent(req.body.postal_address);
+  const googleAddressURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.GEOCDER_KEY}`;
   try {
-    const address = encodeURIComponent(req.body.postal_address);
-    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.GEOCDER_KEY}`;
-    try {
-      const result = await axios.get(url);
-      const apiResponse = result.data;
+    const googleApiResponsePromise = axios.get(googleAddressURL);
+    const nextLocationIdPromise = axiosInstance.get('/api/v1/nextlocationid');
 
-      // create a new document destructuring fields from the req.body
-      // add all other fields from the map api response
+    // Wait for both promises to resolve
+    const [googleApiResponse, nextLocationId] = await Promise.all([
+      googleApiResponsePromise,
+      nextLocationIdPromise
+    ]);
+
+    if (googleApiResponse.data.results.length > 0) {
+      const googleData = googleApiResponse.data.results[0];
+      const {
+        formatted_address,
+        place_id,
+        geometry,
+        types,
+        address_components
+      } = googleData;
+
+      const { nextId } = nextLocationId.data.data;
+
+      // Create a new Location object
       const location = new Location({
         ...req.body,
-        ...apiResponse.results[0]
+        formatted_address,
+        place_id,
+        geometry,
+        address_components,
+        types,
+        id: nextId
+
+        // Add other properties as needed, avoiding nested objects
       });
 
+      // Save the location or perform other operations
       const newLocationDocument = await location.save();
 
       res.status(201).json({ success: true, data: newLocationDocument });
-    } catch (error) {
-      res.status(500).json({ success: false, msg: error });
+    } else {
+      // Handle the case where no results were returned
+      next(new ErrorResponse('No location found', 404));
     }
   } catch (error) {
-    res.status(400).json({ success: false, msg: error });
+    console.error('Error in createLocation:', error);
+    if (error.response) {
+      console.error('Response data:', error.response.data);
+      console.error('Response status:', error.response.status);
+      console.error('Response headers:', error.response.headers);
+    } else if (error.request) {
+      console.error('Request data:', error.request);
+    } else {
+      console.error('Error message:', error.message);
+    }
+    next(new ErrorResponse('An error occurred while adding a location', 500));
   }
-
-  next();
 });
 
 // @desc Update a location

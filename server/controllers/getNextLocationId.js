@@ -5,6 +5,12 @@ const asyncHandler = require('../middleware/async');
 const getNextLocationId = require('../utils/getNextLocationId');
 
 exports.getNextLocationId = asyncHandler(async (req, res, next) => {
-  const nextId = await getNextLocationId();
-  res.status(201).json({ success: true, data: { nextId } });
+  console.log('getNextLocationId');
+  try {
+    const nextId = await getNextLocationId(); // Ensure this resolves
+    res.status(201).json({ success: true, data: { nextId } });
+  } catch (error) {
+    console.error('Error in getNextLocationId:', error);
+    next(new ErrorResponse('Failed to get next location ID', 500));
+  }
 });
