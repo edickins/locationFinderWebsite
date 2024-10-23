@@ -86,31 +86,87 @@ exports.getLocation = asyncHandler(async (req, res, next) => {
 // @route POST /api/v1/locations
 // @access Private Admin
 exports.createLocation = asyncHandler(async (req, res, next) => {
-  try {
-    const address = encodeURIComponent(req.body.postal_address);
-    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.GEOCDER_KEY}`;
-    try {
-      const result = await axios.get(url);
-      const apiResponse = result.data;
+  const { postal_address, long_name, alphabetical_name, open_status } =
+    req.body;
 
-      // create a new document destructuring fields from the req.body
-      // add all other fields from the map api response
-      const location = new Location({
-        ...req.body,
-        ...apiResponse.results[0]
-      });
-
-      const newLocationDocument = await location.save();
-
-      res.status(201).json({ success: true, data: newLocationDocument });
-    } catch (error) {
-      res.status(500).json({ success: false, msg: error });
-    }
-  } catch (error) {
-    res.status(400).json({ success: false, msg: error });
+  // Check for the required postal_address field
+  if (!postal_address) {
+    return next(new ErrorResponse('postal_address is required', 400));
   }
 
-  next();
+  // Log a warning if other fields are missing
+  if (!long_name || !alphabetical_name || !open_status) {
+    console.warn('Some optional fields are missing:', {
+      long_name,
+      alphabetical_name,
+      open_status
+    });
+  }
+
+  const axiosInstance = axios.create({
+    baseURL: 'http://localhost:5001' // Set your base URL here
+  });
+  const address = encodeURIComponent(req.body.postal_address);
+  const googleAddressURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.GEOCDER_KEY}`;
+  try {
+    const googleApiResponsePromise = axios.get(googleAddressURL);
+    const nextLocationIdPromise = axiosInstance.get('/api/v1/nextlocationid');
+
+    // Wait for both promises to resolve
+    const [googleApiResponse, nextLocationId] = await Promise.all([
+      googleApiResponsePromise,
+      nextLocationIdPromise
+    ]);
+
+    if (googleApiResponse.data.results.length > 0) {
+      const googleData = googleApiResponse.data.results[0];
+      const { formatted_address, place_id, geometry, address_components } =
+        googleData;
+
+      const { nextId } = nextLocationId.data.data;
+
+      // Create a new Location object
+      const location = new Location({
+        long_name: long_name || '', // Use empty string if not provided
+        alphabetical_name: alphabetical_name || '',
+        location: req.body.location || '', // Optional
+        postal_address, // Required
+        open_status: open_status || '',
+        formatted_address,
+        place_id,
+        geometry,
+        address_components,
+        id: nextId,
+        opening_hours: req.body.opening_hours || [], // Optional, default to empty array
+        facility_ids: req.body.facility_ids || [], // Optional, default to empty array
+        date_created: Date.now(),
+        date_modified: Date.now(),
+        isFavourite: req.body.isFavourite || false // Optional, default to false
+      });
+
+      // Save the location or perform other operations
+      const newLocationDocument = await location.save();
+
+      res
+        .status(201)
+        .json({ success: true, locationid: newLocationDocument.id });
+    } else {
+      // Handle the case where no results were returned
+      next(new ErrorResponse('No location found', 404));
+    }
+  } catch (error) {
+    console.error('Error in createLocation:', error);
+    if (error.response) {
+      console.error('Response data:', error.response.data);
+      console.error('Response status:', error.response.status);
+      console.error('Response headers:', error.response.headers);
+    } else if (error.request) {
+      console.error('Request data:', error.request);
+    } else {
+      console.error('Error message:', error.message);
+    }
+    next(new ErrorResponse('An error occurred while adding a location', 500));
+  }
 });
 
 // @desc Update a location
