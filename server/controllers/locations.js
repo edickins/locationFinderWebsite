@@ -86,6 +86,23 @@ exports.getLocation = asyncHandler(async (req, res, next) => {
 // @route POST /api/v1/locations
 // @access Private Admin
 exports.createLocation = asyncHandler(async (req, res, next) => {
+  const { postal_address, long_name, alphabetical_name, open_status } =
+    req.body;
+
+  // Check for the required postal_address field
+  if (!postal_address) {
+    return next(new ErrorResponse('postal_address is required', 400));
+  }
+
+  // Log a warning if other fields are missing
+  if (!long_name || !alphabetical_name || !open_status) {
+    console.warn('Some optional fields are missing:', {
+      long_name,
+      alphabetical_name,
+      open_status
+    });
+  }
+
   const axiosInstance = axios.create({
     baseURL: 'http://localhost:5001' // Set your base URL here
   });
@@ -103,33 +120,36 @@ exports.createLocation = asyncHandler(async (req, res, next) => {
 
     if (googleApiResponse.data.results.length > 0) {
       const googleData = googleApiResponse.data.results[0];
-      const {
-        formatted_address,
-        place_id,
-        geometry,
-        types,
-        address_components
-      } = googleData;
+      const { formatted_address, place_id, geometry, address_components } =
+        googleData;
 
       const { nextId } = nextLocationId.data.data;
 
       // Create a new Location object
       const location = new Location({
-        ...req.body,
+        long_name: long_name || '', // Use empty string if not provided
+        alphabetical_name: alphabetical_name || '',
+        location: req.body.location || '', // Optional
+        postal_address, // Required
+        open_status: open_status || '',
         formatted_address,
         place_id,
         geometry,
         address_components,
-        types,
-        id: nextId
-
-        // Add other properties as needed, avoiding nested objects
+        id: nextId,
+        opening_hours: req.body.opening_hours || [], // Optional, default to empty array
+        facility_ids: req.body.facility_ids || [], // Optional, default to empty array
+        date_created: Date.now(),
+        date_modified: Date.now(),
+        isFavourite: req.body.isFavourite || false // Optional, default to false
       });
 
       // Save the location or perform other operations
       const newLocationDocument = await location.save();
 
-      res.status(201).json({ success: true, data: newLocationDocument });
+      res
+        .status(201)
+        .json({ success: true, locationid: newLocationDocument.id });
     } else {
       // Handle the case where no results were returned
       next(new ErrorResponse('No location found', 404));
