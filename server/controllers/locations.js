@@ -86,26 +86,16 @@ exports.getLocation = asyncHandler(async (req, res, next) => {
 // @route POST /api/v1/locations
 // @access Private Admin
 exports.createLocation = asyncHandler(async (req, res, next) => {
-  const { postal_address, long_name, alphabetical_name, open_status } =
-    req.body;
+  const axiosInstance = axios.create({
+    baseURL: 'http://localhost:5001' // Set your base URL here
+  });
+  const { postal_address } = req.body;
 
   // Check for the required postal_address field
   if (!postal_address) {
     return next(new ErrorResponse('postal_address is required', 400));
   }
 
-  // Log a warning if other fields are missing
-  if (!long_name || !alphabetical_name || !open_status) {
-    console.warn('Some optional fields are missing:', {
-      long_name,
-      alphabetical_name,
-      open_status
-    });
-  }
-
-  const axiosInstance = axios.create({
-    baseURL: 'http://localhost:5001' // Set your base URL here
-  });
   const address = encodeURIComponent(req.body.postal_address);
   const googleAddressURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.GEOCDER_KEY}`;
   try {
@@ -127,11 +117,10 @@ exports.createLocation = asyncHandler(async (req, res, next) => {
 
       // Create a new Location object
       const location = new Location({
-        long_name: long_name || '', // Use empty string if not provided
-        alphabetical_name: alphabetical_name || '',
+        long_name: req.body.long_name || '', // Optional
+        alphabetical_name: req.body.alphabetical_name || '', // Optional
         location: req.body.location || '', // Optional
-        postal_address, // Required
-        open_status: open_status || '',
+        open_status: req.body.open_status || '', // Optional
         formatted_address,
         place_id,
         geometry,

@@ -34,17 +34,17 @@ const IFacility = new mongoose.Schema({
 
 const LocationSchema = new mongoose.Schema({
   id: { type: String, unique: true },
-  long_name: { type: String, required: true },
-  alphabetical_name: { type: String, required: true },
-  open_status: { type: String, required: true },
-  location: { type: String, required: true },
+  long_name: { type: String, required: false }, // Changed to optional
+  alphabetical_name: { type: String, required: false }, // Changed to optional
+  open_status: { type: String, required: false }, // Changed to optional
+  location: { type: String, required: false }, // Changed to optional
   address_components: [IAddressComponentSchema],
   formatted_address: { type: String, required: true },
   geometry: IGeometrySchema,
   place_id: { type: String, required: true },
-  opening_hours: { type: [String], required: true },
+  opening_hours: { type: [String], required: false }, // Changed to optional
   nearest_alternative: { type: String },
-  facility_ids: [{ type: String, required: true }],
+  facility_ids: [{ type: String, required: false }], // Changed to optional
   date_created: { type: Date, default: Date.now },
   date_modified: { type: Date, default: Date.now },
   isFavourite: { type: Boolean, required: false, default: false }
