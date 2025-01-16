@@ -19,6 +19,7 @@ connectDB();
 const locations = require('./routes/locations');
 const facilities = require('./routes/facilities');
 const nextLocationId = require('./routes/nextLocationId');
+const googleAddressComponents = require('./routes/googleAddressComponents');
 const auth = require('./routes/auth');
 const app = express();
 
@@ -44,6 +45,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use('/api/v1/locations', locations);
 app.use('/api/v1/facilities', facilities);
 app.use('/api/v1/nextlocationid', nextLocationId);
+app.use('/api/v1/maps/api/geocode/json', googleAddressComponents);
 app.use('/api/v1/auth', auth);
 app.use(errorHandler);
 

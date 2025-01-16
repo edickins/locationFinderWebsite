@@ -99,7 +99,7 @@ exports.createLocation = asyncHandler(async (req, res, next) => {
   const address = encodeURIComponent(req.body.postal_address);
   const googleAddressURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.GEOCDER_KEY}`;
   try {
-    const googleApiResponsePromise = axios.get(googleAddressURL);
+    const googleApiResponsePromise = axiosInstance.get(googleAddressURL);
     const nextLocationIdPromise = axiosInstance.get('/api/v1/nextlocationid');
 
     // Wait for both promises to resolve
@@ -138,7 +138,7 @@ exports.createLocation = asyncHandler(async (req, res, next) => {
 
       res
         .status(201)
-        .json({ success: true, locationid: newLocationDocument.id });
+        .json({ success: true, newLocationId: newLocationDocument.id });
     } else {
       // Handle the case where no results were returned
       next(new ErrorResponse('No location found', 404));
